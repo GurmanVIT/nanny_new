@@ -1,0 +1,13 @@
+.custom-logo {
+    max-width: 160px;
+}
+
+.custom-nav {
+    .nav-link {
+        color: darkslategray;
+
+        &.active {
+            color: red;
+        }
+    }
+}
