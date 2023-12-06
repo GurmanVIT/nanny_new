@@ -1,13 +1,16 @@
+@import '../../scss/color.scss';
+@import '../../scss/fonts.scss';
+
 .custom-logo {
     max-width: 160px;
 }
 
 .custom-nav {
     .nav-link {
-        color: darkslategray;
+        color: $dark-color;
 
         &.active {
-            color: red;
+            color: $light-color;
         }
     }
 }

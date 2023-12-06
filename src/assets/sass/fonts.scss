@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+@import '../scss/mixin.scss';
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+.fw-300 {
+    font-weight: 300;
+}
+
+.fw-400 {
+    font-weight: 400;
+}
+
+.fw-700 {
+    font-weight: 700;
+}
+
+p {
+    line-height: 25px;
+}
+
+h1 {
+    font-size: 50px;
+
+    @include media-md {
+        font-size: 30px;
+    }
+}
+
+h2 {
+    font-size: 40px;
+
+    @include media-md {
+        font-size: 25px;
+    }
+}
+
+h3 {
+    font-size: 30px;
+
+    @include media-md {
+        font-size: 25px;
+    }
+}
+
+h4 {
+    font-size: 25px;
+
+    @include media-md {
+        font-size: 20px;
+    }
+}
+
+h5 {
+    font-size: 20px;
+
+    @include media-md {
+        font-size: 18px;
+    }
+}
+
+h6 {
+    font-size: 18px;
+
+    @include media-md {
+        font-size: 16px;
+    }
+}
+
+p {
+    font-size: 16px;
+
+    @include media-md {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,38 @@
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin transition {
+    transition: all ease-in-out 500ms;
+    -webkit-transition: all ease-in-out 500ms;
+    -moz-transition: all ease-in-out 500ms;
+    -ms-transition: all ease-in-out 500ms;
+
+}
+
+@mixin media-xl {
+    @media screen and (max-width:1199.98px) {
+        @content;
+    }
+}
+
+@mixin media-lg {
+    @media screen and (max-width:991.98px) {
+        @content;
+    }
+}
+
+@mixin media-md {
+    @media screen and (max-width:767.98px) {
+        @content;
+    }
+}
+
+@mixin media-sm {
+    @media screen and (max-width:575.98px) {
+        @content;
+    }
+}
