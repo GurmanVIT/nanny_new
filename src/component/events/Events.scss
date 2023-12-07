@@ -1,0 +1,42 @@
+@import '../../assets/sass/color.scss'; 
+@import '../../assets/sass/mixin.scss';
+@import '../../assets/sass/fonts.scss';
+.events_info {
+    flex: 0 0 40%;
+    @include media-md {
+        flex: 0 0 100%;
+    }
+}
+.events_image {
+    flex: 0 0 50%;
+    background-image: url(../../assets/img/event.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    z-index: 2;
+    &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        content: '';
+        background-color: rgba($dark-color, .5);
+        z-index: -1;
+    }
+    h1 {
+        color: $light-color;
+    }
+    @include media-md {
+        flex: 0 0 100%;
+    }
+}
+.event_circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50px;
+    border: 2px solid #000;
+    i {
+        font-size: 30px;
+    }
+}

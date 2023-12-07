@@ -1,0 +1,8 @@
+@import '../../../assets/sass/color.scss';
+@import '../../../assets/sass/mixin.scss';
+.login-logo {
+    max-width: 200px;
+}
+.login_button {
+    background-color: $primary-color;
+}
