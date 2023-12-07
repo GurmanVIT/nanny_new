@@ -6,3 +6,26 @@
 .login_button {
     background-color: $primary-color;
 }
+.login_layout {
+    form{
+        display: grid;
+        input{
+            border: none;
+            border-bottom: 1px solid #000;
+            margin-top: 8px;
+            &:focus-visible{
+                border: none;
+                border-bottom: 1px solid #000;
+                outline: none;
+            }
+        }
+    }
+    .form_eyes{
+        position: relative;
+        svg{
+            position: absolute;
+            top: 32px;
+            right: 7px;
+        }
+    }
+}
