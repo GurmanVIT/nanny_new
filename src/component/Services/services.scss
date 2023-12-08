@@ -1,0 +1,27 @@
+@import '../../assets/sass/color.scss'; 
+@import '../../assets/sass/mixin.scss';
+@import '../../assets/sass/fonts.scss';
+
+
+.services_banner{
+    background-image: url(../../assets/img/service_main.jpg);
+}
+.service_text {
+
+.choose_icon {
+    margin-top: -50px;
+    i {
+        font-size: 60px;
+        color: $secondry-color;
+    }
+}
+}
+.why_2 {
+    margin-top: 60px;
+}
+.why_3 {
+    margin-top: 120px;
+}
+.why_4 {
+    margin-top: 180px;
+}
