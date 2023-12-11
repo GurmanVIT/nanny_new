@@ -11,6 +11,7 @@ import Login from './component/auth/login/Login';
 import Blogs from './component/blogs/Blogs';
 import Events from './component/events/Events';
 import Footer from './component/footer/Footer';
+import Tutorings from "./component/tutorings/Tutorings";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path='/signup' element={<Signup />} />
           <Route path='/events' element={<Events />} />
           <Route path='/nannycategories' element={<Nannycategories />} />
+          <Route path='/tutorings' element={<Tutorings />} />
         </Routes>
         <Footer />
       </BrowserRouter>

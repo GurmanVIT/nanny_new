@@ -12,30 +12,56 @@
 @import "../src/component/Services/services.scss";
 @import "../src/component/auth/login/Login.scss";
 @import "../src/component/events/Events.scss";
+@import "../src/component/tutorings/tutorings.scss";
 
 
 
 
-*, h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, p, ol, ul, li, hr {
-    margin: 0;
-    padding: 0;
-  }
-  ul, ol, li {
-    list-style: none;
-  }
-  a,a:hover {
-    text-decoration: none;
-  }
-  .secondry_bg {
-    background-color: $services_bg;
-  }
-  .all_btns {
-    background-color: #6EC1E4;
-    border: 0;
-    overflow: hidden;
-    border-radius: 50px;
-    -webkit-transition: all ease-in-out 500ms;
-    transition: all ease-in-out 500ms;
+*,
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6,
+p,
+ol,
+ul,
+li,
+hr {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+}
+
+.secondry_bg {
+  background-color: $services_bg;
+}
+
+.all_btns {
+  background-color: #6EC1E4;
+  border: 0;
+  overflow: hidden;
+  border-radius: 50px;
+  -webkit-transition: all ease-in-out 500ms;
+  transition: all ease-in-out 500ms;
+
   &::before {
     content: '';
     position: absolute;
@@ -49,7 +75,7 @@
     -webkit-transition: width ease-in-out 500ms;
     transition: width ease-in-out 500ms;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -63,49 +89,54 @@
     -webkit-transition: width ease-in-out 500ms;
     transition: width ease-in-out 500ms;
   }
-  
+
   &:hover {
     background-color: #f5ec50;
     color: #000;
     -webkit-transition: all ease-in-out 500ms;
     transition: all ease-in-out 500ms;
   }
-  
+
   &:hover::before {
     width: 50%;
     -webkit-transition: width ease-in-out 500ms;
     transition: width ease-in-out 500ms;
   }
-  
+
   &:hover::after {
     width: 50%;
     -webkit-transition: width ease-in-out 500ms;
     transition: width ease-in-out 500ms;
   }
 }
-  .sections_padding {
-    padding-top: 60px;
-    padding-bottom: 60px;
-    @include media-md {
-      padding-top: 30px;
-      padding-bottom: 30px;
-    }
-    h1 {
-        font-weight: 700;
-        span {
-            &::after {
-                position: absolute;
-                content: '';
-                bottom: -20px;
-                left: calc(50% - 100px);
-                width: 200px;
-                height: 5px;
-                background-color: $primary-color;
-                @include border-radius(5px);
-            }
-        }
+
+.sections_padding {
+  padding-top: 60px;
+  padding-bottom: 60px;
+
+  @include media-md {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  h1 {
+    font-weight: 700;
+
+    span {
+      &::after {
+        position: absolute;
+        content: '';
+        bottom: -20px;
+        left: calc(50% - 100px);
+        width: 200px;
+        height: 5px;
+        background-color: $primary-color;
+        @include border-radius(5px);
+      }
     }
   }
+}
+
 .inner_pages_banner {
   width: 100%;
   padding-top: 200px;
@@ -116,50 +147,69 @@
   z-index: -1;
   background-attachment: fixed;
   background-position: bottom;
+
   @include media-md {
     padding-top: 60px;
     padding-bottom: 60px;
   }
+
   &::after {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      content: '';
-      background-color: rgba(137,214,206, .8);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: '';
+    background-color: rgba(137, 214, 206, .8);
   }
 }
+
 .baner_text {
   h1 {
-      font-size: 70px;
-      font-weight: 700;
-      color: $dark-color;
+    font-size: 70px;
+    font-weight: 700;
+    color: $dark-color;
   }
 }
+
 .contact_bg {
   background-color: $secondry-color;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
 .order_card .mat-mdc-tab.mdc-tab {
   background-color: #f1f1f1;
 }
+
 .order_card .mat-mdc-tab.mdc-tab.mdc-tab--active {
   background-color: $green-color;
 }
-.order_card .mat-mdc-tab.mdc-tab.mdc-tab--active .mdc-tab__ripple::before{
+
+.order_card .mat-mdc-tab.mdc-tab.mdc-tab--active .mdc-tab__ripple::before {
   background-color: $green-color;
 }
-.order_card .mdc-tab__ripple::before{
+
+.order_card .mdc-tab__ripple::before {
   background-color: $nany-book-color;
 }
+
 .order_card .mat-mdc-tab:not(.mat-mdc-tab-disabled).mdc-tab--active .mdc-tab__text-label {
   color: $light-color;
 }
+
 .order_card .mat-mdc-tab:hover .mdc-tab__ripple::before {
   opacity: 1;
 }
+
 .order_card .mat-mdc-tab:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline {
   border-color: $green-color;
 }
