@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import banner from '../../assets/img/banner_bg.jpg';
 
 const Tutorings = () => {
     return (
@@ -32,7 +33,7 @@ const Tutorings = () => {
                 <div class="container schedule_image">
                     <div class="row">
                         <div class="col-md-10 offset-md-1">
-                            <img class="w-100" src="../../assets/images/banner_bg.jpg" alt="image" />
+                            <img src={banner} alt="image" class="w-100" />
                         </div>
                     </div>
                 </div>
@@ -78,7 +79,6 @@ const Tutorings = () => {
                     </div>
                     <div class="tutor_image p-5 d-flex align-items-center justify-content-center text-start position-relative"></div>
                 </div>
-
             </div>
         </>
     )

@@ -1,0 +1,162 @@
+@import '../../assets//sass/color.scss';
+@import '../../assets//sass/mixin.scss';
+
+.profile_photo {
+    img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 80px;
+    }
+}
+
+.profile_edit_options {
+    i {
+        font-size: 20px;
+    }
+
+    span {
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .profile_option {
+        @include transition;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $primary-color;
+            color: $light-color;
+            @include transition;
+        }
+    }
+}
+
+.heading_back_btn button {
+    background-color: transparent;
+    border: 0;
+
+    i {
+        font-weight: 700;
+        color: $primary-color;
+    }
+}
+
+.my_profile_border {
+    border-bottom: 1px solid $services_bg;
+}
+
+.edit_photo img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50px;
+    object-fit: cover;
+}
+
+.change_image_btn {
+    font-size: 14px;
+    color: $green-color;
+
+}
+
+.profile_button {
+    background-color: $primary-color;
+}
+
+.card_box {
+    h1 {
+        font-weight: 400;
+    }
+
+    h4 {
+        font-weight: 600;
+    }
+
+    .card_icon {
+        img {
+            max-width: 80px;
+        }
+    }
+
+    .card_type {
+        background-color: rgba($primary-color, .2);
+        color: $primary-color;
+        font-size: 12px;
+        font-weight: 500;
+
+    }
+
+    h5 {
+        span {
+            font-weight: 600;
+        }
+    }
+
+    button {
+        background-color: transparent;
+        border: 0;
+        color: $danger-color;
+    }
+}
+
+.redeem_btn {
+    background-color: $green-color !important;
+    color: $dark-color !important;
+    height: 56px;
+}
+
+.btn-cancel-nany-profile {
+    background-color: rgba($danger-color, .1);
+    color: $danger-color;
+    font-size: 16px;
+    font-weight: 500;
+    width: auto;
+    max-width: 100px;
+}
+
+.offer_validity {
+    border-top: 1px solid rgba($primary-color, .2);
+    font-size: 14px;
+    color: #000;
+
+    span {
+        font-weight: 600;
+    }
+}
+
+.credit_bg {
+    background: rgb(51, 144, 134);
+    background: -moz-linear-gradient(90deg, rgba(51, 144, 134, 1) 0%, rgba(137, 214, 206, 1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(51, 144, 134, 1) 0%, rgba(137, 214, 206, 1) 100%);
+    background: linear-gradient(90deg, rgba(51, 144, 134, 1) 0%, rgba(137, 214, 206, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#339086", endColorstr="#89d6ce", GradientType=1);
+    color: #fff;
+
+    h1 {
+        font-weight: 700;
+    }
+}
+
+.credit_score {
+    h5 {
+        font-size: 16px;
+
+        span {
+            font-weight: 600;
+        }
+    }
+}
+
+.credit_box_main {
+    &::after {
+        content: '';
+        content: "";
+        position: absolute;
+        bottom: -70px;
+        right: -70px;
+        background-color: rgba(255, 255, 255, 0.35);
+        width: 200px;
+        height: 200px;
+        border-radius: 130px;
+    }
+}

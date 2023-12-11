@@ -1,6 +1,7 @@
-@import '../../scss/color.scss';
-@import '../../scss/mixin.scss';
-@import '../../scss/fonts.scss';
+@import '../../assets//sass/color.scss';
+@import '../../assets//sass/fonts.scss';
+@import '../../assets//sass/mixin.scss';
+
 
 .tutor_info {
     flex: 0 0 40%;
@@ -12,7 +13,7 @@
 
 .tutor_image {
     flex: 0 0 50%;
-    background-image: url(../../assets/images/banner_bg.jpg);
+    background-image: url(../../assets/img/banner_bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     z-index: 2;
@@ -53,7 +54,7 @@
             flex: 0 0 100%;
         }
 
-        background-image: url(../../assets/images/banner_bg.jpg);
+        background-image: url(../../assets/img/banner_bg.jpg);
         background-repeat: no-repeat;
         background-size: cover;
         z-index: 2;

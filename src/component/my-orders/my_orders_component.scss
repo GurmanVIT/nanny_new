@@ -1,0 +1,114 @@
+@import '../../assets/sass/color.scss';
+@import '../../assets/sass/mixin.scss';
+
+.all_order_box {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: 1fr;
+    gap: 1rem;
+
+    @include media-xl {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include media-md {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    .nany_orders {
+        display: grid;
+        grid-template-columns: 80px 1fr 80px;
+        gap: 1rem;
+
+        @include media-lg {
+            display: block;
+        }
+
+        @include media-md {
+            display: grid;
+        }
+
+        @include media-sm {
+            display: block;
+        }
+
+        img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+        }
+
+        .nanny-info {
+            .location {
+                color: $nany-book-color
+            }
+
+            .time {
+                color: $nany-book-color
+            }
+        }
+    }
+
+    .ordered_persons {
+        border-top: 2px solid $primary-color;
+        display: grid;
+        grid-template-columns: 35px 1fr 100px;
+        gap: 1rem;
+
+        img {
+            width: 35px;
+            height: 35px;
+            object-fit: cover;
+        }
+
+        .nanny-small-info {
+            font-weight: 500;
+
+            h4 {
+                font-weight: 500;
+            }
+
+            .star {
+                color: $dark-color;
+
+                i {
+                    color: $star-color;
+                }
+            }
+        }
+
+        .btn-ongiing {
+            background-color: rgba($primary-color, .1);
+            color: $primary-color;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .btn-success-nany {
+            background-color: rgba($success-color, .1);
+            color: $success-color;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .btn-cancel-nany {
+            background-color: rgba($danger-color, .1);
+            color: $danger-color;
+            font-size: 12px;
+            font-weight: 500;
+        }
+    }
+
+    .upcoming_option {
+        border-top: 2px solid $primary-color;
+
+        a {
+            color: $green-color;
+            font-weight: 500;
+        }
+
+        img {
+            width: 20px;
+        }
+    }
+}

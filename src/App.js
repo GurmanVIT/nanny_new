@@ -12,6 +12,8 @@ import Blogs from './component/blogs/Blogs';
 import Events from './component/events/Events';
 import Footer from './component/footer/Footer';
 import Tutorings from "./component/tutorings/Tutorings";
+import My_Orders_Component from "./component/my-orders/My_Orders_Component";
+import Profile from "./component/profile/Profile";
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
           <Route path='/events' element={<Events />} />
           <Route path='/nannycategories' element={<Nannycategories />} />
           <Route path='/tutorings' element={<Tutorings />} />
+          <Route path='/my_orders_component' element={<My_Orders_Component />} />
+          <Route path='/profile' element={<Profile />} />
         </Routes>
         <Footer />
       </BrowserRouter>
