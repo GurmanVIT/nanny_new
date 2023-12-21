@@ -36,7 +36,7 @@ const Login = () => {
                                         <input type="text" placeholder="Enter Name" />
                                     </form>
                                     <form className="w-100 mb-3 form_eyes">
-                                        <label htmlFor="password">Password:</label>
+                                        <label>Password:</label>
                                         <input
                                             type={showPassword ? 'text' : 'password'}
                                             id="password"

@@ -1,6 +1,26 @@
 @import '../../assets/sass/color.scss';
 @import '../../assets/sass/mixin.scss';
 
+
+.react-tabs__tab-list{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.react-tabs__tab{
+    &:focus-visible{
+        outline: none;
+        border: none;
+    }
+}
+.order_card{
+    .react-tabs__tab--selected{
+        color: $primary-color;
+        border-bottom: 2px solid $primary-color;
+        
+    }
+}
+
 .all_order_box {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -16,26 +36,24 @@
     }
 
     .nany_orders {
-        display: grid;
-        grid-template-columns: 80px 1fr 80px;
-        gap: 1rem;
-
-        @include media-lg {
-            display: block;
-        }
-
-        @include media-md {
-            display: grid;
-        }
-
-        @include media-sm {
-            display: block;
-        }
+        background-color: white;
+        border: none;
+        box-shadow: 0px 0px 12px -8px rgba(0,0,0,0.75);
+        padding: 13px;
 
         img {
             width: 80px;
             height: 80px;
             object-fit: cover;
+            margin-right: 10px;
+        }
+        .card-title{
+            display: flex;
+            justify-content: space-between;
+            
+        }
+        .card-img{
+            margin-right: 10px;
         }
 
         .nanny-info {
@@ -51,14 +69,12 @@
 
     .ordered_persons {
         border-top: 2px solid $primary-color;
-        display: grid;
-        grid-template-columns: 35px 1fr 100px;
-        gap: 1rem;
 
         img {
             width: 35px;
             height: 35px;
             object-fit: cover;
+            margin-right: 10px;
         }
 
         .nanny-small-info {
@@ -66,6 +82,7 @@
 
             h4 {
                 font-weight: 500;
+                font-size: 14px;
             }
 
             .star {
@@ -82,6 +99,9 @@
             color: $primary-color;
             font-size: 12px;
             font-weight: 500;
+            border: 1px solid rgba($primary-color, .1);
+            padding: 4px;
+            border-radius: 6px;
         }
 
         .btn-success-nany {
@@ -89,6 +109,9 @@
             color: $success-color;
             font-size: 12px;
             font-weight: 500;
+            border: 1px solid rgba($success-color, .1);
+            padding: 4px;
+            border-radius: 6px;
         }
 
         .btn-cancel-nany {
@@ -96,6 +119,9 @@
             color: $danger-color;
             font-size: 12px;
             font-weight: 500;
+            border: 1px solid rgba($danger-color, .1);
+            padding: 4px;
+            border-radius: 6px;
         }
     }
 
@@ -109,6 +135,7 @@
 
         img {
             width: 20px;
+            height: 100%;
         }
     }
 }

@@ -1,0 +1,109 @@
+.ReactModal__Content {
+   width: 300px;
+   margin: auto;
+   height: 450px;
+}
+
+
+
+.add_details {
+   .heading {
+      padding: 20px;
+      border-bottom: 1px solid rgb(163, 163, 163);
+      margin-bottom: 5px;
+
+      h4 {
+         font-weight: 600;
+         font-size: 15px;
+      }
+   }
+
+   form {
+      display: grid;
+
+      input {
+         border: none;
+         border-bottom: 1px solid rgb(163, 163, 163);
+         margin-top: 0px;
+         border-radius: 0px;
+         padding: 3px;
+
+         &:focus-visible {
+            border: none;
+            border-bottom: 1px solid rgb(163, 163, 163);
+            outline: none;
+         }
+
+         &:focus {
+            border: none;
+            outline: none;
+            border-bottom: 1px solid rgb(163, 163, 163);
+         }
+      }
+   }
+
+   .form_eyes {
+      position: relative;
+
+      input {
+         width: 100%;
+      }
+
+      svg {
+         position: absolute;
+         top: 32px;
+         right: 7px;
+      }
+   }
+
+   .form-select {
+      border: none;
+      border-bottom: 1px solid rgb(163, 163, 163);
+      margin-top: 0px;
+      border-radius: 0px;
+      padding: 3px;
+
+      &:focus-visible {
+         border: none;
+         border-bottom: 1px solid rgb(163, 163, 163);
+         outline: none;
+      }
+
+      &:focus {
+         border: none;
+         outline: none;
+         border-bottom: 1px solid rgb(163, 163, 163);
+         box-shadow: none;
+      }
+   }
+
+   .btn_modal {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 25px;
+
+      a {
+         background-color: #f5ec50;
+         color: #000;
+         border: 1px solid #f5ec50;
+         padding: 7px 5px;
+         width: 100%;
+         text-align: center;
+      }
+   }
+}
+
+.add_hours {
+   position: absolute;
+   inset: 40px;
+   border: 1px solid rgb(204, 204, 204);
+   background: rgb(255, 255, 255);
+   overflow: auto;
+   border-radius: 4px;
+   outline: none;
+   padding: 20px;
+   width: 300px;
+   margin: auto;
+   height: 250px !important;
+}

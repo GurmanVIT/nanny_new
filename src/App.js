@@ -14,6 +14,9 @@ import Footer from './component/footer/Footer';
 import Tutorings from "./component/tutorings/Tutorings";
 import My_Orders_Component from "./component/my-orders/My_Orders_Component";
 import Profile from "./component/profile/Profile";
+import Nanylisting from "./component/nany-listing/Nanylisting";
+import CustomModal from "./component/CustomModal/CustomModal";
+import YourApp from "./component/CustomModal/YourApp";
 
 function App() {
   return (
@@ -33,6 +36,9 @@ function App() {
           <Route path='/tutorings' element={<Tutorings />} />
           <Route path='/my_orders_component' element={<My_Orders_Component />} />
           <Route path='/profile' element={<Profile />} />
+          <Route path="/nanyList" element={<Nanylisting />}/>
+          <Route path="/customModal" element={<CustomModal/>}/>
+          <Route path="/yourapp" element={<YourApp/>}/>
         </Routes>
         <Footer />
       </BrowserRouter>
