@@ -17,6 +17,10 @@ import Profile from "./component/profile/Profile";
 import Nanylisting from "./component/nany-listing/Nanylisting";
 import CustomModal from "./component/CustomModal/CustomModal";
 import YourApp from "./component/CustomModal/YourApp";
+import Redeempromotion from "./component/Redeempromotion/Redeempromotion";
+import Bookdetails from "./component/Redeempromotion/Bookdetails";
+import Payment from "./component/Redeempromotion/Payment";
+import Api from "./component/Api/Api";
 
 function App() {
   return (
@@ -38,7 +42,10 @@ function App() {
           <Route path='/profile' element={<Profile />} />
           <Route path="/nanyList" element={<Nanylisting />}/>
           <Route path="/customModal" element={<CustomModal/>}/>
-          <Route path="/yourapp" element={<YourApp/>}/>
+          <Route path="/redeempromotion" element={<Redeempromotion/>}/>
+          <Route path="/bookdetails" element={<Bookdetails/>}/>
+          <Route path="/payment" element={<Payment/>}/>
+          <Route path="/api" element={<Api/>}/>
         </Routes>
         <Footer />
       </BrowserRouter>

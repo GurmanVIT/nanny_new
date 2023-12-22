@@ -1,22 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
 @import './assets/sass/color.scss';
+
 @import './assets/sass/fonts.scss';
+
 @import './assets/sass/mixin.scss';
+
 @import '../node_modules/bootstrap/dist/css/bootstrap.css';
+
 // @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 @import "../src/component/about/about.scss";
+
 @import "../src/component/footer/footer.scss";
+
 @import "../src/component/blogs/blogs.scss";
+
 @import "../src/component/Contact/contact.scss";
+
 @import "../src/component/Home/home.scss";
+
 @import "../src/component/Services/services.scss";
+
 @import "../src/component/auth/login/Login.scss";
+
 @import "../src/component/events/Events.scss";
+
 @import "../src/component/tutorings/tutorings.scss";
+
 @import "../src/component/my-orders/my_orders_component.scss";
+
 @import "../src/component/profile/profile.scss";
+
 @import "../src/component/nany-listing/Nanylisting.scss";
+
 @import "../src/component/CustomModal/CustomModal.scss";
+
+@import "../src/component/Redeempromotion/Bookdetails.scss";
 
 
 
@@ -216,4 +235,13 @@ body {
 
 .order_card .mat-mdc-tab:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline {
   border-color: $green-color;
+}
+
+.btn{
+  &:focus{
+    box-shadow: none !important;
+  }
+  &:focus-visible{
+    box-shadow: none !important;
+  }
 }

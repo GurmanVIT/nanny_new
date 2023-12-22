@@ -1,0 +1,357 @@
+.book_detailsmain {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0px;
+}
+
+.book_details {
+    width: 550px;
+    background-color: #fff;
+    box-shadow: 0px 0px 22px 6px rgba(245, 245, 245, 1);
+    border-radius: 10px;
+
+    .book_title {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        border-bottom: 1px dotted $primary-color;
+
+        .heading {
+            h4 {
+                font-size: 25px;
+                font-weight: 600;
+            }
+
+            p {
+                font-size: 13px;
+            }
+        }
+
+        .extendbooking {
+            a {
+                text-decoration: none;
+                color: $primary-color;
+                font-size: 14px;
+            }
+        }
+    }
+
+    .description {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        border-bottom: 1px solid rgb(173, 173, 173);
+
+        p {
+            font-size: 15px;
+            font-weight: 500;
+        }
+    }
+
+    .nanny_info {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        border-bottom: 1px solid rgb(173, 173, 173);
+        align-items: center;
+
+        .nanny_img {
+            display: flex;
+            gap: 10px;
+            text-align: center;
+            align-items: center;
+
+            img {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+            }
+        }
+
+        h5 {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+    }
+
+    .redeem-icon {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: $primary-color;
+        padding: 20px;
+        border-bottom: 1px solid rgb(173, 173, 173);
+
+        h6 {
+            span {
+                background-color: #daecf3;
+                padding: 10px;
+                border-radius: 50%;
+                box-shadow: 0px 0px 28px -12px rgba(109, 207, 242, 1);
+
+            }
+        }
+
+        .modal_btn {
+            a {
+                color: #fff;
+                background-color: #1b7aa0;
+                padding: 10px;
+                border-radius: 10px;
+
+                svg {
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    .price_details {
+        border-bottom: 1px dotted $primary-color;
+
+        ul {
+            padding: 10px 20px 5px 20px;
+
+            li {
+                list-style: disc;
+                font-size: 16px;
+                font-weight: 600;
+
+                &::marker {
+                    color: #1b7aa0;
+                }
+            }
+
+            .fee_price {
+                display: flex;
+                justify-content: space-between;
+
+                P {
+                    font-size: 18px;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+
+    .total_price {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+    }
+
+    .booking_btn {
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+
+        .btn_continue {
+            background-color: #f5ec50;
+            border: 1px solid #f5ec50;
+            color: #000;
+            padding: 5px 35px;
+        }
+    }
+
+
+
+    .redeem_modal {
+        width: 500px !important;
+    }
+
+    .redeem_form {
+        padding: 20px;
+
+        .input-group {
+            box-shadow: 0px 0px 16px 6px rgba(245, 245, 245, 1);
+
+            input {
+                border: none;
+            }
+
+            .input-group-text {
+                background: transparent;
+                border: none;
+
+                a {
+                    color: $primary-color;
+                    font-size: 15px;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+
+    .redeem_cards {
+        padding: 0px 20px 20px;
+
+        .heading {
+            margin-bottom: 10px;
+
+            h6 {
+                color: $primary-color;
+                font-size: 16px;
+                font-weight: 600;
+            }
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0px 0px 16px 6px rgba(245, 245, 245, 1);
+            border-radius: 7px;
+            margin-bottom: 13px;
+
+            .card_body {
+                padding: 10px;
+
+                .card_heading {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 0px 0px 7px;
+                    font-size: 13px;
+                    font-weight: 600;
+                }
+
+                .get_off {
+                    padding: 4px 0px;
+
+                    span {
+                        color: rgb(243, 34, 34);
+                        background: rgb(251 199 199);
+                        padding: 6px;
+                        border-radius: 7px;
+                        font-size: 13px;
+                        font-weight: 600;
+                    }
+                }
+
+                .off_all {
+                    padding: 6px 0px;
+
+                    p {
+                        font-size: 16px;
+                        font-weight: 600;
+                    }
+                }
+            }
+
+            .card_end {
+                padding: 10px;
+                background: rgb(15 156 179 / 89%);
+                color: #fff;
+                border-radius: 0px 0px 7px 7px;
+
+                p {
+                    font-size: 14px;
+                    font-weight: 600;
+                }
+
+                span {
+                    background: #1b7aa0;
+                    padding: 5px;
+                    border-radius: 6px;
+                }
+            }
+        }
+    }
+
+    .payment {
+        padding: 20px;
+
+        .card {
+            border: 1px solid rgb(173, 173, 173);
+            border-radius: 7px;
+
+            .card_body {
+                display: flex;
+                justify-content: space-between;
+                gap: 10px;
+                margin: 10px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid rgb(173, 173, 173);
+
+                .card_card {
+                    display: flex;
+                    gap: 10px;
+
+                    .card_details {
+                        h6{
+                            font-weight: 600;
+                        }
+                        .card_visa {
+                            display: flex;
+                            gap: 20px;
+                            align-items: center;
+
+                            img {
+                                width: 40px;
+                                height: 40px;
+                            }
+                        }
+                    }
+                }
+                .card_last{
+                    .form-control{
+                        width: 60px;
+                    }
+                }
+            }
+            .card_credit{
+                border-bottom: none !important;
+            }
+
+        }
+        .add_card{
+            margin: 10px 0px;
+            a{
+                color: $primary-color;
+                text-decoration: none;
+                display: flex;
+                gap: 14px;
+                align-items: center;
+                .add_new{
+                    border: 1px solid $primary-color;
+                    //padding: 6px 3px;
+                    border-radius: 10px;
+                    svg{
+                        margin: 2px 12px;
+                    }
+                    
+                }
+            }
+        }
+        .pay_btn{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            border-top: 1px solid rgb(173, 173, 173);
+            padding-top: 20px;
+            .pay_total{
+                h6{
+                    font-weight: 600;
+                }
+                p{
+                    font-weight: 600;
+                    color: $primary-color;
+                }
+            }
+            .btn_continue {
+                background-color: #f5ec50;
+                border: 1px solid #f5ec50;
+                color: #000;
+                padding: 5px 35px;
+            }
+        }
+        
+    }
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
