@@ -10,7 +10,7 @@ import { Button } from 'react-bootstrap';
 const Signupnanny = () => {
 
     const dispatch = useDispatch();
-    const data = useSelector((state) => state);
+    const data = useSelector((state) => state.rootReducer.signUp);
     console.log("state", data);
 
     const [email, setEmail] = useState('');
@@ -18,7 +18,7 @@ const Signupnanny = () => {
     const [firstName, setfirstName] = useState('');
     const [lastName, setlastName] = useState('');
     const [mobileNumber, setmobileNumber] = useState('');
-    const [experienceOfYears, setexperienceOfYears] = useState('');
+    const [experienceOfYears] = useState('');
     const isAuthenticated = useSelector((state) => state.isAuthenticated);
 
 
@@ -59,8 +59,7 @@ const Signupnanny = () => {
 
 
     useEffect(() => {
-        console.log("Data ===>", data)
-        if (data != null && data.status === 1) {
+        if (data.data != null && data.data.status === 1) {
             navigateToAnotherScreen();
         }
     }, [data])

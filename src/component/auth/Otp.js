@@ -1,28 +1,28 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import OTPInput from 'react-otp-input'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../assets/img/logo-nanny.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { verifyOtp } from '../../store/apiSlice/Otpslice';
 
 const Otp = () => {
 
-    //const [otp, setOtp] = useState('');
+    const [otp, setOtp] = useState('');
 
     const dispatch = useDispatch();
-    const otpVerificationError = useSelector((state) => state.otp);
-    const data = useSelector((state) => state);
-  
-    console.log(data)
+    const data = useSelector((state) => state.rootReducer.otp);
+    const signUpData = useSelector((state) => state.rootReducer.signUp.data);
 
-    const [otp, setotp] = useState('');
-    const [id, setid] = useState('');
+
+    //const [otp, setotp] = useState('');
+
   
     const handleOtpVerification = async () => {
         const payload ={
-            id : id,
+            _id : signUpData.data._id,
             otp: otp,
-            emailVerify: 1
+            emailVerify: 2,
+
         }
         try {
           dispatch(verifyOtp(payload));
@@ -30,7 +30,17 @@ const Otp = () => {
             console.error('otp failed:', error);
         }
       };
-  
+
+      const navigate = useNavigate();
+
+      const navigateToAnotherScreen = () => {
+          navigate('/nannycategories');
+      }
+      useEffect(() => {
+        if (data.otpData != null && data.otpData.status === 1) {
+            navigateToAnotherScreen();
+        }
+    }, [data])
 
     return (
         <>
@@ -49,17 +59,24 @@ const Otp = () => {
                                     <form className="w-100 mb-4 input_otp" appearance="outline">
                                         <OTPInput
                                             value={otp}
-                                            onChange={(value) => setotp(value)}
+                                            onChange={(value) => setOtp(value)}
                                             numInputs={6}
                                             renderSeparator={<span className='space'></span>}
                                             renderInput={(props) => <input {...props} />}
                                         />
+                                         {/*<OTPInput
+                                            
+                                           
+                                            numInputs={6}
+                                            renderSeparator={<span className='space'></span>}
+                                            renderInput={(props) => <input {...props} />}
+                                        />*/}
                                     </form>
                                     <div className="d-flex flex-column align-items-center justify-content-center">
-                                        <button color="primary" className="login_button px-4 btn all_btn" onClick={handleOtpVerification}>
+                                        <button color="primary" className="login_button px-4 btn all_btn" onClick={()=>handleOtpVerification()} >
                                             Verify
                                         </button>
-                                        {otpVerificationError && <p style={{ color: 'red' }}>{otpVerificationError}</p>}
+                                        {/*{otpVerificationError && <p style={{ color: 'red' }}>Found Error</p>}*/}
                                         <p className="mt-3"><Link to="/signup" >Resend</Link> One Time Password</p>
                                         <p><Link to="/forotpassword"> Entered a wrong number ?</Link></p>
                                     </div>

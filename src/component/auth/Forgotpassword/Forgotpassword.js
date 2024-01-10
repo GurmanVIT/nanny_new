@@ -37,12 +37,12 @@ const Forgotpassword = () => {
     }
 
 
-    useEffect(() => {
-        console.log("Data ===>", user)
-        if (user != null && user.status === 1) {
-            navigateToAnotherScreen();
-        }
-    }, [user])
+    //useEffect(() => {
+    //    console.log("Data ===>", user)
+    //    if (user != null && user.status === 1) {
+    //        navigateToAnotherScreen();
+    //    }
+    //}, [user])
 
 
 

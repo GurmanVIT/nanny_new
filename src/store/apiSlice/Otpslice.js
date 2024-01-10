@@ -2,22 +2,15 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const initialState = {
-    otpData: null,
-    token: null,
-    loading: false,
-    error: null,
-};
 
-export const verifyOtp= createAsyncThunk('verifyOtp', async (payload) => {
-    console.log(payload)
-    const response = await axios.post('https://dev-api-nanny.virtualittechnology.com/v1/common/otpVerifications', payload);
-
-    console.log(response.data)
+export const verifyOtp= createAsyncThunk('verifyOtp', async (payload) =>
+ {
+    console.log("payload ===>",payload)
+    const response = await axios.put('https://dev-api-nanny.virtualittechnology.com/v1/common/otpVerifications', payload);
     return response.data;
 });
 
-const authSlice = createSlice({
+const otpSlice = createSlice({
     name: 'otp',
     initialState:{
         data: null,
@@ -44,4 +37,4 @@ const authSlice = createSlice({
     },
 });
 
-export default authSlice.reducer;
+export default otpSlice.reducer;

@@ -10,7 +10,6 @@ const initialState = {
 };
 
 export const signupUser = createAsyncThunk('signupUser', async (payload) => {
-
     const response = await axios.post('https://dev-api-nanny.virtualittechnology.com/v1/common/signUp', payload);
     return response.data;
 });
