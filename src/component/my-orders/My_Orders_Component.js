@@ -11,8 +11,8 @@ import { Link } from 'react-router-dom';
 const My_Orders_Component = () => {
     return (
         <>
-            <div class="container">
-                <div class="row order_card mb-5">
+            <div className="container">
+                <div className="row order_card mb-5">
                     <Tabs>
                         <TabList>
                             <Tab>Ongoing</Tab>
@@ -25,18 +25,18 @@ const My_Orders_Component = () => {
                                 <div className='card nany_orders'>
                                     <div className='card.body d-flex'>
                                         <div className='card.img mr-2'>
-                                            <img src={about} alt='about' class="rounded-circle" />
+                                            <img src={about} alt='about' className="rounded-circle" />
                                         </div>
                                         <div>
                                             <div className='card-title'>
                                                 <h6>Ocational Nanny</h6>
-                                                <p class="text-sm-end text-md-start text-lg-end">$120</p>
+                                                <p className="text-sm-end text-md-start text-lg-end">$120</p>
                                             </div>
 
                                             <div className='Card.Text'>
-                                                <div class="nanny-info">
-                                                    <div class="location mb-1 d-flex align-items-baseline"><i class=" fa fa-location me-1"></i><span>48752 mohali punjab hn  mohali punjab</span></div>
-                                                    <p class="time mb-0 text-truncate">25 Jan <span>05:20 PM</span></p>
+                                                <div className="nanny-info">
+                                                    <div className="location mb-1 d-flex align-items-baseline"><i className=" fa fa-location me-1"></i><span>48752 mohali punjab hn  mohali punjab</span></div>
+                                                    <p className="time mb-0 text-truncate">25 Jan <span>05:20 PM</span></p>
                                                 </div>
 
                                             </div>
@@ -46,7 +46,7 @@ const My_Orders_Component = () => {
                                         <div className='nanny-small-info mt-2'>
                                             <div className='d-flex justify-content-between'>
                                                 <div className='d-flex'>
-                                                    <img src={founder} alt='nanny' class="rounded-circle" />
+                                                    <img src={founder} alt='nanny' className="rounded-circle" />
                                                     <div>
                                                         <h4>Lottie Cortez</h4>
                                                         <h6><StarIcon /> 4.5</h6>
@@ -62,18 +62,18 @@ const My_Orders_Component = () => {
                                 <div className='card nany_orders'>
                                     <div className='card.body d-flex'>
                                         <div className='card.img mr-2'>
-                                            <img src={about} class="rounded-circle" />
+                                            <img src={about} className="rounded-circle" />
                                         </div>
                                         <div>
                                             <div className='card-title'>
                                                 <h6>Ocational Nanny</h6>
-                                                <p class="text-sm-end text-md-start text-lg-end">$120</p>
+                                                <p className="text-sm-end text-md-start text-lg-end">$120</p>
                                             </div>
 
                                             <div className='Card.Text'>
-                                                <div class="nanny-info">
-                                                    <div class="location mb-1 d-flex align-items-baseline"><i class=" fa fa-location me-1"></i><span>48752 mohali punjab hn  mohali punjab</span></div>
-                                                    <p class="time mb-0 text-truncate">25 Jan <span>05:20 PM</span></p>
+                                                <div className="nanny-info">
+                                                    <div className="location mb-1 d-flex align-items-baseline"><i className=" fa fa-location me-1"></i><span>48752 mohali punjab hn  mohali punjab</span></div>
+                                                    <p className="time mb-0 text-truncate">25 Jan <span>05:20 PM</span></p>
                                                 </div>
 
                                             </div>
@@ -83,7 +83,7 @@ const My_Orders_Component = () => {
                                         <div className='nanny-small-info mt-2'>
                                             <div className='d-flex justify-content-between'>
                                                 <div className='d-flex'>
-                                                    <img src={founder} alt='nanny' class="rounded-circle" />
+                                                    <img src={founder} alt='nanny' className="rounded-circle" />
                                                     <div>
                                                         <h4>Lottie Cortez</h4>
                                                         <h6><StarIcon /> 4.5</h6>
@@ -99,18 +99,18 @@ const My_Orders_Component = () => {
                                 <div className='card nany_orders'>
                                     <div className='card.body d-flex'>
                                         <div className='card.img mr-2'>
-                                            <img src={about} class="rounded-circle" />
+                                            <img src={about} className="rounded-circle" />
                                         </div>
                                         <div>
                                             <div className='card-title'>
                                                 <h6>Ocational Nanny</h6>
-                                                <p class="text-sm-end text-md-start text-lg-end">$120</p>
+                                                <p className="text-sm-end text-md-start text-lg-end">$120</p>
                                             </div>
 
                                             <div className='Card.Text'>
-                                                <div class="nanny-info">
-                                                    <div class="location mb-1 d-flex align-items-baseline"><i class=" fa fa-location me-1"></i><span>48752 mohali punjab hn  mohali punjab</span></div>
-                                                    <p class="time mb-0 text-truncate">25 Jan <span>05:20 PM</span></p>
+                                                <div className="nanny-info">
+                                                    <div className="location mb-1 d-flex align-items-baseline"><i className=" fa fa-location me-1"></i><span>48752 mohali punjab hn  mohali punjab</span></div>
+                                                    <p className="time mb-0 text-truncate">25 Jan <span>05:20 PM</span></p>
                                                 </div>
 
                                             </div>
@@ -120,7 +120,7 @@ const My_Orders_Component = () => {
                                         <div className='nanny-small-info mt-2'>
                                             <div className='d-flex justify-content-between'>
                                                 <div className='d-flex'>
-                                                    <img src={founder} alt='nanny' class="rounded-circle" />
+                                                    <img src={founder} alt='nanny' className="rounded-circle" />
                                                     <div>
                                                         <h4>Lottie Cortez</h4>
                                                         <h6><StarIcon /> 4.5</h6>
@@ -142,18 +142,18 @@ const My_Orders_Component = () => {
                                 <div className='card nany_orders'>
                                     <div className='card.body d-flex'>
                                         <div className='card.img mr-2'>
-                                            <img src={about} class="rounded-circle" />
+                                            <img src={about} className="rounded-circle" />
                                         </div>
                                         <div>
                                             <div className='card-title'>
                                                 <h6>Ocational Nanny</h6>
-                                                <p class="text-sm-end text-md-start text-lg-end">$120</p>
+                                                <p className="text-sm-end text-md-start text-lg-end">$120</p>
                                             </div>
 
                                             <div className='Card.Text'>
-                                                <div class="nanny-info">
-                                                    <div class="location mb-1 d-flex align-items-baseline"><i class=" fa fa-location me-1"></i><span>48752 mohali punjab hn  mohali punjab</span></div>
-                                                    <p class="time mb-0 text-truncate">25 Jan <span>05:20 PM</span></p>
+                                                <div className="nanny-info">
+                                                    <div className="location mb-1 d-flex align-items-baseline"><i className=" fa fa-location me-1"></i><span>48752 mohali punjab hn  mohali punjab</span></div>
+                                                    <p className="time mb-0 text-truncate">25 Jan <span>05:20 PM</span></p>
                                                 </div>
 
                                             </div>
@@ -166,8 +166,8 @@ const My_Orders_Component = () => {
                                                     <Link to="#" className='mb-0'>Cancel Booking</Link>
                                                 </div>
                                                 <div>
-                                                    <div class="upcoming_btns d-flex align-items-center">
-                                                        <Link to="#" class="me-3"><img src={next_btn} alt="logo" /></Link>
+                                                    <div className="upcoming_btns d-flex align-items-center">
+                                                        <Link to="#" className="me-3"><img src={next_btn} alt="logo" /></Link>
                                                         <Link to="#"><img src={call_btn} alt="logo" /></Link>
                                                     </div>
                                                 </div>
@@ -178,18 +178,18 @@ const My_Orders_Component = () => {
                                 <div className='card nany_orders'>
                                     <div className='card.body d-flex'>
                                         <div className='card.img mr-2'>
-                                            <img src={about} class="rounded-circle" />
+                                            <img src={about} className="rounded-circle" />
                                         </div>
                                         <div>
                                             <div className='card-title'>
                                                 <h6>Ocational Nanny</h6>
-                                                <p class="text-sm-end text-md-start text-lg-end">$120</p>
+                                                <p className="text-sm-end text-md-start text-lg-end">$120</p>
                                             </div>
 
                                             <div className='Card.Text'>
-                                                <div class="nanny-info">
-                                                    <div class="location mb-1 d-flex align-items-baseline"><i class=" fa fa-location me-1"></i><span>48752 mohali punjab hn  mohali punjab</span></div>
-                                                    <p class="time mb-0 text-truncate">25 Jan <span>05:20 PM</span></p>
+                                                <div className="nanny-info">
+                                                    <div className="location mb-1 d-flex align-items-baseline"><i className=" fa fa-location me-1"></i><span>48752 mohali punjab hn  mohali punjab</span></div>
+                                                    <p className="time mb-0 text-truncate">25 Jan <span>05:20 PM</span></p>
                                                 </div>
 
                                             </div>
@@ -202,8 +202,8 @@ const My_Orders_Component = () => {
                                                     <Link to="#" className='mb-0'>Cancel Booking</Link>
                                                 </div>
                                                 <div>
-                                                    <div class="upcoming_btns d-flex align-items-center">
-                                                        <Link to="#" class="me-3"><img src={next_btn} alt="logo" /></Link>
+                                                    <div className="upcoming_btns d-flex align-items-center">
+                                                        <Link to="#" className="me-3"><img src={next_btn} alt="logo" /></Link>
                                                         <Link to="#"><img src={call_btn} alt="logo" /></Link>
                                                     </div>
                                                 </div>
@@ -214,18 +214,18 @@ const My_Orders_Component = () => {
                                 <div className='card nany_orders'>
                                     <div className='card.body d-flex'>
                                         <div className='card.img mr-2'>
-                                            <img src={about} class="rounded-circle" />
+                                            <img src={about} className="rounded-circle" />
                                         </div>
                                         <div>
                                             <div className='card-title'>
                                                 <h6>Ocational Nanny</h6>
-                                                <p class="text-sm-end text-md-start text-lg-end">$120</p>
+                                                <p className="text-sm-end text-md-start text-lg-end">$120</p>
                                             </div>
 
                                             <div className='Card.Text'>
-                                                <div class="nanny-info">
-                                                    <div class="location mb-1 d-flex align-items-baseline"><i class=" fa fa-location me-1"></i><span>48752 mohali punjab hn  mohali punjab</span></div>
-                                                    <p class="time mb-0 text-truncate">25 Jan <span>05:20 PM</span></p>
+                                                <div className="nanny-info">
+                                                    <div className="location mb-1 d-flex align-items-baseline"><i className=" fa fa-location me-1"></i><span>48752 mohali punjab hn  mohali punjab</span></div>
+                                                    <p className="time mb-0 text-truncate">25 Jan <span>05:20 PM</span></p>
                                                 </div>
 
                                             </div>
@@ -238,8 +238,8 @@ const My_Orders_Component = () => {
                                                     <Link to="#" className='mb-0'>Cancel Booking</Link>
                                                 </div>
                                                 <div>
-                                                    <div class="upcoming_btns d-flex align-items-center">
-                                                        <Link to="#" class="me-3"><img src={next_btn} alt="logo" /></Link>
+                                                    <div className="upcoming_btns d-flex align-items-center">
+                                                        <Link to="#" className="me-3"><img src={next_btn} alt="logo" /></Link>
                                                         <Link to="#"><img src={call_btn} alt="logo" /></Link>
                                                     </div>
                                                 </div>
@@ -255,18 +255,18 @@ const My_Orders_Component = () => {
                                 <div className='card nany_orders'>
                                     <div className='card.body d-flex'>
                                         <div className='card.img mr-2'>
-                                            <img src={about} class="rounded-circle" />
+                                            <img src={about} className="rounded-circle" />
                                         </div>
                                         <div>
                                             <div className='card-title'>
                                                 <h6>Ocational Nanny</h6>
-                                                <p class="text-sm-end text-md-start text-lg-end">$120</p>
+                                                <p className="text-sm-end text-md-start text-lg-end">$120</p>
                                             </div>
 
                                             <div className='Card.Text'>
-                                                <div class="nanny-info">
-                                                    <div class="location mb-1 d-flex align-items-baseline"><i class=" fa fa-location me-1"></i><span>48752 mohali punjab hn  mohali punjab</span></div>
-                                                    <p class="time mb-0 text-truncate">25 Jan <span>05:20 PM</span></p>
+                                                <div className="nanny-info">
+                                                    <div className="location mb-1 d-flex align-items-baseline"><i className=" fa fa-location me-1"></i><span>48752 mohali punjab hn  mohali punjab</span></div>
+                                                    <p className="time mb-0 text-truncate">25 Jan <span>05:20 PM</span></p>
                                                 </div>
 
                                             </div>
@@ -276,7 +276,7 @@ const My_Orders_Component = () => {
                                         <div className='nanny-small-info mt-2'>
                                             <div className='d-flex justify-content-between'>
                                                 <div className='d-flex'>
-                                                    <img src={founder} alt='nanny' class="rounded-circle" />
+                                                    <img src={founder} alt='nanny' className="rounded-circle" />
                                                     <div>
                                                         <h4>Lottie Cortez</h4>
                                                         <h6><StarIcon /> 4.5</h6>
@@ -292,18 +292,18 @@ const My_Orders_Component = () => {
                                 <div className='card nany_orders'>
                                     <div className='card.body d-flex'>
                                         <div className='card.img mr-2'>
-                                            <img src={about} class="rounded-circle" />
+                                            <img src={about} className="rounded-circle" />
                                         </div>
                                         <div>
                                             <div className='card-title'>
                                                 <h6>Ocational Nanny</h6>
-                                                <p class="text-sm-end text-md-start text-lg-end">$120</p>
+                                                <p className="text-sm-end text-md-start text-lg-end">$120</p>
                                             </div>
 
                                             <div className='Card.Text'>
-                                                <div class="nanny-info">
-                                                    <div class="location mb-1 d-flex align-items-baseline"><i class=" fa fa-location me-1"></i><span>48752 mohali punjab hn  mohali punjab</span></div>
-                                                    <p class="time mb-0 text-truncate">25 Jan <span>05:20 PM</span></p>
+                                                <div className="nanny-info">
+                                                    <div className="location mb-1 d-flex align-items-baseline"><i className=" fa fa-location me-1"></i><span>48752 mohali punjab hn  mohali punjab</span></div>
+                                                    <p className="time mb-0 text-truncate">25 Jan <span>05:20 PM</span></p>
                                                 </div>
 
                                             </div>
@@ -313,7 +313,7 @@ const My_Orders_Component = () => {
                                         <div className='nanny-small-info mt-2'>
                                             <div className='d-flex justify-content-between'>
                                                 <div className='d-flex'>
-                                                    <img src={founder} alt='nanny' class="rounded-circle" />
+                                                    <img src={founder} alt='nanny' className="rounded-circle" />
                                                     <div>
                                                         <h4>Lottie Cortez</h4>
                                                         <h6><StarIcon /> 4.5</h6>
@@ -329,18 +329,18 @@ const My_Orders_Component = () => {
                                 <div className='card nany_orders'>
                                     <div className='card.body d-flex'>
                                         <div className='card.img mr-2'>
-                                            <img src={about} class="rounded-circle" />
+                                            <img src={about} className="rounded-circle" />
                                         </div>
                                         <div>
                                             <div className='card-title'>
                                                 <h6>Ocational Nanny</h6>
-                                                <p class="text-sm-end text-md-start text-lg-end">$120</p>
+                                                <p className="text-sm-end text-md-start text-lg-end">$120</p>
                                             </div>
 
                                             <div className='Card.Text'>
-                                                <div class="nanny-info">
-                                                    <div class="location mb-1 d-flex align-items-baseline"><i class=" fa fa-location me-1"></i><span>48752 mohali punjab hn  mohali punjab</span></div>
-                                                    <p class="time mb-0 text-truncate">25 Jan <span>05:20 PM</span></p>
+                                                <div className="nanny-info">
+                                                    <div className="location mb-1 d-flex align-items-baseline"><i className=" fa fa-location me-1"></i><span>48752 mohali punjab hn  mohali punjab</span></div>
+                                                    <p className="time mb-0 text-truncate">25 Jan <span>05:20 PM</span></p>
                                                 </div>
 
                                             </div>
@@ -350,7 +350,7 @@ const My_Orders_Component = () => {
                                         <div className='nanny-small-info mt-2'>
                                             <div className='d-flex justify-content-between'>
                                                 <div className='d-flex'>
-                                                    <img src={founder} alt='nanny' class="rounded-circle" />
+                                                    <img src={founder} alt='nanny' className="rounded-circle" />
                                                     <div>
                                                         <h4>Lottie Cortez</h4>
                                                         <h6><StarIcon /> 4.5</h6>

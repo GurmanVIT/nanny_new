@@ -1,27 +1,74 @@
-import { React, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { React, useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from "../../../assets/img/logo-nanny.png";
-import { Checkbox, FormControlLabel, FormGroup } from '@mui/material';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from '../../../store/apiSlice/LoginSlice';
+import { Button } from 'react-bootstrap';
+import { clearData } from '../../../store/apiSlice/LoginSlice';
 
 
 
 const Login = () => {
 
-    const [password, setPassword] = useState('');
-    const [showPassword, setShowPassword] = useState(false);
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.rootReducer.login.data);
+    console.log("state", user);
 
-    const togglePasswordVisibility = () => {
-        setShowPassword(!showPassword);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const isAuthenticated = useSelector((state) => state.isAuthenticated);
+
+
+    const handleLogin = () => {
+        const payload = {
+            email: email,
+            password: password,
+        }
+
+        try {
+            dispatch(loginUser(payload));
+            // Handle success, e.g., navigate to another screen
+        } catch (error) {
+            // Handle error, e.g., display an error message
+            console.error('login failed:', error);
+        }
     };
 
+    const navigate = useNavigate();
+
+    const navigateToAnotherScreen = () => {
+        navigate('/nannycategories');
+    }
+
+    useEffect(()=>{
+        dispatch(clearData())
+    },[])
 
 
 
+    useEffect(() => {
+        console.log(isAuthenticated)
+        if(user!= null&&user.status===1) {
+            console.log(user.data.accessToken)
+            localStorage.setItem("Token",user.data.accessToken)
+            setInterval(()=>{
+                navigateToAnotherScreen();
+            },1000)
+           
+        }
+    }, [user])
+
+
+    //  showpassword
+
+    //const [password, setPassword] = useState('');
+    //const [showPassword, setShowPassword] = useState(false);
+
+    //const togglePasswordVisibility = () => {
+    //    setShowPassword(!showPassword);
+    //};
     return (
-        <>
+
             <div className="container-fluid">
                 <div className="row">
                     <div className="container py-5">
@@ -30,44 +77,46 @@ const Login = () => {
                         </a>
                         <div className="row">
                             <div className="col-lg-6 offset-lg-3 offset-sm-1 col-sm-10">
-                                <div className="login_layout p-5 shadow-sm p-3 mb-5 bg-body rounded">
-                                    <form className="w-100 mb-4" appearance="outline">
-                                        <label>Name</label>
-                                        <input type="text" placeholder="Enter Name" />
-                                    </form>
-                                    <form className="w-100 mb-3 form_eyes">
-                                        <label>Password:</label>
-                                        <input
-                                            type={showPassword ? 'text' : 'password'}
-                                            id="password"
-                                            placeholder="Enter Password"
-                                            value={password}
-                                            onChange={(e) => setPassword(e.target.value)}
-                                        />
-                                        <FontAwesomeIcon
+                                <div className="login-container">
+                                    <form className="login-form" appearance="outline">
+                                        <h2>Welcome Back</h2>
+                                        <p>Please login to your account</p>
+                                        <div className='input-group'>
+                                            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Username" />
+                                        </div>
+                                        <div className="input-group mb-0">
+                                            <input
+                                                //type={showPassword ? 'text' : 'password'}
+                                                type='password'
+                                                id="password"
+                                                placeholder='Password'
+                                                value={password} onChange={(e) => setPassword(e.target.value)}
+                                            //onChange={(e) => setPassword(e.target.value)}
+                                            />
+                                            {/*<FontAwesomeIcon
                                             icon={showPassword ? faEye : faEyeSlash}
                                             onClick={togglePasswordVisibility}
-                                        />
+                                        />*/}
+                                        </div>
+                                        <p> <Link className="d-flex justify-content-end" to='/forotpassword' >Forgot Password</Link></p>
+                                        <Button  onClick={() => handleLogin()}>
+                                            {/*{loading ? 'Logging in...' : 'Login'}*/}
+                                            Login
+                                        </Button>
+                                        
+                                        {/*{error && <p style={{ color: 'red' }}>{error}</p>}*/}
+                                        <div className='bottom-text'>
+                                            <p className="mt-3">Im a new user.<Link to="/signupnanny" >REGISTER AS NANNY</Link><span> / </span><Link to="/signupfamily" >REGISTER AS Family</Link></p>
+                                           
+                                        </div>
                                     </form>
-                                    <div className="d-flex justify-content-between mb-3">
-                                        <FormGroup>
-                                            <FormControlLabel control={<Checkbox />} />
-                                        </FormGroup>
-                                        <Link className="d-flex justify-content-end" >Forgot Password</Link>
-                                    </div>
-                                    <div className="d-flex flex-column align-items-center justify-content-center">
-                                        <button color="primary" className="login_button px-4">
-                                            <icon>login</icon>
-                                        </button>
-                                        <p className="mt-3">Don't have an account ? <Link to="/signup" >Sign up</Link></p>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div >
             </div >
-        </>
+  
     )
 }
 

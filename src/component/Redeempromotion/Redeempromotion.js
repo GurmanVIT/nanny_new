@@ -58,23 +58,6 @@ const Redeempromotion = ({ isOpen, onRequestClose }) => {
                                 <p>Offer valid <span>Today,till 05:00 pm</span></p>
                             </div>
                         </div>
-                        <div className='card'>
-                            <div className='card_body'>
-                                <div className='card_heading'>
-                                    <h5>Naturebreed</h5>
-                                    <Link to="#"  onClick={onRequestClose}>Buy</Link>
-                                </div>
-                                <div className='get_off'>
-                                    <span>Get 50% off</span>
-                                </div>
-                                <div className='off_all'>
-                                    <p>50% Off on all service</p>
-                                </div>
-                            </div>
-                            <div className='card_end'>
-                                <p>Offer valid <span>Today,till 05:00 pm</span></p>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

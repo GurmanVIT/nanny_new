@@ -1,0 +1,46 @@
+@import '../../assets/sass/color.scss';
+@import '../../assets/sass/mixin.scss';
+
+
+.nannycategories{
+    .banner_categories{
+        background-image: url(../../assets/img/categories.png);
+        height:350px;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        .heading_categories{
+            h1{
+                color: #fff;
+                font-weight: 500;
+            }
+        }
+    }
+    .nannay_cat_main{
+        padding: 15px !important;
+        border-radius: 10px !important;
+        color: #000;
+        .category_image{
+            img{
+                border-radius: 10px;
+            }
+        }
+        .categoty_heading{
+            h6{
+                font-weight: 600;
+                color: #000;
+            }
+        }
+        .arrow_right{
+            background-color: #8ad7cf;
+            border-radius: 8px;
+            color: #000;
+            svg{
+                margin: 7px;
+                color: #000;
+            }
+        }
+    }
+}

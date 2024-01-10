@@ -1,9 +1,33 @@
 .nanny_list_box{
     background-image: url(../../assets/img/event_main.jpg);
     background-repeat: no-repeat;
+    background-size: cover;
+    .nanny_banner{
+        background-image: url(../../assets/img/bannerbg_nanny.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        height: 350px;
+        display: flex;
+        align-items: center;
+    }
 }
 .nanny_list_main{
-    img{
-        width: 100%;
+    border-radius: 10px !important;
+    .img_thumanail{
+        img{
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+    }
+    h3{
+        font-size: 20px;
+        font-weight: 600;
+    }
+    h5{
+        font-size: 18px;
+        font-weight: 500;
     }
 }

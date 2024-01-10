@@ -53,7 +53,7 @@ const CustomModal = ({ isOpen, onRequestClose  }) => {
       )}
           </form>
           <div className='btn_modal'>
-            <Link to="#" onClick={onRequestClose}>CONTINUE</Link>
+            <Link to="/bookdetails" onClick={onRequestClose}>CONTINUE</Link>
 
           </div>
 

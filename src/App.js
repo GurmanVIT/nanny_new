@@ -6,7 +6,6 @@ import Home from './component/Home/Home';
 import Nannycategories from './component/Nanny-categories/Nannycategories';
 import Services from './component/Services/Services';
 import About from './component/about/About';
-import Signup from './component/auth/Signup/Signup';
 import Login from './component/auth/login/Login';
 import Blogs from './component/blogs/Blogs';
 import Events from './component/events/Events';
@@ -16,11 +15,14 @@ import My_Orders_Component from "./component/my-orders/My_Orders_Component";
 import Profile from "./component/profile/Profile";
 import Nanylisting from "./component/nany-listing/Nanylisting";
 import CustomModal from "./component/CustomModal/CustomModal";
-import YourApp from "./component/CustomModal/YourApp";
 import Redeempromotion from "./component/Redeempromotion/Redeempromotion";
 import Bookdetails from "./component/Redeempromotion/Bookdetails";
 import Payment from "./component/Redeempromotion/Payment";
-import Api from "./component/Api/Api";
+import Forgotpassword from "./component/auth/Forgotpassword/Forgotpassword";
+import Signupfamily from "./component/auth/RegisterAsFamily/Signupfamily";
+import Otp from "./component/auth/Otp";
+import Signupnanny from "./component/auth/Signupnanny";
+import Card from "./component/Nanny-categories/Card";
 
 function App() {
   return (
@@ -34,7 +36,10 @@ function App() {
           <Route path='/contact' element={<Contact />} />
           <Route path='/services' element={<Services />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/signup' element={<Signup />} />
+          <Route path='/signupfamily' element={<Signupfamily />} />
+          <Route path='/forotpassword' element={<Forgotpassword />} />
+          <Route path="/otp" element={<Otp/>}/>
+          <Route path="/signupnanny" element={<Signupnanny/>}/>
           <Route path='/events' element={<Events />} />
           <Route path='/nannycategories' element={<Nannycategories />} />
           <Route path='/tutorings' element={<Tutorings />} />
@@ -45,7 +50,8 @@ function App() {
           <Route path="/redeempromotion" element={<Redeempromotion/>}/>
           <Route path="/bookdetails" element={<Bookdetails/>}/>
           <Route path="/payment" element={<Payment/>}/>
-          <Route path="/api" element={<Api/>}/>
+          <Route path="/card" element={<Card/>}/>
+
         </Routes>
         <Footer />
       </BrowserRouter>

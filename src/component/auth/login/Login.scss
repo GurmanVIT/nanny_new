@@ -7,6 +7,48 @@
     background-color: $primary-color;
 }
 .login_layout {
+    .border_b{
+        h6{
+            color: $primary-color;
+        }
+    }
+    .input_otp{
+        display: flex;
+        justify-content: center;
+        input{
+            width: 3em !important;
+            background-color: whitesmoke;
+            border-radius: 6px;
+            border-bottom: none;
+            height: 3em;
+            &:focus-visible{
+                border-bottom: none;
+            }
+        }
+        .space{
+            width: 6px;
+        }
+    }
+    .otp_text{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+    .PhoneInput{
+        display: flex;
+        .PhoneInputCountry{
+            display: flex;
+            .PhoneInputCountrySelect{
+                width: 25%;
+                border: none;
+            }
+            .PhoneInputCountryIconImg{
+                width: 50px;
+            }
+        }
+    }
     form{
         display: grid;
         input{
