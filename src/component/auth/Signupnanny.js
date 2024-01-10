@@ -11,7 +11,6 @@ const Signupnanny = () => {
 
     const dispatch = useDispatch();
     const data = useSelector((state) => state.rootReducer.signUp);
-    console.log("state", data);
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -96,7 +95,8 @@ const Signupnanny = () => {
                                             type='password'
                                             id="password"
                                             placeholder="Enter Password"
-                                            value={password} onChange={(e) => setPassword(e.target.value)}
+                                            value={password} 
+                                            onChange={(e) => setPassword(e.target.value)}
                                         //onChange={(e) => setPassword(e.target.value)}
                                         />
                                         {/*<FontAwesomeIcon

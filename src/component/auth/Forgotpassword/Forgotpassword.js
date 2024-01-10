@@ -11,22 +11,22 @@ const Forgotpassword = () => {
 
     const dispatch = useDispatch();
     const user = useSelector((state) => state.rootReducer.Forgotpasd.data);
-    console.log("state", user);
+    console.log("state==>", user);
 
     const [email, setEmail] = useState('');
     const isAuthenticated = useSelector((state) => state.isAuthenticated);
 
 
     const handleotp = () => {
+
+
         const payload = {
-            email: email,
+            email: email
         }
 
         try {
             dispatch(fetchForgotpasdAsync(payload));
-            // Handle success, e.g., navigate to another screen
         } catch (error) {
-            // Handle error, e.g., display an error message
             console.error('Otp failed:', error);
         }
     };

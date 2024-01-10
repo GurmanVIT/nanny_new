@@ -3,6 +3,7 @@ import axios from 'axios';
 
 // Async thunk for fetching data
 export const fetchForgotpasdAsync = createAsyncThunk('fetchForgotpasdAsync', async (payload) => {
+  console.log("payload==>", payload);
     const response = await axios.put('https://dev-api-nanny.virtualittechnology.com/v1/common/forgotPassword',payload); // Replace with your API endpoint
     return response.data;
 });

@@ -6,7 +6,6 @@ const ForgotpasdSlice = createSlice({
     },
     reducers: {
         ForgotpasdUser: (state, action) => {
-
         },
     },
 });
