@@ -7,7 +7,7 @@ const About = () => {
     return (
         <>
             <div className="inner_pages_banner position-absolute top-0 start-0"></div>
-            <div className="baner_text d-flex sections_padding pt-0 align-items-center text-center">
+            <div className="baner_text d-flex align-items-center text-center">
                 <div className="container">
                     <h1>About Nanny Line</h1>
                 </div>

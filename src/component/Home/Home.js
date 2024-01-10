@@ -41,7 +41,7 @@ const Home = () => {
                             <p>Our nannies are available for locals, tourists or special occasions.</p>
                         </div>
                         <div className="col-md-4 pe-2">
-                            <img className="mw-100" src={about}alt="offers" />
+                            <img className="mw-100" src={about} alt="offers" />
                         </div>
                         <div className="col-md-4">
                             <div className="row">
@@ -265,7 +265,7 @@ const Home = () => {
                             <img className="mw-100" src={wlogo} alt="wlogo" />
                         </div>
                         <div className="col text-center">
-                            <img className="mw-100" src={wlogo}alt="wlogo" />
+                            <img className="mw-100" src={wlogo} alt="wlogo" />
                         </div>
                         <div className="col text-center">
                             <img className="mw-100" src={wlogo} alt="wlogo" />

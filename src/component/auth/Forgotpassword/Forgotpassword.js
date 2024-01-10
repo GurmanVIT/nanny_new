@@ -1,19 +1,57 @@
-import { React, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { React, useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from "../../../assets/img/logo-nanny.png";
-import { Checkbox, FormControlLabel, FormGroup } from '@mui/material';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { Button } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchForgotpasdAsync } from '../../../store/apiSlice/ForgotpasswordSlice';
 
 
 const Forgotpassword = () => {
 
-    const [password, setPassword] = useState('');
-    const [showPassword, setShowPassword] = useState(false);
 
-    const togglePasswordVisibility = () => {
-        setShowPassword(!showPassword);
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.rootReducer.Forgotpasd.data);
+    console.log("state", user);
+
+    const [email, setEmail] = useState('');
+    const isAuthenticated = useSelector((state) => state.isAuthenticated);
+
+
+    const handleotp = () => {
+        const payload = {
+            email: email,
+        }
+
+        try {
+            dispatch(fetchForgotpasdAsync(payload));
+            // Handle success, e.g., navigate to another screen
+        } catch (error) {
+            // Handle error, e.g., display an error message
+            console.error('Otp failed:', error);
+        }
     };
+    const navigate = useNavigate();
+
+    const navigateToAnotherScreen = () => {
+        navigate('/otp');
+    }
+
+
+    useEffect(() => {
+        console.log("Data ===>", user)
+        if (user != null && user.status === 1) {
+            navigateToAnotherScreen();
+        }
+    }, [user])
+
+
+
+    //const [password, setPassword] = useState('');
+    //const [showPassword, setShowPassword] = useState(false);
+
+    //const togglePasswordVisibility = () => {
+    //    setShowPassword(!showPassword);
+    //};
 
     return (
         <>
@@ -26,20 +64,17 @@ const Forgotpassword = () => {
                             </a>
                             <div className="row">
                                 <div className="col-lg-6 offset-lg-3 offset-sm-1 col-sm-10">
-                                    <div className="login_layout p-5 shadow-sm p-3 mb-5 bg-body rounded">
-                                        <form className="w-100 mb-4 form-groupes" appearance="outline">
-
-                                            <input className='inputfor' type="text" />
-                                            <span className="highlight"></span>
-                                            <span className="bar"></span>
-                                            <label className='labelup'>Number / Gmail</label>
-                                        </form>
-                                        <div className="d-flex flex-column align-items-center justify-content-center">
-                                            <button color="primary" className="login_button px-4 btn all_btn">
+                                    <div className="login-container">
+                                        <form className="login-form m-2" appearance="outline">
+                                            <h3 className='mb-3'>Forgot password</h3>
+                                            <div className='input-group'>
+                                                <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email" />
+                                            </div>
+                                            {/*<p> <Link className="d-flex justify-content-end" to='/forotpassword' >Forgot Password</Link></p>*/}
+                                            <Button  onClick={() => handleotp()}>
                                                 Send OTP
-                                            </button>
-                                            {/*<p className="mt-3">Don't have an account ? <Link to="/signup" >Sign up</Link></p>*/}
-                                        </div>
+                                            </Button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

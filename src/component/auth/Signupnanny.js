@@ -1,4 +1,4 @@
-import { React, useEffect, useState} from 'react';
+import { React, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import logo from "../../assets/img/logo-nanny.png";
@@ -53,75 +53,74 @@ const Signupnanny = () => {
 
     const navigate = useNavigate();
 
-    const navigateToAnotherScreen =() =>{
+    const navigateToAnotherScreen = () => {
         navigate('/otp');
     }
 
 
-    useEffect(()=>{
-        console.log("Data ===>",data)
-        if(data!=null&&data.status===1){
+    useEffect(() => {
+        console.log("Data ===>", data)
+        if (data != null && data.status === 1) {
             navigateToAnotherScreen();
         }
-    },[data])
+    }, [data])
 
 
     return (
         <div className="container-fluid">
-        <div className="row">
-            <div className="container py-5">
-                <a href="#" className="custom-logo d-block login-logo mx-auto">
-                    <img className="mw-100" src={logo} alt="logo" />
-                </a>
-                <div className="row">
-                    <div className="col-lg-6 offset-lg-3 offset-sm-1 col-sm-10">
-                        <div className="login_layout p-5 shadow-sm p-3 mb-5 bg-body rounded">
-                             <form className="w-100 mb-4" appearance="outline">
-                                <input type="text" placeholder="Enter firstName" value={firstName} onChange={(e) => setfirstName(e.target.value)} />
-                            </form>
-                             <form className="w-100 mb-4" appearance="outline">
-                                <input type="text" placeholder="Enter lastName" value={lastName} onChange={(e) => setlastName(e.target.value)} />
-                            </form>
-                            <form className="w-100 mb-4" appearance="outline">
-                                <input type="number" placeholder="Enter  Mobile Number" value={mobileNumber} onChange={(e) => setmobileNumber(e.target.value)} />
-                            </form>
-                            <form className="w-100 mb-4" appearance="outline">
-                                <input type="email" placeholder="Enter Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                            </form>
-                            <form className="w-100 mb-3 form_eyes">
-                                <input
-                                    //type={showPassword ? 'text' : 'password'}
-                                    type='password'
-                                    id="password"
-                                    placeholder="Enter Password"
-                                    value={password} onChange={(e) => setPassword(e.target.value)}
-                                //onChange={(e) => setPassword(e.target.value)}
-                                />
-                                {/*<FontAwesomeIcon
+            <div className="row">
+                <div className="container py-5">
+                    <a href="#" className="custom-logo d-block login-logo mx-auto">
+                        <img className="mw-100" src={logo} alt="logo" />
+                    </a>
+                    <div className="row">
+                        <div className="col-lg-6 offset-lg-3 offset-sm-1 col-sm-10">
+                            <div className="login-container">
+                                <form className="login-form" appearance="outline">
+                                    <h2>Welcome to Nanny</h2>
+                                    <p>Please Signup </p>
+                                    <div className='input-group'>
+                                        <input type="text" placeholder="Enter firstName" value={firstName} onChange={(e) => setfirstName(e.target.value)} />
+                                    </div>
+                                    <div className='input-group'>
+                                        <input type="text" placeholder="Enter lastName" value={lastName} onChange={(e) => setlastName(e.target.value)} />
+                                    </div>
+                                    <div className='input-group'>
+                                        <input type="number" placeholder="Enter  Mobile Number" value={mobileNumber} onChange={(e) => setmobileNumber(e.target.value)} />
+                                    </div>
+                                    <div className='input-group'>
+                                        <input type="email" placeholder="Enter Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                                    </div>
+                                    <div className="input-group">
+                                        <input
+                                            //type={showPassword ? 'text' : 'password'}
+                                            type='password'
+                                            id="password"
+                                            placeholder="Enter Password"
+                                            value={password} onChange={(e) => setPassword(e.target.value)}
+                                        //onChange={(e) => setPassword(e.target.value)}
+                                        />
+                                        {/*<FontAwesomeIcon
                                     icon={showPassword ? faEye : faEyeSlash}
                                     onClick={togglePasswordVisibility}
                                 />*/}
-                            </form>
-                            <form className="w-100 mb-4" appearance="outline">
-                                <input type="number" placeholder="Experience Of Years" value={experienceOfYears} onChange={(e) => setexperienceOfYears(e.target.value)} />
-                            </form>
-                            <div className="d-flex justify-content-between mb-3">
-                                <FormGroup>
-                                    <FormControlLabel control={<Checkbox />} />
-                                </FormGroup>
-                                <Link className="d-flex justify-content-end" to='/forotpassword' >Forgot Password</Link>
-                            </div>
-                            <div className="d-flex flex-column align-items-center justify-content-center">
-                                <Button color="primary" className="login_button px-4 btn" onClick={()=>handleSignup()}>
-                               REGISTER
-                                </Button>
+                                    </div>
+                                    <Button onClick={() => handleSignup()}>
+                                        REGISTER
+                                    </Button>
+
+                                    {/*{error && <p style={{ color: 'red' }}>{error}</p>}*/}
+                                    <div className='bottom-text'>
+                                        <p className="mt-3">Im a new user.<Link to="/signupnanny" >REGISTER AS NANNY</Link><span> / </span><Link to="/signupfamily" >REGISTER AS Family</Link></p>
+
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         </div >
-    </div >
     )
 }
 
