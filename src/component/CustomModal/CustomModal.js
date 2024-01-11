@@ -53,11 +53,11 @@ const CustomModal = ({ isOpen, onRequestClose  }) => {
   const [time , settime] = useState('');
   const [price , setprice] = useState('');
 
+  
 
 
 
   return (
-
     <Modal isOpen={isOpen} onRequestClose={onRequestClose}>
         <div className='add_details'>
           <div className='heading d-flex justify-content-center'>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import nannycategories from "../../assets/img/nanny_categories.png";
 import about from "../../assets/img/about_main.jpeg";
@@ -12,12 +12,20 @@ const Nannycategories = () => {
     const dispatch = useDispatch();
     const data = useSelector((state) => state.rootReducer.cards.data);
 
+    const [nannycatData, setNannycatData] = useState(null)
 
 
     useEffect(() => {
        
         dispatch(fetchCardsAsync());
     }, []);
+
+    useEffect(() => {
+        if (data != null) {
+            setNannycatData(data.data)
+        }
+    }, [data])
+
 
     //if (loading === 'pending') {
     //    return <p>Loading cards...</p>;
@@ -26,11 +34,11 @@ const Nannycategories = () => {
     //if (error) {
     //    return <p>Error: {error}</p>;
     //}
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 
-    const navigateToAnotherScreen = () => {
-        navigate('/nanyList');
-    }
+    //const navigateToAnotherScreen = () => {
+    //    navigate('/nanyList');
+    //}
 
     return (
         <>
@@ -49,65 +57,15 @@ const Nannycategories = () => {
 
                 <div className='container sections_padding'>
                  
-                        {data.data != null ?
+                        {nannycatData != null ?
                            <div className="row">
-                                {data.data.map((item) => <Card name={item.name} image={item.image} navigateToAnotherScreen={navigateToAnotherScreen} />)}
+                                {nannycatData.map((item) => <Card name={item.name} image={item.image}  />)}
                             </div>
                             : ''}
 
-                        {/*<div className="col-lg-4 col-md-6 mb-4">
-                            <div className="nannay_cat_main d-block shadow bg-body rounded overflow-hidden">
-                                <Link onClick={() => navigateToAnotherScreen()} >
-                                    <div className="category_image">
-                                        <img src={nannycategories} className="w-100" alt="image" />
-                                    </div>
-                                    <div className="px-2 pt-2 categoty_heading w-100  d-flex justify-content-between align-items-center">
-                                        <h6 className="m-0">Occasional Nanny</h6>
-                                        <Link to="#" className='arrow_right'><ArrowRightAltIcon /></Link>
-                                    </div>
-                                </Link>
-                            </div>
-                        </div>
-                        <div className="col-lg-4 col-md-6 mb-4">
-                            <div className="nannay_cat_main d-block shadow bg-body rounded overflow-hidden">
-                                <Link to="#">
-                                    <div className="category_image">
-                                        <img src={nannycategories} className="w-100" alt="image" />
-                                    </div>
-                                    <div className="px-2 pt-2 categoty_heading w-100  d-flex justify-content-between align-items-center">
-                                        <h6 className="m-0">Spacial Priced Nanny</h6>
-                                        <Link to="#" className='arrow_right'><ArrowRightAltIcon /></Link>
-                                    </div>
-                                </Link>
-                            </div>
-                        </div>
-                        <div className="col-lg-4 col-md-6 mb-4">
-                            <div className="nannay_cat_main d-block shadow bg-body rounded overflow-hidden">
-                                <Link href="#">
-                                    <div className="category_image">
-                                        <img src={nannycategories} className="w-100" alt="image" />
-                                    </div>
-                                    <div className="px-2 pt-2 categoty_heading w-100  d-flex justify-content-between align-items-center">
-                                        <h6 className="m-0">Holiday Nanny</h6>
-                                        <Link to="#" className='arrow_right'><ArrowRightAltIcon /></Link>
-                                    </div>
-                                </Link>
-                            </div>
-                        </div>
-                        <div className="col-lg-4 col-md-6 mb-4">
-                            <div className="nannay_cat_main d-block shadow bg-body rounded overflow-hidden">
-                                <Link href="#">
-                                    <div className="category_image">
-                                        <img src={nannycategories} className="w-100" alt="image" />
-                                    </div>
-                                    <div className="px-2 pt-2 categoty_heading w-100  d-flex justify-content-between align-items-center">
-                                        <h6 className="m-0">Part-time & Long-term bookings</h6>
-                                        <Link to="#" className='arrow_right'><ArrowRightAltIcon /></Link>
-                                    </div>
-                                </Link>
-                            </div>
-                        </div>*/}
+{/*navigateToAnotherScreen={navigateToAnotherScreen}*/}
 
+                       
                  
                 </div>
             </div>

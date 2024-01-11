@@ -4,34 +4,12 @@ import CustomModal from '../CustomModal/CustomModal';
 import { Link } from 'react-router-dom';
 import about from '../../assets/img/about.jpg';
 import { useDispatch } from 'react-redux';
-import { clearBookingData, fetchbooknAsync } from '../../store/apiSlice/BooknannySlice';
+import { clearBookingData} from '../../store/apiSlice/BooknannySlice';
 
 Modal.setAppElement('#root');
 
 
-const Nannycard = ({ name, profileImage,address,time,firstName,lastName,price}) => {
-
-
-    const [isFirstModalOpen, setFirstModalOpen] = useState(false);
-    const dispatch = useDispatch()
-
-    const [bookNannyData,setBookNannyData] = useState(null)
-
-    const openFirstModal = () => {
-        dispatch(clearBookingData())
-        setFirstModalOpen(true);
-    };
-
-    const closeModals = (val) => {
-        if(val!=null){
-            setBookNannyData(val)
-            setFirstModalOpen(false);
-        }
-    
-        //handlebook();
-    };
-
-  
+const Nannycard = ({ profileImage,time,firstName,lastName,price}) => {
 
 
     return (
@@ -57,10 +35,8 @@ const Nannycard = ({ name, profileImage,address,time,firstName,lastName,price}) 
                     </li>*/}
                 </ul>
                 <div>
-                    <Link onClick={openFirstModal} className='btn btn-primary d-inline-block mt-2 all_btns px-4 py-2 position-relative'>Book Nannyl</Link>
-                    {isFirstModalOpen && (
-                        <CustomModal isOpen={isFirstModalOpen} onRequestClose={closeModals} />
-                    )}
+                    <Link className='btn btn-primary d-inline-block mt-2 all_btns px-4 py-2 position-relative'>Book Nannyl</Link>
+                   
                 </div>
             </div>
         </div>
