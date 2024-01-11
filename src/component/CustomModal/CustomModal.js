@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import AddLocationIcon from '@mui/icons-material/AddLocation';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
-import { Form } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Addhours from './Addhours';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchbooknAsync } from '../../store/apiSlice/BooknannySlice';
 
 const CustomModal = ({ isOpen, onRequestClose  }) => {
 
@@ -13,6 +15,45 @@ const CustomModal = ({ isOpen, onRequestClose  }) => {
   const openSecondModal = () => {
     setSecondModalOpen(true);
   };
+
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.rootReducer.bookNanny.data);
+
+
+  console.log("Book Nanny ===>",data)
+  const handlebook = () => {
+
+    const payload = {
+      address: address,
+      date: date,
+      time: time,
+      price: price,
+    }
+
+    try {
+        dispatch(fetchbooknAsync(payload));
+        // Handle success, e.g., navigate to another screen
+    } catch (error) {
+        // Handle error, e.g., display an error message
+        console.error('signup failed:', error);
+    }
+};
+
+//useEffect(()=>{
+
+//  if(data!=null&&data.status==1){
+//      onRequestClose(data);
+//  }
+
+//},[data])
+
+
+  const [address, setaddress] = useState('');
+  const [date,setdate] = useState('');
+  const [time , settime] = useState('');
+  const [price , setprice] = useState('');
+
+
 
 
   return (
@@ -24,13 +65,13 @@ const CustomModal = ({ isOpen, onRequestClose  }) => {
           </div>
           <form className="w-100 mb-2 form_eyes">
             <label>Location</label>
-            <input type='text' placeholder='location' />
+            <input type='text' placeholder='location' value={address} onChange={(e) => setaddress(e.target.value)} />
             <AddLocationIcon />
           </form>
           <Form className='mb-2'>
             <Form.Label className='mb-0'>Date</Form.Label>
             <Form.Group controlId="duedate">
-              <Form.Control type="date" name="duedate" placeholder="Due date" />
+              <Form.Control type="date" name="duedate" placeholder="Due date" value={date} onChange={(e) => setdate(e.target.value)}/>
             </Form.Group>
           </Form>
           <Form className='mb-2'>
@@ -53,7 +94,7 @@ const CustomModal = ({ isOpen, onRequestClose  }) => {
       )}
           </form>
           <div className='btn_modal'>
-            <Link to="/bookdetails" onClick={onRequestClose}>CONTINUE</Link>
+            <Link to="/bookdetails" onClick={()=>onRequestClose()}>CONTINUE</Link>
 
           </div>
 

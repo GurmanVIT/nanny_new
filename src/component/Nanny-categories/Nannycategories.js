@@ -12,7 +12,7 @@ const Nannycategories = () => {
     const dispatch = useDispatch();
     const data = useSelector((state) => state.rootReducer.cards.data);
 
-     console.log("Data Cate ====>",data)
+
 
     useEffect(() => {
        

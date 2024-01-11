@@ -37,7 +37,7 @@ const Signupfamily = () => {
             address: "sdf",
             latitude: "23.23232",
             longitude: "45.34343",
-            type: 1
+            type: 2
         }
 
         try {

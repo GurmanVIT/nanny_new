@@ -6,6 +6,8 @@ import  otpReducer from '../apiSlice/Otpslice';
 import cardsReducer from '../apiSlice/NcategoriesSlice';
 import ForgotpasdReducer from '../apiSlice/ForgotpasswordSlice';
 import signUpfamilyReducer from '../apiSlice/SignupfamilySilce';
+import NlistReducer from '../apiSlice/NanylistSlice';
+import bookNannyReducer from '../apiSlice/BooknannySlice';
 
 
 
@@ -16,6 +18,8 @@ const rootReducer = combineReducers({
   cards:cardsReducer,
   Forgotpasd:ForgotpasdReducer,
   signUpfamily:signUpfamilyReducer,
+  Nlist:NlistReducer,
+  bookNanny:bookNannyReducer,
   // Add other reducers as needed
 });
 
