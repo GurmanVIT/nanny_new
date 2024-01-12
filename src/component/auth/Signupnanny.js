@@ -17,7 +17,9 @@ const Signupnanny = () => {
     const [firstName, setfirstName] = useState('');
     const [lastName, setlastName] = useState('');
     const [mobileNumber, setmobileNumber] = useState('');
-    const [experienceOfYears] = useState('');
+    const [experienceOfYears, setexperienceOfYears] = useState('');
+    const [postalCode, setpostalCode] = useState('');
+    const [address, setaddress] = useState('');
     const isAuthenticated = useSelector((state) => state.isAuthenticated);
 
 
@@ -34,8 +36,8 @@ const Signupnanny = () => {
             dateOfBirth: "",
             experienceOfYears: experienceOfYears,
             country: "sds",
-            postalCode: "2342432",
-            address: "sdf",
+            postalCode: postalCode,
+            address: address,
             latitude: "23.23232",
             longitude: "45.34343",
             type: 1
@@ -89,6 +91,16 @@ const Signupnanny = () => {
                                     <div className='input-group'>
                                         <input type="email" placeholder="Enter Email" value={email} onChange={(e) => setEmail(e.target.value)} />
                                     </div>
+                                    <div className='input-group'>
+                                        <input type="text" placeholder="Enter Address" value={address} onChange={(e) => setaddress(e.target.value)} />
+                                    </div>
+                                    <div className='input-group'>
+                                        <input type="number" placeholder="Enter postalCode" value={postalCode} onChange={(e) => setpostalCode(e.target.value)} />
+                                    </div>
+                                    <div className='input-group'>
+                                        <input type="number" placeholder="Enter Experience Of Years" value={experienceOfYears} onChange={(e) => setexperienceOfYears(e.target.value)} />
+                                    </div>
+                                   
                                     <div className="input-group">
                                         <input
                                             //type={showPassword ? 'text' : 'password'}

@@ -20,13 +20,12 @@ const Card = ({ name, image }) => {
 
 
 
-
     return (
         <div className="col-lg-4 col-md-6 mb-4">
             <div className='nannay_cat_main d-block shadow bg-body rounded overflow-hidden'>
                 <Link onClick={openFirstModal}>
                     {isFirstModalOpen && (
-                        <CustomModal isOpen={isFirstModalOpen} onRequestClose={closeModals} />
+                        <CustomModal  isOpen={isFirstModalOpen} onRequestClose={closeModals} />
                     )}
                     <div className="category_image">
                         <img src="https://picsum.photos/200" className="w-100" alt={name} />

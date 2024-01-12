@@ -40,20 +40,21 @@ const Login = () => {
         navigate('/nannycategories');
     }
 
-    useEffect(()=>{
-        dispatch(clearData())
-    },[])
+    //useEffect(()=>{
+    //    dispatch(clearData())
+    //    localStorage.clear()
+    //},[])
 
 
 
     useEffect(() => {
-        console.log(isAuthenticated)
+        console.log(user)
         if(user!= null&&user.status===1) {
             console.log(user.data.accessToken)
             localStorage.setItem("Token",user.data.accessToken)
             setInterval(()=>{
                 navigateToAnotherScreen();
-            },1000)
+            },2000)
            
         }
     }, [user])

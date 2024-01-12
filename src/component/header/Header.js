@@ -3,14 +3,23 @@ import Modal from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import { CastConnected, MenuOutlined } from "@mui/icons-material";
 import logo from '../../assets/img/logo_nav.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector,useDispatch } from 'react-redux';
+import { clearData } from '../../store/apiSlice/LoginSlice';
 
 
 const Header = () => {
 
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch()
+
+
+  const user = useSelector((state) => state.rootReducer.login.data);
 
   useEffect(() => {
+
     const handleScroll = () => {
       if (window.scrollY > 0) {
         setScrolled(true);
@@ -23,7 +32,7 @@ const Header = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [user]);
 
   const [openModal2, setOpenModal2] = useState(false);
 
@@ -34,6 +43,16 @@ const Header = () => {
   const onCloseModal2 = () => {
     setOpenModal2(false);
   };
+
+  const onLogoutClick=()=>{
+   
+    localStorage.clear()
+    dispatch(clearData())
+    setInterval(()=>{
+      navigate('/login');
+    },1000);
+    
+  }
 
   //var className = "inverted";
   //var scrollTrigger = 60;
@@ -79,6 +98,7 @@ const Header = () => {
                 </li>
               </ul>
             </div>
+            {localStorage.getItem("Token")==null?
             <div className="btns">
               <div className="btn">
                 <Link className="main-button" to="/login">
@@ -90,7 +110,13 @@ const Header = () => {
                   Sign up
                 </Link>
               </div>
-            </div>
+            </div>:
+            <div className="btn">
+            <Link className="main-button" to="/login">
+              Logout
+            </Link>
+          </div>
+            }
           </div>
         </div>
       </div>

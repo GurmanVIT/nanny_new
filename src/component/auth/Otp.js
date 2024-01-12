@@ -13,23 +13,31 @@ const Otp = () => {
     const data = useSelector((state) => state.rootReducer.otp);
     const signUpData = useSelector((state) => state.rootReducer.signUp.data);
 
-
     //const [otp, setotp] = useState('');
 
   
     const handleOtpVerification = async () => {
+
+        const emailVerify = signUpData.data.otp==otp?1:signUpData.data.otpPhone==otp?2:3
+
+        if(emailVerify!=3){
         const payload ={
             _id : signUpData.data._id,
             otp: otp,
-            emailVerify: 2,
-
+            emailVerify: emailVerify,
         }
+      
         try {
           dispatch(verifyOtp(payload));
         } catch (error) {
             console.error('otp failed:', error);
         }
+    }
+    else{
+        console.log("Invalid OTP");
+    }
       };
+  
 
       const navigate = useNavigate();
 

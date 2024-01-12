@@ -8,6 +8,7 @@
     z-index: 1;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    z-index: -1;
     &::after {
         position: absolute;
         top: 0;

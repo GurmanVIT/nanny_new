@@ -1,4 +1,3 @@
-
 //breakpoints
 $breakpoint_XXXL: "max-width:1700px";
 $breckpoint_XXL: "max-width: 1400px";
@@ -10,192 +9,188 @@ $breakpoint_450: "max-width: 450px";
 $breckpoint_ESM: "max-width: 385px";
 $breckpoint_340: "max-width: 355px";
 
-.main-head{
+.main-head {
 
-    // background-color: rgba(255, 255, 255, 0);
-    background-color:#fff;
-    padding: 10px 0px;
-    border-bottom: 1px solid #ffffff1f;
-    position: fixed;
-    z-index: 9999;
-    width: 100%;
-    color: #000 !important;
+  // background-color: rgba(255, 255, 255, 0);
+  background-color: #fff;
+  padding: 10px 0px;
+  border-bottom: 1px solid #ffffff1f;
+  position: fixed;
+  z-index: 9999;
+  width: 100%;
+  color: #000 !important;
 
-   .inner{
+  .inner {
 
     display: flex;
     justify-content: space-between;
     align-items: center;
     align-items: center;
 
-    .logo{
+    .logo {
 
-        p{
+      p {
 
-            color: #000;
-            font-weight: bold;
-            margin-bottom: 0px;
+        color: #000;
+        font-weight: bold;
+        margin-bottom: 0px;
+      }
+
+      a {
+
+        text-decoration: none;
+      }
+    }
+
+    .navigation {
+      ul {
+        display: flex;
+        list-style: none;
+        gap: 30px;
+        margin-bottom: 0px;
+
+        @media($breckpoint_XXL) {
+          gap: 4px;
         }
 
-        a{
-
+        li {
+          a {
             text-decoration: none;
+            color: #000;
+            transition: .5s;
+            padding: 15px;
+            border-radius: 5px;
+
+            @media($breckpoint_XL) {
+              padding: 10px;
+            }
+          }
         }
+      }
     }
 
-    .navigation{
-
-        ul{
-
-            display: flex;
-            list-style: none;
-            gap: 30px;
-            margin-bottom: 0px;
-
-            @media($breckpoint_XXL){
-              gap: 4px;
-            }
-
-          
-
-            li{
-
-                a{
-
-                    text-decoration: none;
-                    color: #000;
-                    transition: .5s;
-                    padding: 15px;
-                    border-radius: 5px;
-
-                    @media($breckpoint_XL){
-                      padding: 10px;
-                    }
-                }
-            }
-        }
-    }
-
-    .btns{
-      .btn{
+    .btns {
+      .btn {
         background-color: #6ec1e4;
         border-radius: 10px;
         margin: 0px 10px;
-        .main-button{
+
+        .main-button {
           color: #000 !important;
         }
-      
+
       }
     }
-   }
+  }
 
 
-   &.scrolled {
+  &.scrolled {
     //background-color: #005ed3 !important; /* Change background color when scrolled */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transition: .5s;
     border-color: transparent !important;
 
-    a{
+    a {
 
-        color: #000 !important;
+      color: #000 !important;
     }
 
   }
 
-  @media($breckpoint_LG){
+  @media($breckpoint_LG) {
     display: none;
   }
 }
 
-.mob-header{
-  
-    display: none;
-    position: relative;
-    z-index: 1;
-    background-color: #005ed3 !important;
-    // background-color:#fff;
-  
-    @media($breckpoint_LG){
-        display: block;
-    }
-  
-    .inner{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 18px 15px;
+.mob-header {
 
-      svg{
+  display: none;
+  position: relative;
+  z-index: 1;
+  //background-color: #005ed3 !important;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+  @media($breckpoint_LG) {
+    display: block;
+  }
+  .react-responsive-modal-closeButton{
+  svg{
+    color: #333;
+  }
+  }
+  .inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 15px;
+    svg {
+      color: #333;
+      font-size: 28px;
+    }
+    .logo {
+      img {
+        width: 30px;
+        height: 30px;
+      }
+
+      a {
+        text-decoration: none;
+        color: #333;
+      }
+    }
+
+    .lang {
+      position: absolute;
+      right: 50px;
+      display: flex;
+      align-items: center;
+
+      svg {
 
         color: #000;
-        font-size: 28px;
+        font-size: 24px;
       }
-
-      .logo{
-
-        img{
-
-            width: 30px;
-        height: 30px;
-        }
-
-        a{
-          text-decoration: none;
-          color: #000;
-        }
-      }
-
-      .lang{
-        position: absolute;
-        right: 50px;
-        display: flex;
-        align-items: center;
-
-        svg{
-
-            color: #000;
-            font-size: 24px;
-        }
-      }
-
-      .coin_sec {
-        background-color: #000;
-        border-radius: 50px;
-        display: flex;
-        align-items: center;
-        padding-right: 10px;
-        cursor: pointer;
-        transition: 0.5s;
-        margin-right: 10px;
-
-
-        img {
-          width: 26px;
-          margin-right: 5px;
-        }
-        span {
-          color: #000;
-          font-size: 14px;
-          font-weight: 600;
-
-          @media($breckpoint_XL){
-
-            font-size: 10px;
-          }
-
-          svg {
-            font-size: 18px;
-          }
-        }
-
-        &:hover {
-          background-color: #005ed3;
-        }
-      }
-  
-  
     }
 
-   
+    .coin_sec {
+      background-color: #000;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      padding-right: 10px;
+      cursor: pointer;
+      transition: 0.5s;
+      margin-right: 10px;
+
+
+      img {
+        width: 26px;
+        margin-right: 5px;
+      }
+
+      span {
+        color: #000;
+        font-size: 14px;
+        font-weight: 600;
+
+        @media($breckpoint_XL) {
+
+          font-size: 10px;
+        }
+
+        svg {
+          font-size: 18px;
+        }
+      }
+
+      &:hover {
+        background-color: #005ed3;
+      }
+    }
+
+
   }
+
+
+}

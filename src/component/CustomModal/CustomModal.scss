@@ -1,5 +1,5 @@
 .ReactModal__Content {
-   width: 300px;
+   width: 350px;
    margin: auto;
    height: 450px;
    margin-top: 5rem;
@@ -43,6 +43,9 @@
             border-bottom: 1px solid rgb(163, 163, 163);
          }
       }
+      .addicon{
+         color: #000;
+      }
    }
 
    .form_eyes {
@@ -54,8 +57,14 @@
 
       svg {
          position: absolute;
-         top: 32px;
+         top: 27px;
          right: 7px;
+         color: #000;
+      }
+      .incremented{
+         position: absolute;
+         top: 27px !important;
+         right: 30px !important;
       }
    }
 

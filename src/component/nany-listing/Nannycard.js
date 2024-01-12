@@ -35,7 +35,7 @@ const Nannycard = ({ profileImage,time,firstName,lastName,price}) => {
                     </li>*/}
                 </ul>
                 <div>
-                    <Link className='btn btn-primary d-inline-block mt-2 all_btns px-4 py-2 position-relative'>Book Nannyl</Link>
+                    <Link className='btn btn-primary d-inline-block mt-2 all_btns px-4 py-2 position-relative' to='/bookdetails'>Book Nannyl</Link>
                    
                 </div>
             </div>
