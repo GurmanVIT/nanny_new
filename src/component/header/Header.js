@@ -4,7 +4,7 @@ import "react-responsive-modal/styles.css";
 import { CastConnected, MenuOutlined } from "@mui/icons-material";
 import logo from '../../assets/img/logo_nav.png';
 import { Link, useNavigate } from 'react-router-dom';
-import { useSelector,useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { clearData } from '../../store/apiSlice/LoginSlice';
 
 
@@ -44,14 +44,14 @@ const Header = () => {
     setOpenModal2(false);
   };
 
-  const onLogoutClick=()=>{
-   
+  const onLogoutClick = () => {
+
     localStorage.clear()
     dispatch(clearData())
-    setInterval(()=>{
+    setInterval(() => {
       navigate('/login');
-    },1000);
-    
+    }, 1000);
+
   }
 
   //var className = "inverted";
@@ -98,24 +98,26 @@ const Header = () => {
                 </li>
               </ul>
             </div>
-            {localStorage.getItem("Token")==null?
-            <div className="btns">
-              <div className="btn">
-                <Link className="main-button" to="/login">
-                  Login
-                </Link>
+            {localStorage.getItem("Token") == null ?
+              <div className="btns">
+                <div className="btn">
+                  <Link className="main-button" to="/login">
+                    Login
+                  </Link>
+                </div>
+                <div className="btn">
+                  <Link className="main-button" to="/signupnanny">
+                    Sign up
+                  </Link>
+                </div>
+              </div> :
+              <div className="btns">
+                <div className="btn">
+                  <Link className="main-button" to="/login">
+                    Logout
+                  </Link>
+                </div>
               </div>
-              <div className="btn">
-                <Link className="main-button" to="/signupnanny">
-                  Sign up
-                </Link>
-              </div>
-            </div>:
-            <div className="btn">
-            <Link className="main-button" to="/login">
-              Logout
-            </Link>
-          </div>
             }
           </div>
         </div>

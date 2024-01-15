@@ -1,6 +1,13 @@
 @import '../../assets//sass/color.scss';
 @import '../../assets//sass/mixin.scss';
 
+
+.top-padding{
+    padding-top: 100px;
+    @media($breckpoint_XL) {
+        padding: 20px;
+      }
+}
 .profile_photo {
     img {
         width: 80px;

@@ -7,85 +7,86 @@ const Profile = () => {
     return (
         <>
             <div className="container">
-                <div className="row mb-5">
-                    <div className="col-md-3 mb-3 mb-md-0 h-100">
-                        <mat-card className="rounded overflow-hidden">
-                            <div className="profile_photo text-center p-3">
-                                <img src={about} alt="profile" />
-                                <h2 className="mt-3">My Name</h2>
-                            </div>
-                            <div className="profile_edit_options">
-                                <div className="p-3 profile_option">
-                                    <i className="fa fa-edit"></i>
-                                    <span className="ms-2">Edit Profile</span>
+                <div className='top-padding'>
+                    <div className="row mb-5">
+                        <div className="col-md-3 mb-3 mb-md-0 h-100">
+                            <card className="rounded overflow-hidden">
+                                <div className="profile_photo text-center p-3">
+                                    <img src={about} alt="profile" />
+                                    <h2 className="mt-3">My Name</h2>
                                 </div>
-                                <div className="p-3 profile_option">
-                                    <i className="fa fa-lock"></i>
-                                    <span className="ms-2">Change Password</span>
-                                </div>
-                                <div className="p-3 profile_option" >
-                                    <i className="fa fa-cog"></i>
-                                    <span className="ms-2">Payments</span>
-                                </div>
-                                <div className="p-3 profile_option">
-                                    <i className="fa fa-cog"></i>
-                                    <span className="ms-2">Promotions</span>
-                                </div>
-                                <div className="p-3 profile_option">
-                                    <i className="fa fa-cog"></i>
-                                    <span className="ms-2">Credits</span>
+                                <div className="profile_edit_options">
+                                    <div className="p-3 profile_option">
+                                        <i className="fa fa-edit"></i>
+                                        <span className="ms-2">Edit Profile</span>
+                                    </div>
+                                    <div className="p-3 profile_option">
+                                        <i className="fa fa-lock"></i>
+                                        <span className="ms-2">Change Password</span>
+                                    </div>
+                                    <div className="p-3 profile_option" >
+                                        <i className="fa fa-cog"></i>
+                                        <span className="ms-2">Payments</span>
+                                    </div>
+                                    <div className="p-3 profile_option">
+                                        <i className="fa fa-cog"></i>
+                                        <span className="ms-2">Promotions</span>
+                                    </div>
+                                    <div className="p-3 profile_option">
+                                        <i className="fa fa-cog"></i>
+                                        <span className="ms-2">Credits</span>
+                                    </div >
                                 </div >
-                            </div >
-                        </mat-card >
-                    </div >
-                    <div className="col-md-9 h-100">
-                        <mat-card className="rounded p-3">
-                            <div className="row">
-                                <div className="col-12">
-                                    <div className="d-flex align-items-center mb-3">
-                                        <h2 className="m-0">My Profile</h2>
-                                    </div>
-                                    <div className="row">
-                                        <div className="col-12 col-sm-6 mb-3">
-                                            <div className="d-flex flex-column flex-sm-row align-items-center justify-content-between pb-3 my_profile_border">
-                                                <h5 className="mb-1 mb-sm-0">First Name</h5>
-                                                <h3 className="mb-0">Nanny 1</h3>
-                                            </div>
+                            </card >
+                        </div >
+                        <div className="col-md-9 h-100">
+                            <card className="rounded p-3">
+                                <div className="row">
+                                    <div className="col-12">
+                                        <div className="d-flex align-items-center mb-3">
+                                            <h2 className="m-0">My Profile</h2>
                                         </div>
-                                        <div className="col-12 col-sm-6 mb-3">
-                                            <div className="d-flex flex-column flex-sm-row align-items-center justify-content-between pb-3 my_profile_border">
-                                                <h5 className="mb-1 mb-sm-0">Last Name</h5>
-                                                <h3 className="mb-0">Nanny 1</h3>
+                                        <div className="row">
+                                            <div className="col-12 col-sm-6 mb-3">
+                                                <div className="d-flex flex-column flex-sm-row align-items-center justify-content-between pb-1 my_profile_border">
+                                                    <h5 className="mb-1 mb-sm-0">First Name</h5>
+                                                    <h3 className="mb-0">Nanny 1</h3>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className="col-12 col-sm-6 mb-3">
-                                            <div className="d-flex flex-column flex-sm-row align-items-center justify-content-between pb-3 my_profile_border">
-                                                <h5 className="mb-1 mb-sm-0">Phone Number</h5>
-                                                <h3 className="mb-0">(+341) 252 4241</h3>
+                                            <div className="col-12 col-sm-6 mb-3">
+                                                <div className="d-flex flex-column flex-sm-row align-items-center justify-content-between pb-1 my_profile_border">
+                                                    <h5 className="mb-1 mb-sm-0">Last Name</h5>
+                                                    <h3 className="mb-0">Nanny 1</h3>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className="col-12 col-sm-6 mb-3">
-                                            <div className="d-flex flex-column flex-sm-row align-items-center justify-content-between pb-3 my_profile_border">
-                                                <h5 className="mb-1 mb-sm-0">Email Address</h5>
-                                                <h3 className="mb-0">njkbcsv@gmsimc.com</h3>
+                                            <div className="col-12 col-sm-6 mb-3">
+                                                <div className="d-flex flex-column flex-sm-row align-items-center justify-content-between pb-1 my_profile_border">
+                                                    <h5 className="mb-1 mb-sm-0">Phone Number</h5>
+                                                    <h3 className="mb-0">(+341) 252 4241</h3>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className="col-12 col-sm-6 mb-3">
-                                            <div className="d-flex flex-column flex-sm-row align-items-center justify-content-between pb-3 my_profile_border">
-                                                <h5 className="mb-1 mb-sm-0">Country</h5>
-                                                <h3 className="mb-0">USA</h3>
+                                            <div className="col-12 col-sm-6 mb-3">
+                                                <div className="d-flex flex-column flex-sm-row align-items-center justify-content-between pb-1 my_profile_border">
+                                                    <h5 className="mb-1 mb-sm-0">Email Address</h5>
+                                                    <h3 className="mb-0">njkbcsv@gmsimc.com</h3>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className="col-12 col-sm-6 mb-3">
-                                            <div className="d-flex flex-column flex-sm-row align-items-center justify-content-between pb-3 my_profile_border">
-                                                <h5 className="mb-1 mb-sm-0">Zipcode</h5>
-                                                <h3 className="mb-0">252422</h3>
+                                            <div className="col-12 col-sm-6 mb-3">
+                                                <div className="d-flex flex-column flex-sm-row align-items-center justify-content-between pb-1 my_profile_border">
+                                                    <h5 className="mb-1 mb-sm-0">Country</h5>
+                                                    <h3 className="mb-0">USA</h3>
+                                                </div>
+                                            </div>
+                                            <div className="col-12 col-sm-6 mb-3">
+                                                <div className="d-flex flex-column flex-sm-row align-items-center justify-content-between pb-3 my_profile_border">
+                                                    <h5 className="mb-1 mb-sm-0">Zipcode</h5>
+                                                    <h3 className="mb-0">252422</h3>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="row" ngIf="isEditSelected" >
+                                {/*<div className="row" ngIf="isEditSelected" >
                                 <div className="col-12">
                                     <div className="d-flex align-items-center mb-3 heading_back_btn">
                                         <button><i className="fa fa-arrow-left me-2" aria-hidden="true"></i></button>
@@ -97,10 +98,10 @@ const Profile = () => {
                                             <a href="#" className="ms-3 change_image_btn">Change Porfile Image</a>
                                         </div>
                                         <div className="col-md-6">
-                                            <mat-form-field className="w-100 mb-4 pb-2" appearance="outline">
+                                            <form-field className="w-100 mb-4 pb-2" appearance="outline">
                                                 <mat-label>First Name</mat-label>
                                                 <input matInput type="text" placeholder="First Name" />
-                                            </mat-form-field>
+                                            </form-field>
                                         </div>
                                         <div className="col-md-6">
                                             <mat-form-field className="w-100 mb-4" appearance="outline">
@@ -447,10 +448,12 @@ const Profile = () => {
                                         </mat-card>
                                     </div>
                                 </div>
-                            </div >
-                        </mat-card >
+                            </div >*/}
+                            </card >
+                        </div >
                     </div >
-                </div >
+                </div>
+
             </div >
         </>
     )
