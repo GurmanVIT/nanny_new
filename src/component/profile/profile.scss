@@ -40,12 +40,11 @@
 }
 
 .heading_back_btn button {
-    background-color: transparent;
     border: 0;
 
     i {
         font-weight: 700;
-        color: $primary-color;
+        color: #000;
     }
 }
 
@@ -74,6 +73,8 @@
 }
 
 .card_box {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
     h1 {
         font-weight: 400;
     }
@@ -102,6 +103,12 @@
         }
     }
 
+    .delete_btn{
+        background-color: transparent;
+        &:hover{
+            background-color: transparent !important;
+        }
+    }
     button {
         background-color: transparent;
         border: 0;
@@ -168,5 +175,14 @@
         width: 200px;
         height: 200px;
         border-radius: 130px;
+    }
+}
+
+.Earning{
+    .card{
+        text-align: center;
+        align-items: center;
+        padding: 10px;
+        width: 100px;
     }
 }

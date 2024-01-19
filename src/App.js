@@ -23,6 +23,8 @@ import Signupfamily from "./component/auth/RegisterAsFamily/Signupfamily";
 import Otp from "./component/auth/Otp";
 import Signupnanny from "./component/auth/Signupnanny";
 import Card from "./component/Nanny-categories/Card";
+import Availability from "./component/Availability/Availability";
+import Profilenanny from "./component/profile/Profilenanny";
 
 function App() {
   return (
@@ -51,7 +53,8 @@ function App() {
           <Route path="/bookdetails" element={<Bookdetails/>}/>
           <Route path="/payment" element={<Payment/>}/>
           <Route path="/card" element={<Card/>}/>
-
+          <Route path="/availability" element={<Availability/>}/>
+          <Route path='/profilenanny' element={<Profilenanny/>} />
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -6,8 +6,10 @@ import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import { Button } from 'react-bootstrap';
 
-const Profile = () => {
+
+const Profilenanny = () => {
     return (
         <>
             <div className="container">
@@ -31,16 +33,16 @@ const Profile = () => {
                                         </Tab>
                                         <Tab className="p-3 profile_option">
                                             <i className="fa fa-lock"></i>
-                                            <span className="ms-2">Change Password</span>
+                                            <span className="ms-2">Earning</span>
                                         </Tab>
                                         <Tab className="p-3 profile_option" >
                                             <i className="fa fa-cog"></i>
                                             <span className="ms-2">Payments</span>
                                         </Tab>
                                         {/*<Tab className="p-3 profile_option">
-                                            <i className="fa fa-cog"></i>
-                                            <span className="ms-2">Promotions</span>
-                                        </Tab>*/}
+                                    <i className="fa fa-cog"></i>
+                                    <span className="ms-2">Promotions</span>
+                                </Tab>*/}
                                         <Tab className="p-3 profile_option">
                                             <i className="fa fa-cog"></i>
                                             <span className="ms-2">Credits</span>
@@ -58,37 +60,49 @@ const Profile = () => {
                                                 </div>
                                                 <div className="row">
                                                     <div className="col-12 col-sm-6 mb-3">
-                                                        <div className="input-group d-flex flex-column flex-sm-row align-items-center justify-content-between pb-1 my_profile_border">
+                                                        <div className="d-flex flex-column flex-sm-row align-items-center justify-content-between pb-1 my_profile_border">
                                                             <h5 className="mb-1 mb-sm-0">First Name</h5>
                                                             <h3 className="mb-0">Nanny 1</h3>
                                                         </div>
                                                     </div>
                                                     <div className="col-12 col-sm-6 mb-3">
-                                                        <div className="input-group d-flex flex-column flex-sm-row align-items-center justify-content-between pb-1 my_profile_border">
+                                                        <div className="d-flex flex-column flex-sm-row align-items-center justify-content-between pb-1 my_profile_border">
                                                             <h5 className="mb-1 mb-sm-0">Last Name</h5>
                                                             <h3 className="mb-0">Nanny 1</h3>
                                                         </div>
                                                     </div>
                                                     <div className="col-12 col-sm-6 mb-3">
-                                                        <div className="input-group d-flex flex-column flex-sm-row align-items-center justify-content-between pb-1 my_profile_border">
+                                                        <div className="d-flex flex-column flex-sm-row align-items-center justify-content-between pb-1 my_profile_border">
                                                             <h5 className="mb-1 mb-sm-0">Phone Number</h5>
                                                             <h3 className="mb-0">(+341) 252 4241</h3>
                                                         </div>
                                                     </div>
                                                     <div className="col-12 col-sm-6 mb-3">
-                                                        <div className="input-group d-flex flex-column flex-sm-row align-items-center justify-content-between pb-1 my_profile_border">
+                                                        <div className="d-flex flex-column flex-sm-row align-items-center justify-content-between pb-1 my_profile_border">
                                                             <h5 className="mb-1 mb-sm-0">Email Address</h5>
                                                             <h3 className="mb-0">njkbcsv@gmsimc.com</h3>
                                                         </div>
                                                     </div>
                                                     <div className="col-12 col-sm-6 mb-3">
-                                                        <div className="input-group d-flex flex-column flex-sm-row align-items-center justify-content-between pb-1 my_profile_border">
+                                                        <div className="d-flex flex-column flex-sm-row align-items-center justify-content-between pb-1 my_profile_border">
+                                                            <h5 className="mb-1 mb-sm-0">Date OF Birth</h5>
+                                                            <h3 className="mb-0"></h3>
+                                                        </div>
+                                                    </div>
+                                                    <div className="col-12 col-sm-6 mb-3">
+                                                        <div className="d-flex flex-column flex-sm-row align-items-center justify-content-between pb-1 my_profile_border">
+                                                            <h5 className="mb-1 mb-sm-0">Education</h5>
+                                                            <h3 className="mb-0"></h3>
+                                                        </div>
+                                                    </div>
+                                                    <div className="col-12 col-sm-6 mb-3">
+                                                        <div className="d-flex flex-column flex-sm-row align-items-center justify-content-between pb-1 my_profile_border">
                                                             <h5 className="mb-1 mb-sm-0">Country</h5>
                                                             <h3 className="mb-0">USA</h3>
                                                         </div>
                                                     </div>
                                                     <div className="col-12 col-sm-6 mb-3">
-                                                        <div className="input-group d-flex flex-column flex-sm-row align-items-center justify-content-between pb-3 my_profile_border">
+                                                        <div className="d-flex flex-column flex-sm-row align-items-center justify-content-between pb-3 my_profile_border">
                                                             <h5 className="mb-1 mb-sm-0">Zipcode</h5>
                                                             <h3 className="mb-0">252422</h3>
                                                         </div>
@@ -97,6 +111,7 @@ const Profile = () => {
                                             </div>
                                         </div>
                                     </TabPanel>
+
                                     <TabPanel>
                                         <div className="row" >
                                             <div className="col-12">
@@ -125,7 +140,7 @@ const Profile = () => {
                                                     <div className="col-md-6">
                                                         <form className="w-100 mb-4" appearance="outline">
                                                             <div className="input-group mb-0">
-                                                                <input type='date' placeholder='MM/DD/YYYY' />
+                                                                <input type="number" placeholder="Phone Number" />
                                                             </div>
                                                         </form>
                                                     </div>
@@ -139,42 +154,32 @@ const Profile = () => {
                                                     <div className="col-md-6">
                                                         <form className="w-100 mb-4" appearance="outline">
                                                             <div className="input-group mb-0">
-                                                                <input type="number" placeholder="Phone Number" />
+                                                                <input type="text" placeholder="Postal Code" />
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <div className="col-md-6">
+                                                        <form className="w-100 mb-4" appearance="outline">
+                                                            <div className="input-group mb-0">
+                                                                <input type='date' placeholder='MM/DD/YYYY' />
                                                             </div>
                                                         </form>
                                                     </div>
                                                     <div className="col-md-6">
-                                                        <form className="w-100" appearance="outline">
+                                                        <form className="w-100 mb-4" appearance="outline">
                                                             <div className="input-group mb-0">
-                                                                <label>Select Counrty</label>
-                                                                <select>
-                                                                    <option>None</option>
-                                                                    <option value="option1">Option 1</option>
-                                                                    <option value="option2">Option 2</option>
-                                                                    <option value="option3">Option 3</option>
-                                                                </select>
+                                                                <input type="text" placeholder="Education" />
                                                             </div>
                                                         </form>
-                                                    </div >
-                                                    <div className="col-md-6">
-                                                        <form className="w-100" appearance="outline">
-                                                            <div className="input-group mb-0">
-                                                                <label
-                                                                >Select Zipcode</label>
-                                                                <select>
-                                                                    <option>None</option>
-                                                                    <option value="option1">Option 1</option>
-                                                                    <option value="option2">Option 2</option>
-                                                                    <option value="option3">Option 3</option>
-                                                                </select>
-                                                            </div>
-                                                        </form>
-                                                    </div >
+                                                    </div>
+
+
                                                     <div className="col-12">
                                                         <div className="col-12 mt-3">
-                                                            <button color="primary" className="profile_button p-2">
-                                                                Submit
-                                                            </button>
+                                                            <Button color="primary" className="profile_button p-2">
+                                                                SAVE
+                                                            </Button>
                                                         </div>
                                                     </div>
                                                 </div >
@@ -185,35 +190,121 @@ const Profile = () => {
                                         <div className="row" >
                                             <div className="col-12">
                                                 <div className="d-flex align-items-center mb-3 heading_back_btn">
-
-                                                    <h2 className="m-0">Change Password</h2>
+                                                    <div>
+                                                        <h2 className="m-0 mb-2">Provider Profit</h2>
+                                                        <h6>$0</h6>
+                                                    </div>
                                                 </div>
-                                                <div className="row">
-                                                    <div className="col-12">
-                                                        <form className="w-100 mb-4" appearance="outline">
-                                                            <div className="input-group mb-0">
-                                                                <input matInput type="text" placeholder="Current Password" />
+                                                <div className='Earning'>
+                                                    <div className="row">
+                                                        <div className="col-6 d-flex justify-content-center">
+                                                            <div className='card card_box'>
+                                                                <div>
+                                                                    <span>Total</span>
+                                                                    <h6>$0</h6>
+                                                                </div>
                                                             </div>
-                                                        </form>
-                                                    </div>
-                                                    <div className="col-12">
-                                                        <form className="w-100 mb-4" appearance="outline">
-                                                            <div className="input-group mb-0">
-                                                                <input matInput type="text" placeholder="New Password" />
+                                                        </div>
+                                                        <div className="col-6 d-flex justify-content-center">
+                                                            <div className='card card_box'>
+                                                                <span>Admin Profit</span>
+                                                                <h6>$0</h6>
                                                             </div>
-                                                        </form>
-                                                    </div>
-                                                    <div className="col-12">
-                                                        <form className="w-100 mb-4" appearance="outline">
-                                                            <div className="input-group mb-0">
-                                                                <input matInput type="text" placeholder="Confirm Password" />
+                                                        </div>
+                                                        <div className="col-6 d-flex justify-content-center">
+                                                            <div className='card card_box'>
+                                                                <div>
+                                                                    <span>Collected Cash</span>
+                                                                    <h6>$0</h6>
+                                                                </div>
                                                             </div>
-                                                        </form>
+                                                        </div>
+                                                        <div className="col-6 d-flex justify-content-center">
+                                                            <div className='card card_box'>
+                                                                <div>
+                                                                    <span>Pay/Collect</span>
+                                                                    <h6>$0</h6>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div className="col-12">
-                                                        <button mat-fab extended color="primary" className="profile_button px-4">
-                                                            Submit
-                                                        </button>
+                                                </div>
+                                            </div >
+                                        </div >
+                                        <div className="row" >
+                                            <div className="col-12">
+                                                <div className="d-flex align-items-center mb-3 heading_back_btn">
+                                                    <div>
+                                                        <h2 className="m-0 mb-2">Settlement By</h2>
+                                                    </div>
+                                                </div>
+                                                <div className='Earning'>
+                                                    <div className="row">
+                                                        <div className="col-6 d-flex justify-content-center">
+                                                            <div className='card card_box'>
+                                                                <div>
+                                                                    <span>Cash</span>
+                                                                    <h6>$0</h6>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="col-6 d-flex justify-content-center">
+                                                            <div className='card card_box'>
+                                                                <span>Card</span>
+                                                                <h6>$0</h6>
+                                                            </div>
+                                                        </div>
+                                                        <div className="col-6 d-flex justify-content-center">
+                                                            <div className='card card_box'>
+                                                                <div>
+                                                                    <span>Wallet</span>
+                                                                    <h6>$0</h6>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="col-6 d-flex justify-content-center">
+                                                            <div className='card card_box'>
+                                                                <div>
+                                                                    <span>Remain</span>
+                                                                    <h6>$0</h6>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div >
+                                        </div >
+                                        <div className="row" >
+                                            <div className="col-12">
+                                                <div className="d-flex align-items-center mb-3 heading_back_btn">
+                                                    <div>
+                                                        <h2 className="m-0 mb-2">Total Request</h2>
+                                                    </div>
+                                                </div>
+                                                <div className='Earning'>
+                                                    <div className="row">
+                                                        <div className="col-3 d-flex justify-content-center">
+                                                            <div className='card card_box'>
+                                                                <div>
+                                                                    <span>Accepted</span>
+                                                                    <h6>$0</h6>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="col-3 d-flex justify-content-center">
+                                                            <div className='card card_box'>
+                                                                <span>Completed</span>
+                                                                <h6>$0</h6>
+                                                            </div>
+                                                        </div>
+                                                        <div className="col-3 d-flex justify-content-center">
+                                                            <div className='card card_box'>
+                                                                <div>
+                                                                    <span>Cancelled</span>
+                                                                    <h6>$0</h6>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div >
@@ -327,102 +418,102 @@ const Profile = () => {
                                         </div>
                                     </TabPanel>
                                     {/*<TabPanel>
-                                        <div className="row" >
-                                            <div className="col-12">
-                                                <div className="d-flex align-items-center mb-3 heading_back_btn">
-                                                    <button><i className="fa fa-arrow-left me-2" aria-hidden="true"></i></button>
-                                                    <h2 className="m-0">Promotions</h2>
+                                <div className="row" >
+                                    <div className="col-12">
+                                        <div className="d-flex align-items-center mb-3 heading_back_btn">
+                                            <button><i className="fa fa-arrow-left me-2" aria-hidden="true"></i></button>
+                                            <h2 className="m-0">Promotions</h2>
+                                        </div>
+                                        <div className="search_box w-100 d-flex">
+                                            <form className="w-100" appearance="outline">
+                                                <label>Favorite food</label>
+                                                <input matInput placeholder="Ex. Pizza" value="Sushi" />
+                                            </form>
+                                            <button className="ms-3 px-4 text-nowrap redeem_btn" mat-raised-button>Redeem Coupen</button>
+                                        </div>
+                                    </div >
+                                    <div className="row">
+                                        <div className="col-12">
+                                            <h2 className="mb-4">Available Coupens</h2>
+                                        </div>
+                                        <div className="col-md-6 mb-3">
+                                            <card className="p-3 rounded card_box">
+                                                <div className="d-flex align-items-center justify-content-between mb-4">
+                                                    <div className="card_icon">
+                                                        <h2 className="m-0">Coupen Name</h2>
+                                                    </div>
+                                                    <div className="card_type px-2 py-1 rounded">Buy</div>
                                                 </div>
-                                                <div className="search_box w-100 d-flex">
-                                                    <form className="w-100" appearance="outline">
-                                                        <label>Favorite food</label>
-                                                        <input matInput placeholder="Ex. Pizza" value="Sushi" />
-                                                    </form>
-                                                    <button className="ms-3 px-4 text-nowrap redeem_btn" mat-raised-button>Redeem Coupen</button>
+                                                <div className="btn-cancel-nany-profile rounded my-3 text-center py-2 px-3 d-inline-block">30% Off</div>
+                                                <h1 className="mb-3">30% Of on coupen VENDN20</h1>
+                                                <div className="offer_validity pt-3">
+                                                    Offer vaild <span>Today, Till 6PM</span>
                                                 </div>
-                                            </div >
-                                            <div className="row">
-                                                <div className="col-12">
-                                                    <h2 className="mb-4">Available Coupens</h2>
+                                            </card>
+                                        </div>
+                                        <div className="col-md-6 mb-3">
+                                            <card className="p-3 rounded card_box">
+                                                <div className="d-flex align-items-center justify-content-between mb-4">
+                                                    <div className="card_icon">
+                                                        <h2 className="m-0">Coupen Name</h2>
+                                                    </div>
+                                                    <div className="card_type px-2 py-1 rounded">Buy</div>
                                                 </div>
-                                                <div className="col-md-6 mb-3">
-                                                    <card className="p-3 rounded card_box">
-                                                        <div className="d-flex align-items-center justify-content-between mb-4">
-                                                            <div className="card_icon">
-                                                                <h2 className="m-0">Coupen Name</h2>
-                                                            </div>
-                                                            <div className="card_type px-2 py-1 rounded">Buy</div>
-                                                        </div>
-                                                        <div className="btn-cancel-nany-profile rounded my-3 text-center py-2 px-3 d-inline-block">30% Off</div>
-                                                        <h1 className="mb-3">30% Of on coupen VENDN20</h1>
-                                                        <div className="offer_validity pt-3">
-                                                            Offer vaild <span>Today, Till 6PM</span>
-                                                        </div>
-                                                    </card>
+                                                <div className="btn-cancel-nany-profile rounded my-3 text-center py-2 px-3 d-inline-block">30% Off</div>
+                                                <h1 className="mb-3">30% Of on coupen VENDN20</h1>
+                                                <div className="offer_validity pt-3">
+                                                    Offer vaild <span>Today, Till 6PM</span>
                                                 </div>
-                                                <div className="col-md-6 mb-3">
-                                                    <card className="p-3 rounded card_box">
-                                                        <div className="d-flex align-items-center justify-content-between mb-4">
-                                                            <div className="card_icon">
-                                                                <h2 className="m-0">Coupen Name</h2>
-                                                            </div>
-                                                            <div className="card_type px-2 py-1 rounded">Buy</div>
-                                                        </div>
-                                                        <div className="btn-cancel-nany-profile rounded my-3 text-center py-2 px-3 d-inline-block">30% Off</div>
-                                                        <h1 className="mb-3">30% Of on coupen VENDN20</h1>
-                                                        <div className="offer_validity pt-3">
-                                                            Offer vaild <span>Today, Till 6PM</span>
-                                                        </div>
-                                                    </card>
+                                            </card>
+                                        </div>
+                                        <div className="col-md-6 mb-3">
+                                            <card className="p-3 rounded card_box">
+                                                <div className="d-flex align-items-center justify-content-between mb-4">
+                                                    <div className="card_icon">
+                                                        <h2 className="m-0">Coupen Name</h2>
+                                                    </div>
+                                                    <div className="card_type px-2 py-1 rounded">Buy</div>
                                                 </div>
-                                                <div className="col-md-6 mb-3">
-                                                    <card className="p-3 rounded card_box">
-                                                        <div className="d-flex align-items-center justify-content-between mb-4">
-                                                            <div className="card_icon">
-                                                                <h2 className="m-0">Coupen Name</h2>
-                                                            </div>
-                                                            <div className="card_type px-2 py-1 rounded">Buy</div>
-                                                        </div>
-                                                        <div className="btn-cancel-nany-profile rounded my-3 text-center py-2 px-3 d-inline-block">30% Off</div>
-                                                        <h1 className="mb-3">30% Of on coupen VENDN20</h1>
-                                                        <div className="offer_validity pt-3">
-                                                            Offer vaild <span>Today, Till 6PM</span>
-                                                        </div>
-                                                    </card>
+                                                <div className="btn-cancel-nany-profile rounded my-3 text-center py-2 px-3 d-inline-block">30% Off</div>
+                                                <h1 className="mb-3">30% Of on coupen VENDN20</h1>
+                                                <div className="offer_validity pt-3">
+                                                    Offer vaild <span>Today, Till 6PM</span>
                                                 </div>
-                                                <div className="col-md-6 mb-3">
-                                                    <card className="p-3 rounded card_box">
-                                                        <div className="d-flex align-items-center justify-content-between mb-4">
-                                                            <div className="card_icon">
-                                                                <h2 className="m-0">Coupen Name</h2>
-                                                            </div>
-                                                            <div className="card_type px-2 py-1 rounded">Buy</div>
-                                                        </div>
-                                                        <div className="btn-cancel-nany-profile rounded my-3 text-center py-2 px-3 d-inline-block">30% Off</div>
-                                                        <h1 className="mb-3">30% Of on coupen VENDN20</h1>
-                                                        <div className="offer_validity pt-3">
-                                                            Offer vaild <span>Today, Till 6PM</span>
-                                                        </div>
-                                                    </card>
+                                            </card>
+                                        </div>
+                                        <div className="col-md-6 mb-3">
+                                            <card className="p-3 rounded card_box">
+                                                <div className="d-flex align-items-center justify-content-between mb-4">
+                                                    <div className="card_icon">
+                                                        <h2 className="m-0">Coupen Name</h2>
+                                                    </div>
+                                                    <div className="card_type px-2 py-1 rounded">Buy</div>
                                                 </div>
-                                                <div className="col-md-6 mb-3">
-                                                    <card className="p-3 rounded card_box">
-                                                        <div className="d-flex align-items-center justify-content-between mb-4">
-                                                            <div className="card_icon">
-                                                                <h2 className="m-0">Coupen Name</h2>
-                                                            </div>
-                                                            <div className="card_type px-2 py-1 rounded">Buy</div>
-                                                        </div>
-                                                        <div className="btn-cancel-nany-profile rounded my-3 text-center py-2 px-3 d-inline-block">30% Off</div>
-                                                        <h1 className="mb-3">30% Of on coupen VENDN20</h1>
-                                                        <div className="offer_validity pt-3">
-                                                            Offer vaild <span>Today, Till 6PM</span>
-                                                        </div>
-                                                    </card>
+                                                <div className="btn-cancel-nany-profile rounded my-3 text-center py-2 px-3 d-inline-block">30% Off</div>
+                                                <h1 className="mb-3">30% Of on coupen VENDN20</h1>
+                                                <div className="offer_validity pt-3">
+                                                    Offer vaild <span>Today, Till 6PM</span>
                                                 </div>
-                                            </div>
-                                        </div >
-                                    </TabPanel>*/}
+                                            </card>
+                                        </div>
+                                        <div className="col-md-6 mb-3">
+                                            <card className="p-3 rounded card_box">
+                                                <div className="d-flex align-items-center justify-content-between mb-4">
+                                                    <div className="card_icon">
+                                                        <h2 className="m-0">Coupen Name</h2>
+                                                    </div>
+                                                    <div className="card_type px-2 py-1 rounded">Buy</div>
+                                                </div>
+                                                <div className="btn-cancel-nany-profile rounded my-3 text-center py-2 px-3 d-inline-block">30% Off</div>
+                                                <h1 className="mb-3">30% Of on coupen VENDN20</h1>
+                                                <div className="offer_validity pt-3">
+                                                    Offer vaild <span>Today, Till 6PM</span>
+                                                </div>
+                                            </card>
+                                        </div>
+                                    </div>
+                                </div >
+                            </TabPanel>*/}
                                     <TabPanel>
                                         <div className="row">
                                             <div className="col-12">
@@ -480,19 +571,14 @@ const Profile = () => {
                                             </div>
                                         </div >
                                     </TabPanel>
-
-
-
-
                                 </card >
                             </div >
                         </div>
                     </Tabs>
                 </div>
-
             </div >
         </>
     )
 }
 
-export default Profile;
+export default Profilenanny
