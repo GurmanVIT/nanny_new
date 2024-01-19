@@ -182,7 +182,12 @@
     .card{
         text-align: center;
         align-items: center;
-        padding: 10px;
-        width: 100px;
+        padding: 10px 5px;
+        span{
+            color: #b4b4b4;
+            margin-bottom: 6px;
+        }
+        //padding: 10px;
+        //width: 100px;
     }
 }

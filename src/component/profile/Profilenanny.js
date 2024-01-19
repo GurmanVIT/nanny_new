@@ -1,15 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import about from '../../assets/img/about.jpg';
 import visa_payment_card from '../../assets/img/visa-payment-card.png';
 import nany_icon from '../../assets/img/nany_icon.png';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { Button } from 'react-bootstrap';
+import Earning from './Earning';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchEarnAsync } from '../../store/apiSlice/EarningSlice';
 
 
 const Profilenanny = () => {
+
+
+    const dispatch = useDispatch();
+    const data = useSelector((state) => state.rootReducer);
+
+    const [NannyEarning, setNannyEarning] = useState(null)
+
+
+    useEffect(() => {
+
+        dispatch(fetchEarnAsync());
+    }, []);
+
+    useEffect(() => {
+        if (data != null) {
+            setNannyEarning(data.data)
+        }
+    }, [data])
+
+
+
     return (
         <>
             <div className="container">
@@ -39,10 +62,6 @@ const Profilenanny = () => {
                                             <i className="fa fa-cog"></i>
                                             <span className="ms-2">Payments</span>
                                         </Tab>
-                                        {/*<Tab className="p-3 profile_option">
-                                    <i className="fa fa-cog"></i>
-                                    <span className="ms-2">Promotions</span>
-                                </Tab>*/}
                                         <Tab className="p-3 profile_option">
                                             <i className="fa fa-cog"></i>
                                             <span className="ms-2">Credits</span>
@@ -187,128 +206,12 @@ const Profilenanny = () => {
                                         </div >
                                     </TabPanel>
                                     <TabPanel>
-                                        <div className="row" >
-                                            <div className="col-12">
-                                                <div className="d-flex align-items-center mb-3 heading_back_btn">
-                                                    <div>
-                                                        <h2 className="m-0 mb-2">Provider Profit</h2>
-                                                        <h6>$0</h6>
-                                                    </div>
-                                                </div>
-                                                <div className='Earning'>
-                                                    <div className="row">
-                                                        <div className="col-6 d-flex justify-content-center">
-                                                            <div className='card card_box'>
-                                                                <div>
-                                                                    <span>Total</span>
-                                                                    <h6>$0</h6>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-6 d-flex justify-content-center">
-                                                            <div className='card card_box'>
-                                                                <span>Admin Profit</span>
-                                                                <h6>$0</h6>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-6 d-flex justify-content-center">
-                                                            <div className='card card_box'>
-                                                                <div>
-                                                                    <span>Collected Cash</span>
-                                                                    <h6>$0</h6>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-6 d-flex justify-content-center">
-                                                            <div className='card card_box'>
-                                                                <div>
-                                                                    <span>Pay/Collect</span>
-                                                                    <h6>$0</h6>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div >
-                                        </div >
-                                        <div className="row" >
-                                            <div className="col-12">
-                                                <div className="d-flex align-items-center mb-3 heading_back_btn">
-                                                    <div>
-                                                        <h2 className="m-0 mb-2">Settlement By</h2>
-                                                    </div>
-                                                </div>
-                                                <div className='Earning'>
-                                                    <div className="row">
-                                                        <div className="col-6 d-flex justify-content-center">
-                                                            <div className='card card_box'>
-                                                                <div>
-                                                                    <span>Cash</span>
-                                                                    <h6>$0</h6>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-6 d-flex justify-content-center">
-                                                            <div className='card card_box'>
-                                                                <span>Card</span>
-                                                                <h6>$0</h6>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-6 d-flex justify-content-center">
-                                                            <div className='card card_box'>
-                                                                <div>
-                                                                    <span>Wallet</span>
-                                                                    <h6>$0</h6>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-6 d-flex justify-content-center">
-                                                            <div className='card card_box'>
-                                                                <div>
-                                                                    <span>Remain</span>
-                                                                    <h6>$0</h6>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div >
-                                        </div >
-                                        <div className="row" >
-                                            <div className="col-12">
-                                                <div className="d-flex align-items-center mb-3 heading_back_btn">
-                                                    <div>
-                                                        <h2 className="m-0 mb-2">Total Request</h2>
-                                                    </div>
-                                                </div>
-                                                <div className='Earning'>
-                                                    <div className="row">
-                                                        <div className="col-3 d-flex justify-content-center">
-                                                            <div className='card card_box'>
-                                                                <div>
-                                                                    <span>Accepted</span>
-                                                                    <h6>$0</h6>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-3 d-flex justify-content-center">
-                                                            <div className='card card_box'>
-                                                                <span>Completed</span>
-                                                                <h6>$0</h6>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-3 d-flex justify-content-center">
-                                                            <div className='card card_box'>
-                                                                <div>
-                                                                    <span>Cancelled</span>
-                                                                    <h6>$0</h6>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div >
-                                        </div >
+                                        {NannyEarning != null ?
+                                            <div className="row">
+                                                {NannyEarning.map((item) => <Earning
+                                                 provideProfit={item.provideProfit} total={item.total} />)}
+                                            </div>
+                                            : ''}
                                     </TabPanel>
                                     <TabPanel>
                                         <div className="row" >
