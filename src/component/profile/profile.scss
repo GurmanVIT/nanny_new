@@ -191,3 +191,31 @@
         //width: 100px;
     }
 }
+
+.manageservices{
+    .btn-group{
+        .yesbtn{
+            background: #fff !important;
+            color: #000;
+            margin: 5px;
+            border-color: #d3d3d3;
+            border-radius: 0px;
+            //&:focus{
+            //    box-shadow: none !important;
+            //    background: $primary-color !important;
+            //    border-color:  $primary-color !important;
+            //}
+            //&:active{
+            //    box-shadow: none !important;
+            //    background: $primary-color !important;
+            //    border-color:  $primary-color !important;
+            //}
+        }
+        .btn-check{
+            &:focus{
+                box-shadow: none;
+            }
+        }
+      
+    }
+}
