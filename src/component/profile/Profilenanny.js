@@ -11,6 +11,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchEarnAsync } from '../../store/apiSlice/EarningSlice';
 import Manageservices from './Manageservices';
 import Documentsnanny from './Documentsnanny';
+import Contactus from './Contactus';
+import Nannyprofile from './Nannyprofile';
+import { fetchNannyproAsync } from '../../store/apiSlice/NannyprofileSlice';
+import NeditProfile from './NeditProfile';
 
 
 const Profilenanny = () => {
@@ -18,12 +22,26 @@ const Profilenanny = () => {
 
     const dispatch = useDispatch();
     const data = useSelector((state) => state.rootReducer);
+    console.log("data==>",data)
+    const nprofile = useSelector((state) => state.rootReducer);
 
     const [NannyEarning, setNannyEarning] = useState(null)
+    const [NannyProfile ,setNannyProfile] = useState(null)
+
 
 
     useEffect(() => {
+        dispatch(fetchNannyproAsync());
+    }, []);
 
+    useEffect(() => {
+        if (nprofile != null) {
+            setNannyProfile(nprofile.data)
+        }
+    }, [nprofile])
+
+
+    useEffect(() => {
         dispatch(fetchEarnAsync());
     }, []);
 
@@ -82,147 +100,26 @@ const Profilenanny = () => {
                             <div className="col-md-9 h-100">
                                 <card className="rounded p-3">
                                     <TabPanel>
-                                        <div className="row">
-                                            <div className="col-12">
-                                                <div className="d-flex align-items-center mb-4">
-                                                    <h2 className="m-0">My Profile</h2>
-                                                </div>
-                                                <div className="row">
-                                                    <div className="col-12 col-sm-6 mb-3">
-                                                        <div className="d-flex flex-column flex-sm-row align-items-center justify-content-between pb-1 my_profile_border">
-                                                            <h5 className="mb-1 mb-sm-0">First Name</h5>
-                                                            <h3 className="mb-0">Nanny 1</h3>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-12 col-sm-6 mb-3">
-                                                        <div className="d-flex flex-column flex-sm-row align-items-center justify-content-between pb-1 my_profile_border">
-                                                            <h5 className="mb-1 mb-sm-0">Last Name</h5>
-                                                            <h3 className="mb-0">Nanny 1</h3>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-12 col-sm-6 mb-3">
-                                                        <div className="d-flex flex-column flex-sm-row align-items-center justify-content-between pb-1 my_profile_border">
-                                                            <h5 className="mb-1 mb-sm-0">Phone Number</h5>
-                                                            <h3 className="mb-0">(+341) 252 4241</h3>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-12 col-sm-6 mb-3">
-                                                        <div className="d-flex flex-column flex-sm-row align-items-center justify-content-between pb-1 my_profile_border">
-                                                            <h5 className="mb-1 mb-sm-0">Email Address</h5>
-                                                            <h3 className="mb-0">njkbcsv@gmsimc.com</h3>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-12 col-sm-6 mb-3">
-                                                        <div className="d-flex flex-column flex-sm-row align-items-center justify-content-between pb-1 my_profile_border">
-                                                            <h5 className="mb-1 mb-sm-0">Date OF Birth</h5>
-                                                            <h3 className="mb-0"></h3>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-12 col-sm-6 mb-3">
-                                                        <div className="d-flex flex-column flex-sm-row align-items-center justify-content-between pb-1 my_profile_border">
-                                                            <h5 className="mb-1 mb-sm-0">Education</h5>
-                                                            <h3 className="mb-0"></h3>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-12 col-sm-6 mb-3">
-                                                        <div className="d-flex flex-column flex-sm-row align-items-center justify-content-between pb-1 my_profile_border">
-                                                            <h5 className="mb-1 mb-sm-0">Country</h5>
-                                                            <h3 className="mb-0">USA</h3>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-12 col-sm-6 mb-3">
-                                                        <div className="d-flex flex-column flex-sm-row align-items-center justify-content-between pb-3 my_profile_border">
-                                                            <h5 className="mb-1 mb-sm-0">Zipcode</h5>
-                                                            <h3 className="mb-0">252422</h3>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </TabPanel>
-
-                                    <TabPanel>
-                                        <div className="row" >
-                                            <div className="col-12">
-                                                <div className="d-flex align-items-center mb-3 heading_back_btn">
-                                                    <h2 className="m-0">Edit Profile</h2>
-                                                </div>
-                                                <div className="row">
-                                                    <div className="col-12 mb-4 edit_photo">
-                                                        <img src={about} alt="logo" />
-                                                        <a href="#" className="ms-3 change_image_btn">Change Porfile Image</a>
-                                                    </div>
-                                                    <div className="col-md-6">
-                                                        <form className="w-100 mb-4 pb-2" appearance="outline">
-                                                            <div className="input-group mb-0">
-                                                                <input type="text" placeholder="First Name" />
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                    <div className="col-md-6">
-                                                        <form className="w-100 mb-4" appearance="outline">
-                                                            <div className="input-group mb-0">
-                                                                <input type="text" placeholder="Last Name" />
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                    <div className="col-md-6">
-                                                        <form className="w-100 mb-4" appearance="outline">
-                                                            <div className="input-group mb-0">
-                                                                <input type="number" placeholder="Phone Number" />
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                    <div className="col-md-6">
-                                                        <form className="w-100 mb-4" appearance="outline">
-                                                            <div className="input-group mb-0">
-                                                                <input type="text" placeholder="Enter Email" />
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                    <div className="col-md-6">
-                                                        <form className="w-100 mb-4" appearance="outline">
-                                                            <div className="input-group mb-0">
-                                                                <input type="text" placeholder="Postal Code" />
-                                                            </div>
-                                                        </form>
-                                                    </div>
-
-                                                    <div className="col-md-6">
-                                                        <form className="w-100 mb-4" appearance="outline">
-                                                            <div className="input-group mb-0">
-                                                                <input type='date' placeholder='MM/DD/YYYY' />
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                    <div className="col-md-6">
-                                                        <form className="w-100 mb-4" appearance="outline">
-                                                            <div className="input-group mb-0">
-                                                                <input type="text" placeholder="Education" />
-                                                            </div>
-                                                        </form>
-                                                    </div>
-
-
-                                                    <div className="col-12">
-                                                        <div className="col-12 mt-3">
-                                                            <Button color="primary" className="profile_button p-2">
-                                                                SAVE
-                                                            </Button>
-                                                        </div>
-                                                    </div>
-                                                </div >
-                                            </div >
-                                        </div >
-                                    </TabPanel>
-
-                                    <TabPanel>
-                                        {NannyEarning != null ?
+                                      <Nannyprofile/>
+                                      {/*{NannyProfile != null ?
                                             <div className="row">
+                                                {NannyProfile.map((item) => <Nannyprofile
+                                                    provideProfit={item.provideProfit} total={item.total} />)}
+                                            </div>
+                                            : ''}*/}
+                                    </TabPanel>
+                                    <TabPanel>
+                                        <NeditProfile/>
+                                    </TabPanel>
+
+                                    <TabPanel>
+                                    <Earning/>
+                                        {/*{NannyEarning != null ?
+                                            <div>
                                                 {NannyEarning.map((item) => <Earning
                                                     provideProfit={item.provideProfit} total={item.total} />)}
                                             </div>
-                                            : ''}
+                                            : ''}*/}
                                     </TabPanel>
 
                                     <TabPanel>
@@ -334,10 +231,13 @@ const Profilenanny = () => {
                                     </TabPanel>
 
                                     <TabPanel>
-                                        <Manageservices/>
+                                        <Manageservices />
                                     </TabPanel>
                                     <TabPanel>
-                                      <Documentsnanny/>
+                                        <Documentsnanny />
+                                    </TabPanel>
+                                    <TabPanel>
+                                        <Contactus />
                                     </TabPanel>
                                 </card >
                             </div >

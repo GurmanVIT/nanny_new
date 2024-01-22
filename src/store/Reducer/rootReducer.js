@@ -9,7 +9,7 @@ import signUpfamilyReducer from '../apiSlice/SignupfamilySilce';
 import NlistReducer from '../apiSlice/NanylistSlice';
 import bookNannyReducer from '../apiSlice/BooknannySlice';
 import EarningReducer from '../apiSlice/EarningSlice';
-
+import NannyproReducer from '../apiSlice/NannyprofileSlice';
 
 const rootReducer = combineReducers({
   login: loginReducer,
@@ -21,6 +21,8 @@ const rootReducer = combineReducers({
   Nlist:NlistReducer,
   bookNanny:bookNannyReducer,
   Earning:EarningReducer,
+  Nannypro:NannyproReducer,
+
   // Add other reducers as needed
 });
 

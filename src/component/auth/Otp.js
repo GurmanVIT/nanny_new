@@ -81,7 +81,7 @@ const Otp = () => {
                                         />*/}
                                     </form>
                                     <div className="d-flex flex-column align-items-center justify-content-center">
-                                        <button color="primary" className="login_button px-4 btn all_btn" onClick={()=>handleOtpVerification()} >
+                                        <button type='button' color="primary" className="login_button px-4 btn all_btn" onClick={()=>handleOtpVerification()} >
                                             Verify
                                         </button>
                                         {/*{otpVerificationError && <p style={{ color: 'red' }}>Found Error</p>}*/}

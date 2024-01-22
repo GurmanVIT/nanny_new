@@ -7,6 +7,9 @@
     @media($breckpoint_XL) {
         padding: 20px;
       }
+      .card_profile{
+        padding: 20px;
+      }
 }
 .profile_photo {
     img {
@@ -35,6 +38,9 @@
             background-color: $primary-color;
             color: $light-color;
             @include transition;
+        }
+        &:focus-visible{
+            outline: none;
         }
     }
 }
@@ -73,10 +79,12 @@
 }
 
 .card_box {
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgb(92 92 92 / 10%);
     margin-bottom: 15px;
-    h1 {
+    border: none;
+    h6 {
         font-weight: 400;
+        font-size: 16px;
     }
 
     h4 {
@@ -217,5 +225,41 @@
             }
         }
       
+    }
+}
+
+
+.doc_nanny{
+    .doc_btn{
+        padding: 0px 4px;
+    }
+   .input-group{
+    border: none;
+    border-bottom: 1px solid #6f9ead;
+    padding: 0px 3px;
+   }
+}
+
+.contactus{
+    .number{
+        border-bottom: 1px solid #6f9ead;
+        padding: 10px 0px;
+        align-items: center;
+        h6{
+            margin: 0px 5px;
+        }
+        svg{
+            color: $primary-color;
+        }
+    }
+    .email{
+        padding: 10px 0px;
+        align-items: center;
+        h6{
+            margin: 0px 7px;
+        }
+        svg{
+            color: $primary-color;
+        }
     }
 }

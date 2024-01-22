@@ -5,19 +5,19 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 // Async thunk for fetching data
-export const fetchEarnAsync = createAsyncThunk('Earn/fetchEarn', async () => {
+export const fetchUserproAsync = createAsyncThunk('Userpro/fetchUserpro', async () => {
   const token = localStorage.getItem("Token")
   const headers = {"Authorization":token}
   try {
-    const response = await axios.get('https://dev-api-nanny.virtualittechnology.com/v1/nanny/getEarnings',{headers}); // Replace with your API endpoint
+    const response = await axios.get('https://dev-api-nanny.virtualittechnology.com/v1/user/profile',{headers}); // Replace with your API endpoint
     return response.data;
   } catch (error) {
     throw error;
   }
 });
 
-const EarnSlice = createSlice({
-  name: 'Earning',
+const UserproSlice = createSlice({
+  name: 'Userpro',
   initialState: {
     data: null,
     loading: 'idle',
@@ -26,19 +26,20 @@ const EarnSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchEarnAsync.pending, (state) => {
+      .addCase(fetchUserproAsync.pending, (state) => {
         state.loading = 'pending';
       })
-      .addCase(fetchEarnAsync.fulfilled, (state, action) => {
+      .addCase(fetchUserproAsync.fulfilled, (state, action) => {
         state.loading = 'idle';
         state.data = action.payload;
         state.error = null;
       })
-      .addCase(fetchEarnAsync.rejected, (state, action) => {
+      .addCase(fetchUserproAsync.rejected, (state, action) => {
         state.loading = 'idle';
         state.error = action.error.message;
       });
   },
 });
 
-export default EarnSlice.reducer;
+export default UserproSlice.reducer;
+

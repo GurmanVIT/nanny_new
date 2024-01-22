@@ -6,6 +6,8 @@ import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import Userprofile from './Userprofile';
+import UserAddress from './UserAddress';
 
 const Profile = () => {
     return (
@@ -30,6 +32,10 @@ const Profile = () => {
                                             <span className="ms-2">Edit Profile</span>
                                         </Tab>
                                         <Tab className="p-3 profile_option">
+                                            <i className="fa fa-edit"></i>
+                                            <span className="ms-2">My Address</span>
+                                        </Tab>
+                                        <Tab className="p-3 profile_option">
                                             <i className="fa fa-lock"></i>
                                             <span className="ms-2">Change Password</span>
                                         </Tab>
@@ -51,51 +57,7 @@ const Profile = () => {
                             <div className="col-md-9 h-100">
                                 <card className="rounded p-3">
                                     <TabPanel>
-                                        <div className="row">
-                                            <div className="col-12">
-                                                <div className="d-flex align-items-center mb-4">
-                                                    <h2 className="m-0">My Profile</h2>
-                                                </div>
-                                                <div className="row">
-                                                    <div className="col-12 col-sm-6 mb-3">
-                                                        <div className="input-group d-flex flex-column flex-sm-row align-items-center justify-content-between pb-1 my_profile_border">
-                                                            <h5 className="mb-1 mb-sm-0">First Name</h5>
-                                                            <h3 className="mb-0">Nanny 1</h3>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-12 col-sm-6 mb-3">
-                                                        <div className="input-group d-flex flex-column flex-sm-row align-items-center justify-content-between pb-1 my_profile_border">
-                                                            <h5 className="mb-1 mb-sm-0">Last Name</h5>
-                                                            <h3 className="mb-0">Nanny 1</h3>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-12 col-sm-6 mb-3">
-                                                        <div className="input-group d-flex flex-column flex-sm-row align-items-center justify-content-between pb-1 my_profile_border">
-                                                            <h5 className="mb-1 mb-sm-0">Phone Number</h5>
-                                                            <h3 className="mb-0">(+341) 252 4241</h3>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-12 col-sm-6 mb-3">
-                                                        <div className="input-group d-flex flex-column flex-sm-row align-items-center justify-content-between pb-1 my_profile_border">
-                                                            <h5 className="mb-1 mb-sm-0">Email Address</h5>
-                                                            <h3 className="mb-0">njkbcsv@gmsimc.com</h3>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-12 col-sm-6 mb-3">
-                                                        <div className="input-group d-flex flex-column flex-sm-row align-items-center justify-content-between pb-1 my_profile_border">
-                                                            <h5 className="mb-1 mb-sm-0">Country</h5>
-                                                            <h3 className="mb-0">USA</h3>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-12 col-sm-6 mb-3">
-                                                        <div className="input-group d-flex flex-column flex-sm-row align-items-center justify-content-between pb-3 my_profile_border">
-                                                            <h5 className="mb-1 mb-sm-0">Zipcode</h5>
-                                                            <h3 className="mb-0">252422</h3>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <Userprofile/>
                                     </TabPanel>
                                     <TabPanel>
                                         <div className="row" >
@@ -125,13 +87,6 @@ const Profile = () => {
                                                     <div className="col-md-6">
                                                         <form className="w-100 mb-4" appearance="outline">
                                                             <div className="input-group mb-0">
-                                                                <input type='date' placeholder='MM/DD/YYYY' />
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                    <div className="col-md-6">
-                                                        <form className="w-100 mb-4" appearance="outline">
-                                                            <div className="input-group mb-0">
                                                                 <input type="text" placeholder="Enter Email" />
                                                             </div>
                                                         </form>
@@ -143,43 +98,19 @@ const Profile = () => {
                                                             </div>
                                                         </form>
                                                     </div>
-                                                    <div className="col-md-6">
-                                                        <form className="w-100" appearance="outline">
-                                                            <div className="input-group mb-0">
-                                                                <label>Select Counrty</label>
-                                                                <select>
-                                                                    <option>None</option>
-                                                                    <option value="option1">Option 1</option>
-                                                                    <option value="option2">Option 2</option>
-                                                                    <option value="option3">Option 3</option>
-                                                                </select>
-                                                            </div>
-                                                        </form>
-                                                    </div >
-                                                    <div className="col-md-6">
-                                                        <form className="w-100" appearance="outline">
-                                                            <div className="input-group mb-0">
-                                                                <label
-                                                                >Select Zipcode</label>
-                                                                <select>
-                                                                    <option>None</option>
-                                                                    <option value="option1">Option 1</option>
-                                                                    <option value="option2">Option 2</option>
-                                                                    <option value="option3">Option 3</option>
-                                                                </select>
-                                                            </div>
-                                                        </form>
-                                                    </div >
                                                     <div className="col-12">
                                                         <div className="col-12 mt-3">
-                                                            <button color="primary" className="profile_button p-2">
-                                                                Submit
+                                                            <button type='button' color="primary" className="profile_button p-2">
+                                                                SAVE
                                                             </button>
                                                         </div>
                                                     </div>
                                                 </div >
                                             </div >
                                         </div >
+                                    </TabPanel>
+                                    <TabPanel>
+                                        <UserAddress/>
                                     </TabPanel>
                                     <TabPanel>
                                         <div className="row" >
@@ -211,8 +142,8 @@ const Profile = () => {
                                                         </form>
                                                     </div>
                                                     <div className="col-12">
-                                                        <button mat-fab extended color="primary" className="profile_button px-4">
-                                                            Submit
+                                                        <button type='button' color="primary" className="profile_button px-4">
+                                                            SAVE
                                                         </button>
                                                     </div>
                                                 </div>

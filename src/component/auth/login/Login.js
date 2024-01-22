@@ -50,7 +50,6 @@ const Login = () => {
     useEffect(() => {
         console.log(user)
         if(user!= null&&user.status===1) {
-            console.log(user.data.accessToken)
             localStorage.setItem("Token",user.data.accessToken)
             setInterval(()=>{
                 navigateToAnotherScreen();
@@ -100,7 +99,7 @@ const Login = () => {
                                         />*/}
                                         </div>
                                         <p> <Link className="d-flex justify-content-end" to='/forotpassword' >Forgot Password</Link></p>
-                                        <Button  onClick={() => handleLogin()}>
+                                        <Button type='button'  onClick={() => handleLogin()}>
                                             {/*{loading ? 'Logging in...' : 'Login'}*/}
                                             Login
                                         </Button>
