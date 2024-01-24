@@ -42,6 +42,7 @@ const Otp = () => {
       const navigate = useNavigate();
 
       const navigateToAnotherScreen = () => {
+        
           navigate('/nannycategories');
       }
       useEffect(() => {

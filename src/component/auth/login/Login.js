@@ -12,7 +12,6 @@ const Login = () => {
 
     const dispatch = useDispatch();
     const user = useSelector((state) => state.rootReducer.login.data);
-    console.log("state", user);
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -37,7 +36,12 @@ const Login = () => {
     const navigate = useNavigate();
 
     const navigateToAnotherScreen = () => {
-        navigate('/nannycategories');
+        if(user.data.type==1){
+        navigate('/Nannybooking');
+        }
+        else{
+            navigate('/nannycategories');
+        }
     }
 
     //useEffect(()=>{
@@ -48,13 +52,14 @@ const Login = () => {
 
 
     useEffect(() => {
-        console.log(user)
+        console.log("Login Data",user)
         if(user!= null&&user.status===1) {
-            localStorage.setItem("Token",user.data.accessToken)
-            setInterval(()=>{
-                navigateToAnotherScreen();
-            },2000)
-           
+            if(localStorage.getItem("Token").length!=null)
+                navigateToAnotherScreen()
+        }
+        else if(user!=null)
+        {
+            alert(user.message)
         }
     }, [user])
 

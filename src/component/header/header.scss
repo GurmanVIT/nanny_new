@@ -71,12 +71,14 @@ $breckpoint_340: "max-width: 355px";
 
     .btns {
       .btn {
-        background-color: #6ec1e4;
+        background-color: $primary-color;
         border-radius: 10px;
         margin: 0px 10px;
 
         .main-button {
-          color: #000 !important;
+          color: #fff !important;
+          background: transparent;
+          border: none;
         }
       
 

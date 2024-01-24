@@ -1,23 +1,25 @@
 
 
-// src/redux/cardsSlice.js
+// src/redux/NannyproSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { BASE_URL,UserprofileApi } from '../../utils/Constants';
 
 // Async thunk for fetching data
-export const fetchUserproAsync = createAsyncThunk('Userpro/fetchUserpro', async () => {
+export const getUserprofile = createAsyncThunk('getUserprofile', async () => {
   const token = localStorage.getItem("Token")
   const headers = {"Authorization":token}
   try {
-    const response = await axios.get('https://dev-api-nanny.virtualittechnology.com/v1/user/profile',{headers}); // Replace with your API endpoint
+    const url = BASE_URL+UserprofileApi
+    const response = await axios.get(url,{headers}); // Replace with your API endpoint
     return response.data;
   } catch (error) {
     throw error;
   }
 });
 
-const UserproSlice = createSlice({
-  name: 'Userpro',
+const UserProfileSlice = createSlice({
+  name: 'UserProfileReducer',
   initialState: {
     data: null,
     loading: 'idle',
@@ -26,20 +28,19 @@ const UserproSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchUserproAsync.pending, (state) => {
+      .addCase(getUserprofile.pending, (state) => {
         state.loading = 'pending';
       })
-      .addCase(fetchUserproAsync.fulfilled, (state, action) => {
+      .addCase(getUserprofile.fulfilled, (state, action) => {
         state.loading = 'idle';
         state.data = action.payload;
         state.error = null;
       })
-      .addCase(fetchUserproAsync.rejected, (state, action) => {
+      .addCase(getUserprofile.rejected, (state, action) => {
         state.loading = 'idle';
         state.error = action.error.message;
       });
   },
 });
 
-export default UserproSlice.reducer;
-
+export default UserProfileSlice.reducer;

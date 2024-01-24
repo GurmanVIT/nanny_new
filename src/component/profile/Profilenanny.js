@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import about from '../../assets/img/about.jpg';
 import visa_payment_card from '../../assets/img/visa-payment-card.png';
-import nany_icon from '../../assets/img/nany_icon.png';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import { Button } from 'react-bootstrap';
 import Earning from './Earning';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchEarnAsync } from '../../store/apiSlice/EarningSlice';
 import Manageservices from './Manageservices';
 import Documentsnanny from './Documentsnanny';
 import Contactus from './Contactus';
 import Nannyprofile from './Nannyprofile';
-import { fetchNannyproAsync } from '../../store/apiSlice/NannyprofileSlice';
+import { getNannyProfile } from '../../store/apiSlice/NannyprofileSlice';
 import NeditProfile from './NeditProfile';
 
 
@@ -21,35 +18,36 @@ const Profilenanny = () => {
 
 
     const dispatch = useDispatch();
-    const data = useSelector((state) => state.rootReducer);
-    console.log("data==>",data)
-    const nprofile = useSelector((state) => state.rootReducer);
+  const profileData = useSelector((state) => state.rootReducer.nannyProfileReducer.data);
 
     const [NannyEarning, setNannyEarning] = useState(null)
-    const [NannyProfile ,setNannyProfile] = useState(null)
-
-
+    const [nannyProfile ,setNannyProfile] = useState(null)
 
     useEffect(() => {
-        dispatch(fetchNannyproAsync());
+        dispatch(getNannyProfile());
     }, []);
 
     useEffect(() => {
-        if (nprofile != null) {
-            setNannyProfile(nprofile.data)
+
+        console.log("Profile Data ===> ",profileData)
+        if (profileData != null&&profileData.status===1) {
+            setNannyProfile(profileData.data)
         }
-    }, [nprofile])
-
-
-    useEffect(() => {
-        dispatch(fetchEarnAsync());
-    }, []);
-
-    useEffect(() => {
-        if (data != null) {
-            setNannyEarning(data.data)
+        else if(profileData!=null){
+            alert(profileData.message)
         }
-    }, [data])
+    }, [profileData])
+
+
+    //useEffect(() => {
+    //    dispatch(fetchEarnAsync());
+    //}, []);
+
+    //useEffect(() => {
+    //    if (data != null) {
+    //        //setNannyEarning(data.data)
+    //    }
+    //}, [data])
 
 
 
@@ -100,13 +98,10 @@ const Profilenanny = () => {
                             <div className="col-md-9 h-100">
                                 <card className="rounded p-3">
                                     <TabPanel>
-                                      <Nannyprofile/>
-                                      {/*{NannyProfile != null ?
-                                            <div className="row">
-                                                {NannyProfile.map((item) => <Nannyprofile
-                                                    provideProfit={item.provideProfit} total={item.total} />)}
-                                            </div>
-                                            : ''}*/}
+                                        {nannyProfile!==null&&
+                                      <Nannyprofile nannyData = {nannyProfile}/>
+                                        }
+                                  
                                     </TabPanel>
                                     <TabPanel>
                                         <NeditProfile/>
@@ -114,12 +109,6 @@ const Profilenanny = () => {
 
                                     <TabPanel>
                                     <Earning/>
-                                        {/*{NannyEarning != null ?
-                                            <div>
-                                                {NannyEarning.map((item) => <Earning
-                                                    provideProfit={item.provideProfit} total={item.total} />)}
-                                            </div>
-                                            : ''}*/}
                                     </TabPanel>
 
                                     <TabPanel>

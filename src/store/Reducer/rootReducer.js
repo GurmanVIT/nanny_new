@@ -9,7 +9,16 @@ import signUpfamilyReducer from '../apiSlice/SignupfamilySilce';
 import NlistReducer from '../apiSlice/NanylistSlice';
 import bookNannyReducer from '../apiSlice/BooknannySlice';
 import EarningReducer from '../apiSlice/EarningSlice';
-import NannyproReducer from '../apiSlice/NannyprofileSlice';
+import ongoingReducer from '../apiSlice/OngoingSlice';
+import upcommingReducer from '../apiSlice/UpcommingSlice';
+import nannyProfileReducer from '../apiSlice/NannyprofileSlice';
+import NannyEditprofileReducer from '../apiSlice/NeditProfileSlice';
+import UserProfileReducer from '../apiSlice/UserprofileSlice';
+import changePasswordReducer from '../apiSlice/ChangePasswordSlice';
+import UserEditprofileReducer from '../apiSlice/EditUserProfileSlice';
+import NannyupcommingReducer from '../apiSlice/NannyUpcomingSlice';
+import NannyOngoingReducer from '../apiSlice/OngoingNannySlice';
+import NannyPastReducer from '../apiSlice/NannypastSlice';
 
 const rootReducer = combineReducers({
   login: loginReducer,
@@ -21,8 +30,18 @@ const rootReducer = combineReducers({
   Nlist:NlistReducer,
   bookNanny:bookNannyReducer,
   Earning:EarningReducer,
-  Nannypro:NannyproReducer,
+  ongoingReducer:ongoingReducer,
+  upcommingReducer:upcommingReducer,
+  nannyProfileReducer:nannyProfileReducer,
+  NannyEditprofileReducer:NannyEditprofileReducer,
+  UserProfileReducer:UserProfileReducer,
+  changePasswordReducer:changePasswordReducer,
+  UserEditprofileReducer:UserEditprofileReducer,
+  NannyupcommingReducer:NannyupcommingReducer,
+  NannyOngoingReducer:NannyOngoingReducer,
+  NannyPastReducer:NannyPastReducer,
 
+  
   // Add other reducers as needed
 });
 

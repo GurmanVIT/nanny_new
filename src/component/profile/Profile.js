@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import about from '../../assets/img/about.jpg';
 import visa_payment_card from '../../assets/img/visa-payment-card.png';
 import nany_icon from '../../assets/img/nany_icon.png';
@@ -8,8 +8,14 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import Userprofile from './Userprofile';
 import UserAddress from './UserAddress';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserprofile } from '../../store/apiSlice/UserprofileSlice';
+import ChangePassword from './ChangePassword';
+import EditUserProfile from './EditUserProfile';
 
 const Profile = () => {
+
+
     return (
         <>
             <div className="container">
@@ -57,98 +63,16 @@ const Profile = () => {
                             <div className="col-md-9 h-100">
                                 <card className="rounded p-3">
                                     <TabPanel>
-                                        <Userprofile/>
+                                      <Userprofile/>
                                     </TabPanel>
                                     <TabPanel>
-                                        <div className="row" >
-                                            <div className="col-12">
-                                                <div className="d-flex align-items-center mb-3 heading_back_btn">
-                                                    <h2 className="m-0">Edit Profile</h2>
-                                                </div>
-                                                <div className="row">
-                                                    <div className="col-12 mb-4 edit_photo">
-                                                        <img src={about} alt="logo" />
-                                                        <a href="#" className="ms-3 change_image_btn">Change Porfile Image</a>
-                                                    </div>
-                                                    <div className="col-md-6">
-                                                        <form className="w-100 mb-4 pb-2" appearance="outline">
-                                                            <div className="input-group mb-0">
-                                                                <input type="text" placeholder="First Name" />
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                    <div className="col-md-6">
-                                                        <form className="w-100 mb-4" appearance="outline">
-                                                            <div className="input-group mb-0">
-                                                                <input type="text" placeholder="Last Name" />
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                    <div className="col-md-6">
-                                                        <form className="w-100 mb-4" appearance="outline">
-                                                            <div className="input-group mb-0">
-                                                                <input type="text" placeholder="Enter Email" />
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                    <div className="col-md-6">
-                                                        <form className="w-100 mb-4" appearance="outline">
-                                                            <div className="input-group mb-0">
-                                                                <input type="number" placeholder="Phone Number" />
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                    <div className="col-12">
-                                                        <div className="col-12 mt-3">
-                                                            <button type='button' color="primary" className="profile_button p-2">
-                                                                SAVE
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div >
-                                            </div >
-                                        </div >
+                                        <EditUserProfile/>
                                     </TabPanel>
                                     <TabPanel>
                                         <UserAddress/>
                                     </TabPanel>
                                     <TabPanel>
-                                        <div className="row" >
-                                            <div className="col-12">
-                                                <div className="d-flex align-items-center mb-3 heading_back_btn">
-
-                                                    <h2 className="m-0">Change Password</h2>
-                                                </div>
-                                                <div className="row">
-                                                    <div className="col-12">
-                                                        <form className="w-100 mb-4" appearance="outline">
-                                                            <div className="input-group mb-0">
-                                                                <input matInput type="text" placeholder="Current Password" />
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                    <div className="col-12">
-                                                        <form className="w-100 mb-4" appearance="outline">
-                                                            <div className="input-group mb-0">
-                                                                <input matInput type="text" placeholder="New Password" />
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                    <div className="col-12">
-                                                        <form className="w-100 mb-4" appearance="outline">
-                                                            <div className="input-group mb-0">
-                                                                <input matInput type="text" placeholder="Confirm Password" />
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                    <div className="col-12">
-                                                        <button type='button' color="primary" className="profile_button px-4">
-                                                            SAVE
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div >
-                                        </div >
+                                        <ChangePassword/>
                                     </TabPanel>
                                     <TabPanel>
                                         <div className="row" >

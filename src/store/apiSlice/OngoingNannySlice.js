@@ -1,16 +1,16 @@
 
 
-// src/redux/NannyproSlice.js
+// src/redux/cardsSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { BASE_URL, profileNanny } from '../../utils/Constants';
+import { BASE_URL, NannyBookingApi } from '../../utils/Constants';
 
 // Async thunk for fetching data
-export const getNannyProfile = createAsyncThunk('getNannyProfile', async () => {
+export const NannyOngoingUserList = createAsyncThunk('NannyOngoingUserList', async (payload) => {
   const token = localStorage.getItem("Token")
   const headers = {"Authorization":token}
   try {
-    const url = BASE_URL+profileNanny
+    const url = BASE_URL+NannyBookingApi+"?type="+payload
     const response = await axios.get(url,{headers}); // Replace with your API endpoint
     return response.data;
   } catch (error) {
@@ -18,29 +18,36 @@ export const getNannyProfile = createAsyncThunk('getNannyProfile', async () => {
   }
 });
 
-const NannyProfileSlice = createSlice({
-  name: 'nannyProfileReducer',
+const NannyOngoingSlice = createSlice({
+  name: 'NannyOngoingReducer',
   initialState: {
     data: null,
     loading: 'idle',
     error: null,
   },
-  reducers: {},
+  reducers: {
+    clearData: (state) => {
+        // Reset the data property to an empty array
+        state.data = null;
+    },
+},
   extraReducers: (builder) => {
     builder
-      .addCase(getNannyProfile.pending, (state) => {
+      .addCase(NannyOngoingUserList.pending, (state) => {
         state.loading = 'pending';
       })
-      .addCase(getNannyProfile.fulfilled, (state, action) => {
+      .addCase(NannyOngoingUserList.fulfilled, (state, action) => {
         state.loading = 'idle';
         state.data = action.payload;
         state.error = null;
       })
-      .addCase(getNannyProfile.rejected, (state, action) => {
+      .addCase(NannyOngoingUserList.rejected, (state, action) => {
         state.loading = 'idle';
         state.error = action.error.message;
       });
   },
 });
 
-export default NannyProfileSlice.reducer;
+export const { clearData } = NannyOngoingSlice.actions
+
+export default NannyOngoingSlice.reducer;

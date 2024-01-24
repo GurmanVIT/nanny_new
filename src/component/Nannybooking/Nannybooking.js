@@ -1,14 +1,14 @@
 import React from 'react';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
-import OngoingUser from './OngoingUser';
-import UpcomingUser from './UpcomingUser';
-import PastUser from './PastUser';
+import OngoingNanny from './OngoingNanny';
+import UpcomingNanny from './UpcomingNanny';
+import PastNanny from './PastNanny';
 
 
-const My_Orders_Component = () => {
-    return (
-        <>
-            <div className="container">
+const Nannybooking = () => {
+  return (
+    <>
+        <div className="container">
                 <div className="row order_card mb-5">
                     <Tabs>
                         <TabList>
@@ -17,19 +17,19 @@ const My_Orders_Component = () => {
                             <Tab>Past</Tab>
                         </TabList>
                         <TabPanel>
-                          <OngoingUser/>
+                          <OngoingNanny/>
                         </TabPanel>
                         <TabPanel>
-                           <UpcomingUser/>
+                           <UpcomingNanny/>
                         </TabPanel>
                         <TabPanel>
-                           <PastUser/>
+                           <PastNanny/>
                         </TabPanel>
                     </Tabs>
                 </div>
             </div>
-        </>
-    )
+    </>
+  )
 }
 
-export default My_Orders_Component;
+export default Nannybooking

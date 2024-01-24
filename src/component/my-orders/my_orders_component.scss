@@ -55,7 +55,9 @@
         .card-title{
             display: flex;
             justify-content: space-between;
-            
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-family: 'Kanit', sans-serif;
         }
         .card-img{
             margin-right: 10px;
@@ -63,17 +65,23 @@
 
         .nanny-info {
             .location {
-                color: $nany-book-color
+                color: #868686;
+                font-size: 13px;
+                svg{
+                    font-size: 20px;
+                }
             }
 
             .time {
-                color: $nany-book-color
+                color: #868686;
+                font-size: 13px;
             }
         }
     }
 
     .ordered_persons {
-        border-top: 2px solid $primary-color;
+        margin-top: 5px;
+        border-top: 1px solid $primary-color;
 
         img {
             width: 35px;
@@ -91,9 +99,16 @@
             }
 
             .star {
-                color: $dark-color;
+                h6{
+                    font-size: 17px;
+                    svg{
+                        color: orangered;
+                        font-size: 16px;
+                    }
+                }
+           
 
-                i {
+                svg {
                     color: $star-color;
                 }
             }

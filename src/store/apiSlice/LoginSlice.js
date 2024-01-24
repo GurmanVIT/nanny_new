@@ -5,6 +5,7 @@ import axios from 'axios';
 export const loginUser = createAsyncThunk('loginUser', async (payload) => {
 
     const response = await axios.post('https://dev-api-nanny.virtualittechnology.com/v1/common/login', payload);
+    localStorage.setItem("Token",response.data.data.accessToken)
     return response.data;
 });
 
@@ -19,7 +20,7 @@ const loginSlice = createSlice({
     reducers: {
         clearData: (state) => {
             // Reset the data property to an empty array
-            state.data = [];
+            state.data = null;
         },
     },
     extraReducers: (builder) => {

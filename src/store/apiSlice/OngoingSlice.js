@@ -1,16 +1,16 @@
 
 
-// src/redux/NannyproSlice.js
+// src/redux/cardsSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { BASE_URL, profileNanny } from '../../utils/Constants';
+import { BASE_URL, OngoingUserApi } from '../../utils/Constants';
 
 // Async thunk for fetching data
-export const getNannyProfile = createAsyncThunk('getNannyProfile', async () => {
+export const ongoingUserList = createAsyncThunk('ongoingUserList', async () => {
   const token = localStorage.getItem("Token")
   const headers = {"Authorization":token}
   try {
-    const url = BASE_URL+profileNanny
+    const url = BASE_URL+OngoingUserApi
     const response = await axios.get(url,{headers}); // Replace with your API endpoint
     return response.data;
   } catch (error) {
@@ -18,8 +18,8 @@ export const getNannyProfile = createAsyncThunk('getNannyProfile', async () => {
   }
 });
 
-const NannyProfileSlice = createSlice({
-  name: 'nannyProfileReducer',
+const OngoingSlice = createSlice({
+  name: 'ongoingReducer',
   initialState: {
     data: null,
     loading: 'idle',
@@ -28,19 +28,19 @@ const NannyProfileSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getNannyProfile.pending, (state) => {
+      .addCase(ongoingUserList.pending, (state) => {
         state.loading = 'pending';
       })
-      .addCase(getNannyProfile.fulfilled, (state, action) => {
+      .addCase(ongoingUserList.fulfilled, (state, action) => {
         state.loading = 'idle';
         state.data = action.payload;
         state.error = null;
       })
-      .addCase(getNannyProfile.rejected, (state, action) => {
+      .addCase(ongoingUserList.rejected, (state, action) => {
         state.loading = 'idle';
         state.error = action.error.message;
       });
   },
 });
 
-export default NannyProfileSlice.reducer;
+export default OngoingSlice.reducer;

@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import { Button } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
 import about from '../../assets/img/about.jpg';
 import { useDispatch, useSelector } from 'react-redux';
+import { UserEditprofile } from '../../store/apiSlice/EditUserProfileSlice';
 import { useNavigate } from 'react-router-dom';
-import { NannyEditprofile } from '../../store/apiSlice/NeditProfileSlice';
 
-const NeditProfile = () => {
+const EditUserProfile = () => {
 
     const dispatch = useDispatch();
-    const NannyEditData = useSelector((state) => state.rootReducer.NannyEditprofileReducer.data);
-    const profileData = useSelector((state) => state.rootReducer.nannyProfileReducer.data);
+    const UserEditData = useSelector((state) => state.rootReducer.UserEditprofileReducer.data);
+    const profileData = useSelector((state) => state.rootReducer.UserProfileReducer.data);
     const [email, setEmail] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -35,30 +34,30 @@ const NeditProfile = () => {
         }
 
         try {
-            dispatch(NannyEditprofile(payload));
+            dispatch(UserEditprofile(payload));
             // Handle success, e.g., navigate to another screen
         } catch (error) {
             // Handle error, e.g., display an error message
-            console.error('NannyEditprofile failed:', error);
+            console.error('UserEditprofile failed:', error);
         }
     };
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log(" Data",NannyEditData)
-        if(NannyEditData!= null&&NannyEditData.status===1) {
-              alert(NannyEditData.message)
+        console.log(" Data",UserEditData)
+        if(UserEditData!= null&&UserEditData.status===1) {
+              alert(UserEditData.message)
         }
-        else if(NannyEditData!=null)
+        else if(UserEditData!=null)
         {
-            alert(NannyEditData.message)
+            alert(UserEditData.message)
         }
-    }, [NannyEditData])
+    }, [UserEditData])
 
 
     useEffect(()=>{
-        console.log("Profile data ===> ",profileData)
+        console.log("UserProfile data ===> ",profileData)
         if(profileData!=null&&profileData.status===1){
             setFirstName(profileData.data.firstName)
             setLastName(profileData.data.lastName)
@@ -72,7 +71,6 @@ const NeditProfile = () => {
     },[profileData])
 
 
-
     return (
         <>
             <div className="row" >
@@ -80,76 +78,51 @@ const NeditProfile = () => {
                     <div className="d-flex align-items-center mb-3 heading_back_btn">
                         <h2 className="m-0">Edit Profile</h2>
                     </div>
-                    {profileData!=null && <div className="row">
+                    <div className="row">
                         <div className="col-12 mb-4 edit_photo">
                             <img src={profileData.data.profileImage} alt="logo" />
                             <a href="#" className="ms-3 change_image_btn">Change Porfile Image</a>
                         </div>
                         <div className="col-md-6">
-                            <form className="w-100 mb-4 pb-2" appearance="outline">
+                            <form className="w-100 mb-4 pb-2">
                                 <div className="input-group mb-0">
                                     <input type="text" placeholder="First Name" value={firstName} onChange={(val)=>setFirstName(val.target.value)}/>
                                 </div>
                             </form>
                         </div>
                         <div className="col-md-6">
-                            <form className="w-100 mb-4" appearance="outline">
+                            <form className="w-100 mb-4" >
                                 <div className="input-group mb-0">
                                     <input type="text" placeholder="Last Name" value={lastName} onChange={(val)=>setLastName(val.target.value)}/>
                                 </div>
                             </form>
                         </div>
                         <div className="col-md-6">
-                            <form className="w-100 mb-4" appearance="outline">
-                                <div className="input-group mb-0">
-                                    <input type="number" placeholder="Phone Number" value={mobileNumber} onChange={(val)=>setMobileNumber(val.target.value)}/>
-                                </div>
-                            </form>
-                        </div>
-                        <div className="col-md-6">
-                            <form className="w-100 mb-4" appearance="outline">
+                            <form className="w-100 mb-4">
                                 <div className="input-group mb-0">
                                     <input type="text" placeholder="Enter Email" value={email} onChange={(val)=>setEmail(val.target.value)}/>
                                 </div>
                             </form>
                         </div>
                         <div className="col-md-6">
-                            <form className="w-100 mb-4" appearance="outline">
+                            <form className="w-100 mb-4">
                                 <div className="input-group mb-0">
-                                    <input type="text" placeholder="Postal Code" value={pinCode} onChange={(val)=>setPinCode(val.target.value)}/>
+                                    <input type="number" placeholder="Phone Number" value={mobileNumber} onChange={(val)=>setMobileNumber(val.target.value)}/>
                                 </div>
                             </form>
                         </div>
-
-                        <div className="col-md-6">
-                            <form className="w-100 mb-4" appearance="outline">
-                                <div className="input-group mb-0">
-                                    <input type='date'  value={date} onChange={(val)=>setDate(val.target.value)}/>
-                                </div>
-                            </form>
-                        </div>
-                        <div className="col-md-6">
-                            <form className="w-100 mb-4" appearance="outline">
-                                <div className="input-group mb-0">
-                                    <input type="text" placeholder="Education" value={education} onChange={(val)=>setEducation(val.target.value)}/>
-                                </div>
-                            </form>
-                        </div>
-
-
                         <div className="col-12">
                             <div className="col-12 mt-3">
-                                <Button type='button' color="primary" className="profile_button p-2" onClick={()=>updateProfile()}>
+                                <button type='button' color="primary" className="profile_button p-2" onClick={()=>updateProfile()}>
                                     SAVE
-                                </Button>
+                                </button>
                             </div>
                         </div>
                     </div >
-}
                 </div >
             </div >
         </>
     )
 }
 
-export default NeditProfile
+export default EditUserProfile

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Modal from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
-import { CastConnected, MenuOutlined } from "@mui/icons-material";
+import { CastConnected, MenuOutlined, Notifications } from "@mui/icons-material";
 import logo from '../../assets/img/logo_nav.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -15,6 +15,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch()
+  const [type,setType] = useState(1)
 
 
   const user = useSelector((state) => state.rootReducer.login.data);
@@ -28,6 +29,11 @@ const Header = () => {
         setScrolled(false);
       }
     };
+    if(user!=null)
+    {
+      console.log("TYPE ===> ",user.data.type)
+      setType(user.data.type)
+    }
 
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -49,9 +55,9 @@ const Header = () => {
 
     localStorage.clear()
     dispatch(clearData())
-    setInterval(() => {
+  
+      console.log("Logout")
       navigate('/login');
-    }, 1000);
 
   }
 
@@ -61,7 +67,7 @@ const Header = () => {
       <div className={`header main-head ${scrolled ? "scrolled" : ""}`}>
         <div className="coustom_container">
           {localStorage.getItem("Token") == null ?
-            <div className="inner">
+            (<div className="inner">
               <div className="logo">
                 <Link to="/">
                   <img className="mw-100" src={logo} alt="logo" style={{ width: "160px" }} />
@@ -102,9 +108,9 @@ const Header = () => {
                   </Link>
                 </div>
               </div>
-            </div>
-            :
-            <div className="inner">
+            </div>)
+            :user!=null&&user.data.type==1?
+            (<div className="inner">
               <div className="logo">
                 <Link to="/">
                   <img className="mw-100" src={logo} alt="logo" style={{ width: "160px" }} />
@@ -113,10 +119,10 @@ const Header = () => {
               <div className="navigation">
                 <ul>
                   <li>
-                    <Link to="/">Home</Link>
+                    <Link to="/nannycategories">Home</Link>
                   </li>
                   <li>
-                    <Link to="/about">Booking</Link>
+                    <Link to="/Nannybooking">Booking</Link>
                   </li>
                   <li>
                     <Link to="/availability">Availability</Link>
@@ -125,15 +131,56 @@ const Header = () => {
               </div>
               <div className="btns">
                 <div className="btn">
-                  <Link className="main-button" to="/login" onClick={onLogoutClick}>
+                  <button type='button'  className="main-button" onClick={()=>onLogoutClick()}>
                     Logout
-                  </Link>
+                  </button>
                 </div>
                 <div className='btn profile'>
-                  <Link className='main-button ' to="/profile"><PersonIcon /></Link>
+                  <Link className='main-button ' to="/profile">< Notifications /></Link>
                 </div>
+                <div className='btn profile'>
+                  
+                  <Link className='main-button ' to={user!=null&&user.data.type==1?"/profilenanny":"/profile"}><PersonIcon /></Link>
+                </div>
+             
+              </div>
+            </div>)
+            :(<div className="inner">
+              <div className="logo">
+                <Link to="/">
+                  <img className="mw-100" src={logo} alt="logo" style={{ width: "160px" }} />
+                </Link>
+              </div>
+              <div className="navigation">
+                <ul>
+                  <li>
+                    <Link to="/nannycategories">Home</Link>
+                  </li>
+                  <li>
+                    <Link to="/my_orders_component">Booking</Link>
+                  </li>
+                  <li>
+                    <Link to="/contact">Contact Us</Link>
+                  </li>
+                </ul>
+              </div>
+              <div className="btns">
+                <div className="btn">
+                  <button type='button'  className="main-button" onClick={()=>onLogoutClick()}>
+                    Logout
+                  </button>
+                </div>
+                <div className='btn profile'>
+                  <Link className='main-button ' to="/profile">< Notifications /></Link>
+                </div>
+                <div className='btn profile'>
+                  
+                  <button type='button' className='main-button ' onClick={()=>user!=null&&user.data.type==1?navigate("/profilenanny"):navigate("/profile")}><PersonIcon /></button>
+                </div>
+             
               </div>
             </div>
+            )
           }
         </div>
       </div>

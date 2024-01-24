@@ -25,6 +25,8 @@ import Signupnanny from "./component/auth/Signupnanny";
 import Card from "./component/Nanny-categories/Card";
 import Availability from "./component/Availability/Availability";
 import Profilenanny from "./component/profile/Profilenanny";
+import Nannyprofile from "./component/profile/Nannyprofile";
+import Nannybooking from "./component/Nannybooking/Nannybooking";
 
 function App() {
   return (
@@ -55,6 +57,7 @@ function App() {
           <Route path="/card" element={<Card/>}/>
           <Route path="/availability" element={<Availability/>}/>
           <Route path='/profilenanny' element={<Profilenanny/>} />
+          <Route path='/Nannybooking' element={<Nannybooking/>}/>
         </Routes>
         <Footer />
       </BrowserRouter>

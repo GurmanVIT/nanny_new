@@ -263,3 +263,37 @@
         }
     }
 }
+.modal_address{
+    top: 60px !important;
+    .modal-body{
+        form{
+            display: grid;
+            .address_form{
+                display: contents;
+                label{
+                    margin-bottom: 5px;
+                    padding-left: 6px;
+                    color: #666666;
+                }
+                input{
+                    border: none;
+                    border-bottom: 1px solid #949292;
+                    margin-bottom: 8px;
+                    padding-left: 6px;
+                    font-weight: 600;
+
+                }
+            }
+        }
+    }
+    .modal-footer{
+        justify-content: center !important;
+        border: none;
+        padding-top: 0px;
+    }
+    .address_btn{
+        background-color: $primary-color;
+        border-color:  $primary-color;
+        width: 50%;
+    }
+}
