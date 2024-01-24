@@ -5,27 +5,35 @@ import { clearData } from '../../store/apiSlice/OngoingNannySlice'
 import next_btn from '../../assets/img/next_btn.png';
 import call_btn from '../../assets/img/call_btn.png';
 import { NannyupcommingUserList } from '../../store/apiSlice/NannyUpcomingSlice';
+import { LocationOn } from '@mui/icons-material';
+import { Dropdown } from 'react-bootstrap';
 
 
 const UpcomingNanny = () => {
 
   const ongoingData = useSelector((state) => state.rootReducer.NannyupcommingReducer.data)
-    const [dataList, setDataList] = useState(null)
+  const [dataList, setDataList] = useState(null)
 
-    const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(NannyupcommingUserList(0))
-        return()=>{
-          dispatch(clearData())
-      }
-    }, [])
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(NannyupcommingUserList(0))
+    return () => {
+      dispatch(clearData())
+    }
+  }, [])
 
-    useEffect(() => {
-        console.log("Ongoing data ===> ", ongoingData)
-        if (ongoingData != null && ongoingData.status === 1) {
-            setDataList(ongoingData.data.data)
-        }
-    }, [ongoingData])
+  useEffect(() => {
+    console.log("upngoing data ===> ", ongoingData)
+    if (ongoingData != null && ongoingData.status === 1) {
+      setDataList(ongoingData.data.data)
+    }
+  }, [ongoingData])
+
+  const onAcceptClick = () => {
+
+  }
+
+
 
 
   return (
@@ -45,7 +53,7 @@ const UpcomingNanny = () => {
 
               <div className='Card.Text'>
                 <div className="nanny-info">
-                  <div className="location mb-1 d-flex align-items-baseline"><span>{item.address}</span></div>
+                  <div className="location mb-1 d-flex align-items-center"><LocationOn /> <span>{item.address}</span></div>
                   <p className="time mb-0 text-truncate">{item.date} <span>{item.time}</span></p>
                 </div>
               </div>
@@ -55,14 +63,35 @@ const UpcomingNanny = () => {
             <div className='upcoming_option mt-2 pt-2'>
               <div className='d-flex justify-content-between align-items-center'>
                 <div >
-                  <Link to="#" className='mb-0'>{item.status === 0 ? "Cancel Booking" : item.status === 1 ? "Request Accepted" : "Canceled"}</Link>
+                  {item.status === 1?
+                  <Dropdown>
+                  <Dropdown.Toggle id="dropdown-basic" className='main-button'>
+                  Request Accepted
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item >On The Way</Dropdown.Item>
+                    <Dropdown.Item href="#">Reached</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>:<button type='button' className='mb-0 main-button'>{item.status === 0 ? "Accept Request" :  "Canceled"}</button>
+                }
+                  
+
+                  
+
                 </div>
-                <div>
-                  <div className="upcoming_btns d-flex align-items-center">
-                    <Link to="#" className="me-3"><img src={next_btn} alt="logo" /></Link>
-                    <Link to="#"><img src={call_btn} alt="logo" /></Link>
+                {item.status !== 0 ?
+                  <div>
+                    <div className="upcoming_btns d-flex align-items-center">
+                      <Link to="#"><img src={next_btn} alt="logo" /></Link>
+                      <Link to="#"><img src={call_btn} alt="logo" /></Link>
+                    </div>
+                  </div> :
+                  <div >
+                    <button type='button' className='mb-0 main-button'>Reject Request</button>
                   </div>
-                </div>
+
+                }
               </div>
             </div>
           </div>

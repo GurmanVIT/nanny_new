@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Star } from '@mui/icons-material'
+import { LocationOn, Star } from '@mui/icons-material'
 import founder from '../../assets/img/founder.jpg';
 import { useDispatch, useSelector } from 'react-redux';
 import {clearData } from '../../store/apiSlice/OngoingNannySlice';
@@ -44,7 +44,7 @@ const PastNanny = () => {
 
               <div className='Card.Text'>
                 <div className="nanny-info">
-                  <div className="location mb-1 d-flex align-items-baseline"><span>{item.address}</span></div>
+                  <div className="location mb-1 d-flex align-items-center"><LocationOn /><span>{item.address}</span></div>
                   <p className="time mb-0 text-truncate">{item.date} <span>{item.time}</span></p>
                 </div>
 
@@ -62,7 +62,7 @@ const PastNanny = () => {
                   </div>
                 </div>
                 <div >
-                  <button className='btn-success-nany'>Success</button>
+                  <button className='btn-success-nany'>{item.status===3?"Completed":''}</button>
                 </div>
               </div>
             </div>

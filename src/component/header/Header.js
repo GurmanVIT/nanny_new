@@ -136,7 +136,7 @@ const Header = () => {
                   </button>
                 </div>
                 <div className='btn profile'>
-                  <Link className='main-button ' to="/profile">< Notifications /></Link>
+                  <Link className='main-button ' to="#">< Notifications /></Link>
                 </div>
                 <div className='btn profile'>
                   
@@ -171,7 +171,7 @@ const Header = () => {
                   </button>
                 </div>
                 <div className='btn profile'>
-                  <Link className='main-button ' to="/profile">< Notifications /></Link>
+                  <Link className='main-button ' to="#">< Notifications /></Link>
                 </div>
                 <div className='btn profile'>
                   

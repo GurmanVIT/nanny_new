@@ -146,7 +146,8 @@
     }
 
     .upcoming_option {
-        border-top: 2px solid $primary-color;
+        margin-top: 5px;
+        border-top: 1px solid $primary-color;
 
         a {
             color: $green-color;
@@ -156,6 +157,12 @@
         img {
             width: 20px;
             height: 100%;
+        }
+
+        .main-button{
+            background: none;
+            border: none;
+            color: $primary-color;
         }
     }
 }
