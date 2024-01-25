@@ -5,7 +5,8 @@ import { BASE_URL, UserEditProfileApi } from '../../utils/Constants';
 
 export const UserEditprofile = createAsyncThunk('UserEditprofile', async (payload) => {
     const token = localStorage.getItem("Token")
-    const headers = {"Authorization":token}
+    const headers = {"Authorization":token ,  "Access-Control-Allow-Origin": "*",
+    "Content-Type": "application/json", }
     try{  const url = BASE_URL+UserEditProfileApi
         const response = await axios.put(url, payload,{headers});
         return response.data;}

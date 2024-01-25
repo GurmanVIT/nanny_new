@@ -8,7 +8,8 @@ import { BASE_URL, NannyBookingApi } from '../../utils/Constants';
 // Async thunk for fetching data
 export const NannyOngoingUserList = createAsyncThunk('NannyOngoingUserList', async (payload) => {
   const token = localStorage.getItem("Token")
-  const headers = {"Authorization":token}
+  const headers = {"Authorization":token,  "Access-Control-Allow-Origin": "*",
+  "Content-Type": "application/json", }
   try {
     const url = BASE_URL+NannyBookingApi+"?type="+payload
     const response = await axios.get(url,{headers}); // Replace with your API endpoint

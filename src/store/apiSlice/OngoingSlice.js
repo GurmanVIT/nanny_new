@@ -8,7 +8,8 @@ import { BASE_URL, OngoingUserApi } from '../../utils/Constants';
 // Async thunk for fetching data
 export const ongoingUserList = createAsyncThunk('ongoingUserList', async () => {
   const token = localStorage.getItem("Token")
-  const headers = {"Authorization":token}
+  const headers = {"Authorization":token,  "Access-Control-Allow-Origin": "*",
+  "Content-Type": "application/json", }
   try {
     const url = BASE_URL+OngoingUserApi
     const response = await axios.get(url,{headers}); // Replace with your API endpoint

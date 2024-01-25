@@ -139,7 +139,7 @@ const NeditProfile = () => {
 
                         <div className="col-12">
                             <div className="col-12 mt-3">
-                                <Button type='button' color="primary" className="profile_button p-2" onClick={()=>updateProfile()}>
+                                <Button type='button' color="primary" className="profile_button save" onClick={()=>updateProfile()}>
                                     SAVE
                                 </Button>
                             </div>

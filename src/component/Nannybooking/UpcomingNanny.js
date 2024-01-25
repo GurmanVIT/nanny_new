@@ -5,6 +5,7 @@ import { clearData } from '../../store/apiSlice/OngoingNannySlice'
 import next_btn from '../../assets/img/next_btn.png';
 import call_btn from '../../assets/img/call_btn.png';
 import { NannyupcommingUserList } from '../../store/apiSlice/NannyUpcomingSlice';
+import { UpdateBookingStatus } from '../../store/apiSlice/UpdateBookingStatusSlice';
 import { LocationOn } from '@mui/icons-material';
 import { Dropdown } from 'react-bootstrap';
 
@@ -12,6 +13,11 @@ import { Dropdown } from 'react-bootstrap';
 const UpcomingNanny = () => {
 
   const ongoingData = useSelector((state) => state.rootReducer.NannyupcommingReducer.data)
+  //const updateBookstatus = useSelector((state) => state.rootReducer.UpdateBookingStatusReducer.data)
+  const [updateBook, setupdateBook] = useState(null)
+
+  console.log("updateBookstatus == >". updateBookstatus)
+
   const [dataList, setDataList] = useState(null)
 
   const dispatch = useDispatch()
@@ -21,6 +27,15 @@ const UpcomingNanny = () => {
       dispatch(clearData())
     }
   }, [])
+
+
+  const updateBookingStatusApi= (statusVal,bookingId) =>{
+    const payload = {
+      bookingId:bookingId,
+      status: statusVal
+    }
+    dispatch(UpdateBookingStatus())
+  } 
 
   useEffect(() => {
     console.log("upngoing data ===> ", ongoingData)
@@ -40,7 +55,8 @@ const UpcomingNanny = () => {
     <>
       <div className="all_order_box">
 
-        {dataList != null && dataList.map((item) => <div className='card nany_orders'>
+        {dataList != null && dataList.map((item) => 
+        <div className='card nany_orders'>
           <div className='card.body d-flex'>
             <div className='card.img mr-2'>
               <img src={item.userId.profileImage} className="rounded-circle" />
@@ -70,15 +86,11 @@ const UpcomingNanny = () => {
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>
-                    <Dropdown.Item >On The Way</Dropdown.Item>
-                    <Dropdown.Item href="#">Reached</Dropdown.Item>
+                    <Dropdown.Item onClick={() => updateBookingStatusApi(2,item._id)}>On The Way</Dropdown.Item>
+                    <Dropdown.Item onClick={() => updateBookingStatusApi(3,item._id)}>Reached</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>:<button type='button' className='mb-0 main-button'>{item.status === 0 ? "Accept Request" :  "Canceled"}</button>
                 }
-                  
-
-                  
-
                 </div>
                 {item.status !== 0 ?
                   <div>

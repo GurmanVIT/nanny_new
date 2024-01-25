@@ -3,24 +3,24 @@
 // src/redux/cardsSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { BASE_URL, NannyBookingApi } from '../../utils/Constants';
+import { BASE_URL, updateBookingStatusApi } from '../../utils/Constants';
 
 // Async thunk for fetching data
-export const NannyPastUserList = createAsyncThunk('NannyPastUserList', async (payload) => {
+export const UpdateBookingStatus = createAsyncThunk('UpdateBookingStatus', async (payload) => {
   const token = localStorage.getItem("Token")
-  const headers = {"Authorization":token,  "Access-Control-Allow-Origin": "*",
+  const headers = {"Authorization":token ,  "Access-Control-Allow-Origin": "*",
   "Content-Type": "application/json", }
   try {
-    const url = BASE_URL+NannyBookingApi+"?type="+payload
-    const response = await axios.get(url,{headers}); // Replace with your API endpoint
+    const url = BASE_URL+updateBookingStatusApi
+    const response = await axios.put(url,payload,{headers}); // Replace with your API endpoint
     return response.data;
   } catch (error) {
     throw error;
   }
 });
 
-const NannyPastSlice = createSlice({
-  name: 'NannyPastReducer',
+const UpdateBookingStatusSlice = createSlice({
+  name: 'UpdateBookingStatusReducer',
   initialState: {
     data: null,
     loading: 'idle',
@@ -34,21 +34,21 @@ const NannyPastSlice = createSlice({
 },
   extraReducers: (builder) => {
     builder
-      .addCase(NannyPastUserList.pending, (state) => {
+      .addCase(UpdateBookingStatus.pending, (state) => {
         state.loading = 'pending';
       })
-      .addCase(NannyPastUserList.fulfilled, (state, action) => {
+      .addCase(UpdateBookingStatus.fulfilled, (state, action) => {
         state.loading = 'idle';
         state.data = action.payload;
         state.error = null;
       })
-      .addCase(NannyPastUserList.rejected, (state, action) => {
+      .addCase(UpdateBookingStatus.rejected, (state, action) => {
         state.loading = 'idle';
         state.error = action.error.message;
       });
   },
 });
 
-export const { clearData } = NannyPastSlice.actions
+export const { clearData } = UpdateBookingStatusSlice.actions
 
-export default NannyPastSlice.reducer;
+export default UpdateBookingStatusSlice.reducer;

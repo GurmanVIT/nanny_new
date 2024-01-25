@@ -113,7 +113,7 @@ const EditUserProfile = () => {
                         </div>
                         <div className="col-12">
                             <div className="col-12 mt-3">
-                                <button type='button' color="primary" className="profile_button p-2" onClick={()=>updateProfile()}>
+                                <button type='button' color="primary" className="profile_button save" onClick={()=>updateProfile()}>
                                     SAVE
                                 </button>
                             </div>

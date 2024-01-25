@@ -12,6 +12,7 @@ export const NannyBookingApi = "/v1/nanny/getMyBookings"
 //Nanny Api's
 export const profileNanny ="/v1/nanny/profile"
 export const updateProfileNanny ="/v1/nanny/updateProfile"
+export const updateBookingStatusApi ="/v1/nanny/updateBookingStatus"
 
 //Common Api's
 export const changePassword ="/v1/common/changePassword"

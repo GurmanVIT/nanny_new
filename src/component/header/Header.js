@@ -15,10 +15,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch()
-  const [type,setType] = useState(1)
-
-
-  const user = useSelector((state) => state.rootReducer.login.data);
+  const [type,setType] = useState(0)
 
   useEffect(() => {
 
@@ -29,17 +26,11 @@ const Header = () => {
         setScrolled(false);
       }
     };
-    if(user!=null)
-    {
-      console.log("TYPE ===> ",user.data.type)
-      setType(user.data.type)
-    }
-
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [user]);
+  }, []);
 
   const [openModal2, setOpenModal2] = useState(false);
 
@@ -109,42 +100,6 @@ const Header = () => {
                 </div>
               </div>
             </div>)
-            :user!=null&&user.data.type==1?
-            (<div className="inner">
-              <div className="logo">
-                <Link to="/">
-                  <img className="mw-100" src={logo} alt="logo" style={{ width: "160px" }} />
-                </Link>
-              </div>
-              <div className="navigation">
-                <ul>
-                  <li>
-                    <Link to="/nannycategories">Home</Link>
-                  </li>
-                  <li>
-                    <Link to="/Nannybooking">Booking</Link>
-                  </li>
-                  <li>
-                    <Link to="/availability">Availability</Link>
-                  </li>
-                </ul>
-              </div>
-              <div className="btns">
-                <div className="btn">
-                  <button type='button'  className="main-button" onClick={()=>onLogoutClick()}>
-                    Logout
-                  </button>
-                </div>
-                <div className='btn profile'>
-                  <Link className='main-button ' to="#">< Notifications /></Link>
-                </div>
-                <div className='btn profile'>
-                  
-                  <Link className='main-button ' to={user!=null&&user.data.type==1?"/profilenanny":"/profile"}><PersonIcon /></Link>
-                </div>
-             
-              </div>
-            </div>)
             :(<div className="inner">
               <div className="logo">
                 <Link to="/">
@@ -175,7 +130,7 @@ const Header = () => {
                 </div>
                 <div className='btn profile'>
                   
-                  <button type='button' className='main-button ' onClick={()=>user!=null&&user.data.type==1?navigate("/profilenanny"):navigate("/profile")}><PersonIcon /></button>
+                  <button type='button' className='main-button ' onClick={()=>navigate("/profile")}><PersonIcon /></button>
                 </div>
              
               </div>

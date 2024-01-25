@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserprofile } from '../../store/apiSlice/UserprofileSlice';
 import ChangePassword from './ChangePassword';
 import EditUserProfile from './EditUserProfile';
+import { Edit, Home, LockPerson, Person } from '@mui/icons-material';
 
 const Profile = () => {
 
@@ -29,32 +30,26 @@ const Profile = () => {
                                         <h2 className="mt-3">My Name</h2>
                                     </div>
                                     <TabList className="profile_edit_options">
-                                        <Tab className="p-3 profile_option">
-                                            <i className="fa fa-edit"></i>
+                                        <Tab className=" profile_option">
                                             <span className="ms-2">My Profile</span>
                                         </Tab>
-                                        <Tab className="p-3 profile_option">
-                                            <i className="fa fa-edit"></i>
+                                        <Tab className=" profile_option">
                                             <span className="ms-2">Edit Profile</span>
                                         </Tab>
-                                        <Tab className="p-3 profile_option">
-                                            <i className="fa fa-edit"></i>
+                                        <Tab className=" profile_option">
                                             <span className="ms-2">My Address</span>
                                         </Tab>
-                                        <Tab className="p-3 profile_option">
-                                            <i className="fa fa-lock"></i>
+                                        <Tab className=" profile_option">
                                             <span className="ms-2">Change Password</span>
                                         </Tab>
-                                        <Tab className="p-3 profile_option" >
-                                            <i className="fa fa-cog"></i>
+                                        <Tab className=" profile_option" >
                                             <span className="ms-2">Payments</span>
                                         </Tab>
                                         {/*<Tab className="p-3 profile_option">
                                             <i className="fa fa-cog"></i>
                                             <span className="ms-2">Promotions</span>
                                         </Tab>*/}
-                                        <Tab className="p-3 profile_option">
-                                            <i className="fa fa-cog"></i>
+                                        <Tab className=" profile_option">
                                             <span className="ms-2">Credits</span>
                                         </Tab >
                                     </TabList >

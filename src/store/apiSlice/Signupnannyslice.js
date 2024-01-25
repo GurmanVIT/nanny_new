@@ -10,7 +10,13 @@ const initialState = {
 };
 
 export const signupUser = createAsyncThunk('signupUser', async (payload) => {
-    const response = await axios.post('https://dev-api-nanny.virtualittechnology.com/v1/common/signUp', payload);
+    const config = {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json",
+        },
+      };
+    const response = await axios.post('https://dev-api-nanny.virtualittechnology.com/v1/common/signUp', payload,config);
     return response.data;
 });
 

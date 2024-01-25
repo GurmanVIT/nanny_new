@@ -5,7 +5,8 @@ import { BASE_URL, changePassword, updateProfileNanny } from '../../utils/Consta
 
 export const changePasswordApi = createAsyncThunk('changePasswordApi', async (payload) => {
     const token = localStorage.getItem("Token")
-    const headers = {"Authorization":token}
+    const headers = {"Authorization":token ,  "Access-Control-Allow-Origin": "*",
+    "Content-Type": "application/json", }
     try{  const url = BASE_URL+changePassword
         const response = await axios.put(url, payload,{headers});
         return response.data;}

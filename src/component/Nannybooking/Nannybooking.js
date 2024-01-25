@@ -7,7 +7,7 @@ import PastNanny from './PastNanny';
 
 const Nannybooking = () => {
   return (
-    <>
+
         <div className="container">
                 <div className="row order_card mb-5">
                     <Tabs>
@@ -28,7 +28,6 @@ const Nannybooking = () => {
                     </Tabs>
                 </div>
             </div>
-    </>
   )
 }
 

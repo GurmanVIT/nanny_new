@@ -6,7 +6,13 @@ import axios from 'axios';
 export const verifyOtp= createAsyncThunk('verifyOtp', async (payload) =>
  {
     console.log("payload ===>",payload)
-    const response = await axios.put('https://dev-api-nanny.virtualittechnology.com/v1/common/otpVerifications', payload);
+    const config = {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json",
+        },
+      };
+    const response = await axios.put('https://dev-api-nanny.virtualittechnology.com/v1/common/otpVerifications', payload,config);
     return response.data;
 });
 

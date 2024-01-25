@@ -5,7 +5,8 @@ import { BASE_URL, updateProfileNanny } from '../../utils/Constants';
 
 export const NannyEditprofile = createAsyncThunk('NannyEditprofile', async (payload) => {
     const token = localStorage.getItem("Token")
-    const headers = {"Authorization":token}
+    const headers = {"Authorization":token,  "Access-Control-Allow-Origin": "*",
+    "Content-Type": "application/json", }
     try{  const url = BASE_URL+updateProfileNanny
         const response = await axios.put(url, payload,{headers});
         return response.data;}

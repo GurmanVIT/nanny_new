@@ -7,7 +7,8 @@ import axios from 'axios';
 // Async thunk for fetching data
 export const fetchEarnAsync = createAsyncThunk('Earn/fetchEarn', async () => {
   const token = localStorage.getItem("Token")
-  const headers = {"Authorization":token}
+  const headers = {"Authorization":token ,  "Access-Control-Allow-Origin": "*",
+  "Content-Type": "application/json", }
   try {
     const response = await axios.get('https://dev-api-nanny.virtualittechnology.com/v1/nanny/getEarnings',{headers}); // Replace with your API endpoint
     return response.data;
