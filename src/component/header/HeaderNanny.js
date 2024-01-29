@@ -108,13 +108,13 @@ const HeaderNanny = () => {
                                 <div className="navigation">
                                     <ul>
                                         <li>
-                                            <Link to="/nannycategories">Home</Link>
+                                            {/*<Link to="/nannycategories">Home</Link>
                                         </li>
                                         <li>
                                             <Link to="/Nannybooking">Booking</Link>
                                         </li>
                                         <li>
-                                            <Link to="/availability">Availability</Link>
+                                            <Link to="/availability">Availability</Link>*/}
                                         </li>
                                     </ul>
                                 </div>

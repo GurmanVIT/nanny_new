@@ -19,7 +19,11 @@
         border-radius: 80px;
     }
 }
-
+.card_height{
+    height: 630px;
+    overflow-y: scroll;
+   
+}
 .profile_edit_options {
     .react-tabs__tab--selected{
         background-color: $primary-color;
@@ -211,24 +215,30 @@
 }
 
 .manageservices{
-    .btn-group{
-        .yesbtn{
-            background: #fff !important;
-            color: #000;
-            margin: 5px;
-            border-color: #d3d3d3;
-            border-radius: 0px;
-            //&:focus{
-            //    box-shadow: none !important;
-            //    background: $primary-color !important;
-            //    border-color:  $primary-color !important;
-            //}
-            //&:active{
-            //    box-shadow: none !important;
-            //    background: $primary-color !important;
-            //    border-color:  $primary-color !important;
-            //}
-        }
+    .btn_yes{
+        gap: 10px;
+        display: flex;
+        //.yesbtn{
+        //    color: #000000;
+        //    margin: 5px;
+        //    border:1px solid #757575;
+        //    border-radius: 0px;
+        //    background: transparent;
+        //    border-radius: 10px;
+
+        //    &:focus{
+        //        box-shadow: none !important;
+        //        background: $primary-color !important;
+        //        border-color:  $primary-color !important;
+        //        color: #fff;
+        //    }
+        //    &:active{
+        //        box-shadow: none !important;
+        //        background: $primary-color !important;
+        //        border-color:  $primary-color !important;
+        //        color: #fff;
+        //    }
+        //}
         .btn-check{
             &:focus{
                 box-shadow: none;

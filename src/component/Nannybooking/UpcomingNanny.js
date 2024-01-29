@@ -53,9 +53,9 @@ const UpcomingNanny = () => {
 
   return (
     <>
-      <div className="all_order_box">
+      <div className="row all_order_box">
 
-        {dataList != null && dataList.map((item) => 
+        {dataList != null && dataList.map((item) => <div className='col-md-6'>
         <div className='card nany_orders'>
           <div className='card.body d-flex'>
             <div className='card.img mr-2'>
@@ -76,7 +76,7 @@ const UpcomingNanny = () => {
             </div>
           </div>
           <div>
-            <div className='upcoming_option mt-2 pt-2'>
+            <div className='upcoming_option mt-3 pt-3'>
               <div className='d-flex justify-content-between align-items-center'>
                 <div >
                   {item.status === 1?
@@ -89,7 +89,7 @@ const UpcomingNanny = () => {
                     <Dropdown.Item onClick={() => updateBookingStatusApi(2,item._id)}>On The Way</Dropdown.Item>
                     <Dropdown.Item onClick={() => updateBookingStatusApi(3,item._id)}>Reached</Dropdown.Item>
                   </Dropdown.Menu>
-                </Dropdown>:<button type='button' className='mb-0 main-button'>{item.status === 0 ? "Accept Request" :  "Canceled"}</button>
+                </Dropdown>:<button type='button' className='mb-0 main-button btn'>{item.status === 0 ? "Accept Request" :  "Canceled"}</button>
                 }
                 </div>
                 {item.status !== 0 ?
@@ -100,13 +100,14 @@ const UpcomingNanny = () => {
                     </div>
                   </div> :
                   <div >
-                    <button type='button' className='mb-0 main-button'>Reject Request</button>
+                    <button type='button' className='mb-0 main-button danger'>Reject Request</button>
                   </div>
 
                 }
               </div>
             </div>
           </div>
+        </div>
         </div>)}
 
 

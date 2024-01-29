@@ -25,7 +25,7 @@ const Availability = () => {
   return (
     <>
       <div className="order_card mb-5 calender">
-        <div className='coustom_container'>
+        <div>
           <Tabs>
             <TabList>
               <Tab>CALENDER</Tab>

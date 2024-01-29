@@ -1,271 +1,94 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, ButtonGroup, Form, ToggleButton } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllCategorieslist } from '../../store/apiSlice/ManageservicesSlice';
 
 const Manageservices = () => {
+    const getAllCategories = useSelector((state) => state.rootReducer.getAllCategoriesReducer.data)
+    const [updateBook, setupdateBook] = useState(null)
 
-    const [radioValue, setRadioValue] = useState('1');
+    console.log("GetAllCategories == >".getAllCategories)
 
-    const radios = [
-        { name: 'Yes', value: '1' },
-        { name: 'No', value: '2' },
-    ];
+    const [dataList, setDataList] = useState(null)
+
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getAllCategorieslist(0))
+    }, [])
+
+
+
+    useEffect(() => {
+        console.log("getAllCategories data ===> ", getAllCategories)
+        if (getAllCategories != null && getAllCategories.status === 1) {
+            setDataList(getAllCategories.data)
+        }
+    }, [getAllCategories])
+
+    const onAcceptClick = () => {
+
+    }
+
+    const serviceOnOff = (index, checked) => {
+        //const data = dataList[index].addedCategoryData.isActive = checked?1:0
+        //setDataList(data)
+    }
+
+    const [activeButton, setActiveButton] = useState(null);
+
+    const handleClick = (button) => {
+        setActiveButton(button);
+    };
+
+    const buttonStyle = (button) => ({
+        backgroundColor: activeButton === button ? '#6EC1E4' : 'transparent',
+        border: '1px solid #6EC1E4',
+        color: '#000',
+        padding: '10px',
+        cursor: 'pointer',
+    });
+
 
 
     return (
         <>
             <div className='manageservices'>
-                <div className='row'>
-                    <div className="col-12">
-                        <div className="d-flex align-items-center mb-3 heading_back_btn justify-content-between">
-                            <h5 className="m-0">Tutoring nanny</h5>
-                            <Form>
-                                <Form.Check
-                                    type="switch"
-                                    id="custom-switch"
-                                />
-                            </Form>
-                        </div>
-                    </div >
-                    <div className='col-12'>
-                        <Form.Select className='input-group'>
-                            <option>Hourly Price</option>
-                            <option value="1">Fixed Price</option>
-                            <option value="2">Hourly Price</option>
-                        </Form.Select>
-                    </div>
-                    <div className='col-12'>
-                        <div className="d-flex align-items-center mb-3 heading_back_btn justify-content-between">
-                            <h6>Last Minute Nanny</h6>
-                            <ButtonGroup>
-                                {radios.map((radio, idx) => (
-                                    <ToggleButton
-                                        key={idx}
-                                        id={`radio-${idx}`}
-                                        type="radio"
-                                        name="radio"
-                                        variant={idx % 2 ? 'outline-primary' : 'outline-primary'}
-                                        value={radio.value}
-                                        checked={radioValue === radio.value}
-                                        onChange={(e) => setRadioValue(e.currentTarget.value)}
-                                        className='yesbtn'
-                                    >
-                                        {radio.name}
-                                    </ToggleButton>
-                                ))}
-                            </ButtonGroup>
+                {dataList != null && dataList.map((item, index) =>
+                    <div>
+                        <div className='row mt-3'>
+                            <div className="col-12">
+                                <div className="d-flex align-items-center mb-3 heading_back_btn justify-content-between">
+                                    <h5 className="m-0">{item.name}</h5>
+                                    <Form>
+                                        <Form.Check
+                                            type="switch"
+                                            id="custom-switch"
+                                            checked={item.addedCategoryData.isActive === 1 ? true : false}
+                                            onChange={(val) => serviceOnOff(index, val)}
+                                        />
+                                    </Form>
+                                </div>
+                            </div >
+                            <div className='col-12'>
+                                <Form.Select className='input-group mb-0'>
+                                    <option>Hourly Price</option>
+                                    <option value="1">Fixed Price</option>
+                                </Form.Select>
+                            </div>
+                            <div className='col-12'>
+                                <div className="d-flex align-items-center heading_back_btn justify-content-between mt-3">
+                                    <h6>Last Minute Nanny</h6>
+                                    <div className='btn_yes '>
+                                        <Button type='button' style={buttonStyle(1)}
+                                            onClick={() => handleClick(1)}>Yes</Button>
+                                        <Button type='button' style={buttonStyle(2)}
+                                            onClick={() => handleClick(2)}>No</Button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className='row mt-3'>
-                    <div className="col-12">
-                        <div className="d-flex align-items-center mb-3 heading_back_btn justify-content-between">
-                            <h5 className="m-0">Nanny sharing</h5>
-                            <Form>
-                                <Form.Check
-                                    type="switch"
-                                    id="custom-switch"
-                                />
-                            </Form>
-                        </div>
-                    </div >
-                    <div className='col-12'>
-                        <Form.Select className='input-group'>
-                            <option>Hourly Price</option>
-                            <option value="1">Fixed Price</option>
-                            <option value="2">Hourly Price</option>
-                        </Form.Select>
-                    </div>
-                    <div className='col-12'>
-                        <div className="d-flex align-items-center mb-3 heading_back_btn justify-content-between">
-                            <h6>Last Minute Nanny</h6>
-                            <ButtonGroup>
-                                {radios.map((radio, idx) => (
-                                    <ToggleButton
-                                        key={idx}
-                                        id={`radio-${idx}`}
-                                        type="radio"
-                                        name="radio"
-                                        value={radio.value}
-                                        checked={radioValue === radio.value}
-                                        onChange={(e) => setRadioValue(e.currentTarget.value)}
-                                        className='yesbtn'
-                                    >
-                                        {radio.name}
-                                    </ToggleButton>
-                                ))}
-                            </ButtonGroup>
-                        </div>
-                    </div>
-                </div>
-                <div className='row mt-3'>
-                    <div className="col-12">
-                        <div className="d-flex align-items-center mb-3 heading_back_btn justify-content-between">
-                            <h5 className="m-0">Part-time & long-term bookings</h5>
-                            <Form>
-                                <Form.Check
-                                    type="switch"
-                                    id="custom-switch"
-                                />
-                            </Form>
-                        </div>
-                    </div >
-                    <div className='col-12'>
-                        <Form.Select className='input-group'>
-                            <option>Hourly Price</option>
-                            <option value="1">Fixed Price</option>
-                            <option value="2">Hourly Price</option>
-                        </Form.Select>
-                    </div>
-                    <div className='col-12'>
-                        <div className="d-flex align-items-center mb-3 heading_back_btn justify-content-between">
-                            <h6>Last Minute Nanny</h6>
-                            <ButtonGroup>
-                                {radios.map((radio, idx) => (
-                                    <ToggleButton
-                                        key={idx}
-                                        id={`radio-${idx}`}
-                                        type="radio"
-                                        name="radio"
-                                        value={radio.value}
-                                        checked={radioValue === radio.value}
-                                        onChange={(e) => setRadioValue(e.currentTarget.value)}
-                                        className='yesbtn'
-                                    >
-                                        {radio.name}
-                                    </ToggleButton>
-                                ))}
-                            </ButtonGroup>
-                        </div>
-                    </div>
-                </div>
-                <div className='row mt-3'>
-                    <div className="col-12">
-                        <div className="d-flex align-items-center mb-3 heading_back_btn justify-content-between">
-                            <h5 className="m-0">Specially priced nanny</h5>
-                            <Form>
-                                <Form.Check
-                                    type="switch"
-                                    id="custom-switch"
-                                />
-                            </Form>
-                        </div>
-                    </div >
-                    <div className='col-12'>
-                        <Form.Select className='input-group'>
-                            <option>Hourly Price</option>
-                            <option value="1">Fixed Price</option>
-                            <option value="2">Hourly Price</option>
-                        </Form.Select>
-                    </div>
-                    <div className='col-12'>
-                        <div className="d-flex align-items-center mb-3 heading_back_btn justify-content-between">
-                            <h6>Last Minute Nanny</h6>
-                            <ButtonGroup>
-                                {radios.map((radio, idx) => (
-                                    <ToggleButton
-                                        key={idx}
-                                        id={`radio-${idx}`}
-                                        type="radio"
-                                        name="radio"
-                                        value={radio.value}
-                                        checked={radioValue === radio.value}
-                                        onChange={(e) => setRadioValue(e.currentTarget.value)}
-                                        className='yesbtn'
-                                    >
-                                        {radio.name}
-                                    </ToggleButton>
-                                ))}
-                            </ButtonGroup>
-                        </div>
-                    </div>
-                </div>
-                <div className='row mt-3'>
-                    <div className="col-12">
-                        <div className="d-flex align-items-center mb-3 heading_back_btn justify-content-between">
-                            <h5 className="m-0">Occasional bookings</h5>
-                            <Form>
-                                <Form.Check
-                                    type="switch"
-                                    id="custom-switch"
-                                />
-                            </Form>
-                        </div>
-                    </div >
-                    <div className='col-12'>
-                        <Form.Select className='input-group'>
-                            <option>Hourly Price</option>
-                            <option value="1">Fixed Price</option>
-                            <option value="2">Hourly Price</option>
-                        </Form.Select>
-                    </div>
-                    <div className='col-12'>
-                        <div className="d-flex align-items-center mb-3 heading_back_btn justify-content-between">
-                            <h6>Last Minute Nanny</h6>
-                            <ButtonGroup>
-                                {radios.map((radio, idx) => (
-                                    <ToggleButton
-                                        key={idx}
-                                        id={`radio-${idx}`}
-                                        type="radio"
-                                        name="radio"
-                                        value={radio.value}
-                                        checked={radioValue === radio.value}
-                                        onChange={(e) => setRadioValue(e.currentTarget.value)}
-                                        className='yesbtn'
-                                    >
-                                        {radio.name}
-                                    </ToggleButton>
-                                ))}
-                            </ButtonGroup>
-                        </div>
-                    </div>
-                </div>
-                <div className='row mt-3'>
-                    <div className="col-12">
-                        <div className="d-flex align-items-center mb-3 heading_back_btn justify-content-between">
-                            <h5 className="m-0">Hotel bookings</h5>
-                            <Form>
-                                <Form.Check
-                                    type="switch"
-                                    id="custom-switch"
-                                />
-                            </Form>
-                        </div>
-                    </div >
-                    <div className='col-12'>
-                        <Form.Select className='input-group'>
-                            <option>Hourly Price</option>
-                            <option value="1">Fixed Price</option>
-                            <option value="2">Hourly Price</option>
-                        </Form.Select>
-                    </div>
-                    <div className='col-12'>
-                        <div className="d-flex align-items-center mb-3 heading_back_btn justify-content-between">
-                            <h6>Last Minute Nanny</h6>
-                            <ButtonGroup>
-                                {radios.map((radio, idx) => (
-                                    <ToggleButton
-                                        key={idx}
-                                        id={`radio-${idx}`}
-                                        type="radio"
-                                        name="radio"
-                                        value={radio.value}
-                                        checked={radioValue === radio.value}
-                                        onChange={(e) => setRadioValue(e.currentTarget.value)}
-                                        className='yesbtn'
-                                    >
-                                        {radio.name}
-                                    </ToggleButton>
-                                ))}
-                            </ButtonGroup>
-                        </div>
-                    </div>
-                </div>
-                <div className='row mt-3'>
-                    <div className=''>
-                        <Button>Update Category</Button>
-                    </div>
-                </div>
+                )}
             </div>
         </>
     )

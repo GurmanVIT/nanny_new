@@ -25,8 +25,10 @@ const PastUser = () => {
     },[pastData])
     return (
         <>
-            <div className="all_order_box">
-                {dataList!=null&&dataList.map((item)=><div className='card nany_orders'>
+            <div className="row all_order_box">
+                {dataList!=null&&dataList.map((item)=>
+                <div className='col-md-6'>
+                <div className='card nany_orders'>
                     <div className='card.body d-flex'>
                         <div className='card.img mr-2'>
                             <img src={item.nannyId.profileImage} className="rounded-circle" />
@@ -49,9 +51,9 @@ const PastUser = () => {
                     <div className='ordered_persons'>
                         <div className='nanny-small-info mt-2'>
                             <div className='d-flex justify-content-between'>
-                                <div className='d-flex'>
+                                <div className='d-flex justify-content-center'>
                                     <img src={founder} alt='nanny' className="rounded-circle" />
-                                    <div>
+                                    <div  className='d-flex align-items-center'>
                                         <h4>{item.categoryId.name}</h4>
                                         {/*<h6><Star /> 4.5</h6>*/}
                                     </div>
@@ -62,6 +64,7 @@ const PastUser = () => {
                             </div>
                         </div>
                     </div>
+                </div>
                 </div>
                 )
                 }

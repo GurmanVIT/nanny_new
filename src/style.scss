@@ -83,6 +83,9 @@ $breckpoint_340: "max-width: 355px";
   }
 }
 
+::-webkit-scrollbar {
+  width: 0px !important;
+}
 
 *,
 h1,
@@ -237,7 +240,7 @@ a:hover {
   h1 {
     font-size: 70px;
     font-weight: 700;
-    color: $dark-color;
+    color: $light-color;
   }
 }
 

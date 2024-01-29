@@ -30,13 +30,13 @@ import Nannybooking from "./component/Nannybooking/Nannybooking";
 import HeaderNanny from "./component/header/HeaderNanny";
 import { useSelector } from "react-redux";
 import { useEffect , useState } from "react";
-//import io from "socket.io-client";
+import io from "socket.io-client";
 
-//export const socket = io("https://dev-api-nanny.virtualittechnology.com/");
+export const socket = io("https://dev-api-nanny.virtualittechnology.com/");
 function App() {
 
 
-  //const [isSocketConnected, setSocketConnected] = useState(false);
+  const [isSocketConnected, setSocketConnected] = useState(false);
 
 
 
@@ -49,29 +49,29 @@ function App() {
     }
   },[user])
 
-  //useEffect(()=>{
+  useEffect(()=>{
 
    
-  //  function onConnect() {
-  //    console.log("Is Socket Conneted ===> ",isSocketConnected)
-  //    setSocketConnected(true);
-  //  }
+    function onConnect() {
+      console.log("Is Socket Conneted ===> ",isSocketConnected)
+      setSocketConnected(true);
+    }
 
-  //  function onDisconnect() {
-  //    setSocketConnected(false);
-  //  }
+    function onDisconnect() {
+      setSocketConnected(false);
+    }
 
-  //  if(!isSocketConnected&&user!=null){
-  //  const data = {userId: user._id}
-  //     socket.emit("touch_server", data)
-  //  }
+    if(!isSocketConnected&&user!=null){
+    const data = {userId: user._id}
+       socket.emit("touch_server", data)
+    }
 
-  //  return () => {
+    return () => {
 
-  //    socket.off("connect", onConnect);
-  //    socket.off("disconnect", onDisconnect);
-  //  };
-  //},[isSocketConnected])
+      socket.off("connect", onConnect);
+      socket.off("disconnect", onDisconnect);
+    };
+  },[isSocketConnected])
   return (
     <>
       <BrowserRouter>

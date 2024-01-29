@@ -8,26 +8,26 @@ import PastNanny from './PastNanny';
 const Nannybooking = () => {
   return (
 
-        <div className="container">
-                <div className="row order_card mb-5">
-                    <Tabs>
-                        <TabList>
-                            <Tab>Ongoing</Tab>
-                            <Tab>Upcoming</Tab>
-                            <Tab>Past</Tab>
-                        </TabList>
-                        <TabPanel>
-                          <OngoingNanny/>
-                        </TabPanel>
-                        <TabPanel>
-                           <UpcomingNanny/>
-                        </TabPanel>
-                        <TabPanel>
-                           <PastNanny/>
-                        </TabPanel>
-                    </Tabs>
-                </div>
-            </div>
+    <div>
+      <div className="row order_card mb-5">
+        <Tabs>
+          <TabList>
+            <Tab>Ongoing</Tab>
+            <Tab>Upcoming</Tab>
+            <Tab>Past</Tab>
+          </TabList>
+          <TabPanel>
+            <OngoingNanny />
+          </TabPanel>
+          <TabPanel>
+            <UpcomingNanny />
+          </TabPanel>
+          <TabPanel>
+            <PastNanny />
+          </TabPanel>
+        </Tabs>
+      </div>
+    </div>
   )
 }
 

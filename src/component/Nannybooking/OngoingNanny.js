@@ -29,9 +29,11 @@ const OngoingNanny = () => {
 
     return (
         <>
-            <div className="all_order_box">
+            <div className="row all_order_box">
                 {
-                    dataList != null && dataList.map((item) => <div className='card nany_orders'>
+                    dataList != null && dataList.map((item) =>
+                    <div className='col-md-6'>
+                     <div className='card nany_orders'>
                         <div className='card.body d-flex'>
                             <div className='card.img mr-2'>
                                 <img src={item.userId.profileImage} alt='about' className="rounded-circle" />
@@ -62,6 +64,7 @@ const OngoingNanny = () => {
                                 </div>
                             </div>
                         </div>
+                    </div>
                     </div>)
                 }
             </div>

@@ -37,7 +37,7 @@ const Login = () => {
 
     const navigateToAnotherScreen = () => {
         if(user.data.type==1){
-        navigate('/Nannybooking');
+        navigate('/profilenanny');
         }
         else{
             navigate('/nannycategories');

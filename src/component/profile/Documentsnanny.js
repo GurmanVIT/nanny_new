@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import { Form } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 
 const Documentsnanny = () => {
 
@@ -23,8 +23,11 @@ const Documentsnanny = () => {
                     <div className='col-12'>
                         <div className="d-flex align-items-center mb-3 heading_back_btn justify-content-between">
                             <h5 className="m-0">Upload Documents</h5>
-                            <Link className='me-1' onClick={addDiv}><AddIcon className='addicon' /></Link>
-                            {/*<Link onClick={removeDiv}><RemoveIcon /></Link>*/}
+                            <div>
+                                <Link className='me-1' onClick={addDiv}><AddIcon className='addicon' /></Link>
+                                <Link onClick={removeDiv}><RemoveIcon /></Link>
+                            </div>
+
                         </div>
                     </div>
                     <div className='col-12'>
@@ -40,6 +43,12 @@ const Documentsnanny = () => {
                                 </Form>
                             </div>
                         ))}
+                    </div>
+                    <div className='col-12'>
+                        <div className='mt-3'>
+                            <Button type='button' className='main-button mb-0 btn'>SAVE</Button>
+                        </div>
+
                     </div>
                 </div>
             </div>

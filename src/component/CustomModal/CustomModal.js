@@ -92,7 +92,11 @@ const CustomModal = ({ isOpen, onRequestClose, length }) => {
 
 
   return (
-    <Modal isOpen={isOpen} onRequestClose={onRequestClose}>
+    <Modal isOpen={isOpen} onRequestClose={onRequestClose}  >
+       {/*classNames={{
+      modalAnimationIn: "customEnterModalAnimation",
+      modalAnimationOut: "customLeaveModalAnimation",
+    }}*/}
       <div className='add_details'>
         <div className='heading d-flex justify-content-center'>
           <h4>ADD DETAILS</h4>

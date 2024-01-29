@@ -1,5 +1,6 @@
 @import '../../assets/sass/color.scss';
 @import '../../assets/sass/mixin.scss';
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Merriweather:wght@700&family=Roboto&display=swap');
 
 .banner_bg_home {
     width: 100%;
@@ -32,15 +33,16 @@
 
     h2 {
         font-size: 25px;
-        color: $dark-color;
+        color: $light-color;
         font-weight: 700;
+        font-family: 'Merriweather', serif;
     }
 
     h1 {
-        font-size: 60px;
+        font-size: 80px;
         font-weight: 300;
-        color: $dark-color;
-
+        color: $light-color;
+        font-family: 'Merriweather', serif;
         @include media-md {
             font-size: 40px;
         }

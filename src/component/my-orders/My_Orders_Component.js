@@ -8,7 +8,7 @@ import PastUser from './PastUser';
 const My_Orders_Component = () => {
     return (
         <>
-            <div className="container">
+            <div>
                 <div className="row order_card mb-5">
                     <Tabs>
                         <TabList>

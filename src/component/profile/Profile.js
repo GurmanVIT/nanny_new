@@ -1,33 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import about from '../../assets/img/about.jpg';
 import visa_payment_card from '../../assets/img/visa-payment-card.png';
 import nany_icon from '../../assets/img/nany_icon.png';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import Userprofile from './Userprofile';
 import UserAddress from './UserAddress';
-import { useDispatch, useSelector } from 'react-redux';
-import { getUserprofile } from '../../store/apiSlice/UserprofileSlice';
 import ChangePassword from './ChangePassword';
 import EditUserProfile from './EditUserProfile';
-import { Edit, Home, LockPerson, Person } from '@mui/icons-material';
+import My_Orders_Component from '../my-orders/My_Orders_Component';
 
 const Profile = () => {
-
-
     return (
         <>
-            <div className="container">
+            <div className="coustom_container">
                 <div className='top-padding'>
                     <Tabs>
                         <div className="row mb-5">
-                            <div className="col-md-3 mb-3 mb-md-0 h-100">
-                                <card className="rounded overflow-hidden">
+                            <div className="col-md-3 mb-3 mb-md-0 h-100 ">
+                                <div className="card rounded overflow-hidden card_height">
                                     <div className="profile_photo text-center p-3">
                                         <img src={about} alt="profile" />
-                                        <h2 className="mt-3">My Name</h2>
+                                        <h4 className="mt-3">My Name</h4>
                                     </div>
                                     <TabList className="profile_edit_options">
                                         <Tab className=" profile_option">
@@ -42,6 +37,9 @@ const Profile = () => {
                                         <Tab className=" profile_option">
                                             <span className="ms-2">Change Password</span>
                                         </Tab>
+                                        <Tab className=" profile_option">
+                                            <span className="ms-2">My Booking</span>
+                                        </Tab >
                                         <Tab className=" profile_option" >
                                             <span className="ms-2">Payments</span>
                                         </Tab>
@@ -53,10 +51,10 @@ const Profile = () => {
                                             <span className="ms-2">Credits</span>
                                         </Tab >
                                     </TabList >
-                                </card >
+                                </div>
                             </div >
                             <div className="col-md-9 h-100">
-                                <card className="rounded p-3">
+                                <div className="card rounded p-3 card_height">
                                     <TabPanel>
                                       <Userprofile/>
                                     </TabPanel>
@@ -68,6 +66,9 @@ const Profile = () => {
                                     </TabPanel>
                                     <TabPanel>
                                         <ChangePassword/>
+                                    </TabPanel>
+                                    <TabPanel>
+                                        <My_Orders_Component/>
                                     </TabPanel>
                                     <TabPanel>
                                         <div className="row" >
@@ -330,11 +331,7 @@ const Profile = () => {
                                             </div>
                                         </div >
                                     </TabPanel>
-
-
-
-
-                                </card >
+                                </div>
                             </div >
                         </div>
                     </Tabs>

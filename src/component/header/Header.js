@@ -109,10 +109,10 @@ const Header = () => {
               <div className="navigation">
                 <ul>
                   <li>
-                    <Link to="/nannycategories">Home</Link>
+                    <Link to="/">Home</Link>
                   </li>
                   <li>
-                    <Link to="/my_orders_component">Booking</Link>
+                    <Link to="/nannycategories">Booking</Link>
                   </li>
                   <li>
                     <Link to="/contact">Contact Us</Link>

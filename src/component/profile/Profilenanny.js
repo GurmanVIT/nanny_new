@@ -12,16 +12,19 @@ import Contactus from './Contactus';
 import Nannyprofile from './Nannyprofile';
 import { getNannyProfile } from '../../store/apiSlice/NannyprofileSlice';
 import NeditProfile from './NeditProfile';
+import Nannybooking from '../Nannybooking/Nannybooking';
+import Availability from '../Availability/Availability';
+import { MenuOutlined } from '@mui/icons-material';
 
 
 const Profilenanny = () => {
 
 
     const dispatch = useDispatch();
-  const profileData = useSelector((state) => state.rootReducer.nannyProfileReducer.data);
+    const profileData = useSelector((state) => state.rootReducer.nannyProfileReducer.data);
 
     const [NannyEarning, setNannyEarning] = useState(null)
-    const [nannyProfile ,setNannyProfile] = useState(null)
+    const [nannyProfile, setNannyProfile] = useState(null)
 
     useEffect(() => {
         dispatch(getNannyProfile());
@@ -29,14 +32,25 @@ const Profilenanny = () => {
 
     useEffect(() => {
 
-        console.log("Profile Data ===> ",profileData)
-        if (profileData != null&&profileData.status===1) {
+        console.log("Profile Data ===> ", profileData)
+        if (profileData != null && profileData.status === 1) {
             setNannyProfile(profileData.data)
         }
-        else if(profileData!=null){
+        else if (profileData != null) {
             alert(profileData.message)
         }
     }, [profileData])
+
+    //const [openModal2, setOpenModal2] = useState(false);
+
+    //const onOpenModal2 = () => {
+    //    setOpenModal2(true);
+    //};
+
+    //const onCloseModal2 = () => {
+    //    setOpenModal2(false);
+    //};
+
 
 
     //useEffect(() => {
@@ -58,57 +72,65 @@ const Profilenanny = () => {
                     <Tabs>
                         <div className="row mb-5">
                             <div className="col-md-3 mb-3 mb-md-0 h-100">
-                                <card className="rounded overflow-hidden">
-                                    <div className="profile_photo text-center p-3">
+                                <div className="card  rounded overflow-hidden p-3 card_height">
+                                    <div className="profile_photo text-center p-2">
                                         <img src={about} alt="profile" />
-                                        <h2 className="mt-3">My Name</h2>
+                                        <h4 className="mt-3">My Name</h4>
+                                        {/*<div className="">
+                                            <MenuOutlined onClick={onOpenModal2} />
+                                        </div>*/}
                                     </div>
                                     <TabList className="profile_edit_options">
-                                        <Tab className="p-3 profile_option">
-                                            <i className="fa fa-edit"></i>
+                                        <Tab className="profile_option">
+                                            <span className="ms-2">My Booking</span>
+                                        </Tab >
+                                        <Tab className="profile_option">
                                             <span className="ms-2">My Profile</span>
                                         </Tab>
-                                        <Tab className="p-3 profile_option">
+                                        <Tab className="profile_option">
                                             <i className="fa fa-edit"></i>
                                             <span className="ms-2">Edit Profile</span>
                                         </Tab>
-                                        <Tab className="p-3 profile_option">
-                                            <i className="fa fa-lock"></i>
+                                        <Tab className="profile_option">
                                             <span className="ms-2">Earning</span>
                                         </Tab>
-                                        <Tab className="p-3 profile_option" >
-                                            <i className="fa fa-cog"></i>
+                                        <Tab className="profile_option" >
                                             <span className="ms-2">Payments</span>
                                         </Tab>
-                                        <Tab className="p-3 profile_option">
-                                            <i className="fa fa-cog"></i>
+                                        <Tab className="profile_option">
                                             <span className="ms-2">Manage Services</span>
                                         </Tab >
-                                        <Tab className="p-3 profile_option">
-                                            <i className="fa fa-cog"></i>
+
+                                        <Tab className=" profile_option">
                                             <span className="ms-2">Documents</span>
                                         </Tab >
-                                        <Tab className="p-3 profile_option">
-                                            <i className="fa fa-cog"></i>
+                                        <Tab className="profile_option">
                                             <span className="ms-2">Contact Us</span>
                                         </Tab >
+                                        <Tab className="profile_option">
+                                            <span className="ms-2">Availability</span>
+                                        </Tab>
                                     </TabList >
-                                </card >
+                                   
+                                </div>
                             </div >
-                            <div className="col-md-9 h-100">
-                                <card className="rounded p-3">
+                            <div className="col-md-9">
+                                <div className="card  rounded p-3 card_height">
                                     <TabPanel>
-                                        {nannyProfile!==null&&
-                                      <Nannyprofile nannyData = {nannyProfile}/>
-                                        }
-                                  
+                                        <Nannybooking />
                                     </TabPanel>
                                     <TabPanel>
-                                        <NeditProfile/>
+                                        {nannyProfile !== null &&
+                                            <Nannyprofile nannyData={nannyProfile} />
+                                        }
+
+                                    </TabPanel>
+                                    <TabPanel>
+                                        <NeditProfile />
                                     </TabPanel>
 
                                     <TabPanel>
-                                    <Earning/>
+                                        <Earning />
                                     </TabPanel>
 
                                     <TabPanel>
@@ -222,13 +244,17 @@ const Profilenanny = () => {
                                     <TabPanel>
                                         <Manageservices />
                                     </TabPanel>
+
                                     <TabPanel>
                                         <Documentsnanny />
                                     </TabPanel>
                                     <TabPanel>
                                         <Contactus />
                                     </TabPanel>
-                                </card >
+                                    <TabPanel>
+                                        <Availability />
+                                    </TabPanel>
+                                </div>
                             </div >
                         </div>
                     </Tabs>
