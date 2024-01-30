@@ -40,7 +40,7 @@ const Login = () => {
         navigate('/profilenanny');
         }
         else{
-            navigate('/nannycategories');
+            navigate('/');
         }
     }
 

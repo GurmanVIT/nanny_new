@@ -21,6 +21,7 @@ import NannyOngoingReducer from '../apiSlice/OngoingNannySlice';
 import NannyPastReducer from '../apiSlice/NannypastSlice';
 import UpdateBookingStatusReducer from '../apiSlice/UpdateBookingStatusSlice';
 import getAllCategoriesReducer from '../apiSlice/ManageservicesSlice';
+import DocumentsnannyReducer from '../apiSlice/DocumentsnannySlice';
 
 
 
@@ -46,6 +47,7 @@ const rootReducer = combineReducers({
   NannyPastReducer:NannyPastReducer,
   UpdateBookingStatusReducer:UpdateBookingStatusReducer,
   getAllCategoriesReducer:getAllCategoriesReducer,
+  DocumentsnannyReducer:DocumentsnannyReducer,
 
   
   // Add other reducers as needed

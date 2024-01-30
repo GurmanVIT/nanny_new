@@ -4,6 +4,11 @@ import wlogo from '../../assets/img/w-logo.png';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
+
+
+    const type = localStorage.getItem("type")
+    const token = localStorage.getItem("Token") 
+
     return (
         <>
             <div className="banner_bg_home position-absolute top-0 start-0"></div>
@@ -12,7 +17,8 @@ const Home = () => {
                     <h1 className="mb-2">Welcome</h1>
                     <h2 className="mb-3">The <span>Nanny</span> Line
                     </h2>
-                    <Link to="/nanyList" className="btn btn-book mt-4 position-relative">Book</Link>
+                    {type!=1&&
+                    <Link to={token!=null?"/nannycategories":"/login"} className="btn btn-book mt-4 position-relative">Book</Link>}
                 </div>
             </div>
             <div className="who_we_section sections_padding">
@@ -26,7 +32,7 @@ const Home = () => {
                             <p className="mb-3">The Nanny Line is a multilingual agency with international, educated, experienced and enthusiastic nannies and babysitters</p>
                             <p>We provide the best service and support to families in Barcelona, Madrid and Ibiza. Our experienced nannies report directly to your home, hotel or event, day or night, <span className="d-block fw-700">ANYTIME!</span></p>
                             <Link to="/services" className="btn btn-primary d-inline-block mt-4 all_btns px-4 py-2 position-relative">Services</Link><br />
-                            <Link to="/nanyList" className="btn btn-primary d-inline-block mt-4 all_btns px-4 py-2 position-relative">Apply to be Nanny</Link>
+                            {token===null&&<Link to="/signupnanny" className="btn btn-primary d-inline-block mt-4 all_btns px-4 py-2 position-relative">Apply to be Nanny</Link>}
                         </div>
                     </div>
                 </div>
