@@ -38,7 +38,7 @@ const Documentsnanny = () => {
     useEffect(() => {
         console.log("uploaddocumentdata ===> ", Uploaddocumentdata)
         if (Uploaddocumentdata != null && Uploaddocumentdata.status === 1) {
-            setDataList(Uploaddocumentdata.data.data)
+            setDocuments(Uploaddocumentdata.data.documents)
         }
     }, [Uploaddocumentdata])
 
@@ -182,7 +182,7 @@ const Documentsnanny = () => {
                                         <div className="col-md-9">
                                             <div className="input-item input-with-label">
                                                 <label className="input-item-label">Documents Name <span className="text-danger">*</span></label>
-                                                <input className="w-100 input-group" type="text" placeholder='Documents Name' onChange={(e) => setDocumentName(e.target.value, index)} />
+                                                <input className="w-100 input-group" type="text" value={item.name} placeholder='Documents Name' onChange={(e) => setDocumentName(e.target.value, index)} />
                                             </div>
                                         </div>
                                         <div className="col-sm-3">
