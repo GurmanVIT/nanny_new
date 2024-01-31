@@ -3,20 +3,25 @@
 // src/redux/NannyproSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { BASE_URL,UserprofileApi, uploadFileApi } from '../../utils/Constants';
+import { BASE_URL, uploadFileApi } from '../../utils/Constants';
 
 // Async thunk for fetching data
 export const uploadFile = createAsyncThunk('uploadFile', async (image) => {
   const token = localStorage.getItem("Token")
-  const headers = {"Authorization":token,  "Access-Control-Allow-Origin": "*",
-  "Content-Type": "application/json",}
+ 
+  const headers = {  "Access-Control-Allow-Origin": "*",
+  "Content-Type": "multipart/form-data",}
   const formData = new FormData();
-    formData.append('image', image);
+    formData.append('myfile', image);
+   
   try {
     const url = BASE_URL+uploadFileApi
+
     const response = await axios.post(url,formData,{headers}); // Replace with your API endpoint
+
     return response.data;
   } catch (error) {
+    console.log("Upload Image Error ===> ",error.message)
     throw error;
   }
 });
@@ -40,10 +45,11 @@ const uploadFileSlice = createSlice({
         state.error = null;
       })
       .addCase(uploadFile.rejected, (state, action) => {
+        console.log("Upload Image Error ===> ",action.payload)
         state.loading = 'idle';
         state.error = action.error.message;
       });
   },
 });
 
-export default UserProfileSlice.reducer;
+export default uploadFileSlice.reducer;

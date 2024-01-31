@@ -15,6 +15,7 @@ export const updateProfileNanny ="/v1/nanny/updateProfile"
 export const updateBookingStatusApi ="/v1/nanny/updateBookingStatus"
 export const DocumentsnannyApi ="/v1/nanny/getDocuments"
 export const getAllCategoriesApi ="/v1/nanny/getAllCategories"
+export const uploadDocumentsApi ="/v1/nanny/uploadDocuments"
 
 
 //Common Api's
