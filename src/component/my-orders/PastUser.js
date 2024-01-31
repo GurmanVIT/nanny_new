@@ -28,7 +28,7 @@ const PastUser = () => {
             <div className="row all_order_box">
                 {dataList!=null&&dataList.map((item)=>
                 <div className='col-md-6'>
-                <div className='card nany_orders'>
+                <div className='card nany_orders my-2'>
                     <div className='card.body d-flex'>
                         <div className='card.img mr-2'>
                             <img src={item.nannyId.profileImage} className="rounded-circle" />

@@ -67,11 +67,11 @@ const Profilenanny = () => {
 
     return (
         <>
-            <div className="container">
+            <div className="coustom_container">
                 <div className='top-padding'>
                     <Tabs>
                         <div className="row mb-5">
-                            <div className="col-md-3 mb-3 mb-md-0 h-100">
+                            <div className="col-lg-3 mb-3 mb-md-0 h-100">
                                 <div className="card  rounded overflow-hidden p-3 card_height">
                                     <div className="profile_photo text-center p-2">
                                         <img src={about} alt="profile" />
@@ -114,7 +114,7 @@ const Profilenanny = () => {
                                    
                                 </div>
                             </div >
-                            <div className="col-md-9">
+                            <div className="col-lg-9">
                                 <div className="card  rounded p-3 card_height">
                                     <TabPanel>
                                         <Nannybooking />
