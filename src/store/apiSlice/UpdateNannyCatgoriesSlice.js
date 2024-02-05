@@ -3,19 +3,18 @@
 // src/redux/cardsSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { BASE_URL, getAllCategoriesApi } from '../../utils/Constants';
+import { BASE_URL, UpdateNannyCatgories } from '../../utils/Constants';
 
 // Async thunk for fetching data
-export const getAllCategorieslist = createAsyncThunk('getAllCategorieslist', async () => {
+export const updateNannyCatgories = createAsyncThunk('updateNannyCatgories', async (payload) => {
   const token = localStorage.getItem("Token")
-  console.log("Token ===> ",token)
   const headers = {
     "Authorization": token, "Access-Control-Allow-Origin": "*",
     "Content-Type": "application/json",
   }
   try {
-    const url = BASE_URL + getAllCategoriesApi
-    const response = await axios.get(url, { headers }); 
+    const url = BASE_URL + UpdateNannyCatgories 
+    const response = await axios.put(url , payload, { headers }); 
     console.log(response.data)
     return response.data;
   } catch (error) {
@@ -23,8 +22,8 @@ export const getAllCategorieslist = createAsyncThunk('getAllCategorieslist', asy
   }
 });
 
-const getAllCategoriesSlice = createSlice({
-  name: 'getAllCategoriesReducer',
+const updateNannyCatgoriesSlice = createSlice({
+  name: 'updateNannyCatgoriesReducer',
   initialState: {
     data: null,
     loading: 'idle',
@@ -33,19 +32,19 @@ const getAllCategoriesSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getAllCategorieslist.pending, (state) => {
+      .addCase(updateNannyCatgories.pending, (state) => {
         state.loading = 'pending';
       })
-      .addCase(getAllCategorieslist.fulfilled, (state, action) => {
+      .addCase(updateNannyCatgories.fulfilled, (state, action) => {
         state.loading = 'idle';
         state.data = action.payload;
         state.error = null;
       })
-      .addCase(getAllCategorieslist.rejected, (state, action) => {
+      .addCase(updateNannyCatgories.rejected, (state, action) => {
         state.loading = 'idle';
         state.error = action.error.message;
       });
   },
 });
 
-export default getAllCategoriesSlice.reducer;
+export default updateNannyCatgoriesSlice.reducer;

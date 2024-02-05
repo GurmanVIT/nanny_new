@@ -24,7 +24,9 @@ import getAllCategoriesReducer from '../apiSlice/ManageservicesSlice';
 import DocumentsnannyReducer from '../apiSlice/DocumentsnannySlice';
 import uploadFileReducer from '../apiSlice/uploadFileSlice';
 import uploadDocumentsReducer from '../apiSlice/UpdateDocumentSlice';
-
+import updateNannyCatgoriesReducer from '../apiSlice/UpdateNannyCatgoriesSlice';
+import getTiminglistReducer from '../apiSlice/GetTimingSlice';
+import updateTimingslistReducer from '../apiSlice/UpdateTimingsSlice';
 
 
 const rootReducer = combineReducers({
@@ -52,6 +54,9 @@ const rootReducer = combineReducers({
   DocumentsnannyReducer:DocumentsnannyReducer,
   uploadFileReducer:uploadFileReducer,
   uploadDocumentsReducer:uploadDocumentsReducer,
+  updateNannyCatgoriesReducer:updateNannyCatgoriesReducer,
+  getTiminglistReducer:getTiminglistReducer,
+  updateTimingslistReducer:updateTimingslistReducer,
 
   
   // Add other reducers as needed

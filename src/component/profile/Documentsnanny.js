@@ -72,11 +72,6 @@ const Documentsnanny = () => {
 
 
     const setDocumentImage = (pan_image_path, index) => {
-        //setDocuments(documents => {
-        //    const updatedDocuments = [...documents];
-        //    updatedDocuments[index] = { ...updatedDocuments[index], link: pan_image_path };
-        //    return updatedDocuments;
-        //});
         setUpdateImageIndex(index)
 
         dispatch(uploadFile(pan_image_path))

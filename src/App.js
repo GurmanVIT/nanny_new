@@ -31,6 +31,7 @@ import HeaderNanny from "./component/header/HeaderNanny";
 import { useSelector } from "react-redux";
 import { useEffect , useState } from "react";
 import io from "socket.io-client";
+import Dayschange from "./component/Availability/Dayschange";
 
 export const socket = io("https://dev-api-nanny.virtualittechnology.com/");
 function App() {
@@ -101,6 +102,7 @@ function App() {
           <Route path="/availability" element={<Availability/>}/>
           <Route path='/profilenanny' element={<Profilenanny/>} />
           <Route path='/Nannybooking' element={<Nannybooking/>}/>
+          <Route path='/dayschange' element={<Dayschange/>}/>
         </Routes>
         <Footer />
       </BrowserRouter>

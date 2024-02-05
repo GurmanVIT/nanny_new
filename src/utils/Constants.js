@@ -7,7 +7,7 @@ export const upcommingUserApi = "/v1/user/getNanniesBookings"
 export const UserprofileApi ="/v1/user/profile"
 export const UserEditProfileApi = "/v1/user/updateProfile"
 export const NannyBookingApi = "/v1/nanny/getMyBookings"
-
+export const UpdateNannyCatgories = "/v1/nanny/updateNannyCatgories"
 
 //Nanny Api's
 export const profileNanny ="/v1/nanny/profile"
@@ -16,6 +16,9 @@ export const updateBookingStatusApi ="/v1/nanny/updateBookingStatus"
 export const DocumentsnannyApi ="/v1/nanny/getDocuments"
 export const getAllCategoriesApi ="/v1/nanny/getAllCategories"
 export const uploadDocumentsApi ="/v1/nanny/uploadDocuments"
+export const gettimingApi ="/v1/nanny/getTimings"
+export const updateTimingsApi ="/v1/nanny/updateTimings" 
+export const deleteTimingsApi ="/v1/nanny/deleteTimings"
 
 
 //Common Api's

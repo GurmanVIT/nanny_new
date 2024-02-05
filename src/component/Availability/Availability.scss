@@ -1,30 +1,72 @@
-.calender{
-    .react-calendar{
-        .react-calendar__navigation{
-            button{
+.calender {
+    .react-calendar {
+        .react-calendar__navigation {
+            button {
                 border: 1px solid lightgrey;
                 padding: 5px 8px;
                 background: none;
                 text-align: center;
                 margin: 10px 0px 15px 0px;
             }
-            
+
         }
-        .react-calendar__viewContainer{
-            .react-calendar__month-view__weekdays{
-                .react-calendar__month-view__weekdays__weekday{
+
+        .react-calendar__viewContainer {
+            .react-calendar__month-view__weekdays {
+                .react-calendar__month-view__weekdays__weekday {
                     text-align: center;
                 }
-                abbr{
+
+                abbr {
                     text-decoration: none;
                 }
             }
-            .react-calendar__month-view__days{
-                button{
+
+            .react-calendar__month-view__days {
+                button {
                     border: 1px solid lightgray;
                     padding: 13px;
                 }
+                p{
+                    display: none !important;
+                }
             }
+        }
+    }
+
+    .highlighted-date {
+        background-color: lightblue;
+      }
+}
+
+.selectedates{
+    gap: 15px;
+}
+.btn_hours{
+    display: flex;
+    gap: 13px;
+    justify-content: center;
+    button{
+        background: #d9d6d6;
+        width: 35px;
+        border-radius: 4px;
+        padding: 5px;
+        border: none;
+        box-shadow: 0px 0px 11px -5px rgb(126 124 124 / 75%);
+    }
+}
+
+
+.change_time{
+    .time_change_input {
+        display: flex !important;
+        justify-content: space-evenly !important;
+
+        .input_time {
+            width: 40% !important;
+            height: 50px !important;
+            font-size: 25px !important;
+            padding: 5px !important;
         }
     }
 }

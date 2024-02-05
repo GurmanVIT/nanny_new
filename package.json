@@ -24,6 +24,7 @@
     "react-dom": "^18.2.0",
     "react-live-clock": "^6.1.19",
     "react-modal": "^3.16.1",
+    "react-native-calendar-picker": "^8.0.1",
     "react-otp-input": "^3.1.1",
     "react-phone-input-2": "^2.15.1",
     "react-phone-number-input": "^3.3.8",
