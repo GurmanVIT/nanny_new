@@ -4,10 +4,19 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const loginUser = createAsyncThunk("loginUser", async (payload) => {
+  const config = {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Content-Type": "application/json",
+    },
+  };
   const response = await axios.post(
     "https://dev-api-nanny.virtualittechnology.com/v1/common/login",
-    payload
+    payload,
+    config
   );
+  localStorage.setItem("Token", response.data.data.accessToken);
+  localStorage.setItem("type", response.data.data.type);
   return response.data;
 });
 
@@ -23,7 +32,6 @@ const loginSlice = createSlice({
     clearData: (state) => {
       // Reset the data property to an empty array
       state.data = null;
-      state.isAuthenticated = false;
     },
   },
   extraReducers: (builder) => {
@@ -36,7 +44,6 @@ const loginSlice = createSlice({
         state.loading = false;
         state.data = action.payload;
         state.token = action.payload.token;
-        state.isAuthenticated = true;
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;

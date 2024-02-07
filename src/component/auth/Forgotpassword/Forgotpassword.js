@@ -71,7 +71,7 @@ const Forgotpassword = () => {
                                                 <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email" />
                                             </div>
                                             {/*<p> <Link className="d-flex justify-content-end" to='/forotpassword' >Forgot Password</Link></p>*/}
-                                            <Button  onClick={() => handleotp()}>
+                                            <Button type='button'  onClick={() => handleotp()}>
                                                 Send OTP
                                             </Button>
                                         </form>

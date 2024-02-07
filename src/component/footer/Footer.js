@@ -1,3 +1,4 @@
+import { LocalPhone, LocationOn, MailOutline } from '@mui/icons-material';
 import React from 'react';
 
 
@@ -36,15 +37,15 @@ const Footer = () => {
                         <div className="col-md-3">
                             <h5 className="fw-700 mb-5">Contact</h5>
                             <div className="d-flex align-items-center contact_section mb-4">
-                                <i className="fas fa-map-marked-alt me-3"></i>
+                                <LocationOn/>
                                 <p>Placa del Duc de Medicinalei 08002, Barcelona</p>
                             </div>
                             <div className="d-flex align-items-center contact_section mb-4">
-                                <i className="fas fa-phone-alt me-3"></i>
+                                <LocalPhone/>
                                 <p>+34 617 24 36 59</p>
                             </div>
                             <div className="d-flex align-items-center contact_section mb-4">
-                                <i className="fas fa-envelope me-3"></i>
+                                <MailOutline/>
                                 <p>info@nanny-line.com </p>
                             </div>
                         </div>

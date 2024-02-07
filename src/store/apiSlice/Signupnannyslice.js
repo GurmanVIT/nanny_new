@@ -2,10 +2,24 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const initialState = {
+  user: null,
+  token: null,
+  loading: false,
+  error: null,
+};
+
 export const signupUser = createAsyncThunk("signupUser", async (payload) => {
+  const config = {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Content-Type": "application/json",
+    },
+  };
   const response = await axios.post(
     "https://dev-api-nanny.virtualittechnology.com/v1/common/signUp",
-    payload
+    payload,
+    config
   );
   return response.data;
 });

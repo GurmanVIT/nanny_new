@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from "react";
 import Modal from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
-import { CastConnected, MenuOutlined } from "@mui/icons-material";
+import {
+  CastConnected,
+  MenuOutlined,
+  Notifications,
+} from "@mui/icons-material";
 import logo from "../../assets/img/logo_nav.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { clearData } from "../../store/apiSlice/LoginSlice";
+import PersonIcon from "@mui/icons-material/Person";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-
-  const user = useSelector((state) => state.rootReducer.login.data);
+  const [type, setType] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,12 +27,11 @@ const Header = () => {
         setScrolled(false);
       }
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [user]);
+  }, []);
 
   const [openModal2, setOpenModal2] = useState(false);
 
@@ -44,59 +47,49 @@ const Header = () => {
     localStorage.clear();
     dispatch(clearData());
 
-    // navigate("/login");
+    console.log("Logout");
+    navigate("/login");
   };
-
-  //var className = "inverted";
-  //var scrollTrigger = 60;
-
-  //window.onscroll = function () {
-  //    // We add pageYOffset for compatibility with IE.
-  //    if (window.scrollY >= scrollTrigger || window.pageYOffset >= scrollTrigger) {
-  //        document.getElementsByTagName("header")[0].classList.add(className);
-  //    } else {
-  //        document.getElementsByTagName("header")[0].classList.remove(className);
-  //    }
-  //};
 
   return (
     <>
       <div className={`header main-head ${scrolled ? "scrolled" : ""}`}>
         <div className="coustom_container">
-          <div className="inner">
-            <div className="logo">
-              <Link to="/">
-                <img
-                  className="mw-100"
-                  src={logo}
-                  alt="logo"
-                  style={{ width: "160px" }}
-                />
-              </Link>
-            </div>
-            <div className="navigation">
-              <ul>
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                <li>
-                  <Link to="/about">About</Link>
-                </li>
-                <li>
-                  <Link to="/services">Services</Link>
-                </li>
-                <li>
-                  <Link to="/events">Events</Link>
-                </li>
-                <li>
-                  <Link to="/tutorings">Tutorings</Link>
-                </li>
-                <li>
-                  <Link to="/contact">Contact</Link>
-                </li>
-              </ul>
-            </div>
-            {localStorage.getItem("Token") == null ? (
+          {localStorage.getItem("Token") == null ? (
+            <div className="inner">
+              <div className="logo">
+                <Link to="/">
+                  <img
+                    className="mw-100"
+                    src={logo}
+                    alt="logo"
+                    style={{ width: "160px" }}
+                  />
+                </Link>
+              </div>
+              <div className="navigation">
+                <ul>
+                  <li>
+                    <Link to="/">Home</Link>
+                  </li>
+                  <li>
+                    <Link to="/about">About</Link>
+                  </li>
+                  <li>
+                    <Link to="/services">Services</Link>
+                  </li>
+                  <li>
+                    <Link to="/events">Events</Link>
+                  </li>
+                  <li>
+                    <Link to="/tutorings">Tutorings</Link>
+                  </li>
+                  <li>
+                    <Link to="/contact">Contact</Link>
+                  </li>
+                </ul>
+              </div>
+
               <div className="btns">
                 <div className="btn">
                   <Link className="main-button" to="/login">
@@ -109,18 +102,59 @@ const Header = () => {
                   </Link>
                 </div>
               </div>
-            ) : (
-              <div className="btn">
-                <Link
-                  className="main-button"
-                  to={"/login"}
-                  onClick={() => onLogoutClick()}
-                >
-                  Logout
+            </div>
+          ) : (
+            <div className="inner">
+              <div className="logo">
+                <Link to="/">
+                  <img
+                    className="mw-100"
+                    src={logo}
+                    alt="logo"
+                    style={{ width: "160px" }}
+                  />
                 </Link>
               </div>
-            )}
-          </div>
+              <div className="navigation">
+                <ul>
+                  <li>
+                    <Link to="/">Home</Link>
+                  </li>
+                  <li>
+                    <Link to="/nannycategories">Booking</Link>
+                  </li>
+                  <li>
+                    <Link to="/contact">Contact Us</Link>
+                  </li>
+                </ul>
+              </div>
+              <div className="btns">
+                <div className="btn">
+                  <button
+                    type="button"
+                    className="main-button"
+                    onClick={() => onLogoutClick()}
+                  >
+                    Logout
+                  </button>
+                </div>
+                <div className="btn profile">
+                  <Link className="main-button " to="#">
+                    <Notifications />
+                  </Link>
+                </div>
+                <div className="btn profile">
+                  <button
+                    type="button"
+                    className="main-button "
+                    onClick={() => navigate("/profile")}
+                  >
+                    <PersonIcon />
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
@@ -197,26 +231,6 @@ const Header = () => {
           </div>
         </div>
       </Modal>
-
-      {/*<Navbar expand="lg" className="bg-body-tertiary custam_header header d-flex">
-                <Container>
-                    <Navbar.Brand href="#home" className=' custom-logo'>
-                        <img className="mw-100" src={logo} alt="logo" style={{ width: "160px" }} />
-                    </Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav" className='collapse navbar-collapse d-flex justify-content-end'>
-                        <Nav>
-                            <Nav.Link href="/"> Home</Nav.Link>
-                            <Nav.Link href="/about" >About</Nav.Link>
-                            <Nav.Link href="/services">Services</Nav.Link>
-                            <Nav.Link href="/events">Events</Nav.Link>
-                            <Nav.Link href="/tutorings">Tutorings</Nav.Link>
-                            <Nav.Link href="/contact">Contact</Nav.Link>
-                            <Nav.Link href="/login" className='btn login_btn'>Login</Nav.Link>
-                        </Nav>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>*/}
     </>
   );
 };

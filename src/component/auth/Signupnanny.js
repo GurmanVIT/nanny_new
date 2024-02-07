@@ -116,7 +116,7 @@ const Signupnanny = () => {
                                     onClick={togglePasswordVisibility}
                                 />*/}
                                     </div>
-                                    <Button onClick={() => handleSignup()}>
+                                    <Button type='button' onClick={() => handleSignup()}>
                                         REGISTER
                                     </Button>
 

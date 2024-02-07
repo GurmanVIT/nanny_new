@@ -9,7 +9,6 @@ import { clearData } from "../../../store/apiSlice/LoginSlice";
 const Login = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.rootReducer.login.data);
-  console.log("state", user);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,22 +32,25 @@ const Login = () => {
   const navigate = useNavigate();
 
   const navigateToAnotherScreen = () => {
-    navigate("/nannycategories");
+    if (user.data.type == 1) {
+      navigate("/profilenanny");
+    } else {
+      navigate("/");
+    }
   };
 
-  useEffect(() => {
-    dispatch(clearData());
-    localStorage.clear();
-  }, []);
+  //useEffect(()=>{
+  //    dispatch(clearData())
+  //    localStorage.clear()
+  //},[])
 
   useEffect(() => {
-    console.log(user);
+    console.log("Login Data", user);
     if (user != null && user.status === 1) {
-      console.log(user.data.accessToken);
-      localStorage.setItem("Token", user.data.accessToken);
-      setTimeout(() => {
+      if (localStorage.getItem("Token").length != null)
         navigateToAnotherScreen();
-      }, 1000);
+    } else if (user != null) {
+      alert(user.message);
     }
   }, [user]);
 
@@ -105,7 +107,7 @@ const Login = () => {
                       Forgot Password
                     </Link>
                   </p>
-                  <Button onClick={() => handleLogin()}>
+                  <Button type="button" onClick={() => handleLogin()}>
                     {/*{loading ? 'Logging in...' : 'Login'}*/}
                     Login
                   </Button>

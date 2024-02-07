@@ -6,10 +6,11 @@ import { Link } from 'react-router-dom';
 const Services = () => {
     return (
         <>
-            <div className="services_banner inner_pages_banner position-absolute top-0 start-0"></div>
-            <div className="baner_text d-flex sections_padding pt-0 align-items-center text-center">
-                <div className="container">
-                    <h1>The Nanny Line</h1>
+            <div className=" nannycategories">
+                <div className='banner_categories'>
+                    <div className='heading_categories container'>
+                        <h1>Services</h1>
+                    </div>
                 </div>
             </div>
             <div className="sections_padding mt-5">

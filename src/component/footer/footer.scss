@@ -37,9 +37,10 @@
         }
     }
     .contact_section {
-        i {
+        svg {
             font-size: 20px;
             color: $light-color;
+            margin-right: 10px;
         }
     }
     @include media-md {

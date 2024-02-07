@@ -47,6 +47,8 @@
 
 @import "./component/auth/Forgotpassword/Forgotpassword.scss";
 
+@import "./component/Availability/Availability.scss";
+
 $breakpoint_XXXL: "max-width:1700px";
 $breckpoint_XXL: "max-width: 1400px";
 $breckpoint_XL: "max-width: 1200px";
@@ -81,6 +83,9 @@ $breckpoint_340: "max-width: 355px";
   }
 }
 
+::-webkit-scrollbar {
+  width: 0px !important;
+}
 
 *,
 h1,
@@ -235,7 +240,7 @@ a:hover {
   h1 {
     font-size: 70px;
     font-weight: 700;
-    color: $dark-color;
+    color: $light-color;
   }
 }
 
@@ -282,6 +287,8 @@ body {
 }
 
 .btn{
+  border: none !important;
+ background: $primary-color !important;
   &:focus{
     box-shadow: none !important;
   }

@@ -2,8 +2,14 @@ import React from 'react';
 import about from "../../assets/img/about.jpg";
 import wlogo from '../../assets/img/w-logo.png';
 import { Link } from 'react-router-dom';
+import { ArrowForward, CheckBox, Drafts, Edit, Map, Star } from '@mui/icons-material';
 
 const Home = () => {
+
+
+    const type = localStorage.getItem("type")
+    const token = localStorage.getItem("Token")
+
     return (
         <>
             <div className="banner_bg_home position-absolute top-0 start-0"></div>
@@ -12,7 +18,8 @@ const Home = () => {
                     <h1 className="mb-2">Welcome</h1>
                     <h2 className="mb-3">The <span>Nanny</span> Line
                     </h2>
-                    <Link to="/nanyList" className="btn btn-book mt-4 position-relative">Book</Link>
+                    {type != 1 &&
+                        <Link to={token != null ? "/nannycategories" : "/login"} className="btn btn-book mt-4 position-relative">Book</Link>}
                 </div>
             </div>
             <div className="who_we_section sections_padding">
@@ -26,7 +33,7 @@ const Home = () => {
                             <p className="mb-3">The Nanny Line is a multilingual agency with international, educated, experienced and enthusiastic nannies and babysitters</p>
                             <p>We provide the best service and support to families in Barcelona, Madrid and Ibiza. Our experienced nannies report directly to your home, hotel or event, day or night, <span className="d-block fw-700">ANYTIME!</span></p>
                             <Link to="/services" className="btn btn-primary d-inline-block mt-4 all_btns px-4 py-2 position-relative">Services</Link><br />
-                            <Link to="/nanyList" className="btn btn-primary d-inline-block mt-4 all_btns px-4 py-2 position-relative">Apply to be Nanny</Link>
+                            {token === null && <Link to="/signupnanny" className="btn btn-primary d-inline-block mt-4 all_btns px-4 py-2 position-relative">Apply to be Nanny</Link>}
                         </div>
                     </div>
                 </div>
@@ -48,7 +55,11 @@ const Home = () => {
                                 <div className="col-12 mb-4 ps-3 ps-md-5 mt-5 mt-md-0">
                                     <div className="d-flex flex-column flex-md-row align-items-center">
                                         <div className="service_arrow mb-3 mb-md-0">
-                                            <i className="fa-solid fa-arrow-right d-flex align-items-center justify-content-center"></i>
+                                            <div className='d-flex align-items-center justify-content-center'>
+                                                < ArrowForward />
+                                            </div>
+
+                                            {/*<i className="fa-solid fa-arrow-right "></i>*/}
                                         </div>
                                         <div className="service_info ps-0 ps-md-5">
                                             <h5 className="mb-3 fw-700">Occasional bookings</h5>
@@ -59,7 +70,10 @@ const Home = () => {
                                 <div className="col-12 mb-4 ps-3 ps-md-5">
                                     <div className="d-flex flex-column flex-md-row align-items-center">
                                         <div className="service_arrow mb-3 mb-md-0">
-                                            <i className="fa-solid fa-arrow-right d-flex align-items-center justify-content-center"></i>
+                                            <div className='d-flex align-items-center justify-content-center'>
+                                                < ArrowForward />
+                                            </div>
+                                            {/*<i className="fa-solid fa-arrow-right d-flex align-items-center justify-content-center"></i>*/}
                                         </div>
                                         <div className="service_info ps-0 ps-md-5">
                                             <h5 className="mb-3 fw-700">Occasional bookings</h5>
@@ -70,7 +84,10 @@ const Home = () => {
                                 <div className="col-12 mb-4 ps-3 ps-md-5">
                                     <div className="d-flex flex-column flex-md-row align-items-center">
                                         <div className="service_arrow mb-3 mb-md-0">
-                                            <i className="fa-solid fa-arrow-right d-flex align-items-center justify-content-center"></i>
+                                            <div className='d-flex align-items-center justify-content-center'>
+                                                < ArrowForward />
+                                            </div>
+                                            {/*<i className="fa-solid fa-arrow-right d-flex align-items-center justify-content-center"></i>*/}
                                         </div>
                                         <div className="service_info ps-0 ps-md-5">
                                             <h5 className="mb-3 fw-700">Occasional bookings</h5>
@@ -92,26 +109,26 @@ const Home = () => {
                     <div className="mt-5 row gx-0">
                         <div className="col-sm-6 col-lg-3 mb-3">
                             <div className="number_say_box text-center px-4 py-5">
-                                <h3 className="mb-3 fw-700">5</h3>
+                                <h2 className="mb-3 fw-700">5</h2>
                                 <h6>Years of experience</h6>
                             </div>
                         </div>
                         <div className="col-sm-6 col-lg-3 mb-3">
                             <div className="number_say_box text-center px-4 py-5">
-                                <h3 className="mb-3 fw-700">100+
-                                </h3>
+                                <h2 className="mb-3 fw-700">100+
+                                </h2>
                                 <h6>Active nannies</h6>
                             </div>
                         </div>
                         <div className="col-sm-6 col-lg-3 mb-3">
                             <div className="number_say_box text-center px-4 py-5">
-                                <h3 className="mb-3 fw-700">24/7</h3>
+                                <h2 className="mb-3 fw-700">24/7</h2>
                                 <h6>Available</h6>
                             </div>
                         </div>
                         <div className="col-sm-6 col-lg-3 mb-3">
                             <div className="number_say_box text-center px-4 py-5">
-                                <h3 className="mb-3 fw-700">1000+</h3>
+                                <h2 className="mb-3 fw-700">1000+</h2>
                                 <h6>Bookings</h6>
                             </div>
                         </div>
@@ -129,7 +146,7 @@ const Home = () => {
                         <div className="col-sm-6 col-lg-3 mb-3">
                             <div className="services_box secondry_bg pb-5 px-4 h-100">
                                 <div className="choose_icon mb-5 d-inline-block">
-                                    <i className="far fa-check-square"></i></div>
+                                    <CheckBox/></div>
                                 <h4 className="mb-4 fw-700">Full availability</h4>
                                 <p>Our nannies are available through every day of the week. Would you go for a late night dinner? No worries, our babysitters will be available for 24/7!</p>
                             </div>
@@ -137,7 +154,7 @@ const Home = () => {
                         <div className="col-sm-6 col-lg-3 mb-3 why_2">
                             <div className="services_box secondry_bg pb-5 px-4  h-100">
                                 <div className="choose_icon mb-5 d-inline-block">
-                                    <i className="far fa-edit"></i></div>
+                                    <Edit/></div>
                                 <h4 className="mb-4 fw-700">Experienced and professional</h4>
                                 <p>We are with full of competent and qualified nannies. How can we guarantee it? Every nanny in our database has at least 3+ years of experience!</p>
                             </div>
@@ -145,7 +162,7 @@ const Home = () => {
                         <div className="col-sm-6 col-lg-3 mb-3 why_3">
                             <div className="services_box secondry_bg pb-5 px-4 h-100">
                                 <div className="choose_icon mb-5 d-inline-block">
-                                    <i className="far fa-envelope-open"></i></div>
+                                    <Drafts/></div>
                                 <h4 className="mb-4 fw-700">Personally checked background</h4>
                                 <p>Before applying to be a nanny at The Nanny Line, we request a background check from the given person. All of our nannies are personally checked for criminal background!</p>
                             </div>
@@ -153,7 +170,7 @@ const Home = () => {
                         <div className="col-sm-6 col-lg-3 mb-3 why_4">
                             <div className="services_box secondry_bg pb-5 px-4 h-100">
                                 <div className="choose_icon mb-5 d-inline-block">
-                                    <i className="far fa-map"></i></div>
+                                    <Map/></div>
                                 <h4 className="mb-4 fw-700">Hotel availability</h4>
                                 <p>The Nanny Line is in contact with the biggest 5* Hotels in Barcelona. Are you coming for a trip? Will you spend more time in the "sunny city"? We get your back. Ask the concierge for one of our lovely babysitters!.</p>
                             </div>
@@ -180,11 +197,11 @@ const Home = () => {
                                         <h6>TNL Mom</h6>
                                     </div>
                                     <div className="stars d-flex align-items-center">
-                                        <i className="fas fa-star me-1"></i>
-                                        <i className="fas fa-star me-1"></i>
-                                        <i className="fas fa-star me-1"></i>
-                                        <i className="fas fa-star me-1"></i>
-                                        <i className="fas fa-star"></i>
+                                        <Star/>
+                                        <Star/>
+                                        <Star/>
+                                        <Star/>
+                                        <Star/>
                                     </div>
                                 </div>
                             </div>
@@ -199,11 +216,11 @@ const Home = () => {
                                         <h6>TNL Mom</h6>
                                     </div>
                                     <div className="stars d-flex align-items-center">
-                                        <i className="fas fa-star me-1"></i>
-                                        <i className="fas fa-star me-1"></i>
-                                        <i className="fas fa-star me-1"></i>
-                                        <i className="fas fa-star me-1"></i>
-                                        <i className="fas fa-star"></i>
+                                        <Star/>
+                                        <Star/>
+                                        <Star/>
+                                        <Star/>
+                                        <Star/>
                                     </div>
                                 </div>
                             </div>
@@ -219,12 +236,12 @@ const Home = () => {
                                     </div>
                                 </div>
                                 <div className="col-sm-10 ">
-                                    <div className="stars d-flex align-items-center mb-4">
-                                        <i className="fas fa-star me-1"></i>
-                                        <i className="fas fa-star me-1"></i>
-                                        <i className="fas fa-star me-1"></i>
-                                        <i className="fas fa-star me-1"></i>
-                                        <i className="fas fa-star"></i>
+                                <div className="stars d-flex align-items-center">
+                                        <Star/>
+                                        <Star/>
+                                        <Star/>
+                                        <Star/>
+                                        <Star/>
                                     </div>
                                     <h5 className="fw-700">“We had a lovely babysitter who was super cool with our daughter and her group of friends.”</h5>
                                 </div>
@@ -239,12 +256,12 @@ const Home = () => {
                                     </div>
                                 </div>
                                 <div className="col-sm-10">
-                                    <div className="stars d-flex align-items-center mb-4">
-                                        <i className="fas fa-star me-1"></i>
-                                        <i className="fas fa-star me-1"></i>
-                                        <i className="fas fa-star me-1"></i>
-                                        <i className="fas fa-star me-1"></i>
-                                        <i className="fas fa-star"></i>
+                                <div className="stars d-flex align-items-center">
+                                        <Star/>
+                                        <Star/>
+                                        <Star/>
+                                        <Star/>
+                                        <Star/>
                                     </div>
                                     <h5 className="fw-700 ml-3">“We had a lovely babysitter who was super cool with our daughter and her group of friends.”</h5>
                                 </div>

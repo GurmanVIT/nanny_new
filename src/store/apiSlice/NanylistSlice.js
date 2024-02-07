@@ -7,7 +7,8 @@ import axios from 'axios';
 // Async thunk for fetching data
 export const fetchnlistAsync = createAsyncThunk('Nlist/fetchNlist', async () => {
   const token = localStorage.getItem("Token")
-  const headers = {"Authorization":token}
+  const headers = {"Authorization":token,  "Access-Control-Allow-Origin": "*",
+  "Content-Type": "application/json", }
   try {
     const response = await axios.get('https://dev-api-nanny.virtualittechnology.com/v1/user/getNanniesByCategory?categoryId=64c7728354d97ae662ab5c60&limit=10&skip=0&address=mohali,punjab&latitude=30.65757&longitude=76.54545&date=2023-08-15&time=05:00 AM&numberOfHours=1',{headers}); // Replace with your API endpoint
     return response.data;

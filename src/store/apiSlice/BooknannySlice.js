@@ -7,7 +7,8 @@ import axios from 'axios';
 // Async thunk for fetching data
 export const fetchbooknAsync = createAsyncThunk('cards/fetchCards', async (payload) => {
     const token = localStorage.getItem("Token")
-    const headers = { "Authorization": token }
+    const headers = { "Authorization": token,  "Access-Control-Allow-Origin": "*",
+    "Content-Type": "application/json", }
     console.log("Header ===>", headers)
     try {
         const response = await axios.post('https://dev-api-nanny.virtualittechnology.com/v1/user/createNannyBooking', payload, { headers }); // Replace with your API endpoint

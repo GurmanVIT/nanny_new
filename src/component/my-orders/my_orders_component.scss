@@ -5,9 +5,14 @@
 .react-tabs__tab-list{
     display: flex;
     gap: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    padding-bottom:10px;
 }
 .react-tabs__tab{
+    padding: 0.375rem 0.75rem;
+    font-weight: 500;
+    border-radius: 7px;
+    cursor: pointer;
     &:focus-visible{
         outline: none;
         border: none;
@@ -15,31 +20,21 @@
 }
 .order_card{
     .react-tabs__tab--selected{
-        color: $primary-color;
-        border-bottom: 2px solid $primary-color;
+        color: $light-color;
+        background: $primary-color;
         
     }
 }
 
 .all_order_box {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    grid-auto-rows: 1fr;
-    gap: 1rem;
-
-    @include media-xl {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    @include media-md {
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-    }
-
     .nany_orders {
         background-color: white;
         border: none;
         box-shadow: 0px 0px 12px -8px rgba(0,0,0,0.75);
         padding: 13px;
+        @media ($breckpoint_LG) {
+            padding: 8px;
+        }
 
         img {
             width: 80px;
@@ -50,7 +45,9 @@
         .card-title{
             display: flex;
             justify-content: space-between;
-            
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-family: 'Kanit', sans-serif;
         }
         .card-img{
             margin-right: 10px;
@@ -58,17 +55,24 @@
 
         .nanny-info {
             .location {
-                color: $nany-book-color
+                color: #868686;
+                font-size: 13px;
+                svg{
+                    font-size: 20px;
+                }
             }
 
             .time {
-                color: $nany-book-color
+                color: #868686;
+                font-size: 13px;
             }
         }
     }
 
     .ordered_persons {
-        border-top: 2px solid $primary-color;
+        padding-top: 15px;
+        margin-top: 15px;
+        border-top: 1px solid $primary-color;
 
         img {
             width: 35px;
@@ -86,23 +90,22 @@
             }
 
             .star {
-                color: $dark-color;
+                h6{
+                    font-size: 17px;
+                    svg{
+                        color: orangered;
+                        font-size: 16px;
+                    }
+                }
+           
 
-                i {
+                svg {
                     color: $star-color;
                 }
             }
         }
 
-        .btn-ongiing {
-            background-color: rgba($primary-color, .1);
-            color: $primary-color;
-            font-size: 12px;
-            font-weight: 500;
-            border: 1px solid rgba($primary-color, .1);
-            padding: 4px;
-            border-radius: 6px;
-        }
+     
 
         .btn-success-nany {
             background-color: rgba($success-color, .1);
@@ -114,19 +117,12 @@
             border-radius: 6px;
         }
 
-        .btn-cancel-nany {
-            background-color: rgba($danger-color, .1);
-            color: $danger-color;
-            font-size: 12px;
-            font-weight: 500;
-            border: 1px solid rgba($danger-color, .1);
-            padding: 4px;
-            border-radius: 6px;
-        }
+        
     }
 
     .upcoming_option {
-        border-top: 2px solid $primary-color;
+        margin-top: 5px;
+        border-top: 1px solid $primary-color;
 
         a {
             color: $green-color;
@@ -137,5 +133,28 @@
             width: 20px;
             height: 100%;
         }
+    }
+    .btn-cancel-nany {
+        background: none;
+        color: $danger-color;
+        font-size: 16px;
+        font-weight: 500;
+        border:none;
+        padding: 4px;
+        border-radius: 6px;
+    }
+    .btn-ongiing {
+        background: rgba($primary-color, .1) !important;
+        color: $primary-color;
+        font-size: 16px;
+        font-weight: 500;
+        border: 1px solid rgba($primary-color, .1);
+        padding: 4px;
+        border-radius: 6px;
+    }
+    .main-button{
+        background: none;
+        border: none;
+        color: $primary-color;
     }
 }
