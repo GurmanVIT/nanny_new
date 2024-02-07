@@ -1,12 +1,15 @@
-@import '../../assets/sass/color.scss'; 
+@import '../../assets/sass/color.scss';
 @import '../../assets/sass/mixin.scss';
 @import '../../assets/sass/fonts.scss';
+
 .events_info {
     flex: 0 0 40%;
+
     @include media-md {
         flex: 0 0 100%;
     }
 }
+
 .events_image {
     flex: 0 0 50%;
     background-image: url(../../assets/img/event.jpeg);
@@ -14,6 +17,7 @@
     background-size: cover;
     background-position: center;
     z-index: 2;
+
     &::after {
         position: absolute;
         top: 0;
@@ -24,19 +28,49 @@
         background-color: rgba($dark-color, .5);
         z-index: -1;
     }
+
     h1 {
         color: $light-color;
     }
+
     @include media-md {
         flex: 0 0 100%;
     }
 }
+
 .event_circle {
     width: 80px;
     height: 80px;
     border-radius: 50px;
     border: 2px solid #000;
-    svg{
+
+    svg {
         font-size: 30px;
+    }
+}
+
+.sections_padding {
+    .my_swiper {
+        .swiper {
+
+            .swiper-wrapper {
+                display: flex;
+
+                .swiper-slide {
+                    white-space: nowrap;
+                    overflow-x: hidden;
+                    width: 100% !important;
+
+                    .card {
+
+                        .card-img {
+                            img {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

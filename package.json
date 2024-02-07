@@ -24,6 +24,7 @@
     "react-country-region-selector": "^3.6.1",
     "react-date-picker": "^10.6.0",
     "react-dom": "^18.2.0",
+    "react-id-swiper": "^4.0.0",
     "react-live-clock": "^6.1.19",
     "react-modal": "^3.16.1",
     "react-native-calendar-picker": "^8.0.1",
@@ -42,6 +43,7 @@
     "sass": "^1.69.5",
     "slick-carousel": "^1.8.1",
     "socket.io-client": "^4.7.4",
+    "swiper": "^11.0.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

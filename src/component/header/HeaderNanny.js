@@ -47,6 +47,8 @@ const HeaderNanny = () => {
 
         console.log("Logout")
         navigate('/login');
+        onCloseModal2()
+
 
     }
 
@@ -99,42 +101,42 @@ const HeaderNanny = () => {
                             </div>
                         </div>)
                         :
-                            (<div className="inner">
-                                <div className="logo">
-                                    <Link to="/">
-                                        <img className="mw-100" src={logo} alt="logo" style={{ width: "160px" }} />
-                                    </Link>
-                                </div>
-                                <div className="navigation">
-                                    <ul>
-                                        <li>
-                                            {/*<Link to="/nannycategories">Home</Link>
+                        (<div className="inner">
+                            <div className="logo">
+                                <Link to="/">
+                                    <img className="mw-100" src={logo} alt="logo" style={{ width: "160px" }} />
+                                </Link>
+                            </div>
+                            <div className="navigation">
+                                <ul>
+                                    <li>
+                                        {/*<Link to="/nannycategories">Home</Link>
                                         </li>
                                         <li>
                                             <Link to="/Nannybooking">Booking</Link>
                                         </li>
                                         <li>
                                             <Link to="/availability">Availability</Link>*/}
-                                        </li>
-                                    </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="btns">
+                                <div className="btn">
+                                    <button type='button' className="main-button" onClick={() => onLogoutClick()}>
+                                        Logout
+                                    </button>
                                 </div>
-                                <div className="btns">
-                                    <div className="btn">
-                                        <button type='button' className="main-button" onClick={() => onLogoutClick()}>
-                                            Logout
-                                        </button>
-                                    </div>
-                                    <div className='btn profile'>
-                                        <Link className='main-button ' to="#">< Notifications /></Link>
-                                    </div>
-                                    <div className='btn profile'>
-
-                                        <Link className='main-button ' to="/profilenanny"><PersonIcon /></Link>
-                                    </div>
-
+                                <div className='btn profile'>
+                                    <Link className='main-button ' to="#">< Notifications /></Link>
                                 </div>
-                            </div>)
-                           
+                                <div className='btn profile'>
+
+                                    <Link className='main-button ' to="/profilenanny"><PersonIcon /></Link>
+                                </div>
+
+                            </div>
+                        </div>)
+
                     }
                 </div>
             </div>
@@ -162,23 +164,46 @@ const HeaderNanny = () => {
                 }}
                 center
             >
-                <div className="main-sec">
-                    <div className="inner-sec">
-                        <ul className="menu-list2">
-                            <Link to="/" onClick={onCloseModal2}>Home</Link>
-                            <Link to="/about" onClick={onCloseModal2}>About</Link>
-                            <Link to="/services" onClick={onCloseModal2}>Services</Link>
-                            <Link to="/events" onClick={onCloseModal2}>Events</Link>
-                            <Link to="/tutorings" onClick={onCloseModal2}>Tutorings</Link>
-                            <Link to="/contact" onClick={onCloseModal2}>Contact</Link>
-                        </ul>
-                    </div>
+                {localStorage.getItem("Token") == null ?
+                    (
+                        <div className="main-sec">
+                            <div className="inner-sec">
+                                <ul className="menu-list2">
+                                    <Link to="/" onClick={onCloseModal2}>Home</Link>
+                                    <Link to="/about" onClick={onCloseModal2}>About</Link>
+                                    <Link to="/services" onClick={onCloseModal2}>Services</Link>
+                                    <Link to="/events" onClick={onCloseModal2}>Events</Link>
+                                    <Link to="/tutorings" onClick={onCloseModal2}>Tutorings</Link>
+                                    <Link to="/contact" onClick={onCloseModal2}>Contact</Link>
+                                </ul>
+                            </div>
 
-                    <div className="btn">
-                        <span><Link to="/login" className="main-button" onClick={onCloseModal2}>Login</Link></span>
-                        <span><Link to="/register" className="second-button" onClick={onCloseModal2}>Sign up</Link></span>
-                    </div>
-                </div>
+                            <div className="btn">
+                                <span><Link to="/login" className="main-button" onClick={onCloseModal2}>Login</Link></span>
+                                <span><Link to="/register" className="second-button" onClick={onCloseModal2}>Sign up</Link></span>
+                            </div>
+                        </div>) : (
+                        <div className="main-sec">
+                            <div className="inner-sec">
+                                <ul className="menu-list2">
+                                    <Link to="/" onClick={onCloseModal2}>Home</Link>
+                             {/*<Link to="/about" onClick={onCloseModal2}>About</Link>
+                             <Link to="/services" onClick={onCloseModal2}>Services</Link>
+                             <Link to="/events" onClick={onCloseModal2}>Events</Link>
+                             <Link to="/tutorings" onClick={onCloseModal2}>Tutorings</Link>
+                             <Link to="/contact" onClick={onCloseModal2}>Contact</Link>*/}
+                                </ul>
+                            </div>
+                                <span><button type='button' className="main-button btn" onClick={() => onLogoutClick()}>
+                                    Logout
+                                </button></span>
+                          
+                                <span>  <div className='btn profile my-2'>
+                                    <Link className='main-button' to="#">< Notifications /></Link>
+                                </div></span>
+                        </div>
+
+                    )}
             </Modal>
 
         </>

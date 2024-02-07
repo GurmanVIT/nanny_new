@@ -1,8 +1,10 @@
 import React from 'react';
 import banner from '../../assets/img/banner_bg.jpg'
 import { AccessAlarm, Favorite, Keyboard, Sms } from '@mui/icons-material';
-const Events = () => {
+import { Swiper, SwiperSlide } from 'swiper/react';
 
+
+const Events = () => {
     return (
         <>
             <div className=" nannycategories">
@@ -12,6 +14,7 @@ const Events = () => {
                     </div>
                 </div>
             </div>
+
             <div className="sections_padding mt-5">
                 <div className="d-flex mt-4 flex-wrap">
                     <div className="events_image p-5 d-flex align-items-center justify-content-center text-start position-relative">
@@ -25,6 +28,7 @@ const Events = () => {
                     </div>
                 </div>
             </div>
+
             <div className="sections_padding secondry_bg">
                 <div className="container">
                     <h1 className="mb-4 pb-3 text-center"><span className="position-relative">What do we offer with Playdate?
@@ -62,8 +66,48 @@ const Events = () => {
                     </div>
                 </div>
             </div>
+
             <div className="container-fluid sections_padding">
-                <div id="carouselExampleFade" className="carousel slide" data-bs-ride="carousel">
+                <div className='my_swiper'>
+                    <Swiper
+                        spaceBetween={30}
+                        slidesPerView={1}
+                        navigation
+                        pagination={{ clickable: true }}
+                        scrollbar={{ draggable: true }}
+                        breakpoints={{
+
+                            1600: {
+                                slidesPerView: 1,
+                                spaceBetween: 20,
+                            },
+                        }}>
+                        <SwiperSlide>
+                            <div className="card">
+                                <div className="card-img">
+                                    <img src={banner} alt="slider" className="d-block w-100" />
+                                </div>
+                            </div>
+                        </SwiperSlide>
+
+                        <SwiperSlide>
+                            <div className="card">
+                                <div className="card-img">
+                                    <img src={banner} alt="slider" className="d-block w-100" />
+                                </div>
+                            </div>
+                        </SwiperSlide>
+
+                        <SwiperSlide>
+                            <div className="card">
+                                <div className="card-img">
+                                    <img src={banner} alt="slider" className="d-block w-100" />
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                    </Swiper>
+                </div>
+                {/*<div id="carouselExampleFade" className="carousel slide" data-bs-ride="carousel">
                     <div className="carousel-inner">
                         <div className="carousel-item active">
                             <img src={banner} className="d-block w-100" alt="slider" />
@@ -83,7 +127,7 @@ const Events = () => {
                         <span className="carousel-control-next-icon" aria-hidden="true"></span>
                         <span className="visually-hidden">Next</span>
                     </button>
-                </div>
+                </div>*/}
             </div>
         </>
     )
