@@ -7,93 +7,143 @@ import { Form, FormCheck } from "react-bootstrap";
 import { getTiminglist } from "../../store/apiSlice/GetTimingSlice";
 import TimeChangeModal from "./TimeChangeModal";
 
-
 const Availability = () => {
-
-
-  const gettiming = useSelector(
+  const getTiming = useSelector(
     (state) => state.rootReducer.getTiminglistReducer.data
   );
-  const [selectedTiming, setSelectedTiming] = useState(null);
+  const [selectedTiming, setSelectedTiming] = useState([]);
   const [selectedButtons, setSelectedButtons] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedTimeArray, setSelectedTimeArray] = useState([]);
 
   const [dataList, setDataList] = useState(null);
+  const [defaultHighlightedDates, setDefaultHighlightedDates] = useState([]);
+
+  const [highlightedDates, setHighlightedDates] = useState([]);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getTiminglist(1));
   }, []);
+
+  useEffect(() => {
+    if (getTiming != null && getTiming.status === 1) {
+      setSelectedTiming(getTiming.data.data);
+    }
+  }, [getTiming]);
+
+  // Swap day and month and create a new date string
+  const swappedDateString = (originalDate) => {
+    const currentDateArr = originalDate.split("/");
+    return (
+      currentDateArr[1] + "/" + currentDateArr[0] + "/" + currentDateArr[2]
+    );
+  };
+
   const updateclick = () => { };
 
   const [displayStyle, setDisplayStyle] = useState("none");
   const [isChecked, setIsChecked] = useState(false);
 
-  const toggleDisplay = () => {
-    // Toggle between 'none' and 'block' based on checkbox state
-    setDisplayStyle((prevStyle) => (isChecked ? "none" : "block"));
-  };
+  // const toggleDisplay = () => {
+  //   setDisplayStyle((prevStyle) => (isChecked ? "none" : "block"));
+  // };
 
-  const handleCheckboxChange = () => {
-    // Update the isChecked state when the checkbox is clicked
-    setIsChecked(!isChecked);
-    // Toggle the display style based on the new checkbox state
-    toggleDisplay();
-  };
-  const defaultHighlightedDates = [
-    new Date(2024, 1, 10),
-    new Date(2024, 1, 15)
-  ];
+  // const handleCheckboxChange = () => {
+  //   setIsChecked(!isChecked);
+  //   toggleDisplay();
+  // };
 
-  const [highlightedDates, setHighlightedDates] = useState(defaultHighlightedDates);
+  // celender selection setup
 
   const tileClassName = ({ date }) => {
-    // Check if the date is one of the default highlighted dates
-    const isDefaultHighlighted = defaultHighlightedDates.some(
-      defaultHighlightedDate => defaultHighlightedDate.toDateString() === date.toDateString()
+    const isDefaultHighlighted = selectedTiming.some(
+      (defaultHighlightedDate) =>
+        new Date(
+          swappedDateString(defaultHighlightedDate.date)
+        ).toDateString() === date.toDateString()
     );
-    // Check if the date is one of the user-modifiable highlighted dates
     const isHighlighted = highlightedDates.some(
-      highlightedDate => highlightedDate.toDateString() === date.toDateString()
+      (highlightedDate) =>
+        highlightedDate.toDateString() === date.toDateString()
     );
-
-    // Return the class name based on whether the date should be highlighted or not
-    return isDefaultHighlighted || isHighlighted ? 'highlighted-date' : null;
+    if (isDefaultHighlighted) {
+      return "default-highlighted-date";
+    }
+    if (isHighlighted) {
+      return "highlighted-date";
+    }
+    // return isDefaultHighlighted || isHighlighted ? "highlighted-date" : null;
   };
 
   const handleCalendarClick = (date) => {
-    // Check if the clicked date is one of the default highlighted dates
-    const isDefaultHighlighted = defaultHighlightedDates.some(
-      defaultHighlightedDate => defaultHighlightedDate.toDateString() === date.toDateString()
+    const isDefaultHighlighted = highlightedDates.some(
+      (defaultHighlightedDate) =>
+        defaultHighlightedDate.toDateString() === date.toDateString()
     );
 
-    // If the clicked date is not one of the default highlighted dates,
-    // update the highlighted dates array with the new date
+    const index = () => {
+      for (let i = 0; i < selectedTiming.length; i++) {
+        if (
+          new Date(swappedDateString(selectedTiming[i].date)).toDateString() ===
+          date.toDateString()
+        ) {
+          return i;
+        }
+      }
+      return -1;
+    };
+
+    if (index() > -1) {
+      // console.log(selectedTiming[index()].isFullDayAvialable);
+      const selectedDateData = selectedTiming[index()];
+
+      if (selectedDateData.isFullDayAvialable === 0) {
+        setIsChecked(true);
+        setDisplayStyle("block");
+        setSelectedTimeArray(
+          selectedDateData.timeSlotsAvailablity[0].split(",")
+        );
+      } else {
+        setIsChecked(false);
+        setDisplayStyle("none");
+        setSelectedTimeArray([]);
+      }
+    } else {
+      setIsChecked(false);
+      setDisplayStyle("none");
+      setSelectedTimeArray([]);
+    }
+
     if (!isDefaultHighlighted) {
       setHighlightedDates([date]);
     }
   };
 
-  // Create an array with numbers from 1 to 24
+  //24 Bottom button selection
   const numbersArray = Array.from({ length: 24 }, (_, index) => index + 1);
-
-  // Function to handle button click
   const handleButtonClick = (number) => {
-    // Check if the button is already selected
     const isButtonSelected = selectedButtons.includes(number);
-
-    // Update the selectedButtons state based on the click
     if (isButtonSelected) {
-      // If already selected, remove from the array
       setSelectedButtons((prevSelected) =>
         prevSelected.filter((selected) => selected !== number)
       );
     } else {
-      // If not selected, add to the array
       setSelectedButtons((prevSelected) => [...prevSelected, number]);
     }
   };
+
+  const isTimeIncluded = (value) => {
+    const val =
+      value.toString().length === 1
+        ? "0" + value + ":" + "00"
+        : "" + value + ":" + "00";
+    console.log(val + " " + selectedTimeArray.includes(val));
+    return selectedTimeArray.includes(val);
+  };
+
   return (
     <>
       <div className="order_card mb-5 calender">
@@ -103,23 +153,34 @@ const Availability = () => {
               <TabList>
                 <Tab>CALENDER</Tab>
                 <Tab>DAYS</Tab>
-                <Tab>Time</Tab>
               </TabList>
             </div>
 
             <TabPanel>
               <div className="mt-3">
                 <div className="updates">
-                  <button
-                    type="button"
-                    className="update_btn"
-                  >
+                  <button type="button" className="update_btn">
                     Update
                   </button>
                 </div>
                 <Calendar
                   tileClassName={tileClassName}
-                  onClickDay={handleCalendarClick}
+                  onClickDay={(date) => handleCalendarClick(date)}
+                  formatLongDate={(date) => {
+                    const options = {
+                      day: "2-digit",
+                      month: "2-digit",
+                      year: "numeric",
+                    };
+                    const formattedDate = new Intl.DateTimeFormat(
+                      "en-IN",
+                      options
+                    ).format(date);
+
+                    // Extract individual components and join them with commas
+                    const [day, month, year] = formattedDate.split("/");
+                    return `${day},${month},${year}`;
+                  }}
                 />
                 <div>
                   <div className="d-flex justify-content-center selectedates mt-3">
@@ -128,7 +189,12 @@ const Availability = () => {
                       <FormCheck
                         type="switch"
                         checked={isChecked}
-                        onChange={handleCheckboxChange}
+                        onChange={(val) => {
+                          setIsChecked(val.target.checked);
+                          setDisplayStyle(
+                            val.target.checked ? "block" : "none"
+                          );
+                        }}
                       />
                     </Form>
                     <p>By hour</p>
@@ -142,7 +208,7 @@ const Availability = () => {
                             key={number}
                             onClick={() => handleButtonClick(number)}
                             style={{
-                              backgroundColor: selectedButtons.includes(number)
+                              backgroundColor: isTimeIncluded(number)
                                 ? "#6EC1E4"
                                 : "rgb(235 234 234)",
                             }}
@@ -158,9 +224,6 @@ const Availability = () => {
             </TabPanel>
             <TabPanel>
               <Dayschange />
-            </TabPanel>
-            <TabPanel>
-              <TimeChangeModal />
             </TabPanel>
           </Tabs>
         </div>
