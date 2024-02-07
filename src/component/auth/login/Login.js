@@ -41,7 +41,6 @@ const Login = () => {
   //    dispatch(clearData())
   //    localStorage.clear()
   //},[])
-
   useEffect(() => {
     console.log("Login Data", user);
     if (user != null && user.status === 1) {
