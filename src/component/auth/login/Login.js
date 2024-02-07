@@ -19,7 +19,6 @@ const Login = () => {
       email: email,
       password: password,
     };
-
     try {
       dispatch(loginUser(payload));
       // Handle success, e.g., navigate to another screen
