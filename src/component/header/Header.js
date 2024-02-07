@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import Modal from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
-import { CastConnected, MenuOutlined, Notifications } from "@mui/icons-material";
-import logo from '../../assets/img/logo_nav.png';
-import { Link, useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { clearData } from '../../store/apiSlice/LoginSlice';
-import PersonIcon from '@mui/icons-material/Person';
-
+import {
+  CastConnected,
+  MenuOutlined,
+  Notifications,
+} from "@mui/icons-material";
+import logo from "../../assets/img/logo_nav.png";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { clearData } from "../../store/apiSlice/LoginSlice";
+import PersonIcon from "@mui/icons-material/Person";
 
 const Header = () => {
-
   const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
 
@@ -18,7 +20,6 @@ const Header = () => {
   const [type, setType] = useState(0)
 
   useEffect(() => {
-
     const handleScroll = () => {
       if (window.scrollY > 0) {
         setScrolled(true);
@@ -57,11 +58,16 @@ const Header = () => {
     <>
       <div className={`header main-head ${scrolled ? "scrolled" : ""}`}>
         <div className="coustom_container">
-          {localStorage.getItem("Token") == null ?
-            (<div className="inner">
+          {localStorage.getItem("Token") == null ? (
+            <div className="inner">
               <div className="logo">
                 <Link to="/">
-                  <img className="mw-100" src={logo} alt="logo" style={{ width: "160px" }} />
+                  <img
+                    className="mw-100"
+                    src={logo}
+                    alt="logo"
+                    style={{ width: "160px" }}
+                  />
                 </Link>
               </div>
               <div className="navigation">
@@ -103,7 +109,12 @@ const Header = () => {
             : (<div className="inner">
               <div className="logo">
                 <Link to="/">
-                  <img className="mw-100" src={logo} alt="logo" style={{ width: "160px" }} />
+                  <img
+                    className="mw-100"
+                    src={logo}
+                    alt="logo"
+                    style={{ width: "160px" }}
+                  />
                 </Link>
               </div>
               <div className="navigation">
@@ -125,8 +136,10 @@ const Header = () => {
                     Logout
                   </button>
                 </div>
-                <div className='btn profile'>
-                  <Link className='main-button ' to="#">< Notifications /></Link>
+                <div className="btn profile">
+                  <Link className="main-button " to="#">
+                    <Notifications />
+                  </Link>
                 </div>
                 <div className='btn profile'>
 
@@ -135,15 +148,22 @@ const Header = () => {
 
               </div>
             </div>
-            )
-          }
+            )}
         </div>
       </div>
 
       <div className="mob-header">
         <div className="inner">
           <div className="logo">
-            <Link to="/"> <img className="mw-100" src={logo} alt="logo" style={{ width: "160px" }} /></Link>
+            <Link to="/">
+              {" "}
+              <img
+                className="mw-100"
+                src={logo}
+                alt="logo"
+                style={{ width: "160px" }}
+              />
+            </Link>
           </div>
 
           <div className="">
@@ -196,15 +216,15 @@ const Header = () => {
               </button></span>
               <div className='btn profile ms-2'>
 
-                  <button type='button' className='main-button btn p-0 ' onClick={() => navigate("/profile")}><PersonIcon /></button>
-                </div>
+                <button type='button' className='main-button btn p-0 ' onClick={() => navigate("/profile")}><PersonIcon /></button>
+              </div>
             </div>
           </div>
           )
         }
       </Modal>
     </>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

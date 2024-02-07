@@ -3,7 +3,6 @@ import banner from '../../assets/img/banner_bg.jpg'
 import { AccessAlarm, Favorite, Keyboard, Sms } from '@mui/icons-material';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-
 const Events = () => {
     return (
         <>
@@ -76,7 +75,6 @@ const Events = () => {
                         pagination={{ clickable: true }}
                         scrollbar={{ draggable: true }}
                         breakpoints={{
-
                             1600: {
                                 slidesPerView: 1,
                                 spaceBetween: 20,

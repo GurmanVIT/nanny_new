@@ -237,6 +237,7 @@ a:hover {
 
 .baner_text {
   height: 100vh;
+
   h1 {
     font-size: 70px;
     font-weight: 700;
@@ -286,14 +287,16 @@ body {
   border-color: $green-color;
 }
 
-.btn{
+.btn {
   border: none !important;
- background: $primary-color !important;
- color: $light-color !important;
-  &:focus{
+  background: $primary-color !important;
+  color: $light-color !important;
+
+  &:focus {
     box-shadow: none !important;
   }
-  &:focus-visible{
+
+  &:focus-visible {
     box-shadow: none !important;
   }
 }
