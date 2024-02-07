@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import about from '../../assets/img/about.jpg';
-import visa_payment_card from '../../assets/img/visa-payment-card.png';
+
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
-import AddIcon from '@mui/icons-material/Add';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+
 import Earning from './Earning';
 import { useDispatch, useSelector } from 'react-redux';
 import Manageservices from './Manageservices';
@@ -15,6 +14,7 @@ import NeditProfile from './NeditProfile';
 import Nannybooking from '../Nannybooking/Nannybooking';
 import Availability from '../Availability/Availability';
 import { MenuOutlined } from '@mui/icons-material';
+import NannyPayments from './NannyPayments';
 
 
 const Profilenanny = () => {
@@ -75,7 +75,8 @@ const Profilenanny = () => {
                                 <div className="card  rounded overflow-hidden p-3 card_height">
                                     <div className="profile_photo text-center p-2">
                                         <img src={about} alt="profile" />
-                                        <h4 className="mt-3">My Name</h4>
+                                        {nannyProfile!=null&&
+                                        <h4 className="mt-3">{nannyProfile.firstName} {nannyProfile.lastName}</h4>}
                                         {/*<div className="">
                                             <MenuOutlined onClick={onOpenModal2} />
                                         </div>*/}
@@ -134,111 +135,7 @@ const Profilenanny = () => {
                                     </TabPanel>
 
                                     <TabPanel>
-                                        <div className="row" >
-                                            <div className="col-12">
-                                                <div className="d-flex align-items-center mb-3 justify-content-between heading_back_btn">
-                                                    <div className="d-flex align-items-center">
-                                                        {/*<button ><ArrowBackIosNewIcon/></button>*/}
-                                                        <h2 className="m-0">Cards</h2>
-                                                    </div>
-                                                    <button className="card_type d-flex align-items-center rounded">
-                                                        <AddIcon /> Add Card
-                                                    </button>
-                                                </div>
-                                                <div className="row">
-                                                    <div className="col-md-6">
-                                                        <div className="p-3 card_box">
-                                                            <div className="d-flex align-items-center justify-content-between mb-4">
-                                                                <div className="card_icon">
-                                                                    <img width="w-100" src={visa_payment_card} alt='visa' />
-                                                                </div>
-                                                                <div className="card_type px-2 py-1 rounded">Crdit Card</div>
-                                                            </div>
-                                                            <h4 className="mb-3">2521 2521 5252 5215</h4>
-                                                            <div className="d-flex align-items-center justify-content-between">
-                                                                <div className="holder_details">
-                                                                    <h5 className="mb-0">Card Holder Namer<span className="ms-2">jhngnn</span></h5>
-                                                                    <h5 className="mb-0">Expired<span className="ms-2">jhngnn</span></h5>
-                                                                </div>
-                                                                <button className="delete_btn"><DeleteForeverIcon /></button>
-                                                            </div>
-                                                        </div>
-                                                    </div >
-                                                    <div className="col-md-6 ">
-                                                        <div className="p-3 card_box">
-                                                            <div className="d-flex align-items-center justify-content-between mb-4">
-                                                                <div className="card_icon">
-                                                                    <img width="w-100" src={visa_payment_card} alt='visa' />
-                                                                </div>
-                                                                <div className="card_type px-2 py-1 rounded">Crdit Card</div>
-                                                            </div>
-                                                            <h4 className="mb-3">2521 2521 5252 5215</h4>
-                                                            <div className="d-flex align-items-center justify-content-between">
-                                                                <div className="holder_details">
-                                                                    <h5 className="mb-0">Card Holder Namer<span className="ms-2">jhngnn</span></h5>
-                                                                    <h5 className="mb-0">Expired<span className="ms-2">jhngnn</span></h5>
-                                                                </div>
-                                                                <button className="delete_btn"><DeleteForeverIcon /></button>
-                                                            </div>
-                                                        </div >
-                                                    </div >
-                                                    <div className="col-md-6 ">
-                                                        <div className="p-3 card_box">
-                                                            <div className="d-flex align-items-center justify-content-between mb-4">
-                                                                <div className="card_icon">
-                                                                    <img width="w-100" src={visa_payment_card} alt='visa' />
-                                                                </div>
-                                                                <div className="card_type px-2 py-1 rounded">Crdit Card</div>
-                                                            </div>
-                                                            <h4 className="mb-3">2521 2521 5252 5215</h4>
-                                                            <div className="d-flex align-items-center justify-content-between">
-                                                                <div className="holder_details">
-                                                                    <h5 className="mb-0">Card Holder Namer<span className="ms-2">jhngnn</span></h5>
-                                                                    <h5 className="mb-0">Expired<span className="ms-2">jhngnn</span></h5>
-                                                                </div>
-                                                                <button className="delete_btn"><DeleteForeverIcon /></button>
-                                                            </div>
-                                                        </div >
-                                                    </div >
-                                                    <div className="col-md-6 ">
-                                                        <div className="p-3  card_box">
-                                                            <div className="d-flex align-items-center justify-content-between mb-4">
-                                                                <div className="card_icon">
-                                                                    <img width="w-100" src={visa_payment_card} alt='visa' />
-                                                                </div>
-                                                                <div className="card_type px-2 py-1 rounded">Crdit Card</div>
-                                                            </div>
-                                                            <h4 className="mb-3">2521 2521 5252 5215</h4>
-                                                            <div className="d-flex align-items-center justify-content-between">
-                                                                <div className="holder_details">
-                                                                    <h5 className="mb-0">Card Holder Namer<span className="ms-2">jhngnn</span></h5>
-                                                                    <h5 className="mb-0">Expired<span className="ms-2">jhngnn</span></h5>
-                                                                </div>
-                                                                <button className="delete_btn"><DeleteForeverIcon /></button>
-                                                            </div>
-                                                        </div >
-                                                    </div >
-                                                    <div className="col-md-6">
-                                                        <div className="p-3 card_box">
-                                                            <div className="d-flex align-items-center justify-content-between mb-4">
-                                                                <div className="card_icon">
-                                                                    <img width="w-100" src={visa_payment_card} alt='visa' />
-                                                                </div>
-                                                                <div className="card_type px-2 py-1 rounded">Crdit Card</div>
-                                                            </div>
-                                                            <h4 className="mb-3">2521 2521 5252 5215</h4>
-                                                            <div className="d-flex align-items-center justify-content-between">
-                                                                <div className="holder_details">
-                                                                    <h5 className="mb-0">Card Holder Namer<span className="ms-2">jhngnn</span></h5>
-                                                                    <h5 className="mb-0">Expired<span className="ms-2">jhngnn</span></h5>
-                                                                </div>
-                                                                <button className="delete_btn"><DeleteForeverIcon /></button>
-                                                            </div>
-                                                        </div >
-                                                    </div >
-                                                </div >
-                                            </div >
-                                        </div>
+                                        <NannyPayments/>
                                     </TabPanel>
 
                                     <TabPanel>

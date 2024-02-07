@@ -6,7 +6,7 @@ import axios from 'axios';
 import { BASE_URL, gettimingApi } from '../../utils/Constants';
 
 // Async thunk for fetching data
-export const getTiminglist = createAsyncThunk('getTiminglist', async () => {
+export const getTiminglist = createAsyncThunk('getTiminglist', async (type) => {
   const token = localStorage.getItem("Token")
   console.log("Token ===> ",token)
   const headers = {
@@ -14,9 +14,9 @@ export const getTiminglist = createAsyncThunk('getTiminglist', async () => {
     "Content-Type": "application/json",
   }
   try {
-    const url = BASE_URL + gettimingApi
+    const url = BASE_URL + gettimingApi+`?type=${type}`
     const response = await axios.get(url, { headers }); 
-    console.log(response.data)
+    console.log("GET Timming ===> ",response.data)
     return response.data;
   } catch (error) {
     throw error;

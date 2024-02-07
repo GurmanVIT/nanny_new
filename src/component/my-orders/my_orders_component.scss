@@ -105,15 +105,7 @@
             }
         }
 
-        .btn-ongiing {
-            background-color: rgba($primary-color, .1);
-            color: $primary-color;
-            font-size: 12px;
-            font-weight: 500;
-            border: 1px solid rgba($primary-color, .1);
-            padding: 4px;
-            border-radius: 6px;
-        }
+     
 
         .btn-success-nany {
             background-color: rgba($success-color, .1);
@@ -125,15 +117,7 @@
             border-radius: 6px;
         }
 
-        .btn-cancel-nany {
-            background-color: rgba($danger-color, .1);
-            color: $danger-color;
-            font-size: 12px;
-            font-weight: 500;
-            border: 1px solid rgba($danger-color, .1);
-            padding: 4px;
-            border-radius: 6px;
-        }
+        
     }
 
     .upcoming_option {
@@ -149,11 +133,28 @@
             width: 20px;
             height: 100%;
         }
-
-        .main-button{
-            background: none;
-            border: none;
-            color: $primary-color;
-        }
+    }
+    .btn-cancel-nany {
+        background: none;
+        color: $danger-color;
+        font-size: 16px;
+        font-weight: 500;
+        border:none;
+        padding: 4px;
+        border-radius: 6px;
+    }
+    .btn-ongiing {
+        background: rgba($primary-color, .1) !important;
+        color: $primary-color;
+        font-size: 16px;
+        font-weight: 500;
+        border: 1px solid rgba($primary-color, .1);
+        padding: 4px;
+        border-radius: 6px;
+    }
+    .main-button{
+        background: none;
+        border: none;
+        color: $primary-color;
     }
 }

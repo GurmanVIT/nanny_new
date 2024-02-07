@@ -85,7 +85,8 @@
             margin-left: 0;
         }
 
-        i {
+        svg {
+            padding: 3px;
             width: 30px;
             height: 30px;
             background-color: $primary-color;
@@ -107,7 +108,7 @@
 .choose_icon {
     margin-top: -50px;
 
-    i {
+    svg {
         font-size: 60px;
         color: $secondry-color;
     }
@@ -127,4 +128,10 @@
 
 .testimonials_box {
     background-color: $testimonial_bg;
+    .stars{
+        gap: 5px;
+        svg{
+            color: $secondry-color;
+        }
+    }
 }

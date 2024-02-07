@@ -7,22 +7,18 @@ import { DeleteForever } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
 import { DocumentsnannyList } from '../../store/apiSlice/DocumentsnannySlice';
 import { uploadFile } from '../../store/apiSlice/uploadFileSlice';
-import { uploadDocumentsApi } from '../../utils/Constants';
 import { clearData, uploadDocuments } from '../../store/apiSlice/UpdateDocumentSlice';
 
 const Documentsnanny = () => {
-
-
 
     const dispatch = useDispatch();
     const Uploaddocumentdata = useSelector((state) => state.rootReducer.DocumentsnannyReducer.data);
     const uploadFileData = useSelector((state) => state.rootReducer.uploadFileReducer.data);
     const uploadDocumentData = useSelector((state) => state.rootReducer.uploadDocumentsReducer.data);
-    const [dataList, setDataList] = useState([])
     const [isFilled,setFilled] = useState(false)
 
     const [updateImageIndex,setUpdateImageIndex] = useState(-1)
-
+    
     const [documents, setDocuments] = useState([{
         name: "",
         link: "",
@@ -78,8 +74,6 @@ const Documentsnanny = () => {
 
         console.log("Documents Image",documents)
     }
-
-    const [name, setname] = useState('');
 
     const handleDocuments = () => {
 
@@ -146,30 +140,6 @@ const Documentsnanny = () => {
                         </div>
                     </div>
                     <div className='col-12'>
-
-                        {/*<div className='upload mt-3 upload-new'>
-                            <div className="row">
-                                <div className="col-md-9">
-                                    <div className="input-item input-with-label">
-                                        <label className="input-item-label">Documents Name <span className="text-danger">*</span></label>
-                                        <input className="w-100 input-group" type="text" placeholder='Documents Name' />
-                                    </div>
-                                </div>
-                                <div className="col-sm-3">
-                                    <div className='d-flex align-items-center justify-content-around'>
-                                        <div className="upload-box" style={{ backgroundImage: `url(${pan_image_path === '' ? Background : pan_image_path})` }} >
-                                            <div className="upload-zone dropzone dz-clickable">
-                                                <div className="dz-message" data-dz-message="">
-                                                    <input id='doc-front' type="file" className='temprary-input' accept="image/*" onChange={(e: any) => { setpan_image(e.target.files[0]); setpan_image_path(URL.createObjectURL(e.target.files[0])) }} />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {/*<Link onClick={removeDiv} className='text-danger'><DeleteForever /></Link>*/}
-                        {/*</div>
-                                </div>
-                            </div>*/}
-                        {/*</div>*/}
-
                         {documents != null && documents.map((item, index) => (
                             <div key={""+index} className="added-div mt-4">
                                 <div className='upload mt-3 upload-new'>

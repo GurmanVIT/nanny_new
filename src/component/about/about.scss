@@ -58,6 +58,9 @@
         color: $light-color;
         opacity: 0;
         @include transition;
+        svg{
+            font-size: 45px;
+        }
     }
 }
 &:hover {

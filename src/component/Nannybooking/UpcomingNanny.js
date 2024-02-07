@@ -81,7 +81,7 @@ const UpcomingNanny = () => {
                 <div >
                   {item.status === 1?
                   <Dropdown>
-                  <Dropdown.Toggle id="dropdown-basic" className='main-button'>
+                  <Dropdown.Toggle id="dropdown-basic" className='btn-ongiing'>
                   Request Accepted
                   </Dropdown.Toggle>
 
@@ -89,7 +89,7 @@ const UpcomingNanny = () => {
                     <Dropdown.Item onClick={() => updateBookingStatusApi(2,item._id)}>On The Way</Dropdown.Item>
                     <Dropdown.Item onClick={() => updateBookingStatusApi(3,item._id)}>Reached</Dropdown.Item>
                   </Dropdown.Menu>
-                </Dropdown>:<button type='button' className='mb-0 main-button btn'>{item.status === 0 ? "Accept Request" :  "Canceled"}</button>
+                </Dropdown>:<button type='button' className='mb-0 main-button'>{item.status === 0 ? "Accept Request" :  "Canceled"}</button>
                 }
                 </div>
                 {item.status !== 0 ?
@@ -100,7 +100,7 @@ const UpcomingNanny = () => {
                     </div>
                   </div> :
                   <div >
-                    <button type='button' className='mb-0 main-button danger'>Reject Request</button>
+                    <button type='button' className='mb-0 btn-cancel-nany'>Reject Request</button>
                   </div>
 
                 }

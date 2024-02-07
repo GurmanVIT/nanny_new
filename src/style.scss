@@ -287,6 +287,8 @@ body {
 }
 
 .btn{
+  border: none !important;
+ background: $primary-color !important;
   &:focus{
     box-shadow: none !important;
   }

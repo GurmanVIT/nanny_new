@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import about from '../../assets/img/about.jpg';
 import visa_payment_card from '../../assets/img/visa-payment-card.png';
 import nany_icon from '../../assets/img/nany_icon.png';
@@ -10,8 +10,31 @@ import UserAddress from './UserAddress';
 import ChangePassword from './ChangePassword';
 import EditUserProfile from './EditUserProfile';
 import My_Orders_Component from '../my-orders/My_Orders_Component';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserprofile } from '../../store/apiSlice/UserprofileSlice';
 
 const Profile = () => {
+    const dispatch = useDispatch();
+    const profileData = useSelector((state) => state.rootReducer.UserProfileReducer.data);
+    console.log("Profile Data ===> ",profileData)
+      const [userData ,setUserData] = useState(null)
+  
+      useEffect(() => {
+          dispatch(getUserprofile());
+      }, []);
+  
+      useEffect(() => {
+  
+          console.log("Profile Data ===> ",profileData)
+          if (profileData != null&&profileData.status===1) {
+            //setUserprofile(profileData)
+            setUserData(profileData.data)
+          }
+          else if(profileData!=null){
+              alert(profileData.message)
+          }
+      }, [profileData])
+
     return (
         <>
             <div className="coustom_container">
@@ -20,10 +43,12 @@ const Profile = () => {
                         <div className="row mb-5">
                             <div className="col-md-3 mb-3 mb-md-0 h-100 ">
                                 <div className="card rounded overflow-hidden card_height">
-                                    <div className="profile_photo text-center p-3">
-                                        <img src={about} alt="profile" />
-                                        <h4 className="mt-3">My Name</h4>
-                                    </div>
+                                    {userData !== null &&
+                                        <div className="profile_photo text-center p-3">
+                                            <img src={about} alt="profile" />
+                                            <h4 className="mt-3">{userData.firstName} {userData.lastName}</h4>
+                                        </div>
+                                    }
                                     <TabList className="profile_edit_options">
                                         <Tab className=" profile_option">
                                             <span className="ms-2">My Profile</span>
@@ -56,19 +81,19 @@ const Profile = () => {
                             <div className="col-md-9 h-100">
                                 <div className="card rounded p-3 card_height">
                                     <TabPanel>
-                                      <Userprofile/>
+                                        <Userprofile />
                                     </TabPanel>
                                     <TabPanel>
-                                        <EditUserProfile/>
+                                        <EditUserProfile />
                                     </TabPanel>
                                     <TabPanel>
-                                        <UserAddress/>
+                                        <UserAddress />
                                     </TabPanel>
                                     <TabPanel>
-                                        <ChangePassword/>
+                                        <ChangePassword />
                                     </TabPanel>
                                     <TabPanel>
-                                        <My_Orders_Component/>
+                                        <My_Orders_Component />
                                     </TabPanel>
                                     <TabPanel>
                                         <div className="row" >

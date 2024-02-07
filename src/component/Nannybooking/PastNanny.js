@@ -64,7 +64,7 @@ const PastNanny = () => {
                   </div>
                 </div>
                 <div >
-                  <button className='mb-0 main-button btn'>{item.status===3?"Completed":''}</button>
+                  <button className='mb-0 main-button'>{item.status===3?"Completed":''}</button>
                 </div>
               </div>
             </div>

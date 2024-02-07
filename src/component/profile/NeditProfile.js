@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Button } from 'react-bootstrap';
-import about from '../../assets/img/about.jpg';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { NannyEditprofile } from '../../store/apiSlice/NeditProfileSlice';
+
 
 const NeditProfile = () => {
 
@@ -23,7 +23,7 @@ const NeditProfile = () => {
 
 
     const updateProfile = () => {
-        const payload ={
+        const payload = {
             firstName: firstName,
             lastName: lastName,
             dateOfBirth: date,
@@ -46,20 +46,19 @@ const NeditProfile = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log(" Data",NannyEditData)
-        if(NannyEditData!= null&&NannyEditData.status===1) {
-              alert(NannyEditData.message)
+        console.log(" Data", NannyEditData)
+        if (NannyEditData != null && NannyEditData.status === 1) {
+            alert(NannyEditData.message)
         }
-        else if(NannyEditData!=null)
-        {
+        else if (NannyEditData != null) {
             alert(NannyEditData.message)
         }
     }, [NannyEditData])
 
 
-    useEffect(()=>{
-        console.log("Profile data ===> ",profileData)
-        if(profileData!=null&&profileData.status===1){
+    useEffect(() => {
+        console.log("Profile data ===> ", profileData)
+        if (profileData != null && profileData.status === 1) {
             setFirstName(profileData.data.firstName)
             setLastName(profileData.data.lastName)
             setDate(profileData.data.dateOfBirth)
@@ -68,8 +67,8 @@ const NeditProfile = () => {
             setPinCode(profileData.data.pinCode)
             setMobileNumber(profileData.data.mobileNumber)
         }
-    
-    },[profileData])
+
+    }, [profileData])
 
 
 
@@ -78,45 +77,55 @@ const NeditProfile = () => {
             <div className="row" >
                 <div className="col-12">
                     <div className="d-flex align-items-center mb-3 heading_back_btn">
-                        <h2 className="m-0">Edit Profile</h2>
+                        <h4 className="m-0">Edit Profile</h4>
                     </div>
-                    {profileData!=null && <div className="row">
+                    {profileData != null && <div className="row">
                         <div className="col-12 mb-4 edit_photo">
-                            <img src={profileData.data.profileImage} alt="logo" />
-                            <a href="#" className="ms-3 change_image_btn">Change Porfile Image</a>
+                            <div className="upload-input">
+                                <label htmlFor="upload"><span><img src={profileData.data.profileImage} alt="card" /></span>
+                                    <span><input type="file" id="upload" style={{ display: "none" }} /></span>
+                                </label>
+                                <label className="btn_upload ms-3" htmlFor="upload">Change Porfile Image</label>
+                            </div>
+                            {/*<div className="upload-input">
+                                <label htmlFor="upload"><span><img src={profileData.data.profileImage} alt="card" /></span>
+                                    <span><input type="file" id="upload" style={{ display: "none" }} /></span>
+                                </label>
+                                <label className="btn_upload ms-3" htmlFor="upload">Change Porfile Image</label>
+                            </div>*/}
                         </div>
                         <div className="col-md-6">
                             <form className="w-100 mb-4 pb-2" appearance="outline">
                                 <div className="input-group mb-0">
-                                    <input type="text" placeholder="First Name" value={firstName} onChange={(val)=>setFirstName(val.target.value)}/>
+                                    <input type="text" placeholder="First Name" value={firstName} onChange={(val) => setFirstName(val.target.value)} />
                                 </div>
                             </form>
                         </div>
                         <div className="col-md-6">
                             <form className="w-100 mb-4" appearance="outline">
                                 <div className="input-group mb-0">
-                                    <input type="text" placeholder="Last Name" value={lastName} onChange={(val)=>setLastName(val.target.value)}/>
+                                    <input type="text" placeholder="Last Name" value={lastName} onChange={(val) => setLastName(val.target.value)} />
                                 </div>
                             </form>
                         </div>
                         <div className="col-md-6">
                             <form className="w-100 mb-4" appearance="outline">
                                 <div className="input-group mb-0">
-                                    <input type="number" placeholder="Phone Number" value={mobileNumber} onChange={(val)=>setMobileNumber(val.target.value)}/>
+                                    <input type="number" placeholder="Phone Number" value={mobileNumber} onChange={(val) => setMobileNumber(val.target.value)} />
                                 </div>
                             </form>
                         </div>
                         <div className="col-md-6">
                             <form className="w-100 mb-4" appearance="outline">
                                 <div className="input-group mb-0">
-                                    <input type="text" placeholder="Enter Email" value={email} onChange={(val)=>setEmail(val.target.value)}/>
+                                    <input type="text" placeholder="Enter Email" value={email} onChange={(val) => setEmail(val.target.value)} />
                                 </div>
                             </form>
                         </div>
                         <div className="col-md-6">
                             <form className="w-100 mb-4" appearance="outline">
                                 <div className="input-group mb-0">
-                                    <input type="text" placeholder="Postal Code" value={pinCode} onChange={(val)=>setPinCode(val.target.value)}/>
+                                    <input type="text" placeholder="Postal Code" value={pinCode} onChange={(val) => setPinCode(val.target.value)} />
                                 </div>
                             </form>
                         </div>
@@ -124,14 +133,14 @@ const NeditProfile = () => {
                         <div className="col-md-6">
                             <form className="w-100 mb-4" appearance="outline">
                                 <div className="input-group mb-0">
-                                    <input type='date'  value={date} onChange={(val)=>setDate(val.target.value)}/>
+                                    <input type='date' value={date} onChange={(val) => setDate(val.target.value)} />
                                 </div>
                             </form>
                         </div>
                         <div className="col-md-6">
                             <form className="w-100 mb-4" appearance="outline">
                                 <div className="input-group mb-0">
-                                    <input type="text" placeholder="Education" value={education} onChange={(val)=>setEducation(val.target.value)}/>
+                                    <input type="text" placeholder="Education" value={education} onChange={(val) => setEducation(val.target.value)} />
                                 </div>
                             </form>
                         </div>
@@ -139,13 +148,13 @@ const NeditProfile = () => {
 
                         <div className="col-12">
                             <div className="col-12 mt-3">
-                                <Button type='button' color="primary" className="profile_button save save-btn " onClick={()=>updateProfile()}>
+                                <Button type='button' color="primary" className="profile_button save save-btn " onClick={() => updateProfile()}>
                                     SAVE
                                 </Button>
                             </div>
                         </div>
                     </div >
-}
+                    }
                 </div >
             </div >
         </>

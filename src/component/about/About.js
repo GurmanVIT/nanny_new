@@ -2,14 +2,18 @@ import React from 'react';
 import about from "../../assets/img/about.jpg";
 import founder from "../../assets/img/founder.jpg";
 import offers from "../../assets/img/offers.jpg";
+import { Link } from 'react-router-dom';
+import { Facebook, LinkedIn } from '@mui/icons-material';
 
 const About = () => {
     return (
         <>
-            <div className="inner_pages_banner position-absolute top-0 start-0"></div>
-            <div className="baner_text d-flex align-items-center text-center">
-                <div className="container">
-                    <h1>About Nanny Line</h1>
+            <div className=" nannycategories">
+                <div className='banner_categories'>
+                    <div className='heading_categories container'>
+                        <h1>About Nanny Line</h1>
+                    </div>
+
                 </div>
             </div>
             <div className="sections_padding mt-5">
@@ -94,8 +98,8 @@ const About = () => {
                                 <h6 className="fw-700 mb-4">Adam Smith</h6>
                                 <p>The Nanny Line allows you to learn and step up your game by taking initiatives and present new ideas and solutions to the company”</p>
                                 <div className="team_social_links position-absolute d-flex align-items-center justify-content-center">
-                                    <a href="#" className="mx-2"><i className="fa-brands fa-facebook display-6"></i></a>
-                                    <a href="#" className="mx-2"><i className="fa-brands fa-linkedin display-6"></i></a>
+                                    <Link to="#" className="mx-2"><Facebook /></Link>
+                                    <Link to="#" className="mx-2"><LinkedIn /></Link>
                                 </div>
                             </div>
                         </div>
@@ -108,8 +112,8 @@ const About = () => {
                                 <h6 className="fw-700 mb-4">Adam Smith</h6>
                                 <p>The Nanny Line allows you to learn and step up your game by taking initiatives and present new ideas and solutions to the company”</p>
                                 <div className="team_social_links position-absolute d-flex align-items-center justify-content-center">
-                                    <a href="#" className="mx-2"><i className="fa-brands fa-facebook display-6"></i></a>
-                                    <a href="#" className="mx-2"><i className="fa-brands fa-linkedin display-6"></i></a>
+                                    <Link to="#" className="mx-2"><Facebook /></Link>
+                                    <Link to="#" className="mx-2"><LinkedIn /></Link>
                                 </div>
                             </div>
                         </div>
@@ -122,8 +126,8 @@ const About = () => {
                                 <h6 className="fw-700 mb-4">Adam Smith</h6>
                                 <p>The Nanny Line allows you to learn and step up your game by taking initiatives and present new ideas and solutions to the company”</p>
                                 <div className="team_social_links position-absolute d-flex align-items-center justify-content-center">
-                                    <a href="#" className="mx-2"><i className="fa-brands fa-facebook display-6"></i></a>
-                                    <a href="#" className="mx-2"><i className="fa-brands fa-linkedin display-6"></i></a>
+                                    <Link to="#" className="mx-2"><Facebook /></Link>
+                                    <Link to="#" className="mx-2"><LinkedIn /></Link>
                                 </div>
                             </div>
                         </div>
@@ -136,8 +140,8 @@ const About = () => {
                                 <h6 className="fw-700 mb-4">Adam Smith</h6>
                                 <p>The Nanny Line allows you to learn and step up your game by taking initiatives and present new ideas and solutions to the company”</p>
                                 <div className="team_social_links position-absolute d-flex align-items-center justify-content-center">
-                                    <a href="#" className="mx-2"><i className="fa-brands fa-facebook display-6"></i></a>
-                                    <a href="#" className="mx-2"><i className="fa-brands fa-linkedin display-6"></i></a>
+                                    <Link to="#" className="mx-2"><Facebook /></Link>
+                                    <Link to="#" className="mx-2"><LinkedIn /></Link>
                                 </div>
                             </div>
                         </div>
