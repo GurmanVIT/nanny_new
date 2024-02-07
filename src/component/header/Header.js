@@ -1,25 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import Modal from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import { CastConnected, MenuOutlined } from "@mui/icons-material";
-import logo from '../../assets/img/logo_nav.png';
-import { Link, useNavigate } from 'react-router-dom';
-import { useSelector,useDispatch } from 'react-redux';
-import { clearData } from '../../store/apiSlice/LoginSlice';
-
+import logo from "../../assets/img/logo_nav.png";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { clearData } from "../../store/apiSlice/LoginSlice";
 
 const Header = () => {
-
   const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
 
-  const dispatch = useDispatch()
-
+  const dispatch = useDispatch();
 
   const user = useSelector((state) => state.rootReducer.login.data);
 
   useEffect(() => {
-
     const handleScroll = () => {
       if (window.scrollY > 0) {
         setScrolled(true);
@@ -44,15 +40,12 @@ const Header = () => {
     setOpenModal2(false);
   };
 
-  const onLogoutClick=()=>{
-   
-    localStorage.clear()
-    dispatch(clearData())
-    setInterval(()=>{
-      navigate('/login');
-    },1000);
-    
-  }
+  const onLogoutClick = () => {
+    localStorage.clear();
+    dispatch(clearData());
+
+    // navigate("/login");
+  };
 
   //var className = "inverted";
   //var scrollTrigger = 60;
@@ -73,7 +66,12 @@ const Header = () => {
           <div className="inner">
             <div className="logo">
               <Link to="/">
-                <img className="mw-100" src={logo} alt="logo" style={{ width: "160px" }} />
+                <img
+                  className="mw-100"
+                  src={logo}
+                  alt="logo"
+                  style={{ width: "160px" }}
+                />
               </Link>
             </div>
             <div className="navigation">
@@ -98,25 +96,30 @@ const Header = () => {
                 </li>
               </ul>
             </div>
-            {localStorage.getItem("Token")==null?
-            <div className="btns">
+            {localStorage.getItem("Token") == null ? (
+              <div className="btns">
+                <div className="btn">
+                  <Link className="main-button" to="/login">
+                    Login
+                  </Link>
+                </div>
+                <div className="btn">
+                  <Link className="main-button" to="/signupnanny">
+                    Sign up
+                  </Link>
+                </div>
+              </div>
+            ) : (
               <div className="btn">
-                <Link className="main-button" to="/login">
-                  Login
+                <Link
+                  className="main-button"
+                  to={"/login"}
+                  onClick={() => onLogoutClick()}
+                >
+                  Logout
                 </Link>
               </div>
-              <div className="btn">
-                <Link className="main-button" to="/signupnanny">
-                  Sign up
-                </Link>
-              </div>
-            </div>:
-            <div className="btn">
-            <Link className="main-button" to="/login">
-              Logout
-            </Link>
-          </div>
-            }
+            )}
           </div>
         </div>
       </div>
@@ -124,7 +127,15 @@ const Header = () => {
       <div className="mob-header">
         <div className="inner">
           <div className="logo">
-            <Link to="/"> <img className="mw-100" src={logo} alt="logo" style={{ width: "160px" }} /></Link>
+            <Link to="/">
+              {" "}
+              <img
+                className="mw-100"
+                src={logo}
+                alt="logo"
+                style={{ width: "160px" }}
+              />
+            </Link>
           </div>
 
           <div className="">
@@ -147,22 +158,45 @@ const Header = () => {
         <div className="main-sec">
           <div className="inner-sec">
             <ul className="menu-list2">
-              <Link to="/" onClick={onCloseModal2}>Home</Link>
-              <Link to="/about" onClick={onCloseModal2}>About</Link>
-              <Link to="/services" onClick={onCloseModal2}>Services</Link>
-              <Link to="/events" onClick={onCloseModal2}>Events</Link>
-              <Link to="/tutorings" onClick={onCloseModal2}>Tutorings</Link>
-              <Link to="/contact" onClick={onCloseModal2}>Contact</Link>
+              <Link to="/" onClick={onCloseModal2}>
+                Home
+              </Link>
+              <Link to="/about" onClick={onCloseModal2}>
+                About
+              </Link>
+              <Link to="/services" onClick={onCloseModal2}>
+                Services
+              </Link>
+              <Link to="/events" onClick={onCloseModal2}>
+                Events
+              </Link>
+              <Link to="/tutorings" onClick={onCloseModal2}>
+                Tutorings
+              </Link>
+              <Link to="/contact" onClick={onCloseModal2}>
+                Contact
+              </Link>
             </ul>
           </div>
 
           <div className="btn">
-            <span><Link to="/login" className="main-button" onClick={onCloseModal2}>Login</Link></span>
-            <span><Link to="/register" className="second-button" onClick={onCloseModal2}>Sign up</Link></span>
+            <span>
+              <Link to="/login" className="main-button" onClick={onCloseModal2}>
+                Login
+              </Link>
+            </span>
+            <span>
+              <Link
+                to="/register"
+                className="second-button"
+                onClick={onCloseModal2}
+              >
+                Sign up
+              </Link>
+            </span>
           </div>
         </div>
       </Modal>
-
 
       {/*<Navbar expand="lg" className="bg-body-tertiary custam_header header d-flex">
                 <Container>
@@ -184,7 +218,7 @@ const Header = () => {
                 </Container>
             </Navbar>*/}
     </>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
