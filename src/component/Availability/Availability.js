@@ -53,7 +53,6 @@ const Availability = () => {
     const isDefaultHighlighted = defaultHighlightedDates.some(
       defaultHighlightedDate => defaultHighlightedDate.toDateString() === date.toDateString()
     );
-
     // Check if the date is one of the user-modifiable highlighted dates
     const isHighlighted = highlightedDates.some(
       highlightedDate => highlightedDate.toDateString() === date.toDateString()
