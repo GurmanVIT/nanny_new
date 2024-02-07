@@ -14,7 +14,7 @@ const Availability = () => {
   const [selectedTiming, setSelectedTiming] = useState([]);
   const [selectedButtons, setSelectedButtons] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
   const [selectedTimeArray, setSelectedTimeArray] = useState([]);
 
   const [dataList, setDataList] = useState(null);
@@ -58,22 +58,43 @@ const Availability = () => {
 
   // celender selection setup
 
+  useEffect(() => {
+    console.log("Selected Timing ===> ", selectedTiming);
+  }, [selectedTiming]);
+
+  useEffect(() => {
+    const combineArray = selectedTimeArray.join(",");
+    setSelectedTiming((selectedTiming) => {
+      const updatedSelectedData = [...selectedTiming];
+      const updatedTiming = {
+        ...updatedSelectedData[selectedIndex],
+        timeSlotsAvailablity: combineArray,
+      };
+      updatedSelectedData[selectedIndex] = updatedTiming;
+      return updatedSelectedData;
+    });
+
+    console.log(combineArray);
+  }, [selectedTimeArray]);
+
   const tileClassName = ({ date }) => {
-    const isDefaultHighlighted = selectedTiming.some(
-      (defaultHighlightedDate) =>
-        new Date(
-          swappedDateString(defaultHighlightedDate.date)
-        ).toDateString() === date.toDateString()
-    );
-    const isHighlighted = highlightedDates.some(
-      (highlightedDate) =>
-        highlightedDate.toDateString() === date.toDateString()
-    );
-    if (isDefaultHighlighted) {
-      return "default-highlighted-date";
-    }
-    if (isHighlighted) {
-      return "highlighted-date";
+    if (selectedTiming != null) {
+      const isDefaultHighlighted = selectedTiming.some(
+        (defaultHighlightedDate) =>
+          new Date(
+            swappedDateString(defaultHighlightedDate.date)
+          ).toDateString() === date.toDateString()
+      );
+      const isHighlighted = highlightedDates.some(
+        (highlightedDate) =>
+          highlightedDate.toDateString() === date.toDateString()
+      );
+      if (isDefaultHighlighted) {
+        return "default-highlighted-date";
+      }
+      if (isHighlighted) {
+        return "highlighted-date";
+      }
     }
     // return isDefaultHighlighted || isHighlighted ? "highlighted-date" : null;
   };
@@ -90,9 +111,11 @@ const Availability = () => {
           new Date(swappedDateString(selectedTiming[i].date)).toDateString() ===
           date.toDateString()
         ) {
+          setSelectedIndex(i);
           return i;
         }
       }
+      setSelectedIndex(-1);
       return -1;
     };
 
@@ -125,13 +148,17 @@ const Availability = () => {
   //24 Bottom button selection
   const numbersArray = Array.from({ length: 24 }, (_, index) => index + 1);
   const handleButtonClick = (number) => {
-    const isButtonSelected = selectedButtons.includes(number);
+    const val =
+      number.toString().length === 1
+        ? "0" + number + ":" + "00"
+        : "" + number + ":" + "00";
+    const isButtonSelected = selectedTimeArray.includes(val);
     if (isButtonSelected) {
-      setSelectedButtons((prevSelected) =>
-        prevSelected.filter((selected) => selected !== number)
+      setSelectedTimeArray((prevSelected) =>
+        prevSelected.filter((selected) => selected !== val)
       );
     } else {
-      setSelectedButtons((prevSelected) => [...prevSelected, number]);
+      setSelectedTimeArray((prevSelected) => [...prevSelected, val]);
     }
   };
 
@@ -140,7 +167,6 @@ const Availability = () => {
       value.toString().length === 1
         ? "0" + value + ":" + "00"
         : "" + value + ":" + "00";
-    console.log(val + " " + selectedTimeArray.includes(val));
     return selectedTimeArray.includes(val);
   };
 
