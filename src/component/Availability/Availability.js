@@ -73,8 +73,6 @@ const Availability = () => {
       updatedSelectedData[selectedIndex] = updatedTiming;
       return updatedSelectedData;
     });
-
-    console.log(combineArray);
   }, [selectedTimeArray]);
 
   const tileClassName = ({ date }) => {
@@ -100,6 +98,7 @@ const Availability = () => {
   };
 
   const handleCalendarClick = (date) => {
+    console.log("Date ===> ", date.toDateString());
     const isDefaultHighlighted = highlightedDates.some(
       (defaultHighlightedDate) =>
         defaultHighlightedDate.toDateString() === date.toDateString()
@@ -142,6 +141,27 @@ const Availability = () => {
 
     if (!isDefaultHighlighted) {
       setHighlightedDates([date]);
+      const dateObject = new Date(date);
+
+      // Options for formatting the date
+      const options = { day: "2-digit", month: "2-digit", year: "numeric" };
+
+      // Convert the Date object to the desired format
+      const formattedDate = dateObject.toLocaleDateString("en-GB", options);
+      const newObject = {
+        isFullDayAvialable: 1,
+        date: formattedDate,
+        day: "",
+        timeSlotsAvailablity: ["10:00,11:00,12:00,13:00,14:00,15:00,16:00"],
+        isActive: 1,
+        isDeleted: 0,
+        _id: "newObjectId", // You can generate a new unique ID
+        nannyId: "newNannyId",
+        createdAt: "2024-02-11T00:00:00.000Z",
+        __v: 0,
+      };
+
+      setSelectedTiming((prevData) => [...prevData, newObject]);
     }
   };
 
