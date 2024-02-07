@@ -130,7 +130,7 @@ const Dayschange = () => {
                             ampm={false}
                             onChange={(e) => console.log(e)}
                         />
-                        </LocalizationProvider> 
+                        </LocalizationProvider>    
                     </div>
 
                     <button onClick={() => handleTime()} className='apply_btn'>Apply</button>
