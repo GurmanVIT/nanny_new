@@ -30,7 +30,6 @@ const Login = () => {
   };
 
   const navigate = useNavigate();
-
   const navigateToAnotherScreen = () => {
     if (user.data.type == 1) {
       navigate("/profilenanny");
@@ -91,7 +90,7 @@ const Login = () => {
                       placeholder="Password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      //onChange={(e) => setPassword(e.target.value)}
+                    //onChange={(e) => setPassword(e.target.value)}
                     />
                     {/*<FontAwesomeIcon
                                             icon={showPassword ? faEye : faEyeSlash}
