@@ -89,12 +89,6 @@ const NeditProfile = () => {
                                 </label>
                                 <label className="btn_upload ms-3" htmlFor="upload">Change Porfile Image</label>
                             </div>
-                            {/*<div className="upload-input">
-                                <label htmlFor="upload"><span><img src={profileData.data.profileImage} alt="card" /></span>
-                                    <span><input type="file" id="upload" style={{ display: "none" }} /></span>
-                                </label>
-                                <label className="btn_upload ms-3" htmlFor="upload">Change Porfile Image</label>
-                            </div>*/}
                         </div>
                         <div className="col-md-6">
                             <form className="w-100 mb-4 pb-2" appearance="outline">

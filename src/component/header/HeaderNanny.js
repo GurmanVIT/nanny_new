@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Modal from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
-import { CastConnected, MenuOutlined, Notifications } from "@mui/icons-material";
+import { CastConnected, Forward, Leaderboard, MenuOutlined, Notifications } from "@mui/icons-material";
 import logo from '../../assets/img/logo_nav.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -126,9 +126,70 @@ const HeaderNanny = () => {
                                         Logout
                                     </button>
                                 </div>
-                                <div className='btn profile'>
-                                    <Link className='main-button ' to="#">< Notifications /></Link>
+                                <div className='notifications'>
+                                    <ul className='nav'>
+                                        <li className='list_item'>
+                                            <Link to="#" className="main-button "> <Notifications /></Link>
+
+                                            <div className="hover_content_public">
+                                                <div className='drop_downcont'>
+                                                    <ul>
+                                                        <div className="row">
+                                                            <div className="col-lg-12">
+                                                                <Link className='hover_a'>
+                                                                    <div className="item_flex">
+                                                                        <div className="icon_gap">
+                                                                            <Leaderboard />
+                                                                            <div>
+                                                                                <span>LeaderBoard</span>
+                                                                                <p>Join in on our giveaways and promotions</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <Forward className='forward_icon' />
+                                                                    </div>
+
+                                                                </Link>
+                                                            </div>
+                                                            <div className='col-lg-12'>
+                                                                <Link className='hover_a'>
+                                                                    <div className="item_flex">
+                                                                        <div className="icon_gap">
+                                                                            <Leaderboard />
+                                                                            <div>
+                                                                                <span>Reward Center</span>
+                                                                                <p>Complete tasks and get rewards in one click</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <Forward className='forward_icon' />
+                                                                    </div>
+                                                                </Link>
+                                                            </div>
+
+
+                                                            <div className="col-lg-12">
+                                                                <Link className='hover_a'>
+                                                                    <div className="item_flex">
+                                                                        <div className="icon_gap">
+                                                                            <Leaderboard />
+                                                                            <div>
+                                                                                <span>Promotions</span>
+                                                                                <p>Complete tasks and get rewards in one click</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <Forward className='forward_icon' />
+                                                                    </div>
+                                                                </Link>
+                                                            </div>
+                                                        </div>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </div>
+                                {/*<div className='btn profile'>
+                                    <Link className='main-button ' to="#">< Notifications /></Link>
+                                </div>*/}
                                 <div className='btn profile'>
 
                                     <Link className='main-button ' to="/profilenanny"><PersonIcon /></Link>
@@ -187,20 +248,20 @@ const HeaderNanny = () => {
                             <div className="inner-sec">
                                 <ul className="menu-list2">
                                     <Link to="/" onClick={onCloseModal2}>Home</Link>
-                             {/*<Link to="/about" onClick={onCloseModal2}>About</Link>
+                                    {/*<Link to="/about" onClick={onCloseModal2}>About</Link>
                              <Link to="/services" onClick={onCloseModal2}>Services</Link>
                              <Link to="/events" onClick={onCloseModal2}>Events</Link>
                              <Link to="/tutorings" onClick={onCloseModal2}>Tutorings</Link>
                              <Link to="/contact" onClick={onCloseModal2}>Contact</Link>*/}
                                 </ul>
                             </div>
-                                <span><button type='button' className="main-button btn" onClick={() => onLogoutClick()}>
-                                    Logout
-                                </button></span>
-                          
-                                <span>  <div className='btn profile my-2'>
-                                    <Link className='main-button' to="#">< Notifications /></Link>
-                                </div></span>
+                            <span><button type='button' className="main-button btn" onClick={() => onLogoutClick()}>
+                                Logout
+                            </button></span>
+
+                            <span>  <div className='btn profile my-2'>
+                                <Link className='main-button' to="#">< Notifications /></Link>
+                            </div></span>
                         </div>
 
                     )}

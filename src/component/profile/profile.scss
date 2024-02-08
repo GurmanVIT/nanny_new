@@ -513,3 +513,15 @@
 .save {
     padding: 5px 22px;
 }
+
+.form-select {
+    &:focus {
+        box-shadow: none;
+        outline: none;
+    }
+
+    &:focus-visible {
+        box-shadow: none;
+        outline: none;
+    }
+}

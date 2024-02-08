@@ -6,21 +6,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { Form, FormCheck } from "react-bootstrap";
 import { getTiminglist } from "../../store/apiSlice/GetTimingSlice";
 import TimeChangeModal from "./TimeChangeModal";
+import { updateTimingslist } from "../../store/apiSlice/UpdateTimingsSlice";
 
 const Availability = () => {
   const getTiming = useSelector(
     (state) => state.rootReducer.getTiminglistReducer.data
   );
+  const updateTiming = useSelector(
+    (state) => state.rootReducer.updateTimingslistReducer.data
+  );
   const [selectedTiming, setSelectedTiming] = useState([]);
-  const [selectedButtons, setSelectedButtons] = useState([]);
-  const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [selectedTimeArray, setSelectedTimeArray] = useState([]);
 
-  const [dataList, setDataList] = useState(null);
-  const [defaultHighlightedDates, setDefaultHighlightedDates] = useState([]);
-
-  const [highlightedDates, setHighlightedDates] = useState([]);
+  const [selectedCalenderValues, setSelectedCalenderValues] = useState([]);
+  const [updatePayload, setUpdatePayload] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -36,43 +36,77 @@ const Availability = () => {
 
   // Swap day and month and create a new date string
   const swappedDateString = (originalDate) => {
-    const currentDateArr = originalDate.split("/");
-    return (
-      currentDateArr[1] + "/" + currentDateArr[0] + "/" + currentDateArr[2]
-    );
+    if (originalDate != null) {
+      const currentDateArr = originalDate.split("/");
+      return (
+        currentDateArr[1] + "/" + currentDateArr[0] + "/" + currentDateArr[2]
+      );
+    }
   };
 
-  const updateclick = () => { };
+  const updateClick = () => {
+    const transformedArray = selectedTiming.map((item) => ({
+      date: item.date,
+      day:
+        new Date(item.date).getDay().toString() == "NaN"
+          ? ""
+          : new Date(item.date).getDay().toString(), // Convert date to day (0-6)
+      timeSlotsAvailablity: item.timeSlotsAvailablity.join(", "),
+      isFullDayAvialable: item.isFullDayAvialable,
+    }));
+
+    transformedArray.push(selectedCalenderValues[0]);
+
+    // setUpdatePayload(transformedArray);
+
+    console.log("Updated Array Payload ===> ", transformedArray);
+
+    const payload = {
+      timings: transformedArray,
+    };
+
+    dispatch(updateTimingslist(payload));
+  };
+
+  useEffect(() => {
+    if (updateTiming != null && updateTiming.status === 1) {
+      dispatch(getTiminglist(1));
+    }
+  }, [updateTiming]);
 
   const [displayStyle, setDisplayStyle] = useState("none");
   const [isChecked, setIsChecked] = useState(false);
 
-  // const toggleDisplay = () => {
-  //   setDisplayStyle((prevStyle) => (isChecked ? "none" : "block"));
-  // };
-
-  // const handleCheckboxChange = () => {
-  //   setIsChecked(!isChecked);
-  //   toggleDisplay();
-  // };
-
   // celender selection setup
 
   useEffect(() => {
-    console.log("Selected Timing ===> ", selectedTiming);
-  }, [selectedTiming]);
+    console.log("Selected Timing ===> ", selectedCalenderValues[0]);
+  }, [selectedCalenderValues]);
 
   useEffect(() => {
     const combineArray = selectedTimeArray.join(",");
-    setSelectedTiming((selectedTiming) => {
-      const updatedSelectedData = [...selectedTiming];
-      const updatedTiming = {
-        ...updatedSelectedData[selectedIndex],
-        timeSlotsAvailablity: combineArray,
-      };
-      updatedSelectedData[selectedIndex] = updatedTiming;
-      return updatedSelectedData;
-    });
+    if (selectedIndex === -1) {
+      setSelectedCalenderValues((selectedCalenderValues) => {
+        const updatedSelectedData = [...selectedCalenderValues];
+        const updatedTiming = {
+          ...updatedSelectedData[0],
+          timeSlotsAvailablity: combineArray,
+        };
+
+        updatedSelectedData[0] = updatedTiming;
+        return updatedSelectedData;
+      });
+    } else {
+      setSelectedTiming((selectedTiming) => {
+        const updatedSelectedData = [...selectedTiming];
+        const updatedTiming = {
+          ...updatedSelectedData[selectedIndex],
+          timeSlotsAvailablity: combineArray,
+        };
+        updatedSelectedData[selectedIndex] = updatedTiming;
+        return updatedSelectedData;
+      });
+    }
   }, [selectedTimeArray]);
 
   const tileClassName = ({ date }) => {
@@ -83,9 +117,10 @@ const Availability = () => {
             swappedDateString(defaultHighlightedDate.date)
           ).toDateString() === date.toDateString()
       );
-      const isHighlighted = highlightedDates.some(
+      const isHighlighted = selectedCalenderValues.some(
         (highlightedDate) =>
-          highlightedDate.toDateString() === date.toDateString()
+          new Date(swappedDateString(highlightedDate.date)).toDateString() ===
+          date.toDateString()
       );
       if (isDefaultHighlighted) {
         return "default-highlighted-date";
@@ -99,9 +134,11 @@ const Availability = () => {
 
   const handleCalendarClick = (date) => {
     console.log("Date ===> ", date.toDateString());
-    const isDefaultHighlighted = highlightedDates.some(
+    const isDefaultHighlighted = selectedCalenderValues.some(
       (defaultHighlightedDate) =>
-        defaultHighlightedDate.toDateString() === date.toDateString()
+        new Date(
+          swappedDateString(defaultHighlightedDate.date)
+        ).toDateString() === date.toDateString()
     );
 
     const index = () => {
@@ -140,7 +177,6 @@ const Availability = () => {
     }
 
     if (!isDefaultHighlighted) {
-      setHighlightedDates([date]);
       const dateObject = new Date(date);
 
       // Options for formatting the date
@@ -148,20 +184,16 @@ const Availability = () => {
 
       // Convert the Date object to the desired format
       const formattedDate = dateObject.toLocaleDateString("en-GB", options);
-      const newObject = {
-        isFullDayAvialable: 1,
-        date: formattedDate,
-        day: "",
-        timeSlotsAvailablity: ["10:00,11:00,12:00,13:00,14:00,15:00,16:00"],
-        isActive: 1,
-        isDeleted: 0,
-        _id: "newObjectId", // You can generate a new unique ID
-        nannyId: "newNannyId",
-        createdAt: "2024-02-11T00:00:00.000Z",
-        __v: 0,
-      };
+      const newObject = [
+        {
+          date: formattedDate,
+          day: "",
+          timeSlotsAvailablity: "",
+          isFullDayAvialable: 1,
+        },
+      ];
 
-      setSelectedTiming((prevData) => [...prevData, newObject]);
+      setSelectedCalenderValues(newObject);
     }
   };
 
@@ -190,6 +222,23 @@ const Availability = () => {
     return selectedTimeArray.includes(val);
   };
 
+  const toggleButtonClick = (val) => {
+    if (selectedIndex === -1) {
+      setIsChecked(val);
+      setSelectedCalenderValues((selectedCalenderValues) => {
+        const updatedSelectedData = [...selectedCalenderValues];
+        const updatedTiming = {
+          ...updatedSelectedData[0],
+          isFullDayAvialable: !isChecked ? 0 : 1,
+        };
+
+        updatedSelectedData[0] = updatedTiming;
+        return updatedSelectedData;
+      });
+    }
+  };
+
+
   return (
     <>
       <div className="order_card mb-5 calender">
@@ -205,7 +254,11 @@ const Availability = () => {
             <TabPanel>
               <div className="mt-3">
                 <div className="updates">
-                  <button type="button" className="update_btn">
+                  <button
+                    type="button"
+                    className="update_btn"
+                    onClick={() => updateClick()}
+                  >
                     Update
                   </button>
                 </div>
@@ -236,7 +289,7 @@ const Availability = () => {
                         type="switch"
                         checked={isChecked}
                         onChange={(val) => {
-                          setIsChecked(val.target.checked);
+                          toggleButtonClick(() => val.target.checked);
                           setDisplayStyle(
                             val.target.checked ? "block" : "none"
                           );

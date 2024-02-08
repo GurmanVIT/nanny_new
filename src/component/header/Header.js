@@ -3,6 +3,8 @@ import Modal from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import {
   CastConnected,
+  Forward,
+  Leaderboard,
   MenuOutlined,
   Notifications,
 } from "@mui/icons-material";
@@ -136,11 +138,70 @@ const Header = () => {
                     Logout
                   </button>
                 </div>
-                <div className="btn profile">
+                <div className='notifications'>
+                  <ul className='nav'>
+                    <li className='list_item'>
+                      <Link to="#" className="main-button "> <Notifications /></Link>
+
+                      <div className="hover_content_public">
+                        <div className='drop_downcont'>
+                          <ul>
+                            <div className="row">
+                              <div className="col-lg-12">
+                                <Link className='hover_a'>
+                                  <div className="item_flex">
+                                    <div className="icon_gap">
+                                      <Leaderboard />
+                                      <div>
+                                        <span>LeaderBoard</span>
+                                        <p>Join in on our giveaways and promotions</p>
+                                      </div>
+                                    </div>
+                                    <Forward className='forward_icon' />
+                                  </div>
+
+                                </Link>
+                              </div>
+                              <div className="col-lg-12">
+                                <Link className='hover_a'>
+                                  <div className="item_flex">
+                                    <div className="icon_gap">
+                                      <Leaderboard />
+                                      <div>
+                                        <span>Reward Center</span>
+                                        <p>Complete tasks and get rewards in one click</p>
+                                      </div>
+                                    </div>
+                                    <Forward className='forward_icon' />
+                                  </div>
+                                </Link>
+                              </div>
+                              <div className="col-lg-12">
+                                <Link className='hover_a'>
+                                  <div className="item_flex">
+                                    <div className="icon_gap">
+                                      <Leaderboard />
+                                      <div>
+                                        <span>Promotions</span>
+                                        <p>Complete tasks and get rewards in one click</p>
+                                      </div>
+                                    </div>
+                                    <Forward className='forward_icon' />
+                                  </div>
+                                </Link>
+                              </div>
+                            </div>
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                {/*<div className="btn profile">
                   <Link className="main-button " to="#">
                     <Notifications />
                   </Link>
-                </div>
+                </div>*/}
                 <div className='btn profile'>
 
                   <button type='button' className='main-button ' onClick={() => navigate("/profile")}><PersonIcon /></button>

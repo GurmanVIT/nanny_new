@@ -1,11 +1,11 @@
-//breakpoints
-$breakpoint_XXXL: "max-width:1700px";
+//breckpoints
+$breckpoint_XXXL: "max-width:1700px";
 $breckpoint_XXL: "max-width: 1400px";
 $breckpoint_XL: "max-width: 1200px";
 $breckpoint_LG: "max-width: 992px";
 $breckpoint_MD: "max-width: 768px";
 $breckpoint_SM: "max-width: 576px";
-$breakpoint_450: "max-width: 450px";
+$breckpoint_450: "max-width: 450px";
 $breckpoint_ESM: "max-width: 385px";
 $breckpoint_340: "max-width: 355px";
 
@@ -70,6 +70,9 @@ $breckpoint_340: "max-width: 355px";
     }
 
     .btns {
+      display: flex;
+      align-items: center;
+
       .btn {
         background-color: $primary-color;
         border-radius: 10px;
@@ -80,12 +83,170 @@ $breckpoint_340: "max-width: 355px";
           background: transparent;
           border: none;
         }
-      
+
 
       }
-      .profile{
+
+      .profile {
         border-radius: 50px !important;
-        
+
+      }
+
+      .notifications {
+        @media($breckpoint_LG) {
+          display: none;
+        }
+
+        .nav {
+          list-style: none;
+
+          li {
+            a {
+              background-color: $primary-color;
+              text-decoration: none;
+              color: $light-color;
+              padding: 10px 15px;
+              font-size: 14px;
+              font-weight: 600;
+              font-family: "Sofia Sans", sans-serif;
+              transition: all .4s linear;
+              border-radius: 7px;
+
+              @media($breckpoint_XL) {
+                padding: 23px 15px;
+              }
+
+              @media($breckpoint_ESM) {
+                font-size: 15px;
+              }
+
+              &:hover {
+                // background-color: $header-bg-hover;
+                color: $secondry-color;
+
+                .arrow_icon {
+                  transform: rotate(180deg);
+                }
+              }
+            }
+          }
+        }
+
+        .hover_content_public {
+          display: none;
+          position: absolute;
+          background: $services_bg;
+          min-width: 250px;
+          border-radius: 0px 0px 5px 5px;
+          transition: all 0.5s linear;
+          animation: rotateMenu 600ms ease-in-out forwards;
+          transform-origin: top center;
+          z-index: 2;
+          border-top: none !important;
+          border: 1px solid $light-color;
+          top: 51px;
+          right: 10px;
+
+          @media($breckpoint_XL) {
+            top: 53px;
+          }
+
+          &:hover {
+            .arrow_icon {
+              transform: rotate(180deg);
+            }
+
+            .nav {
+              li {
+                a {
+                  background-color: red;
+                }
+              }
+            }
+          }
+
+          .drop_downcont {
+            ul {
+              padding: 10px;
+              list-style: none;
+              width: 300px;
+
+              .hover_a {
+                padding: 0px;
+                transition: all .3s linear;
+
+                .item_flex {
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  border-radius: 4px;
+                  margin: 12px 0px;
+                  padding: 8px 8px;
+                  background-color: transparent;
+                  transition: all .3s linear;
+
+                  .icon_gap {
+                    display: flex;
+                    gap: 15px;
+
+                    span {
+                      font-size: 14px;
+                      font-weight: 500;
+                      color: #000;
+                    }
+
+                    p {
+                      margin-bottom: 0px;
+                      color: #000;
+                      font-size: 12px;
+                      font-weight: 400;
+                    }
+
+                    svg {
+                      color: $primary-color;
+                      font-size: 22px;
+
+                      @media($breckpoint_ESM) {
+                        font-size: 18px;
+                      }
+                    }
+                  }
+
+                  .forward_icon {
+                    color: transparent;
+                    font-size: 18px;
+                    display: block;
+                    transition: all .3s linear;
+                  }
+                }
+
+                &:hover {
+                  .item_flex {
+                    background-color: $secondry-color;
+                    transition: all .3s linear;
+                  }
+
+                  .forward_icon {
+                    transition: all .3s linear;
+                    color: $primary-color;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .list_item {
+          &:hover {
+            .hover_content_public {
+              display: block;
+            }
+
+            .arrow_icon {
+              transform: rotate(180deg);
+            }
+          }
+        }
       }
     }
   }
@@ -96,12 +257,6 @@ $breckpoint_340: "max-width: 355px";
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transition: .5s;
     border-color: transparent !important;
-
-    a {
-
-      color: #000 !important;
-    }
-
   }
 
   @media($breckpoint_LG) {
@@ -121,20 +276,24 @@ $breckpoint_340: "max-width: 355px";
   @media($breckpoint_LG) {
     display: block;
   }
-  .react-responsive-modal-closeButton{
-  svg{
-    color: #333;
+
+  .react-responsive-modal-closeButton {
+    svg {
+      color: #333;
+    }
   }
-  }
+
   .inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 18px 15px;
+
     svg {
       color: #333;
       font-size: 28px;
     }
+
     .logo {
       img {
         width: 30px;
