@@ -16,7 +16,7 @@ export const updateTimingslist = createAsyncThunk(
     try {
       const url = BASE_URL + updateTimingsApi;
       const response = await axios.put(url, payload, { headers });
-      console.log(response.data);
+      console.log("Response ===>", response.data);
       return response.data;
     } catch (error) {
       throw error;
