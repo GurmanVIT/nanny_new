@@ -7,6 +7,10 @@ import { Form, FormCheck } from "react-bootstrap";
 import { getTiminglist } from "../../store/apiSlice/GetTimingSlice";
 import TimeChangeModal from "./TimeChangeModal";
 import { updateTimingslist } from "../../store/apiSlice/UpdateTimingsSlice";
+import {
+  clearDeleteData,
+  deleteTimingslist,
+} from "../../store/apiSlice/DeleteTimingsSlice";
 
 const Availability = () => {
   const getTiming = useSelector(
@@ -15,12 +19,15 @@ const Availability = () => {
   const updateTiming = useSelector(
     (state) => state.rootReducer.updateTimingslistReducer.data
   );
+  const deleteTimingReducer = useSelector(
+    (state) => state.rootReducer.deleteTimingsReducer.data
+  );
   const [selectedTiming, setSelectedTiming] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [selectedTimeArray, setSelectedTimeArray] = useState([]);
+  const [deleteIds, setDeleteIds] = useState([]);
 
   const [selectedCalenderValues, setSelectedCalenderValues] = useState([]);
-  const [updatePayload, setUpdatePayload] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -79,9 +86,9 @@ const Availability = () => {
 
   // celender selection setup
 
-  useEffect(() => {
-    console.log("Selected Timing ===> ", selectedCalenderValues[0]);
-  }, [selectedCalenderValues]);
+  // useEffect(() => {
+  //   console.log("Selected Timing ===> ", selectedCalenderValues[0]);
+  // }, [selectedCalenderValues]);
 
   useEffect(() => {
     const combineArray = selectedTimeArray.join(",");
@@ -197,6 +204,25 @@ const Availability = () => {
     }
   };
 
+  const deleteTiming = () => {
+    if (selectedIndex > -1) {
+      deleteIds.push(selectedTiming[selectedIndex]._id);
+
+      const payload = {
+        ids: deleteIds,
+      };
+      console.log(payload);
+      dispatch(deleteTimingslist(payload));
+    }
+  };
+
+  useEffect(() => {
+    if (deleteTimingReducer != null && deleteTimingReducer.status === 1) {
+      dispatch(clearDeleteData());
+      dispatch(getTiminglist(1));
+    }
+  }, [deleteTimingReducer]);
+
   //24 Bottom button selection
   const numbersArray = Array.from({ length: 24 }, (_, index) => index + 1);
   const handleButtonClick = (number) => {
@@ -253,7 +279,16 @@ const Availability = () => {
 
             <TabPanel>
               <div className="mt-3">
-                <div className="updates">
+                <div className="updates ">
+                  {selectedIndex > -1 && (
+                    <button
+                      type="button"
+                      className="update_btn me-2 delete_btn_red"
+                      onClick={() => deleteTiming()}
+                    >
+                      Delete
+                    </button>
+                  )}
                   <button
                     type="button"
                     className="update_btn"

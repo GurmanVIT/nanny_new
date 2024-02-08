@@ -96,7 +96,9 @@
   position: absolute;
   right: 21px;
   top: 17px;
-
+  .delete_btn_red {
+    background-color: red !important;
+  }
   .update_btn {
     background: #6ec1e4;
     border: none;
