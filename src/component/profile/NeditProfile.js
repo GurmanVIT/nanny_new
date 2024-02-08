@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Button } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { NannyEditprofile } from '../../store/apiSlice/NeditProfileSlice';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css'
 
 
 const NeditProfile = () => {
@@ -96,6 +98,7 @@ const NeditProfile = () => {
                         </div>
                         <div className="col-md-6">
                             <form className="w-100 mb-4 pb-2" appearance="outline">
+                                <Form.Label>First Name</Form.Label>
                                 <div className="input-group mb-0">
                                     <input type="text" placeholder="First Name" value={firstName} onChange={(val) => setFirstName(val.target.value)} />
                                 </div>
@@ -103,20 +106,41 @@ const NeditProfile = () => {
                         </div>
                         <div className="col-md-6">
                             <form className="w-100 mb-4" appearance="outline">
+                                <Form.Label>Last Name</Form.Label>
                                 <div className="input-group mb-0">
                                     <input type="text" placeholder="Last Name" value={lastName} onChange={(val) => setLastName(val.target.value)} />
                                 </div>
                             </form>
                         </div>
-                        <div className="col-md-6">
-                            <form className="w-100 mb-4" appearance="outline">
-                                <div className="input-group mb-0">
-                                    <input type="number" placeholder="Phone Number" value={mobileNumber} onChange={(val) => setMobileNumber(val.target.value)} />
+                        <div className='col-md-6'>
+                            <form>
+                                <div className='main_input'>
+                                    <div className="input_field_flex ">
+                                        <Form.Label>Phone Number</Form.Label>
+                                        <div className='btn_flex'>
+                                            <PhoneInput
+                                                inputClass={"inputt-ph"}
+                                                containerStyle={{}}
+                                                searchClass="search-class"
+                                                disableSearchIcon={false}
+                                                enableTerritories
+                                                countryCodeEditable={true}
+                                                placeholder='Phone Number'
+                                                buttonStyle={{ width: '47px' }}
+                                                dropdownStyle={{ height: '150px' }}
+                                                country={"in"}
+                                                enableSearch={true}
+                                                value={mobileNumber}
+                                            //onChange={(val) => setMobileNumber(val.target.value)}
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
                             </form>
                         </div>
                         <div className="col-md-6">
                             <form className="w-100 mb-4" appearance="outline">
+                                <Form.Label>Email</Form.Label>
                                 <div className="input-group mb-0">
                                     <input type="text" placeholder="Enter Email" value={email} onChange={(val) => setEmail(val.target.value)} />
                                 </div>
@@ -124,6 +148,7 @@ const NeditProfile = () => {
                         </div>
                         <div className="col-md-6">
                             <form className="w-100 mb-4" appearance="outline">
+                                <Form.Label>Postal Code</Form.Label>
                                 <div className="input-group mb-0">
                                     <input type="text" placeholder="Postal Code" value={pinCode} onChange={(val) => setPinCode(val.target.value)} />
                                 </div>
@@ -132,6 +157,7 @@ const NeditProfile = () => {
 
                         <div className="col-md-6">
                             <form className="w-100 mb-4" appearance="outline">
+                                <Form.Label>Date of Birth</Form.Label>
                                 <div className="input-group mb-0">
                                     <input type='date' value={date} onChange={(val) => setDate(val.target.value)} />
                                 </div>
@@ -139,16 +165,87 @@ const NeditProfile = () => {
                         </div>
                         <div className="col-md-6">
                             <form className="w-100 mb-4" appearance="outline">
+                                <Form.Label>Education</Form.Label>
                                 <div className="input-group mb-0">
                                     <input type="text" placeholder="Education" value={education} onChange={(val) => setEducation(val.target.value)} />
                                 </div>
                             </form>
                         </div>
-
+                        <div className="col-md-6">
+                            <form className="w-100 mb-4" appearance="outline">
+                                <Form.Label>Family Background</Form.Label>
+                                <div className="input-group mb-0">
+                                    <input type="text" placeholder="Family Background" />
+                                </div>
+                            </form>
+                        </div>
+                        <div className="col-md-6">
+                            <form className="w-100 mb-4" appearance="outline">
+                                <Form.Label>Number of Years Experience</Form.Label>
+                                <div className="input-group mb-0">
+                                    <input type="number" placeholder="Number of Years Experience" />
+                                </div>
+                            </form>
+                        </div>
+                        <div className='col-md-6'>
+                            <form className="w-100 mb-4" appearance="outline">
+                                <Form.Label>Language</Form.Label>
+                                <div className="input-group mb-0">
+                                    <Form.Select aria-label="Default select example">
+                                        <option>English</option>
+                                        <option value="1">Spanish</option>
+                                    </Form.Select>
+                                </div>
+                            </form>
+                        </div>
+                        <div className='col-md-6'>
+                            <form className="w-100 mb-4" appearance="outline">
+                                <Form.Label>Do You mind cleaning up after the child and light tidy up?</Form.Label>
+                                <div className="input-group mb-0">
+                                    <Form.Select aria-label="Default select example">
+                                        <option>Yes</option>
+                                        <option value="1">No</option>
+                                    </Form.Select>
+                                </div>
+                            </form>
+                        </div>
+                        <div className='col-md-6'>
+                            <form className="w-100 mb-4" appearance="outline">
+                                <Form.Label>Do you smoke</Form.Label>
+                                <div className="input-group mb-0">
+                                    <Form.Select aria-label="Default select example">
+                                        <option>Yes</option>
+                                        <option value="1">No</option>
+                                    </Form.Select>
+                                </div>
+                            </form>
+                        </div>
+                        <div className='col-md-6'>
+                            <form className="w-100 mb-4" appearance="outline">
+                                <Form.Label>Do You have driving licence</Form.Label>
+                                <div className="input-group mb-0">
+                                    <Form.Select aria-label="Default select example">
+                                        <option>Yes</option>
+                                        <option value="1">No</option>
+                                    </Form.Select>
+                                </div>
+                            </form>
+                        </div>
+                        <div className='col-md-6'>
+                            <form className="w-100 mb-4" appearance="outline">
+                                <Form.Label>Do you own a car</Form.Label>
+                                <div className="input-group mb-0">
+                                    <Form.Select aria-label="Default select example">
+                                        <option>Yes</option>
+                                        <option value="1">No</option>
+                                    </Form.Select>
+                                </div>
+                            </form>
+                        </div>
 
                         <div className="col-12">
                             <div className="col-12 mt-3">
-                                <Button type='button' color="primary" className="profile_button save save-btn " onClick={() => updateProfile()}>
+                                <Button type='button' color="primary" className="profile_button save " onClick={() => updateProfile()}>
                                     SAVE
                                 </Button>
                             </div>
