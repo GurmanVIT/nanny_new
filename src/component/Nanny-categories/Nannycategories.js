@@ -5,11 +5,12 @@ import about from "../../assets/img/about_main.jpeg";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCardsAsync } from "../../store/apiSlice/NcategoriesSlice";
 import Card from "./Card";
+import { socket } from "../../App";
+import { io } from "socket.io-client";
 
 const Nannycategories = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.rootReducer.cards.data);
-
   const [nannycatData, setNannycatData] = useState(null);
 
   useEffect(() => {
