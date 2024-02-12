@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form, Modal, Table } from "react-bootstrap";
-import TimeChangeModal from "./TimeChangeModal";
-import { DeleteForever, SaveAs } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { getTiminglist } from "../../store/apiSlice/GetTimingSlice";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
@@ -185,12 +183,12 @@ const Dayschange = () => {
                 </td>
                 <td>
                   <Button onClick={() => selectTime(index, 0)}>
-                    {item.timeSlotsAvailablity[0].split(",")[0]}
+                    {item.timeSlotsAvailablity ? item.timeSlotsAvailablity[0].split(",")[0] : "00:00"}
                   </Button>
                 </td>
                 <td>
                   <Button onClick={() => selectTime(index, 1)}>
-                    {item.timeSlotsAvailablity[0].split(",")[1]}
+                    {item.timeSlotsAvailablity ? item.timeSlotsAvailablity[0].split(",")[1] : "00:00"}
                   </Button>
                 </td>
               </tr>

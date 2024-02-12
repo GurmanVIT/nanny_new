@@ -2,45 +2,184 @@
 @import '../../assets/sass/mixin.scss';
 
 
-.nannycategories{
-    .banner_categories{
+.nannycategories {
+    .banner_categories {
         background-image: url(../../assets/img/categories.png);
-        height:350px;
+        height: 350px;
         width: 100%;
         background-repeat: no-repeat;
         background-size: cover;
         display: flex;
         align-items: center;
-        .heading_categories{
-            h1{
+
+        .heading_categories {
+            h1 {
                 color: #fff;
                 font-weight: 500;
             }
         }
     }
-    .nannay_cat_main{
+
+    .nannay_cat_main {
         padding: 15px !important;
         border-radius: 10px !important;
         color: #000;
-        .category_image{
-            img{
+
+        .category_image {
+            img {
                 border-radius: 10px;
             }
         }
-        .categoty_heading{
-            h6{
+
+        .categoty_heading {
+            h6 {
                 font-weight: 600;
                 color: #000;
             }
         }
-        .arrow_right{
+
+        .arrow_right {
             background-color: #8ad7cf;
             border-radius: 8px;
             color: #000;
-            svg{
+
+            svg {
                 margin: 7px;
                 color: #000;
             }
         }
     }
+}
+
+.add_detalis {
+    .modal-dialog {
+        margin-top: 100px;
+    }
+
+    .heading {
+        padding: 20px;
+        border-bottom: 1px solid rgb(163, 163, 163);
+        margin-bottom: 5px;
+
+        h4 {
+            font-weight: 600;
+            font-size: 15px;
+        }
+    }
+
+    form {
+        display: grid;
+
+        input {
+            border: none;
+            border-bottom: 1px solid rgb(163, 163, 163);
+            margin-top: 0px;
+            border-radius: 0px;
+            padding: 3px;
+
+            &:focus-visible {
+                border: none;
+                border-bottom: 1px solid rgb(163, 163, 163);
+                outline: none;
+            }
+
+            &:focus {
+                border: none;
+                outline: none;
+                border-bottom: 1px solid rgb(163, 163, 163);
+            }
+        }
+
+        .addicon {
+            color: #000;
+        }
+
+        .timepicker_card {
+            .MuiFormControl-root {
+                width: 100%;
+            }
+
+            .MuiInputBase-root {
+                border-radius: 0px;
+            }
+
+            .MuiOutlinedInput-notchedOutline {
+                border: none;
+                border-bottom: 1px solid rgb(163, 163, 163);
+                border-radius: none;
+            }
+        }
+    }
+
+    .form_eyes {
+        position: relative;
+
+        input {
+            width: 100%;
+        }
+
+        svg {
+            position: absolute;
+            top: 27px;
+            right: 7px;
+            color: #000;
+        }
+
+        .incremented {
+            position: absolute;
+            top: 27px !important;
+            right: 30px !important;
+        }
+    }
+
+    .form-select {
+        border: none;
+        border-bottom: 1px solid rgb(163, 163, 163);
+        margin-top: 0px;
+        border-radius: 0px;
+        padding: 3px;
+
+        &:focus-visible {
+            border: none;
+            border-bottom: 1px solid rgb(163, 163, 163);
+            outline: none;
+        }
+
+        &:focus {
+            border: none;
+            outline: none;
+            border-bottom: 1px solid rgb(163, 163, 163);
+            box-shadow: none;
+        }
+    }
+
+    .btn_modal {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 25px;
+
+        .btn {
+            background-color: #f5ec50;
+            color: #000;
+            border: 1px solid #f5ec50;
+            padding: 7px 25px;
+            text-align: center;
+            border-radius: 7px;
+        }
+    }
+}
+
+.add_hours {
+    position: absolute;
+    inset: 40px;
+    border: 1px solid rgb(204, 204, 204);
+    background: rgb(255, 255, 255);
+    overflow: auto;
+    border-radius: 4px;
+    outline: none;
+    padding: 20px;
+    width: 300px;
+    margin: auto;
+    height: 250px !important;
 }

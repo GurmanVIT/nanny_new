@@ -6,15 +6,17 @@
 .book_details {
     width: 550px;
     background-color: #fff;
-    box-shadow: 0px 0px 22px 6px rgb(177 177 177);
+    box-shadow: 0px 0px 22px 6px rgb(237 233 233);
     border-radius: 10px;
     margin-top: 100px;
     margin-bottom: 30px;
+
     @media(max-width: 992px) {
         .login-container {
-          margin-top: 20px;
+            margin-top: 20px;
         }
     }
+
     .book_title {
         display: flex;
         justify-content: space-between;
@@ -281,9 +283,10 @@
                     gap: 10px;
 
                     .card_details {
-                        h6{
+                        h6 {
                             font-weight: 600;
                         }
+
                         .card_visa {
                             display: flex;
                             gap: 20px;
@@ -296,52 +299,62 @@
                         }
                     }
                 }
-                .card_last{
-                    .form-control{
+
+                .card_last {
+                    .form-control {
                         width: 60px;
                     }
                 }
             }
-            .card_credit{
+
+            .card_credit {
                 border-bottom: none !important;
             }
 
         }
-        .add_card{
+
+        .add_card {
             margin: 10px 0px;
-            a{
+
+            a {
                 color: $primary-color;
                 text-decoration: none;
                 display: flex;
                 gap: 14px;
                 align-items: center;
-                .add_new{
+
+                .add_new {
                     border: 1px solid $primary-color;
                     //padding: 6px 3px;
                     border-radius: 10px;
-                    svg{
+
+                    svg {
                         margin: 2px 12px;
                     }
-                    
+
                 }
             }
         }
-        .pay_btn{
+
+        .pay_btn {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-top: 20px;
             border-top: 1px solid rgb(173, 173, 173);
             padding-top: 20px;
-            .pay_total{
-                h6{
+
+            .pay_total {
+                h6 {
                     font-weight: 600;
                 }
-                p{
+
+                p {
                     font-weight: 600;
                     color: $primary-color;
                 }
             }
+
             .btn_continue {
                 background-color: #f5ec50;
                 border: 1px solid #f5ec50;
@@ -349,14 +362,14 @@
                 padding: 5px 35px;
             }
         }
-        
+
     }
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    margin: 0; 
+    margin: 0;
 }

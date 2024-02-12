@@ -93,7 +93,7 @@ const CustomModal = ({ isOpen, onRequestClose, length }) => {
 
   return (
     <Modal isOpen={isOpen} onRequestClose={onRequestClose}  >
-       {/*classNames={{
+      {/*classNames={{
       modalAnimationIn: "customEnterModalAnimation",
       modalAnimationOut: "customLeaveModalAnimation",
     }}*/}
@@ -122,15 +122,15 @@ const CustomModal = ({ isOpen, onRequestClose, length }) => {
         <form className="w-100 mb-2 form_eyes">
           <label>Number of Hours</label>
           <input value={counter} />
-         
-        
-            <Link onClick={handleincremented} >
-              <AddIcon className='incremented' />
-            </Link>
-            <Link onClick={handledecremented} className='decremented'>
-              <RemoveIcon />
-            </Link>
-  
+
+
+          <Link onClick={handleincremented} >
+            <AddIcon className='incremented' />
+          </Link>
+          <Link onClick={handledecremented} className='decremented'>
+            <RemoveIcon />
+          </Link>
+
 
 
           {isSecondModalOpen && (
@@ -141,7 +141,7 @@ const CustomModal = ({ isOpen, onRequestClose, length }) => {
           <div>
             <div className='d-flex justify-content-between'>
               <label>Childern Detail</label>
-              <Link className='me-1' onClick={addDiv}><AddIcon  className='addicon'/></Link>
+              <Link className='me-1' onClick={addDiv}><AddIcon className='addicon' /></Link>
             </div>
             <div>
               <input type='text' placeholder='Name' className='my-2 w-100' />
