@@ -33,38 +33,9 @@ import { useEffect, useState } from "react";
 import io from "socket.io-client";
 import Dayschange from "./component/Availability/Dayschange";
 
-export const socket = io("https://dev-api-nanny.virtualittechnology.com/");
 function App() {
-  const [isSocketConnected, setSocketConnected] = useState(false);
-
   const type = localStorage.getItem("type");
-  const user = useSelector((state) => state.rootReducer.login.data);
-  useEffect(() => {
-    if (user != null && user.status) {
-      console.log("Type ===>", user.data.type);
-    }
-  }, [user]);
 
-  useEffect(() => {
-    function onConnect() {
-      console.log("Is Socket Conneted ===> ", isSocketConnected);
-      setSocketConnected(true);
-    }
-
-    function onDisconnect() {
-      setSocketConnected(false);
-    }
-
-    if (!isSocketConnected && user != null) {
-      const data = { userId: user._id };
-      socket.emit("touch_server", data);
-    }
-
-    return () => {
-      socket.off("connect", onConnect);
-      socket.off("disconnect", onDisconnect);
-    };
-  }, [isSocketConnected]);
   return (
     <>
       <BrowserRouter>
