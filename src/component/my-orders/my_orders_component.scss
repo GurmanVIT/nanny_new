@@ -141,6 +141,7 @@
             width: 20px;
             height: 100%;
         }
+
     }
 
     .btn-cancel-nany {
@@ -167,5 +168,102 @@
         background: none;
         border: none;
         color: $primary-color;
+    }
+
+    .map_btn {
+        background: none !important;
+        padding: 0px;
+        font-size: 14px;
+
+        svg {
+            color: $primary-color;
+        }
+    }
+}
+
+.send_msg {
+    svg {
+        color: #fff;
+    }
+}
+
+.googlemap {
+    padding: 20px 0px !important;
+}
+
+
+.chat_modal {
+    .modal-dialog {
+        width: 400px;
+    }
+
+    .msg_area {
+        position: relative;
+        background-color: #e3e3e394;
+        height: 350px;
+
+
+        .show_msg {
+            padding: 6px 6px 0px 6px !important;
+            position: absolute;
+            width: 100%;
+            bottom: 45px;
+
+            .user_msg {
+                display: flex;
+
+                P {
+                    border-radius: 6px;
+                    padding: 1px 8px;
+                    background-color: $light-color !important;
+                }
+            }
+
+            .nanny_msg {
+                display: flex;
+                align-items: end;
+                justify-content: end;
+
+                p {
+                    border-radius: 6px;
+                    padding: 1px 8px;
+                    background-color: $light-color !important;
+                }
+            }
+        }
+    }
+
+    .msg_send {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+
+        input {
+            width: 100%;
+            border: none;
+
+            &:focus {
+                border: none;
+                outline: none;
+                box-shadow: none;
+            }
+
+            &:focus-visible {
+                border: none;
+                box-shadow: none;
+            }
+        }
+
+        .send_btn {
+            border: none;
+            background: $primary-color;
+            color: $light-color;
+            padding: 6px 10px;
+
+            svg {
+                font-size: 22px
+            }
+        }
     }
 }

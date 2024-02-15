@@ -28,6 +28,7 @@ import updateNannyCatgoriesReducer from "../apiSlice/UpdateNannyCatgoriesSlice";
 import getTiminglistReducer from "../apiSlice/GetTimingSlice";
 import updateTimingslistReducer from "../apiSlice/UpdateTimingsSlice";
 import deleteTimingsReducer from "../apiSlice/DeleteTimingsSlice";
+import chathistoryReducer from "../apiSlice/ChatSlice";
 
 const rootReducer = combineReducers({
   login: loginReducer,
@@ -58,6 +59,7 @@ const rootReducer = combineReducers({
   getTiminglistReducer: getTiminglistReducer,
   updateTimingslistReducer: updateTimingslistReducer,
   deleteTimingsReducer: deleteTimingsReducer,
+  chathistoryReducer: chathistoryReducer,
 
   // Add other reducers as needed
 });

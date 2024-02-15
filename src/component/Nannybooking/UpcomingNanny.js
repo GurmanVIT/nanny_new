@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { clearData } from "../../store/apiSlice/OngoingNannySlice";
 import next_btn from "../../assets/img/next_btn.png";
 import call_btn from "../../assets/img/call_btn.png";
 import { NannyupcommingUserList } from "../../store/apiSlice/NannyUpcomingSlice";
 import { UpdateBookingStatus } from "../../store/apiSlice/UpdateBookingStatusSlice";
-import { LocationOn } from "@mui/icons-material";
-import { Dropdown } from "react-bootstrap";
+import { Chat, LocationOn, Send } from "@mui/icons-material";
+import { Button, Dropdown, Modal } from "react-bootstrap";
 import { io } from "socket.io-client";
+import { getchathistory } from "../../store/apiSlice/ChatSlice";
 
 const UpcomingNanny = () => {
   const socket = io("https://dev-api-nanny.virtualittechnology.com/");
@@ -22,6 +23,20 @@ const UpcomingNanny = () => {
   const updateBookstatus = useSelector(
     (state) => state.rootReducer.UpdateBookingStatusReducer.data
   );
+
+  const chatdata = useSelector((state) => state.chathistoryReducer.data)
+
+
+  useEffect(() => {
+    dispatch(getchathistory());
+  }, []);
+
+
+  const navigate = useNavigate();
+  const googlemapClick = () => {
+
+    navigate("/googlemap");
+  };
 
   console.log("updateBookstatus == >".updateBookstatus);
 
@@ -88,7 +103,12 @@ const UpcomingNanny = () => {
     }
   }, [ongoingData]);
 
-  const onAcceptClick = () => {};
+
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <>
@@ -131,8 +151,8 @@ const UpcomingNanny = () => {
                     <div className="d-flex justify-content-between align-items-center">
                       <div>
                         {item.status === 1 ||
-                        item.status === 2 ||
-                        item.status === 3 ? (
+                          item.status === 2 ||
+                          item.status === 3 ? (
                           <Dropdown>
                             <Dropdown.Toggle
                               id="dropdown-basic"
@@ -141,8 +161,8 @@ const UpcomingNanny = () => {
                               {item.status === 1
                                 ? "Request Accepted"
                                 : item.status === 2
-                                ? "On The Way"
-                                : "Reached"}
+                                  ? "On The Way"
+                                  : "Reached"}
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu>
@@ -169,7 +189,7 @@ const UpcomingNanny = () => {
                             onClick={() => {
                               item.status === 0
                                 ? updateBookingStatusApi(1, item._id)
-                                : updateBookingStatusApi(1, item._id);
+                                : updateBookingStatusApi(5, item._id);
                             }}
                           >
                             {item.status === 0 ? "Accept Request" : "Canceled"}
@@ -179,12 +199,13 @@ const UpcomingNanny = () => {
                       {item.status !== 0 ? (
                         <div>
                           <div className="upcoming_btns d-flex align-items-center">
-                            <Link to="#">
+                            <Button type="button" className="map_btn" onClick={() => googlemapClick()}>
                               <img src={next_btn} alt="logo" />
-                            </Link>
+                            </Button>
                             <Link to="#">
                               <img src={call_btn} alt="logo" />
                             </Link>
+                            <Button type="button" onClick={handleShow} className="map_btn"><Chat /></Button>
                           </div>
                         </div>
                       ) : (
@@ -204,6 +225,40 @@ const UpcomingNanny = () => {
             </div>
           ))}
       </div>
+      <Modal show={show} onHide={handleClose} className="modal_address change_time chat_modal">
+        <Modal.Header closeButton className="p-2">
+          <Modal.Title>
+            nanny name
+          </Modal.Title>
+          {/*<Modal.Title>
+            {item.userId.firstName} {item.userId.lastName}
+          </Modal.Title>*/}
+        </Modal.Header>
+        <Modal.Body className="msg_area p-0">
+          <div className="show_msg">
+            <div className="user_msg">
+              <p>Hlo</p>
+            </div>
+            <div className="nanny_msg">
+              <p>Hi</p>
+            </div>
+          </div>
+          <div className="msg_send">
+            <input type="text" />
+            <button type="button" className="send_btn"><Send /></button>
+          </div>
+
+
+        </Modal.Body>
+        {/*<Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>*/}
+      </Modal>
     </>
   );
 };
