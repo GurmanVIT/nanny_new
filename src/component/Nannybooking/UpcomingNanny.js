@@ -169,7 +169,7 @@ const UpcomingNanny = () => {
                             onClick={() => {
                               item.status === 0
                                 ? updateBookingStatusApi(1, item._id)
-                                : updateBookingStatusApi(1, item._id);
+                                : updateBookingStatusApi(5, item._id);
                             }}
                           >
                             {item.status === 0 ? "Accept Request" : "Canceled"}
