@@ -14,6 +14,8 @@ import { getchathistory } from "../../store/apiSlice/ChatSlice";
 const UpcomingNanny = () => {
   const socket = io("https://dev-api-nanny.virtualittechnology.com/");
 
+  const [skip, setSkip] = useState(0)
+
   const [isSocketConnected, setSocketConnected] = useState(false);
   const user = useSelector((state) => state.rootReducer.login.data);
 
@@ -27,9 +29,14 @@ const UpcomingNanny = () => {
   const chatdata = useSelector((state) => state.chathistoryReducer.data)
 
 
-  useEffect(() => {
-    dispatch(getchathistory());
-  }, []);
+  const getChat = (id) => {
+    const payload = {
+      skip: skip,
+      limit: 10,
+      id: id
+    }
+    dispatch(getchathistory(payload));
+  }
 
 
   const navigate = useNavigate();
