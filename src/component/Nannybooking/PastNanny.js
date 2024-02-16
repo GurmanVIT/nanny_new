@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { LocationOn, Star } from '@mui/icons-material'
-import founder from '../../assets/img/founder.jpg';
+import founderimg from '../../assets/img/founder.jpg';
 import { useDispatch, useSelector } from 'react-redux';
-import {clearData } from '../../store/apiSlice/OngoingNannySlice';
+import { clearData } from '../../store/apiSlice/OngoingNannySlice';
 import { NannyPastUserList } from '../../store/apiSlice/NannypastSlice';
 
 
@@ -15,9 +15,9 @@ const PastNanny = () => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(NannyPastUserList(2))
-    return()=>{
+    return () => {
       dispatch(clearData())
-  }
+    }
   }, [])
 
   useEffect(() => {
@@ -32,45 +32,44 @@ const PastNanny = () => {
     <>
       <div className="row all_order_box">
         {dataList != null && dataList.map((item) =>
-        <div className='col-md-6'>
-         <div className='card nany_orders my-2'>
-          <div className='card.body d-flex'>
-            <div className='card.img mr-2'>
-              <img src={item.userId.profileImage} className="rounded-circle" />
-            </div>
-            <div>
-              <div className='card-title'>
-                <h6>{item.userId.firstName} {item.userId.lastName}</h6>
-                <p className="text-sm-end text-md-start text-lg-end">${item.price}</p>
-              </div>
-
-              <div className='Card.Text'>
-                <div className="nanny-info">
-                  <div className="location mb-1 d-flex align-items-center"><LocationOn /><span>{item.address}</span></div>
-                  <p className="time mb-0 text-truncate">{item.date} <span>{item.time}</span></p>
+          <div className='col-md-6'>
+            <div className='card nany_orders my-2'>
+              <div className='card.body d-flex'>
+                <div className='card.img mr-2'>
+                  <img src={item.userId.profileImage} className="rounded-circle" />
                 </div>
+                <div>
+                  <div className='card-title'>
+                    <h6>{item.userId.firstName} {item.userId.lastName}</h6>
+                    <p className="text-sm-end text-md-start text-lg-end">${item.price}</p>
+                  </div>
 
-              </div>
-            </div>
-          </div>
-          <div className='ordered_persons'>
-            <div className='nanny-small-info mt-2'>
-              <div className='d-flex justify-content-between'>
-                <div className='d-flex'>
-                  <img src={founder} alt='nanny' className="rounded-circle" />
-                  <div className='d-flex align-items-center'>
-                    <h4>{item.categoryId.name}</h4>
-                    {/*<h6><Star /> 4.5</h6>*/}
+                  <div className='Card.Text'>
+                    <div className="nanny-info">
+                      <div className="location mb-1 d-flex align-items-center"><LocationOn /><span>{item.address}</span></div>
+                      <p className="time mb-0 text-truncate">{item.date} <span>{item.time}</span></p>
+                    </div>
                   </div>
                 </div>
-                <div >
-                  <button className='mb-0 main-button'>{item.status===3?"Completed":''}</button>
+              </div>
+              <div className='ordered_persons'>
+                <div className='nanny-small-info mt-2'>
+                  <div className='d-flex justify-content-between'>
+                    <div className='d-flex'>
+                      <img src={founderimg} alt='nanny' className="rounded-circle" />
+                      <div className='d-flex align-items-center'>
+                        <h4>{item.categoryId.name}</h4>
+                        {/*<h6><Star /> 4.5</h6>*/}
+                      </div>
+                    </div>
+                    <div >
+                      <button className='mb-0 main-button'>{item.status === 3 ? "Completed" : ''}</button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        </div>
         )
         }
       </div>

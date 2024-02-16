@@ -32,6 +32,7 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
 import Dayschange from "./component/Availability/Dayschange";
+import Googlemap from "./component/map/Googlemap";
 
 function App() {
   const type = localStorage.getItem("type");
@@ -69,6 +70,7 @@ function App() {
           <Route path="/profilenanny" element={<Profilenanny />} />
           <Route path="/Nannybooking" element={<Nannybooking />} />
           <Route path="/dayschange" element={<Dayschange />} />
+          <Route path="/googlemap" element={<Googlemap />} />
         </Routes>
         <Footer />
       </BrowserRouter>

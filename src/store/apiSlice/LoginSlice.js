@@ -16,6 +16,7 @@ export const loginUser = createAsyncThunk("loginUser", async (payload) => {
     config
   );
   localStorage.setItem("Token", response.data.data.accessToken);
+  localStorage.setItem("userId", response.data.data._id);
   localStorage.setItem("type", response.data.data.type);
   return response.data;
 });

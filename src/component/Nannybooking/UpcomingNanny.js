@@ -1,19 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { clearData } from "../../store/apiSlice/OngoingNannySlice";
 import next_btn from "../../assets/img/next_btn.png";
 import call_btn from "../../assets/img/call_btn.png";
 import { NannyupcommingUserList } from "../../store/apiSlice/NannyUpcomingSlice";
 import { UpdateBookingStatus } from "../../store/apiSlice/UpdateBookingStatusSlice";
-import { LocationOn } from "@mui/icons-material";
-import { Dropdown } from "react-bootstrap";
+import { Chat, LocationOn, Send } from "@mui/icons-material";
+import { Button, Dropdown, Modal } from "react-bootstrap";
 import { io } from "socket.io-client";
+import { getChatHistory } from "../../store/apiSlice/ChatSlice";
 
 const UpcomingNanny = () => {
   const socket = io("https://dev-api-nanny.virtualittechnology.com/");
 
+  const [skip, setSkip] = useState(0);
+  const [message, setMessage] = useState("");
+
+  const userId = localStorage.getItem("userId");
+  const type = localStorage.getItem("type");
+
+  const [chatIndex, setChatIndex] = useState(0);
+
   const [isSocketConnected, setSocketConnected] = useState(false);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
   const user = useSelector((state) => state.rootReducer.login.data);
 
   const ongoingData = useSelector(
@@ -23,7 +35,24 @@ const UpcomingNanny = () => {
     (state) => state.rootReducer.UpdateBookingStatusReducer.data
   );
 
-  console.log("updateBookstatus == >".updateBookstatus);
+  const chatData = useSelector(
+    (state) => state.rootReducer.chatHistoryReducer.data
+  );
+
+  const getChat = (id) => {
+    const payload = {
+      skip: skip,
+      limit: 10,
+      id: id,
+    };
+    console.log("Payload chat ===> ", payload);
+    dispatch(getChatHistory(payload));
+  };
+
+  const navigate = useNavigate();
+  const googlemapClick = () => {
+    navigate("/googlemap");
+  };
 
   const [dataList, setDataList] = useState(null);
   useEffect(() => {
@@ -58,8 +87,11 @@ const UpcomingNanny = () => {
     }
 
     socket.on("booking_status_changed", (data) => {
-      console.log("Data ===> ", data);
       dispatch(NannyupcommingUserList(0));
+    });
+
+    socket.on("receive_message", (data) => {
+      console.log("ReceiveMessage ===> ", data);
     });
 
     socket.on("connect", onConnect);
@@ -72,29 +104,63 @@ const UpcomingNanny = () => {
     };
   }, [isSocketConnected]);
 
+  const openChat = (id, index) => {
+    getChat(id);
+    setChatIndex(index);
+  };
+
+  useEffect(() => {
+    console.log("Chat Data ===> ", chatData);
+    if (chatData != null && chatData.status === 1) {
+      setShow(true);
+    }
+  }, [chatData]);
+
   const updateBookingStatusApi = (statusVal, bookingId) => {
     const payload = {
       bookingId: bookingId,
       status: statusVal,
     };
-    console.log("Payload ===> ", payload);
+
     dispatch(UpdateBookingStatus(payload));
   };
 
   useEffect(() => {
-    console.log("upngoing data ===> ", ongoingData);
+    console.log("UpCommingData ===> ", ongoingData);
     if (ongoingData != null && ongoingData.status === 1) {
       setDataList(ongoingData.data.data);
     }
   }, [ongoingData]);
 
-  const onAcceptClick = () => {};
+  const sendMessage = () => {
+    console.log("df");
+    if (type === 1) {
+      const msgData = {
+        bookingId: dataList[chatIndex]._id,
+        userId: userId,
+        otherUserId: dataList[chatIndex].nannyDetails._id,
+        message: message,
+      };
+      socket.emit("send_message", msgData);
+    } else {
+      const msgData = {
+        bookingId: dataList[chatIndex]._id,
+        userId: userId,
+        otherUserId: dataList[chatIndex].userId._id,
+        message: message,
+      };
+
+      console.log("Message Data ===> ", msgData);
+      socket.emit("send_message", msgData);
+    }
+    setMessage("");
+  };
 
   return (
     <>
       <div className="row all_order_box">
         {dataList != null &&
-          dataList.map((item) => (
+          dataList.map((item, index) => (
             <div className="col-md-6">
               <div className="card nany_orders my-2">
                 <div className="card.body d-flex">
@@ -179,12 +245,23 @@ const UpcomingNanny = () => {
                       {item.status !== 0 ? (
                         <div>
                           <div className="upcoming_btns d-flex align-items-center">
-                            <Link to="#">
+                            <Button
+                              type="button"
+                              className="map_btn"
+                              onClick={() => googlemapClick()}
+                            >
                               <img src={next_btn} alt="logo" />
-                            </Link>
+                            </Button>
                             <Link to="#">
                               <img src={call_btn} alt="logo" />
                             </Link>
+                            <Button
+                              type="button"
+                              onClick={() => openChat(item._id, index)}
+                              className="map_btn"
+                            >
+                              <Chat />
+                            </Button>
                           </div>
                         </div>
                       ) : (
@@ -204,6 +281,56 @@ const UpcomingNanny = () => {
             </div>
           ))}
       </div>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        className="modal_address change_time chat_modal"
+      >
+        <Modal.Header closeButton className="p-2">
+          <Modal.Title>Nanny Name</Modal.Title>
+          {/*<Modal.Title>
+            {item.userId.firstName} {item.userId.lastName}
+          </Modal.Title>*/}
+        </Modal.Header>
+        <Modal.Body className="msg_area p-0">
+          {chatData != null &&
+            chatData.data.map((item, index) => (
+              <div className="show_msg">
+                {item.receiverId._id === userId ? (
+                  <div className="user_msg">
+                    <p>{item.message}</p>
+                  </div>
+                ) : (
+                  <div className="nanny_msg">
+                    <p>{item.message}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          <div className="msg_send">
+            <input
+              type="text"
+              value={message}
+              onChange={(val) => setMessage(val.target.value)}
+            />
+            <button
+              type="button"
+              className="send_btn"
+              onClick={() => sendMessage()}
+            >
+              <Send />
+            </button>
+          </div>
+        </Modal.Body>
+        {/*<Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>*/}
+      </Modal>
     </>
   );
 };

@@ -1,171 +1,260 @@
-@import '../../assets/sass/color.scss';
-@import '../../assets/sass/mixin.scss';
-
+@import "../../assets/sass/color.scss";
+@import "../../assets/sass/mixin.scss";
 
 .react-tabs__tab-list {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
 }
 
 .react-tabs__tab {
-    padding: 4px 20px;
-    font-weight: 500;
-    border-radius: 7px;
-    cursor: pointer;
+  padding: 4px 20px;
+  font-weight: 500;
+  border-radius: 7px;
+  cursor: pointer;
 
-    &:focus-visible {
-        outline: none;
-        border: none;
-    }
+  &:focus-visible {
+    outline: none;
+    border: none;
+  }
 }
 
 .order_card {
-    .react-tabs__tab--selected {
-        color: $light-color;
-        background: $primary-color;
-
-    }
+  .react-tabs__tab--selected {
+    color: $light-color;
+    background: $primary-color;
+  }
 }
 
 .all_order_box {
-    .nany_orders {
-        background-color: white;
-        border: none;
-        box-shadow: 0px 0px 12px -8px rgba(0, 0, 0, 0.75);
-        padding: 13px;
+  .nany_orders {
+    background-color: white;
+    border: none;
+    box-shadow: 0px 0px 12px -8px rgba(0, 0, 0, 0.75);
+    padding: 13px;
 
-        @media ($breckpoint_LG) {
-            padding: 8px;
-        }
-
-        img {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            margin-right: 10px;
-        }
-
-        .card-title {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-            font-weight: 600;
-            font-family: 'Kanit', sans-serif;
-        }
-
-        .card-img {
-            margin-right: 10px;
-        }
-
-        .nanny-info {
-            .location {
-                color: #868686;
-                font-size: 13px;
-
-                svg {
-                    font-size: 20px;
-                }
-            }
-
-            .time {
-                color: #868686;
-                font-size: 13px;
-            }
-        }
+    @media ($breckpoint_LG) {
+      padding: 8px;
     }
 
-    .ordered_persons {
-        padding-top: 15px;
-        margin-top: 15px;
-        border-top: 1px solid $primary-color;
-
-        img {
-            width: 35px;
-            height: 35px;
-            object-fit: cover;
-            margin-right: 10px;
-        }
-
-        .nanny-small-info {
-            font-weight: 500;
-
-            h4 {
-                font-weight: 500;
-                font-size: 14px;
-            }
-
-            .star {
-                h6 {
-                    font-size: 17px;
-
-                    svg {
-                        color: orangered;
-                        font-size: 16px;
-                    }
-                }
-
-
-                svg {
-                    color: $star-color;
-                }
-            }
-        }
-
-
-
-        .btn-success-nany {
-            background-color: rgba($success-color, .1);
-            color: $success-color;
-            font-size: 12px;
-            font-weight: 500;
-            border: 1px solid rgba($success-color, .1);
-            padding: 4px;
-            border-radius: 6px;
-        }
-
-
+    img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      margin-right: 10px;
     }
 
-    .upcoming_option {
-        margin-top: 5px;
-        border-top: 1px solid $primary-color;
-
-        a {
-            color: $green-color;
-            font-weight: 500;
-        }
-
-        img {
-            width: 20px;
-            height: 100%;
-        }
+    .card-title {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+      font-weight: 600;
+      font-family: "Kanit", sans-serif;
     }
 
-    .btn-cancel-nany {
-        background: none;
-        color: $danger-color;
-        font-size: 16px;
+    .card-img {
+      margin-right: 10px;
+    }
+
+    .nanny-info {
+      .location {
+        color: #868686;
+        font-size: 13px;
+
+        svg {
+          font-size: 20px;
+        }
+      }
+
+      .time {
+        color: #868686;
+        font-size: 13px;
+      }
+    }
+  }
+
+  .ordered_persons {
+    padding-top: 15px;
+    margin-top: 15px;
+    border-top: 1px solid $primary-color;
+
+    img {
+      width: 35px;
+      height: 35px;
+      object-fit: cover;
+      margin-right: 10px;
+    }
+
+    .nanny-small-info {
+      font-weight: 500;
+
+      h4 {
         font-weight: 500;
-        border: none;
-        padding: 4px;
-        border-radius: 6px;
+        font-size: 14px;
+      }
+
+      .star {
+        h6 {
+          font-size: 17px;
+
+          svg {
+            color: orangered;
+            font-size: 16px;
+          }
+        }
+
+        svg {
+          color: $star-color;
+        }
+      }
     }
 
-    .btn-ongiing {
-        background: rgba($primary-color, .1) !important;
-        color: $primary-color;
-        font-size: 16px;
-        font-weight: 500;
-        border: 1px solid rgba($primary-color, .1);
-        padding: 4px;
-        border-radius: 6px;
+    .btn-success-nany {
+      background-color: rgba($success-color, 0.1);
+      color: $success-color;
+      font-size: 12px;
+      font-weight: 500;
+      border: 1px solid rgba($success-color, 0.1);
+      padding: 4px;
+      border-radius: 6px;
+    }
+  }
+
+  .upcoming_option {
+    margin-top: 5px;
+    border-top: 1px solid $primary-color;
+
+    a {
+      color: $green-color;
+      font-weight: 500;
     }
 
-    .main-button {
-        background: none;
-        border: none;
-        color: $primary-color;
+    img {
+      width: 20px;
+      height: 100%;
     }
+  }
+
+  .btn-cancel-nany {
+    background: none;
+    color: $danger-color;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    padding: 4px;
+    border-radius: 6px;
+  }
+
+  .btn-ongiing {
+    background: rgba($primary-color, 0.1) !important;
+    color: $primary-color;
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid rgba($primary-color, 0.1);
+    padding: 4px;
+    border-radius: 6px;
+  }
+
+  .main-button {
+    background: none;
+    border: none;
+    color: $primary-color;
+  }
+
+  .map_btn {
+    background: none !important;
+    padding: 0px;
+    font-size: 14px;
+
+    svg {
+      color: $primary-color;
+    }
+  }
+}
+
+.send_msg {
+  svg {
+    color: #fff;
+  }
+}
+
+.googlemap {
+  padding: 20px 0px !important;
+}
+
+.chat_modal {
+  .modal-dialog {
+    width: 400px;
+  }
+
+  .msg_area {
+    position: relative;
+    background-color: #e3e3e394;
+    height: 350px;
+
+    .show_msg {
+      padding: 6px 6px 0px 6px !important;
+      position: absolute;
+      width: 100%;
+      bottom: 45px;
+
+      .user_msg {
+        display: flex;
+
+        P {
+          border-radius: 6px;
+          padding: 1px 8px;
+          margin-top: 5;
+          background-color: $light-color !important;
+        }
+      }
+
+      .nanny_msg {
+        display: flex;
+        align-items: end;
+        justify-content: end;
+
+        p {
+          border-radius: 6px;
+          padding: 1px 8px;
+          background-color: $light-color !important;
+        }
+      }
+    }
+  }
+
+  .msg_send {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+
+    input {
+      width: 100%;
+      border: none;
+
+      &:focus {
+        border: none;
+        outline: none;
+        box-shadow: none;
+      }
+
+      &:focus-visible {
+        border: none;
+        box-shadow: none;
+      }
+    }
+
+    .send_btn {
+      border: none;
+      background: $primary-color;
+      color: $light-color;
+      padding: 6px 10px;
+
+      svg {
+        font-size: 22px;
+      }
+    }
+  }
 }
