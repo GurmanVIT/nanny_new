@@ -197,8 +197,8 @@ const UpcomingNanny = () => {
                     <div className="d-flex justify-content-between align-items-center">
                       <div>
                         {item.status === 1 ||
-                        item.status === 2 ||
-                        item.status === 3 ? (
+                          item.status === 2 ||
+                          item.status === 3 ? (
                           <Dropdown>
                             <Dropdown.Toggle
                               id="dropdown-basic"
@@ -207,8 +207,8 @@ const UpcomingNanny = () => {
                               {item.status === 1
                                 ? "Request Accepted"
                                 : item.status === 2
-                                ? "On The Way"
-                                : "Reached"}
+                                  ? "On The Way"
+                                  : "Reached"}
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu>
@@ -293,20 +293,22 @@ const UpcomingNanny = () => {
           </Modal.Title>*/}
         </Modal.Header>
         <Modal.Body className="msg_area p-0">
-          {chatData != null &&
-            chatData.data.map((item, index) => (
-              <div className="show_msg">
-                {item.receiverId._id === userId ? (
-                  <div className="user_msg">
-                    <p>{item.message}</p>
-                  </div>
-                ) : (
-                  <div className="nanny_msg">
-                    <p>{item.message}</p>
-                  </div>
-                )}
-              </div>
-            ))}
+          <ul className="show_msg">
+            {chatData != null &&
+              chatData.data.map((item, index) => (
+                <li>
+                  {item.receiverId._id === userId ? (
+                    <li className="user_msg">
+                      <p>{item.message}</p>
+                    </li>
+                  ) : (
+                    <li className="nanny_msg">
+                      <p>{item.message}</p>
+                    </li>
+                  )}
+                </li>
+              ))}
+          </ul>
           <div className="msg_send">
             <input
               type="text"
