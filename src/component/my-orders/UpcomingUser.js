@@ -4,74 +4,244 @@ import call_btn from '../../assets/img/call_btn.png';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearData, upcommingUserList } from '../../store/apiSlice/UpcommingSlice';
+import { Chat, Send } from '@mui/icons-material';
+import { Button, Modal } from 'react-bootstrap';
+import { io } from 'socket.io-client';
+import { getChatHistory } from '../../store/apiSlice/ChatSlice';
 
 const UpcomingUser = () => {
+    const socket = io("https://dev-api-nanny.virtualittechnology.com/");
+
+    const [skip, setSkip] = useState(0);
+    const [message, setMessage] = useState("");
+
+    const userId = localStorage.getItem("userId");
+    const type = localStorage.getItem("type");
+
+    const [chatIndex, setChatIndex] = useState(0);
+
+    const [isSocketConnected, setSocketConnected] = useState(false);
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const user = useSelector((state) => state.rootReducer.login.data);
 
     const upcommingData = useSelector((state) => state.rootReducer.upcommingReducer.data)
-    const [dataList,setDataList] = useState(null)
+    const [dataList, setDataList] = useState(null)
 
     const dispatch = useDispatch()
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(upcommingUserList(0))
 
-        return()=>{
+        return () => {
             dispatch(clearData())
         }
-    },[])
+    }, [])
 
-    useEffect(()=>{
-        console.log("upcommingData data ===> ",upcommingData)
-        if(upcommingData!=null && upcommingData.status === 1){
+    useEffect(() => {
+        console.log("upcommingData data ===> ", upcommingData)
+        if (upcommingData != null && upcommingData.status === 1) {
             setDataList(upcommingData.data.data)
         }
-    },[upcommingData])
+    }, [upcommingData])
+
+    const chatData = useSelector(
+        (state) => state.rootReducer.chatHistoryReducer.data
+    );
+
+    const getChat = (id) => {
+        const payload = {
+            skip: skip,
+            limit: 10,
+            id: id,
+        };
+        console.log("Payload chat ===> ", payload);
+        dispatch(getChatHistory(payload));
+    };
+
+    //const [dataList, setDataList] = useState(null);
+    //useEffect(() => {
+    //  if (user != null && user.status) {
+    //    console.log("Type ===>", user.data.type);
+    //  }
+    //}, [user]);
+
+    useEffect(() => {
+        console.log("Hello");
+        function onConnect() {
+            console.log("Is Socket Conneted ===> ", isSocketConnected);
+            setSocketConnected(true);
+        }
+
+        function onDisconnect() {
+            setSocketConnected(false);
+        }
+
+        if (!isSocketConnected && user != null) {
+            const data = { userId: user._id };
+            socket.emit("touch_server", data);
+        }
+
+        socket.on("booking_status_changed", (data) => {
+            dispatch(upcommingUserList(0));
+        });
+
+        socket.on("receive_message", (data) => {
+            console.log("ReceiveMessage ===> ", data);
+        });
+
+        socket.on("connect", onConnect);
+        socket.on("disconnect", onDisconnect);
+
+        return () => {
+            socket.off("connect", onConnect);
+            socket.off("disconnect", onDisconnect);
+            socket.off("booking_status_changed");
+        };
+    }, [isSocketConnected]);
+
+    const openChat = (id, index) => {
+        getChat(id);
+        setChatIndex(index);
+    };
+
+    useEffect(() => {
+        console.log("Chat Data ===> ", chatData);
+        if (chatData != null && chatData.status === 1) {
+            setShow(true);
+        }
+    }, [chatData]);
+
+    const sendMessage = () => {
+        console.log("df");
+        if (type === 1) {
+            const msgData = {
+                bookingId: dataList[chatIndex]._id,
+                userId: userId,
+                otherUserId: dataList[chatIndex].nannyDetails._id,
+                message: message,
+            };
+            socket.emit("send_message", msgData);
+        } else {
+            const msgData = {
+                bookingId: dataList[chatIndex]._id,
+                userId: userId,
+                otherUserId: dataList[chatIndex].userId._id,
+                message: message,
+            };
+
+            console.log("Message Data ===> ", msgData);
+            socket.emit("send_message", msgData);
+        }
+        setMessage("");
+    };
+
+
 
     return (
         <>
             <div className="row all_order_box">
 
-                {dataList!=null&&dataList.map((item)=>
-                <div className='col-md-6'>
-                 <div className='card nany_orders my-2'>
-                    <div className='card.body d-flex'>
-                        <div className='card.img mr-2'>
-                            <img src={item.nannyId.profileImage} className="rounded-circle" />
-                        </div>
-                        <div>
-                            <div className='card-title'>
-                                <h6>{item.nannyId.firstName} {item.nannyId.lastName}</h6>
-                                <p className="text-sm-end text-md-start text-lg-end">${item.price}</p>
-                            </div>
-
-                            <div className='Card.Text'>
-                                <div className="nanny-info">
-                                    <div className="location mb-1 d-flex align-items-baseline"><i className=" fa fa-location me-1"></i><span>{item.address  }</span></div>
-                                    <p className="time mb-0 text-truncate">{item.date} <span>{item.time}</span></p>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div className='upcoming_option mt-2 pt-2'>
-                            <div className='d-flex justify-content-between align-items-center'>
-                                <div >
-                                    <Link to="#" className='mb-0'>{item.status===0?"Cancel Booking":item.status===1?"Request Accepted":"Canceled"}</Link>
+                {dataList != null && dataList.map((item, index) =>
+                    <div className='col-md-6'>
+                        <div className='card nany_orders my-2'>
+                            <div className='card.body d-flex'>
+                                <div className='card.img mr-2'>
+                                    <img src={item.nannyId.profileImage} className="rounded-circle" />
                                 </div>
                                 <div>
-                                    <div className="upcoming_btns d-flex align-items-center">
-                                        <Link to="#" className="me-3"><img src={next_btn} alt="logo" /></Link>
-                                        <Link to="#"><img src={call_btn} alt="logo" /></Link>
+                                    <div className='card-title'>
+                                        <h6>{item.nannyId.firstName} {item.nannyId.lastName}</h6>
+                                        <p className="text-sm-end text-md-start text-lg-end">${item.price}</p>
+                                    </div>
+
+                                    <div className='Card.Text'>
+                                        <div className="nanny-info">
+                                            <div className="location mb-1 d-flex align-items-baseline"><i className=" fa fa-location me-1"></i><span>{item.address}</span></div>
+                                            <p className="time mb-0 text-truncate">{item.date} <span>{item.time}</span></p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div className='upcoming_option mt-2 pt-2'>
+                                    <div className='d-flex justify-content-between align-items-center'>
+                                        <div >
+                                            <Link to="#" className='mb-0'>{item.status === 0 ? "Cancel Booking" : item.status === 1 ? "Request Accepted" : "Canceled"}</Link>
+                                        </div>
+                                        <div>
+                                            <div className="upcoming_btns d-flex align-items-center">
+                                                <Link to="#"><img src={next_btn} alt="logo" /></Link>
+                                                <Link to="#"><img src={call_btn} alt="logo" /></Link>
+                                                <Button
+                                                    type="button"
+                                                    onClick={() => openChat(item._id, index)}
+                                                    className="map_btn"
+                                                >
+                                                    <Chat />
+                                                </Button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                </div>)}
-               
-           
+                    </div>)}
+
+
             </div>
+            <Modal
+                show={show}
+                onHide={handleClose}
+                className="modal_address change_time chat_modal"
+            >
+                <Modal.Header closeButton className="p-2">
+                    <Modal.Title>Nanny Name</Modal.Title>
+                    {/*<Modal.Title>
+            {item.userId.firstName} {item.userId.lastName}
+          </Modal.Title>*/}
+                </Modal.Header>
+                <Modal.Body className="msg_area p-0">
+                    <ul className="show_msg">
+                        {chatData != null &&
+                            chatData.data.map((item, index) => (
+                                <li>
+                                    {item.receiverId._id === userId ? (
+                                        <li className="user_msg">
+                                            <p>{item.message}</p>
+                                        </li>
+                                    ) : (
+                                        <li className="nanny_msg">
+                                            <p>{item.message}</p>
+                                        </li>
+                                    )}
+                                </li>
+                            ))}
+                    </ul>
+                    <div className="msg_send">
+                        <input
+                            type="text"
+                            value={message}
+                            onChange={(val) => setMessage(val.target.value)}
+                        />
+                        <button
+                            type="button"
+                            className="send_btn"
+                            onClick={() => sendMessage()}
+                        >
+                            <Send />
+                        </button>
+                    </div>
+                </Modal.Body>
+                {/*<Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>*/}
+            </Modal>
         </>
     )
 }
