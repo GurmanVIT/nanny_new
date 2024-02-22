@@ -9,7 +9,8 @@ import { UpdateBookingStatus } from "../../store/apiSlice/UpdateBookingStatusSli
 import { Chat, LocationOn, Send } from "@mui/icons-material";
 import { Button, Dropdown, Modal } from "react-bootstrap";
 import { io } from "socket.io-client";
-import { getChatHistory } from "../../store/apiSlice/ChatSlice";
+import { clearChat, getChatHistory } from "../../store/apiSlice/ChatSlice";
+import { getUserprofile } from "../../store/apiSlice/UserprofileSlice";
 
 const UpcomingNanny = () => {
   const socket = io("https://dev-api-nanny.virtualittechnology.com/");
@@ -24,9 +25,17 @@ const UpcomingNanny = () => {
 
   const [isSocketConnected, setSocketConnected] = useState(false);
   const [show, setShow] = useState(false);
+  const [myChatData, setChatData] = useState([]);
 
   const handleClose = () => setShow(false);
   const user = useSelector((state) => state.rootReducer.login.data);
+  const profileData = useSelector(
+    (state) => state.rootReducer.UserProfileReducer.data
+  );
+
+  useEffect(() => {
+    dispatch(getUserprofile());
+  }, []);
 
   const ongoingData = useSelector(
     (state) => state.rootReducer.NannyupcommingReducer.data
@@ -82,7 +91,7 @@ const UpcomingNanny = () => {
     }
 
     if (!isSocketConnected && user != null) {
-      const data = { userId: user._id };
+      const data = { userId: userId };
       socket.emit("touch_server", data);
     }
 
@@ -92,6 +101,7 @@ const UpcomingNanny = () => {
 
     socket.on("receive_message", (data) => {
       console.log("ReceiveMessage ===> ", data);
+      setChatData((myChatData) => [...myChatData, data]);
     });
 
     socket.on("connect", onConnect);
@@ -101,6 +111,7 @@ const UpcomingNanny = () => {
       socket.off("connect", onConnect);
       socket.off("disconnect", onDisconnect);
       socket.off("booking_status_changed");
+      dispatch(clearChat());
     };
   }, [isSocketConnected]);
 
@@ -113,6 +124,7 @@ const UpcomingNanny = () => {
     console.log("Chat Data ===> ", chatData);
     if (chatData != null && chatData.status === 1) {
       setShow(true);
+      setChatData(chatData.data);
     }
   }, [chatData]);
 
@@ -135,6 +147,27 @@ const UpcomingNanny = () => {
   const sendMessage = () => {
     console.log("df");
     if (type === 1) {
+      const msg = {
+        message: message,
+        sentBy: 1,
+        type: 1,
+        _id: "",
+        senderId: {
+          firstName: profileData.data.firstName,
+          lastName: profileData.data.lastName,
+          profileImage: profileData.data._id,
+          _id: userId,
+        },
+        receiverId: {
+          firstName: dataList[chatIndex].nannyDetails.firstName,
+          lastName: dataList[chatIndex].nannyDetails.lastName,
+          profileImage: dataList[chatIndex].nannyDetails.profileImage,
+          _id: dataList[chatIndex].nannyDetails._id,
+        },
+        createdAt: "2024-02-16T08:00:59.462Z",
+      };
+
+      setChatData((myChatData) => [...myChatData, msg]);
       const msgData = {
         bookingId: dataList[chatIndex]._id,
         userId: userId,
@@ -143,6 +176,28 @@ const UpcomingNanny = () => {
       };
       socket.emit("send_message", msgData);
     } else {
+      const msg = {
+        message: message,
+        sentBy: 1,
+        type: 1,
+        _id: "",
+        senderId: {
+          firstName: profileData.data.firstName,
+          lastName: profileData.data.lastName,
+          profileImage: profileData.data._id,
+          _id: userId,
+        },
+        receiverId: {
+          firstName: dataList[chatIndex].userId.firstName,
+          lastName: dataList[chatIndex].userId.lastName,
+          profileImage: dataList[chatIndex].userId.profileImage,
+          _id: dataList[chatIndex].userId._id,
+        },
+        createdAt: "2024-02-16T08:00:59.462Z",
+      };
+
+      setChatData((myChatData) => [...myChatData, msg]);
+
       const msgData = {
         bookingId: dataList[chatIndex]._id,
         userId: userId,
@@ -154,6 +209,7 @@ const UpcomingNanny = () => {
       socket.emit("send_message", msgData);
     }
     setMessage("");
+    // getChat(dataList[chatIndex]._id);
   };
 
   return (
@@ -197,8 +253,8 @@ const UpcomingNanny = () => {
                     <div className="d-flex justify-content-between align-items-center">
                       <div>
                         {item.status === 1 ||
-                          item.status === 2 ||
-                          item.status === 3 ? (
+                        item.status === 2 ||
+                        item.status === 3 ? (
                           <Dropdown>
                             <Dropdown.Toggle
                               id="dropdown-basic"
@@ -207,8 +263,8 @@ const UpcomingNanny = () => {
                               {item.status === 1
                                 ? "Request Accepted"
                                 : item.status === 2
-                                  ? "On The Way"
-                                  : "Reached"}
+                                ? "On The Way"
+                                : "Reached"}
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu>
@@ -294,8 +350,8 @@ const UpcomingNanny = () => {
         </Modal.Header>
         <Modal.Body className="msg_area p-0">
           <ul className="show_msg">
-            {chatData != null &&
-              chatData.data.map((item, index) => (
+            {myChatData.length > 0 &&
+              myChatData.map((item, index) => (
                 <li>
                   {item.receiverId._id === userId ? (
                     <li className="user_msg">
