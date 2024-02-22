@@ -7,7 +7,8 @@ import { clearData, upcommingUserList } from '../../store/apiSlice/UpcommingSlic
 import { Chat, Send } from '@mui/icons-material';
 import { Button, Modal } from 'react-bootstrap';
 import { io } from 'socket.io-client';
-import { getChatHistory } from '../../store/apiSlice/ChatSlice';
+import { clearChat, getChatHistory } from "../../store/apiSlice/ChatSlice";
+
 
 const UpcomingUser = () => {
     const socket = io("https://dev-api-nanny.virtualittechnology.com/");
@@ -19,6 +20,7 @@ const UpcomingUser = () => {
     const type = localStorage.getItem("type");
 
     const [chatIndex, setChatIndex] = useState(0);
+    const [myChatData, setChatData] = useState([]);
 
     const [isSocketConnected, setSocketConnected] = useState(false);
     const [show, setShow] = useState(false);
@@ -26,6 +28,9 @@ const UpcomingUser = () => {
     const user = useSelector((state) => state.rootReducer.login.data);
 
     const upcommingData = useSelector((state) => state.rootReducer.upcommingReducer.data)
+    const profileData = useSelector(
+        (state) => state.rootReducer.UserProfileReducer.data
+    );
     const [dataList, setDataList] = useState(null)
 
     const dispatch = useDispatch()
@@ -77,7 +82,7 @@ const UpcomingUser = () => {
         }
 
         if (!isSocketConnected && user != null) {
-            const data = { userId: user._id };
+            const data = { userId: userId };
             socket.emit("touch_server", data);
         }
 
@@ -87,6 +92,7 @@ const UpcomingUser = () => {
 
         socket.on("receive_message", (data) => {
             console.log("ReceiveMessage ===> ", data);
+            setChatData((myChatData) => [...myChatData, data]);
         });
 
         socket.on("connect", onConnect);
@@ -96,6 +102,7 @@ const UpcomingUser = () => {
             socket.off("connect", onConnect);
             socket.off("disconnect", onDisconnect);
             socket.off("booking_status_changed");
+            dispatch(clearChat());
         };
     }, [isSocketConnected]);
 
@@ -114,6 +121,27 @@ const UpcomingUser = () => {
     const sendMessage = () => {
         console.log("df");
         if (type === 1) {
+            const msg = {
+                message: message,
+                sentBy: 1,
+                type: 1,
+                _id: "",
+                senderId: {
+                    firstName: profileData.data.firstName,
+                    lastName: profileData.data.lastName,
+                    profileImage: profileData.data._id,
+                    _id: userId,
+                },
+                receiverId: {
+                    firstName: dataList[chatIndex].nannyDetails.firstName,
+                    lastName: dataList[chatIndex].nannyDetails.lastName,
+                    profileImage: dataList[chatIndex].nannyDetails.profileImage,
+                    _id: dataList[chatIndex].nannyDetails._id,
+                },
+                createdAt: "2024-02-16T08:00:59.462Z",
+            };
+
+            setChatData((myChatData) => [...myChatData, msg]);
             const msgData = {
                 bookingId: dataList[chatIndex]._id,
                 userId: userId,
@@ -122,6 +150,28 @@ const UpcomingUser = () => {
             };
             socket.emit("send_message", msgData);
         } else {
+            const msg = {
+                message: message,
+                sentBy: 1,
+                type: 1,
+                _id: "",
+                senderId: {
+                    firstName: profileData.data.firstName,
+                    lastName: profileData.data.lastName,
+                    profileImage: profileData.data._id,
+                    _id: userId,
+                },
+                receiverId: {
+                    firstName: dataList[chatIndex].userId.firstName,
+                    lastName: dataList[chatIndex].userId.lastName,
+                    profileImage: dataList[chatIndex].userId.profileImage,
+                    _id: dataList[chatIndex].userId._id,
+                },
+                createdAt: "2024-02-16T08:00:59.462Z",
+            };
+
+            setChatData((myChatData) => [...myChatData, msg]);
+
             const msgData = {
                 bookingId: dataList[chatIndex]._id,
                 userId: userId,
@@ -133,8 +183,8 @@ const UpcomingUser = () => {
             socket.emit("send_message", msgData);
         }
         setMessage("");
+        // getChat(dataList[chatIndex]._id);
     };
-
 
 
     return (

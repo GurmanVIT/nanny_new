@@ -191,15 +191,13 @@
   .msg_area {
     position: relative;
     background-color: #e3e3e394;
-    height: 350px;
-    overflow-y: scroll;
     padding-top: 7px;
 
     .show_msg {
-      padding: 6px 6px 0px 6px !important;
-      position: absolute;
+      padding: 6px 6px 22px 6px !important;
       width: 100%;
-      bottom: 45px;
+      height: 350px;
+      overflow-y: scroll;
 
       .user_msg {
         display: flex;
@@ -207,7 +205,7 @@
         P {
           border-radius: 6px;
           padding: 1px 8px;
-          margin-top: 5;
+          margin: 7px 0px;
           background-color: $light-color !important;
         }
       }
