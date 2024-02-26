@@ -155,16 +155,18 @@
 
     .delete_btn {
         background-color: transparent;
+        color: $danger-color;
+        border: none;
 
         &:hover {
             background-color: transparent !important;
         }
     }
 
-    button {
+    .savebtn {
         background-color: transparent;
         border: 0;
-        color: $danger-color;
+        color: $primary-color;
     }
 }
 
@@ -367,6 +369,19 @@
                     padding-left: 6px;
                     font-weight: 600;
 
+                    &:focus-visible {
+                        border: none;
+                        border-bottom: 1px solid #949292;
+                        outline: none;
+                        box-shadow: none;
+                    }
+
+                    &:focus {
+                        border: none;
+                        border-bottom: 1px solid #949292;
+                        outline: none;
+                        box-shadow: none;
+                    }
                 }
             }
         }

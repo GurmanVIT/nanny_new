@@ -22,7 +22,7 @@ const EditUserProfile = () => {
 
 
     const updateProfile = () => {
-        const payload ={
+        const payload = {
             firstName: firstName,
             lastName: lastName,
             dateOfBirth: date,
@@ -45,20 +45,19 @@ const EditUserProfile = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log(" Data",UserEditData)
-        if(UserEditData!= null&&UserEditData.status===1) {
-              alert(UserEditData.message)
+        console.log(" Data", UserEditData)
+        if (UserEditData != null && UserEditData.status === 1) {
+            alert(UserEditData.message)
         }
-        else if(UserEditData!=null)
-        {
+        else if (UserEditData != null) {
             alert(UserEditData.message)
         }
     }, [UserEditData])
 
 
-    useEffect(()=>{
-        console.log("UserProfile data ===> ",profileData)
-        if(profileData!=null&&profileData.status===1){
+    useEffect(() => {
+        console.log("UserProfile data ===> ", profileData)
+        if (profileData != null && profileData.status === 1) {
             setFirstName(profileData.data.firstName)
             setLastName(profileData.data.lastName)
             setDate(profileData.data.dateOfBirth)
@@ -67,8 +66,8 @@ const EditUserProfile = () => {
             setPinCode(profileData.data.pinCode)
             setMobileNumber(profileData.data.mobileNumber)
         }
-    
-    },[profileData])
+
+    }, [profileData])
 
 
     return (
@@ -76,7 +75,7 @@ const EditUserProfile = () => {
             <div className="row" >
                 <div className="col-12">
                     <div className="d-flex align-items-center mb-3 heading_back_btn">
-                        <h2 className="m-0">Edit Profile</h2>
+                        <h4 className="m-0">Edit Profile</h4>
                     </div>
                     <div className="row">
                         <div className="col-12 mb-4 edit_photo">
@@ -86,34 +85,34 @@ const EditUserProfile = () => {
                         <div className="col-md-6">
                             <form className="w-100 mb-4 pb-2">
                                 <div className="input-group mb-0">
-                                    <input type="text" placeholder="First Name" value={firstName} onChange={(val)=>setFirstName(val.target.value)}/>
+                                    <input type="text" placeholder="First Name" value={firstName} onChange={(val) => setFirstName(val.target.value)} />
                                 </div>
                             </form>
                         </div>
                         <div className="col-md-6">
                             <form className="w-100 mb-4" >
                                 <div className="input-group mb-0">
-                                    <input type="text" placeholder="Last Name" value={lastName} onChange={(val)=>setLastName(val.target.value)}/>
+                                    <input type="text" placeholder="Last Name" value={lastName} onChange={(val) => setLastName(val.target.value)} />
                                 </div>
                             </form>
                         </div>
                         <div className="col-md-6">
                             <form className="w-100 mb-4">
                                 <div className="input-group mb-0">
-                                    <input type="text" placeholder="Enter Email" value={email} onChange={(val)=>setEmail(val.target.value)}/>
+                                    <input type="text" placeholder="Enter Email" value={email} onChange={(val) => setEmail(val.target.value)} />
                                 </div>
                             </form>
                         </div>
                         <div className="col-md-6">
                             <form className="w-100 mb-4">
                                 <div className="input-group mb-0">
-                                    <input type="number" placeholder="Phone Number" value={mobileNumber} onChange={(val)=>setMobileNumber(val.target.value)}/>
+                                    <input type="number" placeholder="Phone Number" value={mobileNumber} onChange={(val) => setMobileNumber(val.target.value)} />
                                 </div>
                             </form>
                         </div>
                         <div className="col-12">
                             <div className="col-12 mt-3">
-                                <button type='button' color="primary" className="profile_button save" onClick={()=>updateProfile()}>
+                                <button type='button' color="primary" className="profile_button save" onClick={() => updateProfile()}>
                                     SAVE
                                 </button>
                             </div>

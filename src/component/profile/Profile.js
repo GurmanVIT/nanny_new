@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import about from '../../assets/img/about.jpg';
-import visa_payment_card from '../../assets/img/visa-payment-card.png';
 import nany_icon from '../../assets/img/nany_icon.png';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import AddIcon from '@mui/icons-material/Add';
@@ -12,28 +11,29 @@ import EditUserProfile from './EditUserProfile';
 import My_Orders_Component from '../my-orders/My_Orders_Component';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserprofile } from '../../store/apiSlice/UserprofileSlice';
+import Paymentsuser from './Paymentsuser';
 
 const Profile = () => {
     const dispatch = useDispatch();
     const profileData = useSelector((state) => state.rootReducer.UserProfileReducer.data);
-    console.log("Profile Data ===> ",profileData)
-      const [userData ,setUserData] = useState(null)
-  
-      useEffect(() => {
-          dispatch(getUserprofile());
-      }, []);
-  
-      useEffect(() => {
-  
-          console.log("Profile Data ===> ",profileData)
-          if (profileData != null&&profileData.status===1) {
+    console.log("Profile Data ===> ", profileData)
+    const [userData, setUserData] = useState(null)
+
+    useEffect(() => {
+        dispatch(getUserprofile());
+    }, []);
+
+    useEffect(() => {
+
+        console.log("Profile Data ===> ", profileData)
+        if (profileData != null && profileData.status === 1) {
             //setUserprofile(profileData)
             setUserData(profileData.data)
-          }
-          else if(profileData!=null){
-              alert(profileData.message)
-          }
-      }, [profileData])
+        }
+        else if (profileData != null) {
+            alert(profileData.message)
+        }
+    }, [profileData])
 
     return (
         <>
@@ -96,111 +96,7 @@ const Profile = () => {
                                         <My_Orders_Component />
                                     </TabPanel>
                                     <TabPanel>
-                                        <div className="row" >
-                                            <div className="col-12">
-                                                <div className="d-flex align-items-center mb-3 justify-content-between heading_back_btn">
-                                                    <div className="d-flex align-items-center">
-                                                        {/*<button ><ArrowBackIosNewIcon/></button>*/}
-                                                        <h2 className="m-0">Cards</h2>
-                                                    </div>
-                                                    <button className="card_type d-flex align-items-center rounded">
-                                                        <AddIcon /> Add Card
-                                                    </button>
-                                                </div>
-                                                <div className="row">
-                                                    <div className="col-md-6">
-                                                        <div className="p-3 card_box">
-                                                            <div className="d-flex align-items-center justify-content-between mb-4">
-                                                                <div className="card_icon">
-                                                                    <img width="w-100" src={visa_payment_card} alt='visa' />
-                                                                </div>
-                                                                <div className="card_type px-2 py-1 rounded">Crdit Card</div>
-                                                            </div>
-                                                            <h4 className="mb-3">2521 2521 5252 5215</h4>
-                                                            <div className="d-flex align-items-center justify-content-between">
-                                                                <div className="holder_details">
-                                                                    <h5 className="mb-0">Card Holder Namer<span className="ms-2">jhngnn</span></h5>
-                                                                    <h5 className="mb-0">Expired<span className="ms-2">jhngnn</span></h5>
-                                                                </div>
-                                                                <button className="delete_btn"><DeleteForeverIcon /></button>
-                                                            </div>
-                                                        </div>
-                                                    </div >
-                                                    <div className="col-md-6 ">
-                                                        <div className="p-3 card_box">
-                                                            <div className="d-flex align-items-center justify-content-between mb-4">
-                                                                <div className="card_icon">
-                                                                    <img width="w-100" src={visa_payment_card} alt='visa' />
-                                                                </div>
-                                                                <div className="card_type px-2 py-1 rounded">Crdit Card</div>
-                                                            </div>
-                                                            <h4 className="mb-3">2521 2521 5252 5215</h4>
-                                                            <div className="d-flex align-items-center justify-content-between">
-                                                                <div className="holder_details">
-                                                                    <h5 className="mb-0">Card Holder Namer<span className="ms-2">jhngnn</span></h5>
-                                                                    <h5 className="mb-0">Expired<span className="ms-2">jhngnn</span></h5>
-                                                                </div>
-                                                                <button className="delete_btn"><DeleteForeverIcon /></button>
-                                                            </div>
-                                                        </div >
-                                                    </div >
-                                                    <div className="col-md-6 ">
-                                                        <div className="p-3 card_box">
-                                                            <div className="d-flex align-items-center justify-content-between mb-4">
-                                                                <div className="card_icon">
-                                                                    <img width="w-100" src={visa_payment_card} alt='visa' />
-                                                                </div>
-                                                                <div className="card_type px-2 py-1 rounded">Crdit Card</div>
-                                                            </div>
-                                                            <h4 className="mb-3">2521 2521 5252 5215</h4>
-                                                            <div className="d-flex align-items-center justify-content-between">
-                                                                <div className="holder_details">
-                                                                    <h5 className="mb-0">Card Holder Namer<span className="ms-2">jhngnn</span></h5>
-                                                                    <h5 className="mb-0">Expired<span className="ms-2">jhngnn</span></h5>
-                                                                </div>
-                                                                <button className="delete_btn"><DeleteForeverIcon /></button>
-                                                            </div>
-                                                        </div >
-                                                    </div >
-                                                    <div className="col-md-6 ">
-                                                        <div className="p-3  card_box">
-                                                            <div className="d-flex align-items-center justify-content-between mb-4">
-                                                                <div className="card_icon">
-                                                                    <img width="w-100" src={visa_payment_card} alt='visa' />
-                                                                </div>
-                                                                <div className="card_type px-2 py-1 rounded">Crdit Card</div>
-                                                            </div>
-                                                            <h4 className="mb-3">2521 2521 5252 5215</h4>
-                                                            <div className="d-flex align-items-center justify-content-between">
-                                                                <div className="holder_details">
-                                                                    <h5 className="mb-0">Card Holder Namer<span className="ms-2">jhngnn</span></h5>
-                                                                    <h5 className="mb-0">Expired<span className="ms-2">jhngnn</span></h5>
-                                                                </div>
-                                                                <button className="delete_btn"><DeleteForeverIcon /></button>
-                                                            </div>
-                                                        </div >
-                                                    </div >
-                                                    <div className="col-md-6">
-                                                        <div className="p-3 card_box">
-                                                            <div className="d-flex align-items-center justify-content-between mb-4">
-                                                                <div className="card_icon">
-                                                                    <img width="w-100" src={visa_payment_card} alt='visa' />
-                                                                </div>
-                                                                <div className="card_type px-2 py-1 rounded">Crdit Card</div>
-                                                            </div>
-                                                            <h4 className="mb-3">2521 2521 5252 5215</h4>
-                                                            <div className="d-flex align-items-center justify-content-between">
-                                                                <div className="holder_details">
-                                                                    <h5 className="mb-0">Card Holder Namer<span className="ms-2">jhngnn</span></h5>
-                                                                    <h5 className="mb-0">Expired<span className="ms-2">jhngnn</span></h5>
-                                                                </div>
-                                                                <button className="delete_btn"><DeleteForeverIcon /></button>
-                                                            </div>
-                                                        </div >
-                                                    </div >
-                                                </div >
-                                            </div >
-                                        </div>
+                                        <Paymentsuser />
                                     </TabPanel>
                                     {/*<TabPanel>
                                         <div className="row" >
@@ -304,7 +200,7 @@ const Profile = () => {
                                             <div className="col-12">
                                                 <div className="d-flex align-items-center mb-3 heading_back_btn">
                                                     {/*<button><i className="fa fa-arrow-left me-2" aria-hidden="true"></i></button>*/}
-                                                    <h2 className="m-0">Credits</h2>
+                                                    <h4 className="m-0">Credits</h4>
                                                 </div>
                                             </div >
                                             <div className="row">
@@ -357,7 +253,7 @@ const Profile = () => {
                                         </div >
                                     </TabPanel>
                                 </div>
-                            </div >
+                            </div>
                         </div>
                     </Tabs>
                 </div>

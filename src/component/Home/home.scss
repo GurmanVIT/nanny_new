@@ -43,6 +43,7 @@
         font-weight: 300;
         color: $light-color;
         font-family: 'Merriweather', serif;
+
         @include media-md {
             font-size: 40px;
         }
@@ -53,7 +54,7 @@
     }
 
     .btn-book {
-        background-color: #f5ec50;
+        background-color: $secondry-color !important;
         padding: 10px 50px;
         border-radius: 10px;
     }
@@ -128,9 +129,11 @@
 
 .testimonials_box {
     background-color: $testimonial_bg;
-    .stars{
+
+    .stars {
         gap: 5px;
-        svg{
+
+        svg {
             color: $secondry-color;
         }
     }

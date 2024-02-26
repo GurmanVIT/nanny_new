@@ -59,7 +59,7 @@ const OngoingUser = () => {
                                             </div>
                                         </div>
                                         <div >
-                                            <button className='btn-ongiing'>On the way</button>
+                                            <button className='btn-ongiing'>Reached</button>
                                         </div>
                                     </div>
                                 </div>

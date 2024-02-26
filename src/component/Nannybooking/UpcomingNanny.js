@@ -253,8 +253,8 @@ const UpcomingNanny = () => {
                     <div className="d-flex justify-content-between align-items-center">
                       <div>
                         {item.status === 1 ||
-                        item.status === 2 ||
-                        item.status === 3 ? (
+                          item.status === 2 ||
+                          item.status === 3 ? (
                           <Dropdown>
                             <Dropdown.Toggle
                               id="dropdown-basic"
@@ -263,8 +263,8 @@ const UpcomingNanny = () => {
                               {item.status === 1
                                 ? "Request Accepted"
                                 : item.status === 2
-                                ? "On The Way"
-                                : "Reached"}
+                                  ? "On The Way"
+                                  : "Reached"}
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu>
@@ -343,7 +343,7 @@ const UpcomingNanny = () => {
         className="modal_address change_time chat_modal"
       >
         <Modal.Header closeButton className="p-2">
-          <Modal.Title>Nanny Name</Modal.Title>
+          <Modal.Title className="chat_heading">Nanny Name</Modal.Title>
           {/*<Modal.Title>
             {item.userId.firstName} {item.userId.lastName}
           </Modal.Title>*/}
@@ -355,11 +355,17 @@ const UpcomingNanny = () => {
                 <li>
                   {item.receiverId._id === userId ? (
                     <li className="user_msg">
-                      <p>{item.message}</p>
+                      <h6>
+                        <p>{item.message}</p>
+                        <span className="time">{item.time}</span>
+                      </h6>
                     </li>
                   ) : (
                     <li className="nanny_msg">
-                      <p>{item.message}</p>
+                      <h6>
+                        <p>{item.message}</p>
+                        <span className="time">{item.time}</span>
+                      </h6>
                     </li>
                   )}
                 </li>

@@ -15,6 +15,7 @@ const UpcomingUser = () => {
 
     const [skip, setSkip] = useState(0);
     const [message, setMessage] = useState("");
+    const [time, setTime] = useState("");
 
     const userId = localStorage.getItem("userId");
     const type = localStorage.getItem("type");
@@ -123,6 +124,7 @@ const UpcomingUser = () => {
         if (type === 1) {
             const msg = {
                 message: message,
+                time: time,
                 sentBy: 1,
                 type: 1,
                 _id: "",
@@ -217,7 +219,7 @@ const UpcomingUser = () => {
                                 <div className='upcoming_option mt-2 pt-2'>
                                     <div className='d-flex justify-content-between align-items-center'>
                                         <div >
-                                            <Link to="#" className='mb-0'>{item.status === 0 ? "Cancel Booking" : item.status === 1 ? "Request Accepted" : "Canceled"}</Link>
+                                            <Link to="#" className='mb-0'>{item.status === 0 ? "Cancel Booking" : item.status === 1 ? "Request Accepted" : "On The Way"}</Link>
                                         </div>
                                         <div>
                                             <div className="upcoming_btns d-flex align-items-center">
@@ -246,7 +248,7 @@ const UpcomingUser = () => {
                 className="modal_address change_time chat_modal"
             >
                 <Modal.Header closeButton className="p-2">
-                    <Modal.Title>Nanny Name</Modal.Title>
+                    <Modal.Title className="chat_heading">Nanny Name</Modal.Title>
                     {/*<Modal.Title>
             {item.userId.firstName} {item.userId.lastName}
           </Modal.Title>*/}
@@ -257,13 +259,19 @@ const UpcomingUser = () => {
                             chatData.data.map((item, index) => (
                                 <li>
                                     {item.receiverId._id === userId ? (
-                                        <li className="user_msg">
-                                            <p>{item.message}</p>
-                                        </li>
+                                        <div className="user_msg">
+                                            <h6>
+                                                <p>{item.message}</p>
+                                                <span className="time">{item.time}</span>
+                                            </h6>
+                                        </div>
                                     ) : (
-                                        <li className="nanny_msg">
-                                            <p>{item.message}</p>
-                                        </li>
+                                        <div className="nanny_msg">
+                                            <h6>
+                                                <p>{item.message}</p>
+                                                <span className="time">{item.time}</span>
+                                            </h6>
+                                        </div>
                                     )}
                                 </li>
                             ))}

@@ -8,6 +8,8 @@ export const UserprofileApi = "/v1/user/profile"
 export const UserEditProfileApi = "/v1/user/updateProfile"
 export const NannyBookingApi = "/v1/nanny/getMyBookings"
 export const UpdateNannyCatgories = "/v1/nanny/updateNannyCatgories"
+export const AddratingbookingApi = "/v1/user/addRatingToBooking"
+
 
 //Nanny Api's
 export const profileNanny = "/v1/nanny/profile"

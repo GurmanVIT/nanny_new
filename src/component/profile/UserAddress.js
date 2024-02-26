@@ -25,7 +25,7 @@ const UserAddress = () => {
                             <div className="d-flex align-items-center mb-3 heading_back_btn justify-content-between">
                                 <h5 className="m-0 mb-2">Chandigarh</h5>
                                 <div className='d-flex'>
-                                    <button onClick={handleShow}><SaveAs /></button>
+                                    <button onClick={handleShow} className='savebtn'><SaveAs /></button>
                                     <button className="delete_btn"><DeleteForever /></button>
                                 </div>
                             </div>
@@ -34,6 +34,9 @@ const UserAddress = () => {
                             </div>
                         </div>
                     </div>
+                </div>
+                <div className='add_new-address'>
+                    <button type='button' className='btn profile_button'>Add new address</button>
                 </div>
                 <Modal show={show} onHide={handleClose} className='modal_address'>
                     <Modal.Header closeButton>
