@@ -35,12 +35,19 @@ import Dayschange from "./component/Availability/Dayschange";
 import Googlemap from "./component/map/Googlemap";
 
 function App() {
-  const type = localStorage.getItem("type");
+  const [type, setType] = useState("")
+  const user = useSelector((state) => state.rootReducer.login.data);
+  useEffect(() => {
+    if (user != null && user.status === 1) {
+      setType(user.data.type)
+    }
+
+  }, [user])
 
   return (
     <>
       <BrowserRouter>
-        {type == 1 ? <HeaderNanny /> : <Header />}
+        {type == 2 ? <Header /> : <HeaderNanny />}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

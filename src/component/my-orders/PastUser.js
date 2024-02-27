@@ -5,11 +5,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { clearData, upcommingUserList } from '../../store/apiSlice/UpcommingSlice';
 import nannyicon from '../../assets/img/nany_icon.png';
 import { Button, Form, Modal } from 'react-bootstrap';
+import { Addratingbooking } from '../../store/apiSlice/AddRatingToBookingSlice';
 
 const PastUser = () => {
 
     const pastData = useSelector((state) => state.rootReducer.upcommingReducer.data)
     const [dataList, setDataList] = useState(null)
+    const rateingData = useSelector((state) => state.rootReducer.AddratingbookingReducer.data)
+    const [bookingId, setbookingId] = useState('')
+    const [star, setstar] = useState('')
+    const [comment, setcomment] = useState('')
 
     const dispatch = useDispatch()
     useEffect(() => {
@@ -37,6 +42,20 @@ const PastUser = () => {
         setRating(value);
     };
 
+    const onClickRateing = () => {
+        const payload = {
+            bookingId: bookingId,
+            star: rating,
+            comment: comment,
+        }
+        dispatch(Addratingbooking(payload))
+        handleClose()
+    }
+    //useEffect(() => {
+    //    dispatch(Addratingbooking(2))   
+    //}
+    //)
+
 
     return (
         <>
@@ -58,10 +77,13 @@ const PastUser = () => {
                                         <div className="nanny-info">
                                             <div className="location mb-1 d-flex align-items-baseline"><span>{item.address}</span></div>
                                             <p className="time mb-0 text-truncate">{item.date} <span>{item.time}</span></p>
-                                            <p> {item.ratingStar === 0 ? <button type='button' className='rateing-btn' onClick={handleShow}>
+                                            <p> {item.ratingStar === 0 ? <button type='button' className='rateing-btn' onClick={() => {
+                                                setbookingId(item._id)
+                                                handleShow();
+                                            }}>
                                                 Rate This Booking
                                             </button> :
-                                                <span className='star'><Star /> {item.ratingStar}</span>}
+                                                <span className='star'><Star /> {item.ratingStar}.0</span>}
                                             </p>
                                         </div>
 
@@ -79,7 +101,7 @@ const PastUser = () => {
                                             </div>
                                         </div>
                                         <div >
-                                            <button className='btn-success-nany'>Completed</button>
+                                            <button type='button' className='btn-success-nany'>Completed</button>
                                         </div>
                                     </div>
                                 </div>
@@ -116,12 +138,12 @@ const PastUser = () => {
                     </h5>
                     <Form>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                            <Form.Control as="textarea" rows={3} placeholder='Review' />
+                            <Form.Control as="textarea" rows={3} placeholder='Review' onChange={(val) => setcomment(val.target.value)} />
                         </Form.Group>
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <button className='submit_btn-rateing' onClick={handleClose}>
+                    <button className='submit_btn-rateing' type='submit' onClick={() => onClickRateing()}>
                         SUBMIT
                     </button>
                 </Modal.Footer>

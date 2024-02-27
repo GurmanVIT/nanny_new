@@ -8,7 +8,7 @@ import { Chat, Send } from '@mui/icons-material';
 import { Button, Modal } from 'react-bootstrap';
 import { io } from 'socket.io-client';
 import { clearChat, getChatHistory } from "../../store/apiSlice/ChatSlice";
-
+import moment from 'moment';
 
 const UpcomingUser = () => {
     const socket = io("https://dev-api-nanny.virtualittechnology.com/");
@@ -24,6 +24,11 @@ const UpcomingUser = () => {
     const [myChatData, setChatData] = useState([]);
 
     const [isSocketConnected, setSocketConnected] = useState(false);
+    const currentDate = new Date(); // Get the current date and time
+    const options = { timeZone: 'Asia/Kolkata' }; // India time zone
+    const formattedDate = currentDate.toLocaleString('en-IN', options); // Format the date and time for India
+
+
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const user = useSelector((state) => state.rootReducer.login.data);
@@ -64,7 +69,6 @@ const UpcomingUser = () => {
         dispatch(getChatHistory(payload));
     };
 
-    //const [dataList, setDataList] = useState(null);
     //useEffect(() => {
     //  if (user != null && user.status) {
     //    console.log("Type ===>", user.data.type);
@@ -124,7 +128,6 @@ const UpcomingUser = () => {
         if (type === 1) {
             const msg = {
                 message: message,
-                time: time,
                 sentBy: 1,
                 type: 1,
                 _id: "",
@@ -140,7 +143,7 @@ const UpcomingUser = () => {
                     profileImage: dataList[chatIndex].nannyDetails.profileImage,
                     _id: dataList[chatIndex].nannyDetails._id,
                 },
-                createdAt: "2024-02-16T08:00:59.462Z",
+                createdAt: formattedDate,
             };
 
             setChatData((myChatData) => [...myChatData, msg]);
@@ -169,7 +172,7 @@ const UpcomingUser = () => {
                     profileImage: dataList[chatIndex].userId.profileImage,
                     _id: dataList[chatIndex].userId._id,
                 },
-                createdAt: "2024-02-16T08:00:59.462Z",
+                createdAt: formattedDate,
             };
 
             setChatData((myChatData) => [...myChatData, msg]);
@@ -179,6 +182,7 @@ const UpcomingUser = () => {
                 userId: userId,
                 otherUserId: dataList[chatIndex].userId._id,
                 message: message,
+                createdAt: formattedDate,
             };
 
             console.log("Message Data ===> ", msgData);
@@ -188,6 +192,24 @@ const UpcomingUser = () => {
         // getChat(dataList[chatIndex]._id);
     };
 
+    const getFormattedDateTime = (utcDate) => {
+        const timestampStr = new Date(utcDate);
+        const options = {
+            timeZone: "Asia/Kolkata",
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: false, // Use 24-hour format
+        };
+        const formattedDate = timestampStr.toLocaleDateString("en-IN", options);
+        const dateData = formattedDate.split(" ");
+        const createdTime = moment(dateData[1], "HH:mm:ss").add(5, "hours").add(30, "minutes");
+        const finalDate = dateData[0] + " " + createdTime.format("HH:mm:ss");
+        return finalDate;
+    };
 
     return (
         <>
@@ -259,18 +281,36 @@ const UpcomingUser = () => {
                             chatData.data.map((item, index) => (
                                 <li>
                                     {item.receiverId._id === userId ? (
-                                        <div className="user_msg">
-                                            <h6>
-                                                <p>{item.message}</p>
-                                                <span className="time">{item.time}</span>
-                                            </h6>
+                                        <div className="mt-3">
+                                            <div>
+                                                <span className="times sender_name">
+                                                    {item.senderId.firstName} {item.senderId.lastName}
+                                                </span>
+                                            </div>
+                                            <div className="user_msg">
+                                                <h6>
+                                                    {item.message}
+                                                </h6>
+                                            </div>
+                                            <div>
+                                                <span className="times">{getFormattedDateTime(item.createdAt)}</span>
+                                            </div>
                                         </div>
                                     ) : (
-                                        <div className="nanny_msg">
-                                            <h6>
-                                                <p>{item.message}</p>
-                                                <span className="time">{item.time}</span>
-                                            </h6>
+                                        <div className="mt-3">
+                                            <div>
+                                                <span className="time sender_name">
+                                                    {item.senderId.firstName} {item.senderId.lastName}
+                                                </span>
+                                            </div>
+                                            <div className="nanny_msg">
+
+                                                <h6>
+                                                    {item.message}
+                                                </h6>
+
+                                            </div>
+                                            <span className="time">{getFormattedDateTime(item.createdAt)}</span>
                                         </div>
                                     )}
                                 </li>

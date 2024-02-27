@@ -11,6 +11,8 @@ import { Button, Dropdown, Modal } from "react-bootstrap";
 import { io } from "socket.io-client";
 import { clearChat, getChatHistory } from "../../store/apiSlice/ChatSlice";
 import { getUserprofile } from "../../store/apiSlice/UserprofileSlice";
+import nannyicon from '../../assets/img/nany_icon.png';
+import moment from 'moment';
 
 const UpcomingNanny = () => {
   const socket = io("https://dev-api-nanny.virtualittechnology.com/");
@@ -26,6 +28,9 @@ const UpcomingNanny = () => {
   const [isSocketConnected, setSocketConnected] = useState(false);
   const [show, setShow] = useState(false);
   const [myChatData, setChatData] = useState([]);
+  const currentDate = new Date(); // Get the current date and time
+  const options = { timeZone: 'Asia/Kolkata' }; // India time zone
+  const formattedDate = currentDate.toLocaleString('en-IN', options); // Format the date and time for India
 
   const handleClose = () => setShow(false);
   const user = useSelector((state) => state.rootReducer.login.data);
@@ -164,7 +169,7 @@ const UpcomingNanny = () => {
           profileImage: dataList[chatIndex].nannyDetails.profileImage,
           _id: dataList[chatIndex].nannyDetails._id,
         },
-        createdAt: "2024-02-16T08:00:59.462Z",
+        createdAt: formattedDate,
       };
 
       setChatData((myChatData) => [...myChatData, msg]);
@@ -193,7 +198,7 @@ const UpcomingNanny = () => {
           profileImage: dataList[chatIndex].userId.profileImage,
           _id: dataList[chatIndex].userId._id,
         },
-        createdAt: "2024-02-16T08:00:59.462Z",
+        createdAt: formattedDate,
       };
 
       setChatData((myChatData) => [...myChatData, msg]);
@@ -203,6 +208,7 @@ const UpcomingNanny = () => {
         userId: userId,
         otherUserId: dataList[chatIndex].userId._id,
         message: message,
+        createdAt: formattedDate,
       };
 
       console.log("Message Data ===> ", msgData);
@@ -210,6 +216,25 @@ const UpcomingNanny = () => {
     }
     setMessage("");
     // getChat(dataList[chatIndex]._id);
+  };
+
+  const getFormattedDateTime = (utcDate) => {
+    const timestampStr = new Date(utcDate);
+    const options = {
+      timeZone: "Asia/Kolkata",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false, // Use 24-hour format
+    };
+    const formattedDate = timestampStr.toLocaleDateString("en-IN", options);
+    const dateData = formattedDate.split(" ");
+    const createdTime = moment(dateData[1], "HH:mm:ss").add(5, "hours").add(30, "minutes");
+    const finalDate = dateData[0] + " " + createdTime.format("HH:mm:ss");
+    return finalDate;
   };
 
   return (
@@ -343,7 +368,16 @@ const UpcomingNanny = () => {
         className="modal_address change_time chat_modal"
       >
         <Modal.Header closeButton className="p-2">
-          <Modal.Title className="chat_heading">Nanny Name</Modal.Title>
+          <Modal.Title className="chat_heading"> <img src={nannyicon} alt="icon" /></Modal.Title>
+          {/*<Modal.Title className="chat_heading">   {chatData != null &&
+            chatData.data.map((item, index) => (
+              <h4 key={index}>
+                <span>
+                  {item.receiverId.firstName} {item.receiverId.lastName}
+                </span>
+              </h4>
+            ))}
+          </Modal.Title>*/}
           {/*<Modal.Title>
             {item.userId.firstName} {item.userId.lastName}
           </Modal.Title>*/}
@@ -354,19 +388,37 @@ const UpcomingNanny = () => {
               myChatData.map((item, index) => (
                 <li>
                   {item.receiverId._id === userId ? (
-                    <li className="user_msg">
-                      <h6>
-                        <p>{item.message}</p>
-                        <span className="time">{item.time}</span>
-                      </h6>
-                    </li>
+                    <div className="mt-3">
+                      <div>
+                        <span className="times sender_name">
+                          {item.senderId.firstName} {item.senderId.lastName}
+                        </span>
+                      </div>
+                      <div className="user_msg">
+                        <h6>
+                          {item.message}
+                        </h6>
+                      </div>
+                      <div>
+                        <span className="times">{getFormattedDateTime(item.createdAt)}</span>
+                      </div>
+                    </div>
                   ) : (
-                    <li className="nanny_msg">
-                      <h6>
-                        <p>{item.message}</p>
-                        <span className="time">{item.time}</span>
-                      </h6>
-                    </li>
+                    <div className="mt-3">
+                      <div>
+                        <span className="time sender_name">
+                          {item.senderId.firstName} {item.senderId.lastName}
+                        </span>
+                      </div>
+                      <div className="nanny_msg">
+
+                        <h6>
+                          {item.message}
+                        </h6>
+
+                      </div>
+                      <span className="time">{getFormattedDateTime(item.createdAt)}</span>
+                    </div>
                   )}
                 </li>
               ))}

@@ -84,7 +84,7 @@
       .star {
         svg {
           color: orangered;
-          font-size: 13px;
+          font-size: 20px;
         }
       }
     }
@@ -205,7 +205,9 @@
   }
 
   .chat_heading {
-    color: $primary-color;
+    img {
+      width: 50px;
+    }
   }
 
   .msg_area {
@@ -225,17 +227,31 @@
         h6 {
           border-radius: 6px;
           padding: 1px 8px;
-          margin-top: 7px;
           background-color: $light-color !important;
           display: flex;
-
-          .time {
-            font-size: 11px;
-            margin-top: 10px;
-            margin-left: 5px;
-            margin-right: 5px;
-          }
         }
+      }
+
+      .sender_name {
+        font-size: 13px !important;
+        color: $primary-color;
+        margin: 5px 0px 0px !important;
+      }
+
+      .time {
+        display: flex;
+        justify-content: end;
+        font-size: 11px;
+        margin-top: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+
+      .times {
+        font-size: 11px;
+        margin-top: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
       }
 
       .nanny_msg {
@@ -245,17 +261,9 @@
 
         h6 {
           display: flex;
-          margin-top: 7px;
           border-radius: 6px;
           padding: 1px 8px;
           background-color: $light-color !important;
-
-          .time {
-            font-size: 11px;
-            margin-top: 10px;
-            margin-left: 5px;
-            margin-right: 5px;
-          }
         }
       }
     }
@@ -276,13 +284,11 @@
       border-radius: 20px;
 
       &:focus {
-        border: none;
         outline: none;
         box-shadow: none;
       }
 
       &:focus-visible {
-        border: none;
         box-shadow: none;
       }
     }

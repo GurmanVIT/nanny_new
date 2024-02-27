@@ -21,6 +21,7 @@ const NeditProfile = () => {
     const [pinCode, setPinCode] = useState('');
     const [education, setEducation] = useState('');
     const [country, setCountry] = useState('');
+    const [countryCode, setcountryCode] = useState('');
     const isAuthenticated = useSelector((state) => state.isAuthenticated);
 
 
@@ -33,7 +34,7 @@ const NeditProfile = () => {
             profileImage: profileData.data.profileImage,
             pinCode: pinCode,
             latitude: profileData.data.latitude,
-            longitude: profileData.data.longitude
+            longitude: profileData.data.longitude,
         }
 
         try {
@@ -126,6 +127,7 @@ const NeditProfile = () => {
                                                 enableSearch={true}
                                                 value={mobileNumber}
                                             //onChange={(val) => setMobileNumber(val.target.value)}
+
                                             />
                                         </div>
                                     </div>
