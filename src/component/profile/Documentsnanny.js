@@ -15,10 +15,10 @@ const Documentsnanny = () => {
     const Uploaddocumentdata = useSelector((state) => state.rootReducer.DocumentsnannyReducer.data);
     const uploadFileData = useSelector((state) => state.rootReducer.uploadFileReducer.data);
     const uploadDocumentData = useSelector((state) => state.rootReducer.uploadDocumentsReducer.data);
-    const [isFilled,setFilled] = useState(false)
+    const [isFilled, setFilled] = useState(false)
 
-    const [updateImageIndex,setUpdateImageIndex] = useState(-1)
-    
+    const [updateImageIndex, setUpdateImageIndex] = useState(-1)
+
     const [documents, setDocuments] = useState([{
         name: "",
         link: "",
@@ -72,60 +72,59 @@ const Documentsnanny = () => {
 
         dispatch(uploadFile(pan_image_path))
 
-        console.log("Documents Image",documents)
+        console.log("Documents Image", documents)
     }
 
     const handleDocuments = () => {
 
-        try{
-        documents.forEach((element,index) => {
-            if(element.link.length===0&&element.name.length===0)
-            {
-                setFilled(true)
-                throw new Error('BreakException');
-            }
-            else if(index===documents.length-1){
-                setFilled(false)
-            }
-        });
+        try {
+            documents.forEach((element, index) => {
+                if (element.link.length === 0 && element.name.length === 0) {
+                    setFilled(true)
+                    throw new Error('BreakException');
+                }
+                else if (index === documents.length - 1) {
+                    setFilled(false)
+                }
+            });
 
-        if(!isFilled){
-            const payload ={
-                "documents": documents
-            } 
-            console.log(payload)
-            dispatch(uploadDocuments(payload));
-            // Handle success, e.g., navigate to another screen    
-        }
-        else{
+            if (!isFilled) {
+                const payload = {
+                    "documents": documents
+                }
+                console.log(payload)
+                dispatch(uploadDocuments(payload));
+                // Handle success, e.g., navigate to another screen    
+            }
+            else {
+                alert("Please add all documents and its name!")
+            }
+        } catch (e) {
             alert("Please add all documents and its name!")
+            if (e.message !== 'BreakException') throw e;
         }
-    }catch (e) {
-        alert("Please add all documents and its name!")
-        if (e.message !== 'BreakException') throw e;
-      }
     };
 
-    useEffect(()=>{
-        if(uploadFileData!=null&&updateImageIndex>-1){
+    useEffect(() => {
+        if (uploadFileData != null && updateImageIndex > -1) {
             console.log(uploadFileData)
             setDocuments(documents => {
-            const updatedDocuments = [...documents];
-            updatedDocuments[updateImageIndex] = { ...updatedDocuments[updateImageIndex], link: uploadFileData.Location };
-            return updatedDocuments;
-        });
+                const updatedDocuments = [...documents];
+                updatedDocuments[updateImageIndex] = { ...updatedDocuments[updateImageIndex], link: uploadFileData.Location };
+                return updatedDocuments;
+            });
         }
-    },[uploadFileData])
+    }, [uploadFileData])
 
-    useEffect(()=>{
-        console.log("uploadDocumentData ===> ",uploadDocumentData)
-        if(uploadDocumentData!=null&&uploadDocumentData.status===1){
+    useEffect(() => {
+        console.log("uploadDocumentData ===> ", uploadDocumentData)
+        if (uploadDocumentData != null && uploadDocumentData.status === 1) {
             alert("Document Uploaded Successfully")
         }
         return () => {
             dispatch(clearData())
-        }        
-    },[uploadDocumentData])
+        }
+    }, [uploadDocumentData])
 
     return (
         <>
@@ -141,7 +140,7 @@ const Documentsnanny = () => {
                     </div>
                     <div className='col-12'>
                         {documents != null && documents.map((item, index) => (
-                            <div key={""+index} className="added-div mt-4">
+                            <div key={"" + index} className="added-div mt-4">
                                 <div className='upload mt-3 upload-new'>
                                     <div className="row">
                                         <div className="col-md-9">
@@ -155,7 +154,7 @@ const Documentsnanny = () => {
                                                 <div className="upload-box" style={{ backgroundImage: `url(${item.link === '' ? Background : item.link})` }} >
                                                     <div className="upload-zone dropzone dz-clickable">
                                                         <div className="dz-message" data-dz-message="">
-                                                            <input id='doc-front' type="file" className='temprary-input' accept="image/*" onChange={(e) => {  setDocumentImage(e.target.files[0],index) }} />
+                                                            <input id='doc-front' type="file" className='temprary-input' accept="image/*" onChange={(e) => { setDocumentImage(e.target.files[0], index) }} />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -170,7 +169,7 @@ const Documentsnanny = () => {
                     </div>
                     <div className='col-12'>
                         <div className='mt-3'>
-                            <Button type='button' className='main-button mb-0 btn save-btn'  onClick={() => handleDocuments()}>SAVE</Button>
+                            <Button type='button' className='main-button mb-0 btn save-btn' onClick={() => handleDocuments()}>SAVE</Button>
                         </div>
                     </div>
                 </div>

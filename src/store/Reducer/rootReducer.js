@@ -30,6 +30,7 @@ import updateTimingslistReducer from "../apiSlice/UpdateTimingsSlice";
 import deleteTimingsReducer from "../apiSlice/DeleteTimingsSlice";
 import chatHistoryReducer from "../apiSlice/ChatSlice";
 import AddratingbookingReducer from "../apiSlice/AddRatingToBookingSlice";
+import addressReducer from '../apiSlice/AddresslistSlice';
 
 const rootReducer = combineReducers({
   login: loginReducer,
@@ -62,6 +63,7 @@ const rootReducer = combineReducers({
   deleteTimingsReducer: deleteTimingsReducer,
   chatHistoryReducer: chatHistoryReducer,
   AddratingbookingReducer: AddratingbookingReducer,
+  addressReducer: addressReducer,
 
   // Add other reducers as needed
 });

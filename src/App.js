@@ -37,7 +37,9 @@ import Googlemap from "./component/map/Googlemap";
 function App() {
   const [type, setType] = useState("")
   const user = useSelector((state) => state.rootReducer.login.data);
+  const localType = localStorage.getItem("type")
   useEffect(() => {
+    console.log("User ===> ", user)
     if (user != null && user.status === 1) {
       setType(user.data.type)
     }
@@ -47,7 +49,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        {type == 2 ? <Header /> : <HeaderNanny />}
+        {type == 2 || localType == 2 ? <Header /> : <HeaderNanny />}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

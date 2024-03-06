@@ -73,14 +73,17 @@ const Profilenanny = () => {
                         <div className="row mb-5">
                             <div className="col-lg-3 mb-3 mb-md-0 h-100">
                                 <div className="card  rounded overflow-hidden p-3 card_height">
-                                    <div className="profile_photo text-center p-2">
-                                        <img src={about} alt="profile" />
-                                        {nannyProfile!=null&&
-                                        <h4 className="mt-3">{nannyProfile.firstName} {nannyProfile.lastName}</h4>}
-                                        {/*<div className="">
+                                    {nannyProfile != null &&
+                                        <div className="profile_photo text-center p-2">
+
+                                            <img src={nannyProfile.profileImage} alt="profile" />
+
+                                            <h4 className="mt-3">{nannyProfile.firstName} {nannyProfile.lastName}</h4>
+                                            {/*<div className="">
                                             <MenuOutlined onClick={onOpenModal2} />
                                         </div>*/}
-                                    </div>
+                                        </div>
+                                    }
                                     <TabList className="profile_edit_options">
                                         <Tab className="profile_option">
                                             <span className="ms-2">My Booking</span>
@@ -112,7 +115,7 @@ const Profilenanny = () => {
                                             <span className="ms-2">Availability</span>
                                         </Tab>
                                     </TabList >
-                                   
+
                                 </div>
                             </div >
                             <div className="col-lg-9">
@@ -135,7 +138,7 @@ const Profilenanny = () => {
                                     </TabPanel>
 
                                     <TabPanel>
-                                        <NannyPayments/>
+                                        <NannyPayments />
                                     </TabPanel>
 
                                     <TabPanel>

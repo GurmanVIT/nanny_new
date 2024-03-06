@@ -45,7 +45,7 @@ const Profile = () => {
                                 <div className="card rounded overflow-hidden card_height">
                                     {userData !== null &&
                                         <div className="profile_photo text-center p-3">
-                                            <img src={about} alt="profile" />
+                                            <img src={userData.profileImage} alt="profile" />
                                             <h4 className="mt-3">{userData.firstName} {userData.lastName}</h4>
                                         </div>
                                     }

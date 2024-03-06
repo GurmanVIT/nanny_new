@@ -4,7 +4,7 @@ import logo from "../../../assets/img/logo-nanny.png";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../../store/apiSlice/LoginSlice";
 import { Button } from "react-bootstrap";
-import { clearData } from "../../../store/apiSlice/LoginSlice";
+
 
 const Login = () => {
   const dispatch = useDispatch();

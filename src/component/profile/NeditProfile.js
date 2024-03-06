@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { NannyEditprofile } from '../../store/apiSlice/NeditProfileSlice';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css'
+import { uploadFile } from '../../store/apiSlice/uploadFileSlice';
 
 
 const NeditProfile = () => {
@@ -12,6 +13,7 @@ const NeditProfile = () => {
     const dispatch = useDispatch();
     const NannyEditData = useSelector((state) => state.rootReducer.NannyEditprofileReducer.data);
     const profileData = useSelector((state) => state.rootReducer.nannyProfileReducer.data);
+    const uploadFileData = useSelector((state) => state.rootReducer.uploadFileReducer.data);
     const [email, setEmail] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -21,7 +23,8 @@ const NeditProfile = () => {
     const [pinCode, setPinCode] = useState('');
     const [education, setEducation] = useState('');
     const [country, setCountry] = useState('');
-    const [countryCode, setcountryCode] = useState('');
+    const [profileImage, setProfileImage] = useState('');
+    const [updateImageIndex, setUpdateImageIndex] = useState(-1)
     const isAuthenticated = useSelector((state) => state.isAuthenticated);
 
 
@@ -31,10 +34,11 @@ const NeditProfile = () => {
             lastName: lastName,
             dateOfBirth: date,
             address: profileData.data.address,
-            profileImage: profileData.data.profileImage,
+            profileImage: profileImage,
             pinCode: pinCode,
             latitude: profileData.data.latitude,
             longitude: profileData.data.longitude,
+            countryCode: profileData.data.countryCode
         }
 
         try {
@@ -68,10 +72,32 @@ const NeditProfile = () => {
             setEmail(profileData.data.email)
             setEducation(profileData.data.education)
             setPinCode(profileData.data.pinCode)
+            setCountry(profileData.data.countryCode);
             setMobileNumber(profileData.data.mobileNumber)
+            setProfileImage(profileData.data.profileImage);
         }
 
     }, [profileData])
+
+    const handleOnChange = (value, country) => {
+        console.log(country.dialCode)
+        console.log(value)
+        //setMobileNumber(va);
+        setCountry(country.dialCode);
+    };
+
+    useEffect(() => {
+        console.log("uploadimg ==>", uploadFileData)
+        if (uploadFileData != null) {
+            setProfileImage(uploadFileData.Location);
+        }
+    }, [uploadFileData]);
+
+    const handleFileUpload = (event) => {
+        const file = event.target.files[0];
+
+        dispatch(uploadFile(file));
+    };
 
 
 
@@ -85,8 +111,8 @@ const NeditProfile = () => {
                     {profileData != null && <div className="row">
                         <div className="col-12 mb-4 edit_photo">
                             <div className="upload-input">
-                                <label htmlFor="upload"><span><img src={profileData.data.profileImage} alt="card" /></span>
-                                    <span><input type="file" id="upload" style={{ display: "none" }} /></span>
+                                <label htmlFor="upload"><span><img src={profileImage} alt="card" /></span>
+                                    <span><input type="file" id="upload" style={{ display: "none" }} onChange={handleFileUpload} /></span>
                                 </label>
                                 <label className="btn_upload ms-3" htmlFor="upload">Change Porfile Image</label>
                             </div>
@@ -119,6 +145,24 @@ const NeditProfile = () => {
                                                 searchClass="search-class"
                                                 disableSearchIcon={false}
                                                 enableTerritories
+                                                countryCodeEditable={false}
+                                                placeholder='Phone Number'
+                                                buttonStyle={{ width: '47px' }}
+                                                dropdownStyle={{ height: '150px' }}
+                                                enableSearch={true}
+                                                value={country}
+                                                onChange={handleOnChange}
+                                                readOnly
+                                            />
+                                            <input type='tel' className='mobilenumber' value={mobileNumber} onChange={(val) => setMobileNumber(val.target.value)} />
+                                        </div>
+                                        {/*<div className='btn_flex'>
+                                            <PhoneInput
+                                                inputClass={"inputt-ph"}
+                                                containerStyle={{}}
+                                                searchClass="search-class"
+                                                disableSearchIcon={false}
+                                                enableTerritories
                                                 countryCodeEditable={true}
                                                 placeholder='Phone Number'
                                                 buttonStyle={{ width: '47px' }}
@@ -127,9 +171,8 @@ const NeditProfile = () => {
                                                 enableSearch={true}
                                                 value={mobileNumber}
                                             //onChange={(val) => setMobileNumber(val.target.value)}
-
                                             />
-                                        </div>
+                                        </div>*/}
                                     </div>
                                 </div>
                             </form>

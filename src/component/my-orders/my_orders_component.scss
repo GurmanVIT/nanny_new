@@ -200,13 +200,9 @@
 }
 
 .chat_modal {
-  .modal-dialog {
-    width: 400px;
-  }
-
   .chat_heading {
     img {
-      width: 50px;
+      width: 40px;
     }
   }
 
@@ -224,12 +220,28 @@
       .user_msg {
         display: flex;
 
-        h6 {
+        .msg {
           border-radius: 6px;
           padding: 1px 8px;
           background-color: $light-color !important;
           display: flex;
+          max-width: 60%;
+
+          .sender_name {
+            font-size: 10px;
+          }
+
+          .msg_text {
+            font-size: 15px;
+          }
         }
+      }
+
+      .times {
+        font-size: 10px;
+        margin-top: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
       }
 
       .sender_name {
@@ -247,24 +259,31 @@
         margin-right: 5px;
       }
 
-      .times {
-        font-size: 11px;
-        margin-top: 5px;
-        margin-left: 5px;
-        margin-right: 5px;
-      }
 
       .nanny_msg {
         display: flex;
         align-items: end;
         justify-content: end;
 
-        h6 {
-          display: flex;
+        .msg {
           border-radius: 6px;
           padding: 1px 8px;
-          background-color: $light-color !important;
+          background-color: $primary-color !important;
+          display: flex;
+          text-align: right;
+          max-width: 60%;
+
+          .sender_name {
+            font-size: 10px;
+            color: #fff;
+          }
+
+          .msg_text {
+            font-size: 15px;
+            align-items: end;
+          }
         }
+
       }
     }
   }

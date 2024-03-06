@@ -9,6 +9,7 @@ import { Button, Modal } from 'react-bootstrap';
 import { io } from 'socket.io-client';
 import { clearChat, getChatHistory } from "../../store/apiSlice/ChatSlice";
 import moment from 'moment';
+import nannyicon from '../../assets/img/nany_icon.png';
 
 const UpcomingUser = () => {
     const socket = io("https://dev-api-nanny.virtualittechnology.com/");
@@ -267,10 +268,12 @@ const UpcomingUser = () => {
             <Modal
                 show={show}
                 onHide={handleClose}
+                size="lg"
+                centered
                 className="modal_address change_time chat_modal"
             >
                 <Modal.Header closeButton className="p-2">
-                    <Modal.Title className="chat_heading">Nanny Name</Modal.Title>
+                    <Modal.Title className="chat_heading"><img src={nannyicon} alt="icon" /></Modal.Title>
                     {/*<Modal.Title>
             {item.userId.firstName} {item.userId.lastName}
           </Modal.Title>*/}
@@ -282,15 +285,17 @@ const UpcomingUser = () => {
                                 <li>
                                     {item.receiverId._id === userId ? (
                                         <div className="mt-3">
-                                            <div>
-                                                <span className="times sender_name">
-                                                    {item.senderId.firstName} {item.senderId.lastName}
-                                                </span>
-                                            </div>
                                             <div className="user_msg">
-                                                <h6>
-                                                    {item.message}
-                                                </h6>
+                                                <div className='msg'>
+                                                    <div>
+                                                        <div>
+                                                            <span className="times sender_name">
+                                                                {item.senderId.firstName} {item.senderId.lastName}
+                                                            </span>
+                                                        </div>
+                                                        <span className="mt-1 msg_text">{item.message}</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div>
                                                 <span className="times">{getFormattedDateTime(item.createdAt)}</span>
@@ -298,17 +303,18 @@ const UpcomingUser = () => {
                                         </div>
                                     ) : (
                                         <div className="mt-3">
-                                            <div>
-                                                <span className="time sender_name">
-                                                    {item.senderId.firstName} {item.senderId.lastName}
-                                                </span>
-                                            </div>
+
                                             <div className="nanny_msg">
-
-                                                <h6>
-                                                    {item.message}
-                                                </h6>
-
+                                                <div className='msg'>
+                                                    <div>
+                                                        <div>
+                                                            <span className="times sender_name">
+                                                                {item.senderId.firstName} {item.senderId.lastName}
+                                                            </span>
+                                                        </div>
+                                                        <span className="mt-1 msg_text">{item.message}</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <span className="time">{getFormattedDateTime(item.createdAt)}</span>
                                         </div>

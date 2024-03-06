@@ -89,12 +89,21 @@
     }
 }
 
-.edit_photo img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50px;
-    object-fit: cover;
+.edit_photo {
+    img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50px;
+        object-fit: cover;
+    }
+
+    .upload-input {
+        label {
+            cursor: pointer;
+        }
+    }
 }
+
 
 .change_image_btn {
     font-size: 14px;
@@ -274,6 +283,13 @@
         border-bottom: 1px solid #6f9ead;
         padding: 0px 3px;
         margin-top: 10px;
+
+        &:focus {
+            border: none;
+            border-bottom: 1px solid #6f9ead;
+            outline: none;
+            box-shadow: none;
+        }
     }
 
     .save-btn {
@@ -517,6 +533,21 @@
                     }
                 }
             }
+        }
+    }
+
+    .mobilenumber {
+        position: absolute;
+        width: 75%;
+        left: 90px;
+        bottom: 7px;
+        padding: 4px;
+        border: none;
+
+        &:focus {
+            border: none;
+            outline: none;
+            box-shadow: none;
         }
     }
 }

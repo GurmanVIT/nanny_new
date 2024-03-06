@@ -1,13 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { DeleteForever, SaveAs } from '@mui/icons-material';
 import { Button, Modal } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { addressUserList } from '../../store/apiSlice/AddresslistSlice';
 
 
 const UserAddress = () => {
 
+    const dispatch = useDispatch();
+    const addressdata = useSelector((state) => state.rootReducer.addressReducer);
+    const [dataList, setDataList] = useState(null)
+
+    useEffect(() => {
+        dispatch(addressUserList(1))
+    })
+
+    useEffect(() => {
+        console.log("Ongoing data ===> ", addressdata)
+        if (addressdata != null && addressdata.status === 1) {
+            setDataList(addressdata.data.data)
+        }
+    }, [addressdata])
 
     const [show, setShow] = useState(false);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -21,22 +36,25 @@ const UserAddress = () => {
                         </div>
                     </div>
                     <div className='col-12'>
-                        <div className='card card_profile card_box'>
-                            <div className="d-flex align-items-center mb-3 heading_back_btn justify-content-between">
-                                <h5 className="m-0 mb-2">Chandigarh</h5>
-                                <div className='d-flex'>
-                                    <button onClick={handleShow} className='savebtn'><SaveAs /></button>
-                                    <button className="delete_btn"><DeleteForever /></button>
+                        {dataList != null && dataList.map((item) =>
+                            <div className='card card_profile card_box'>
+                                <div className="d-flex align-items-center mb-3 heading_back_btn justify-content-between">
+                                    <h5 className="m-0 mb-2">{item.city}</h5>
+                                    <div className='d-flex'>
+                                        <button onClick={handleShow} className='savebtn'><SaveAs /></button>
+                                        <button className="delete_btn"><DeleteForever /></button>
+                                    </div>
+                                </div>
+                                <div className='secondary'>
+                                    <p>Chandigarh kullu Punjab {item.address}</p>
                                 </div>
                             </div>
-                            <div className='secondary'>
-                                <p>Chandigarh kullu Punjab 12212</p>
-                            </div>
-                        </div>
+                        )}
+
                     </div>
                 </div>
                 <div className='add_new-address'>
-                    <button type='button' className='btn profile_button'>Add new address</button>
+                    <button type='button' className='btn profile_button' >Add new address</button>
                 </div>
                 <Modal show={show} onHide={handleClose} className='modal_address'>
                     <Modal.Header closeButton>

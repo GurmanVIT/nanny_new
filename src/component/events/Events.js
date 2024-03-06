@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import banner from '../../assets/img/banner_bg.jpg'
 import { AccessAlarm, Favorite, Keyboard, Sms } from '@mui/icons-material';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Carousel } from 'react-bootstrap';
 
 const Events = () => {
+
+    //const [index, setIndex] = useState(0);
+
+    //const handleSelect = (selectedIndex) => {
+    //    setIndex(selectedIndex);
+    //};
+
     return (
         <>
             <div className=" nannycategories">
@@ -68,7 +76,7 @@ const Events = () => {
 
             <div className="container-fluid sections_padding">
                 <div className='my_swiper'>
-                    <Swiper
+                    {/*<Swiper
                         spaceBetween={30}
                         slidesPerView={1}
                         navigation
@@ -103,29 +111,23 @@ const Events = () => {
                                 </div>
                             </div>
                         </SwiperSlide>
-                    </Swiper>
+                    </Swiper>*/}
+                    <Carousel>
+                        <Carousel.Item interval={1000}>
+                            <img src={banner} alt="slider" className="d-block w-100" />
+
+                        </Carousel.Item>
+                        <Carousel.Item interval={500}>
+                            <img src={banner} alt="slider" className="d-block w-100" />
+
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            <img src={banner} alt="slider" className="d-block w-100" />
+
+                        </Carousel.Item>
+                    </Carousel>
                 </div>
-                {/*<div id="carouselExampleFade" className="carousel slide" data-bs-ride="carousel">
-                    <div className="carousel-inner">
-                        <div className="carousel-item active">
-                            <img src={banner} className="d-block w-100" alt="slider" />
-                        </div>
-                        <div className="carousel-item">
-                            <img src={banner} className="d-block w-100" alt="slider" />
-                        </div>
-                        <div className="carousel-item">
-                            <img src={banner} className="d-block w-100" alt="slider" />
-                        </div>
-                    </div>
-                    <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span className="visually-hidden">Previous</span>
-                    </button>
-                    <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span className="visually-hidden">Next</span>
-                    </button>
-                </div>*/}
+
             </div>
         </>
     )
