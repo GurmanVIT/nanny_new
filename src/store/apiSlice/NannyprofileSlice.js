@@ -8,11 +8,13 @@ import { BASE_URL, profileNanny } from '../../utils/Constants';
 // Async thunk for fetching data
 export const getNannyProfile = createAsyncThunk('getNannyProfile', async () => {
   const token = localStorage.getItem("Token")
-  const headers = {"Authorization":token,  "Access-Control-Allow-Origin": "*",
-  "Content-Type": "application/json", }
+  const headers = {
+    "Authorization": token, "Access-Control-Allow-Origin": "*",
+    "Content-Type": "application/json",
+  }
   try {
-    const url = BASE_URL+profileNanny
-    const response = await axios.get(url,{headers}); // Replace with your API endpoint
+    const url = BASE_URL + profileNanny
+    const response = await axios.get(url, { headers }); // Replace with your API endpoint
     return response.data;
   } catch (error) {
     throw error;
