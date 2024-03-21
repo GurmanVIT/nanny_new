@@ -4,6 +4,8 @@ import logo from "../../../assets/img/logo-nanny.png";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../../store/apiSlice/LoginSlice";
 import { Button } from "react-bootstrap";
+import { clearOtpData } from "../../../store/apiSlice/Otpslice";
+import { clearSignupData } from "../../../store/apiSlice/Signupnannyslice";
 
 
 const Login = () => {
@@ -29,6 +31,7 @@ const Login = () => {
   };
 
   const navigate = useNavigate();
+
   const navigateToAnotherScreen = () => {
     if (user.data.type == 1) {
       navigate("/profilenanny");
@@ -41,6 +44,7 @@ const Login = () => {
   //    dispatch(clearData())
   //    localStorage.clear()
   //},[])
+
   useEffect(() => {
     console.log("Login Data", user);
     if (user != null && user.status === 1) {
@@ -51,6 +55,11 @@ const Login = () => {
     }
   }, [user]);
 
+  useEffect(() => {
+    dispatch(clearOtpData);
+    dispatch(clearSignupData);
+  }, [])
+
   //  showpassword
 
   //const [password, setPassword] = useState('');
@@ -59,6 +68,7 @@ const Login = () => {
   //const togglePasswordVisibility = () => {
   //    setShowPassword(!showPassword);
   //};
+
   return (
     <div className="container-fluid">
       <div className="row">
@@ -70,7 +80,7 @@ const Login = () => {
             <div className="col-lg-6 offset-lg-3 offset-sm-1 col-sm-10">
               <div className="login-container">
                 <form className="login-form" appearance="outline">
-                  <h2>Welcome Back</h2>
+                  <h3>Welcome</h3>
                   <p>Please login to your account</p>
                   <div className="input-group">
                     <input
@@ -98,10 +108,10 @@ const Login = () => {
                   <p>
                     {" "}
                     <Link
-                      className="d-flex justify-content-end"
+                      className="d-flex justify-content-end mt-2"
                       to="/forotpassword"
                     >
-                      Forgot Password
+                      Forgot Password?
                     </Link>
                   </p>
                   <Button type="button" onClick={() => handleLogin()}>
@@ -111,12 +121,14 @@ const Login = () => {
 
                   {/*{error && <p style={{ color: 'red' }}>{error}</p>}*/}
                   <div className="bottom-text">
-                    <p className="mt-3">
+                    <div className="mt-3 bottom_link">
                       Im a new user.
-                      <Link to="/signupnanny">REGISTER AS NANNY</Link>
-                      <span> / </span>
-                      <Link to="/signupfamily">REGISTER AS Family</Link>
-                    </p>
+                      <div className='flex_link'>
+                        <p className='link_color' onClick={() => navigate('/signupnanny')} > {" "}REGISTER AS NANNY</p>
+                        <span className='mx-1'> / </span>
+                        <p className='link_color' onClick={() => navigate('/signupfamily')}>REGISTER AS FAMILY</p>
+                      </div>
+                    </div>
                   </div>
                 </form>
               </div>

@@ -32,7 +32,12 @@ const authSlice = createSlice({
     loading: false,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    clearSignupData: (state) => {
+      // Reset the data property to an empty array
+      state.data = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(signupUser.pending, (state) => {
@@ -51,4 +56,5 @@ const authSlice = createSlice({
   },
 });
 
+export const { clearSignupData } = authSlice.actions;
 export default authSlice.reducer;

@@ -248,7 +248,7 @@ const Header = () => {
           (<div className="main-sec">
             <div className="inner-sec">
               <ul className="menu-list2">
-                <Link to="/" onClick={onCloseModal2}>Home</Link>
+                <Link to="/" onClick={onCloseModal2} >Home</Link>
                 <Link to="/about" onClick={onCloseModal2}>About</Link>
                 <Link to="/services" onClick={onCloseModal2}>Services</Link>
                 <Link to="/events" onClick={onCloseModal2}>Events</Link>

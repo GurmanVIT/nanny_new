@@ -4,12 +4,12 @@ import CustomModal from '../CustomModal/CustomModal';
 import { Link } from 'react-router-dom';
 import about from '../../assets/img/about.jpg';
 import { useDispatch } from 'react-redux';
-import { clearBookingData} from '../../store/apiSlice/BooknannySlice';
+import { clearBookingData } from '../../store/apiSlice/BooknannySlice';
 
 Modal.setAppElement('#root');
 
 
-const Nannycard = ({ profileImage,time,firstName,lastName,price}) => {
+const Nannycard = ({ profileImage, time, firstName, lastName, price }) => {
 
 
     return (
@@ -19,7 +19,7 @@ const Nannycard = ({ profileImage,time,firstName,lastName,price}) => {
                     <img src={profileImage} className="mb-3" alt="image" />
                 </div>
 
-                <h3> <span>{firstName}</span><span>{lastName}</span></h3>
+                <h3> <span> {firstName} </span> <span>{lastName}</span></h3>
                 <ul>
                     <li className="nany_small_details d-flex justify-content-between py-1">
                         <h5>Price</h5>
@@ -36,7 +36,6 @@ const Nannycard = ({ profileImage,time,firstName,lastName,price}) => {
                 </ul>
                 <div>
                     <Link className='btn btn-primary d-inline-block mt-2 all_btns px-4 py-2 position-relative' to='/bookdetails'>Book Nannyl</Link>
-                   
                 </div>
             </div>
         </div>

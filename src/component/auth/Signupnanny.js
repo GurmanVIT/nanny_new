@@ -56,6 +56,7 @@ const Signupnanny = () => {
 
     const navigateToAnotherScreen = () => {
         navigate('/otp');
+
     }
 
 
@@ -77,37 +78,37 @@ const Signupnanny = () => {
                         <div className="col-lg-6 offset-lg-3 offset-sm-1 col-sm-10">
                             <div className="login-container">
                                 <form className="login-form" appearance="outline">
-                                    <h2>Welcome to Nanny</h2>
+                                    <h3>Welcome to Nanny</h3>
                                     <p>Please Signup </p>
                                     <div className='input-group'>
-                                        <input type="text" placeholder="Enter firstName" value={firstName} onChange={(e) => setfirstName(e.target.value)} />
+                                        <input type="text" placeholder="FirstName" value={firstName} onChange={(e) => setfirstName(e.target.value)} />
                                     </div>
                                     <div className='input-group'>
-                                        <input type="text" placeholder="Enter lastName" value={lastName} onChange={(e) => setlastName(e.target.value)} />
+                                        <input type="text" placeholder="LastName" value={lastName} onChange={(e) => setlastName(e.target.value)} />
                                     </div>
                                     <div className='input-group'>
-                                        <input type="number" placeholder="Enter  Mobile Number" value={mobileNumber} onChange={(e) => setmobileNumber(e.target.value)} />
+                                        <input type="number" placeholder="Mobile Number" value={mobileNumber} onChange={(e) => setmobileNumber(e.target.value)} />
                                     </div>
                                     <div className='input-group'>
-                                        <input type="email" placeholder="Enter Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                                        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
                                     </div>
                                     <div className='input-group'>
-                                        <input type="text" placeholder="Enter Address" value={address} onChange={(e) => setaddress(e.target.value)} />
+                                        <input type="text" placeholder="Address" value={address} onChange={(e) => setaddress(e.target.value)} />
                                     </div>
                                     <div className='input-group'>
-                                        <input type="number" placeholder="Enter postalCode" value={postalCode} onChange={(e) => setpostalCode(e.target.value)} />
+                                        <input type="number" placeholder="PostalCode" value={postalCode} onChange={(e) => setpostalCode(e.target.value)} />
                                     </div>
                                     <div className='input-group'>
-                                        <input type="number" placeholder="Enter Experience Of Years" value={experienceOfYears} onChange={(e) => setexperienceOfYears(e.target.value)} />
+                                        <input type="number" placeholder="Experience of years" value={experienceOfYears} onChange={(e) => setexperienceOfYears(e.target.value)} />
                                     </div>
-                                   
+
                                     <div className="input-group">
                                         <input
                                             //type={showPassword ? 'text' : 'password'}
                                             type='password'
                                             id="password"
-                                            placeholder="Enter Password"
-                                            value={password} 
+                                            placeholder="Password"
+                                            value={password}
                                             onChange={(e) => setPassword(e.target.value)}
                                         //onChange={(e) => setPassword(e.target.value)}
                                         />
@@ -122,8 +123,13 @@ const Signupnanny = () => {
 
                                     {/*{error && <p style={{ color: 'red' }}>{error}</p>}*/}
                                     <div className='bottom-text'>
-                                        <p className="mt-3">Im a new user.<Link to="/signupnanny" >REGISTER AS NANNY</Link><span> / </span><Link to="/signupfamily" >REGISTER AS Family</Link></p>
-
+                                        <div className="mt-3 bottom_link">Im a new user.
+                                            <div className='flex_link'>
+                                                <p className='link_color' onClick={() => navigate('/signupnanny')} > {" "}REGISTER AS NANNY</p>
+                                                <span className='mx-1'> / </span>
+                                                <p className='link_color' onClick={() => navigate('/signupfamily')}>REGISTER AS FAMILY</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </form>
                             </div>

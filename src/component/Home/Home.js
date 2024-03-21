@@ -45,7 +45,7 @@ const Home = () => {
                             <h2 className="mb-4 pb-3 offer_nanny">
                                 <span className="position-relative">What do we offer</span>
                             </h2>
-                            <p>Our nannies are available for locals, tourists or special occasions.</p>
+                            <p className='mb-2'>Our nannies are available for locals, tourists or special occasions.</p>
                         </div>
                         <div className="col-md-4 pe-2">
                             <img className="mw-100" src={about} alt="offers" />
@@ -102,11 +102,11 @@ const Home = () => {
             </div>
             <div className="numbers_speaks sections_padding">
                 <div className="container">
-                    <h2 className="text-center mb-4 pb-3">
+                    <h2 className="text-center pb-3">
                         <span className="position-relative">Numbers Speak</span>
                     </h2>
                     <p className="text-center">If you don`t believe us, believe in the numbers below </p>
-                    <div className="mt-5 row gx-0">
+                    <div className="mt-lg-5 mt-md-4 mt-3 row gx-0">
                         <div className="col-sm-6 col-lg-3 mb-3">
                             <div className="number_say_box text-center px-4 py-5">
                                 <h2 className="mb-3 fw-700">5</h2>
@@ -137,7 +137,7 @@ const Home = () => {
             </div>
             <div className="wny_us sections_padding">
                 <div className="container">
-                    <h2 className="pb-3 mb-4 text-center">
+                    <h2 className="pb-3  mb-lg-4 mb-md-2 mb-0 text-center">
                         <span className="position-relative">Why choose us?
                         </span>
                     </h2>
@@ -146,7 +146,7 @@ const Home = () => {
                         <div className="col-sm-6 col-lg-3 mb-3">
                             <div className="services_box secondry_bg pb-5 px-4 h-100">
                                 <div className="choose_icon mb-5 d-inline-block">
-                                    <CheckBox/></div>
+                                    <CheckBox /></div>
                                 <h4 className="mb-4 fw-700">Full availability</h4>
                                 <p>Our nannies are available through every day of the week. Would you go for a late night dinner? No worries, our babysitters will be available for 24/7!</p>
                             </div>
@@ -154,7 +154,7 @@ const Home = () => {
                         <div className="col-sm-6 col-lg-3 mb-3 why_2">
                             <div className="services_box secondry_bg pb-5 px-4  h-100">
                                 <div className="choose_icon mb-5 d-inline-block">
-                                    <Edit/></div>
+                                    <Edit /></div>
                                 <h4 className="mb-4 fw-700">Experienced and professional</h4>
                                 <p>We are with full of competent and qualified nannies. How can we guarantee it? Every nanny in our database has at least 3+ years of experience!</p>
                             </div>
@@ -162,7 +162,7 @@ const Home = () => {
                         <div className="col-sm-6 col-lg-3 mb-3 why_3">
                             <div className="services_box secondry_bg pb-5 px-4 h-100">
                                 <div className="choose_icon mb-5 d-inline-block">
-                                    <Drafts/></div>
+                                    <Drafts /></div>
                                 <h4 className="mb-4 fw-700">Personally checked background</h4>
                                 <p>Before applying to be a nanny at The Nanny Line, we request a background check from the given person. All of our nannies are personally checked for criminal background!</p>
                             </div>
@@ -170,7 +170,7 @@ const Home = () => {
                         <div className="col-sm-6 col-lg-3 mb-3 why_4">
                             <div className="services_box secondry_bg pb-5 px-4 h-100">
                                 <div className="choose_icon mb-5 d-inline-block">
-                                    <Map/></div>
+                                    <Map /></div>
                                 <h4 className="mb-4 fw-700">Hotel availability</h4>
                                 <p>The Nanny Line is in contact with the biggest 5* Hotels in Barcelona. Are you coming for a trip? Will you spend more time in the "sunny city"? We get your back. Ask the concierge for one of our lovely babysitters!.</p>
                             </div>
@@ -197,17 +197,17 @@ const Home = () => {
                                         <h6>TNL Mom</h6>
                                     </div>
                                     <div className="stars d-flex align-items-center">
-                                        <Star/>
-                                        <Star/>
-                                        <Star/>
-                                        <Star/>
-                                        <Star/>
+                                        <Star />
+                                        <Star />
+                                        <Star />
+                                        <Star />
+                                        <Star />
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className="col-md-4 mb-4">
-                            <div className="testimonials_box py-5 px-4">
+                            <div className="testimonials_box py-5 px-4 mt-0">
                                 <h5 className="mb-4 fw-700">“We had a lovely babysitter who was super cool with our daughter and her group of friends.”</h5>
                                 <hr />
                                 <div className="d-flex pt-4 align-items-center justify-content-between">
@@ -216,17 +216,17 @@ const Home = () => {
                                         <h6>TNL Mom</h6>
                                     </div>
                                     <div className="stars d-flex align-items-center">
-                                        <Star/>
-                                        <Star/>
-                                        <Star/>
-                                        <Star/>
-                                        <Star/>
+                                        <Star />
+                                        <Star />
+                                        <Star />
+                                        <Star />
+                                        <Star />
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className="col-12">
-                            <div className="row pt-3 px-4 align-items-center">
+                            <div className="row mb-3  align-items-center">
                                 <div className="col-sm-2">
                                     <div className="d-flex testimonials_box py-4 px-3 align-items-center justify-content-center">
                                         <div className="d-block">
@@ -235,18 +235,18 @@ const Home = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-sm-10 ">
-                                <div className="stars d-flex align-items-center">
-                                        <Star/>
-                                        <Star/>
-                                        <Star/>
-                                        <Star/>
-                                        <Star/>
+                                <div className="col-sm-10 mt-3 mt-sm-0">
+                                    <div className="stars d-flex align-items-center">
+                                        <Star />
+                                        <Star />
+                                        <Star />
+                                        <Star />
+                                        <Star />
                                     </div>
                                     <h5 className="fw-700">“We had a lovely babysitter who was super cool with our daughter and her group of friends.”</h5>
                                 </div>
                             </div>
-                            <div className="row pt-3 px-4 flex-row-reverse align-items-center">
+                            <div className="row  flex-row-reverse align-items-center">
                                 <div className="col-sm-2">
                                     <div className="d-flex testimonials_box py-4 px-3 align-items-center justify-content-center">
                                         <div className="d-block">
@@ -255,13 +255,13 @@ const Home = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-sm-10">
-                                <div className="stars d-flex align-items-center">
-                                        <Star/>
-                                        <Star/>
-                                        <Star/>
-                                        <Star/>
-                                        <Star/>
+                                <div className="col-sm-10 mt-3 mt-sm-0">
+                                    <div className="stars d-flex align-items-center">
+                                        <Star />
+                                        <Star />
+                                        <Star />
+                                        <Star />
+                                        <Star />
                                     </div>
                                     <h5 className="fw-700 ml-3">“We had a lovely babysitter who was super cool with our daughter and her group of friends.”</h5>
                                 </div>

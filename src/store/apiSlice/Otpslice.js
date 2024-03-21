@@ -3,28 +3,32 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 
-export const verifyOtp= createAsyncThunk('verifyOtp', async (payload) =>
- {
-    console.log("payload ===>",payload)
+export const verifyOtp = createAsyncThunk('verifyOtp', async (payload) => {
+    console.log("payload ===>", payload)
     const config = {
         headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+            "Content-Type": "application/json",
         },
-      };
-    const response = await axios.put('https://dev-api-nanny.virtualittechnology.com/v1/common/otpVerifications', payload,config);
+    };
+    const response = await axios.put('https://dev-api-nanny.virtualittechnology.com/v1/common/otpVerifications', payload, config);
     return response.data;
 });
 
 const otpSlice = createSlice({
     name: 'otp',
-    initialState:{
+    initialState: {
         data: null,
         isAuthenticated: false,
         loading: false,
         error: null,
     },
-    reducers: {},
+    reducers: {
+        clearOtpData: (state) => {
+            // Reset the data property to an empty array
+            state.data = null;
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(verifyOtp.pending, (state) => {
@@ -43,4 +47,5 @@ const otpSlice = createSlice({
     },
 });
 
+export const { clearOtpData } = otpSlice.actions;
 export default otpSlice.reducer;

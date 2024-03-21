@@ -32,7 +32,12 @@ const familySlice = createSlice({
     loading: false,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    clearFamilyData: (state) => {
+      // Reset the data property to an empty array
+      state.data = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(familyUser.pending, (state) => {
@@ -51,4 +56,5 @@ const familySlice = createSlice({
   },
 });
 
+export const { clearFamilyData } = familySlice.actions;
 export default familySlice.reducer;

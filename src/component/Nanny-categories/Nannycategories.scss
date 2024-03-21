@@ -12,6 +12,18 @@
         display: flex;
         align-items: center;
 
+        @media($breckpoint_LG) {
+            height: 250px;
+        }
+
+        @media($breckpoint_SM) {
+            height: 190px;
+        }
+
+        @media($breckpoint_ESM) {
+            height: 170px;
+        }
+
         .heading_categories {
             h1 {
                 color: #fff;

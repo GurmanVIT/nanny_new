@@ -68,10 +68,10 @@ const Forgotpassword = () => {
                                         <form className="login-form m-2" appearance="outline">
                                             <h3 className='mb-3'>Forgot password</h3>
                                             <div className='input-group'>
-                                                <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email" />
+                                                <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
                                             </div>
                                             {/*<p> <Link className="d-flex justify-content-end" to='/forotpassword' >Forgot Password</Link></p>*/}
-                                            <Button type='button'  onClick={() => handleotp()}>
+                                            <Button type='button' onClick={() => handleotp()}>
                                                 Send OTP
                                             </Button>
                                         </form>

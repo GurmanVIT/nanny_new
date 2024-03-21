@@ -7,37 +7,36 @@ const Services = () => {
     return (
         <>
             <div className=" nannycategories">
-                <div className='banner_categories'>
+                <div className='banner_categories banner_service'>
                     <div className='heading_categories container'>
                         <h1>Services</h1>
                     </div>
                 </div>
             </div>
-            <div className="sections_padding mt-5">
+            <div className="sections_padding mt-3">
                 <div className="container">
                     <h1 className="text-center mb-4 pb-3">
-                        <span className="position-relative">What do we offer exactly?</span>
+                        <span className="position-relative content_offer">What do we offer exactly?</span>
                     </h1>
                     <p className="text-center">During all of our services we aim to provide the best possible service to our customers</p>
-                    <div className="row mt-5">
-                        <div className="col-md-7 offset-md-1 pe-0">
-                            <img className="w-100 my-5" src={service_holiday} alt="image" />
+                    <div className="row mt-0 mt-md-5 mt-sm-0 row_padding">
+                        <div className="col-md-6 offset-md-1 p-0">
+                            <img className="w-100 my-5 service_holiday_img" src={service_holiday} alt="image" />
                         </div>
-                        <div className="col-md-3 service_text secondry_bg">
-                            <div className="p-5">
-
+                        <div className="col-md-4 service_text secondry_bg">
+                            <div className="hotel_book">
                                 <h2 className="mb-4 fw-700">Hotel Booking</h2>
                                 <p>Are you on holiday in Barcelona? Do you want some free, quality time to go around and discover the beauty of the city by day or night? We suggest a holiday nanny to accompany you during your holiday. She might have some tips for family restaurants or nice places to visit. And you can have a nice dinner while your children are in the good hands of our babysitters. Our Holiday nannies cost €20.00 per hour including agency fee and VAT.​</p>
                                 <Link to="/nanyList" className="btn btn-primary d-inline-block mt-4 all_btns px-4 py-2 position-relative">Boook Now</Link>
                             </div>
                         </div>
                     </div>
-                    <div className="row mt-5 flex-row-reverse">
-                        <div className="col-md-7 ps-0">
-                            <img className="w-100 my-5" src={service} alt="image" />
+                    <div className="row mt-5 flex-row-reverse row_padding">
+                        <div className="col-md-6 p-0">
+                            <img className="w-100 my-0 my-md-5 my-sm-0" src={service} alt="image" />
                         </div>
-                        <div className="col-md-3 offset-md-1 service_text secondry_bg ">
-                            <div className="p-5">
+                        <div className="col-md-4 offset-md-1 service_text secondry_bg ">
+                            <div className="hotel_book">
                                 <h2 className="mb-4 fw-700">Hotel Booking</h2>
                                 <p>Are you on holiday in Barcelona? Do you want some free, quality time to go around and discover the beauty of the city by day or night? We suggest a holiday nanny to accompany you during your holiday. She might have some tips for family restaurants or nice places to visit. And you can have a nice dinner while your children are in the good hands of our babysitters. Our Holiday nannies cost €20.00 per hour including agency fee and VAT.​</p>
                                 <Link to="/nanyList" className="btn btn-primary d-inline-block mt-4 all_btns px-4 py-2 position-relative">Boook Now</Link>
@@ -49,13 +48,13 @@ const Services = () => {
             <div className="wny_us sections_padding">
                 <div className="container">
                     <h1 className="pb-3 mb-4 text-center">
-                        <span className="position-relative">Extra services
+                        <span className="position-relative content_offer">Extra services
                         </span>
                     </h1>
                     <p className="text-center">Besides regular babysitting, The Nanny Line offers a special range of nanny-services. Meet with the new concept of babysitting!</p>
-                    <div className="row mt-5">
+                    <div className="row mt-3 mt-md-5 mt-sm-3">
                         <div className="col-sm-6 col-lg-3 mb-3">
-                            <div className="service_text secondry_bg pb-5 px-4 h-100">
+                            <div className="service_text secondry_bg pb-4 pb-sm-5 px-3 px-sm-4 h-100">
                                 <div className="choose_icon mb-5 d-inline-block">
                                     <i className="fas fa-chalkboard-teacher"></i>
                                 </div>
@@ -65,7 +64,7 @@ const Services = () => {
                             </div>
                         </div>
                         <div className="col-sm-6 col-lg-3 mb-3 why_2">
-                            <div className="service_text secondry_bg pb-5 px-4 h-100">
+                            <div className="service_text secondry_bg pb-4 pb-sm-5 px-3 px-sm-4 h-100">
                                 <div className="choose_icon mb-5 d-inline-block">
                                     <i className="fas fa-share"></i>
                                 </div>
@@ -75,7 +74,7 @@ const Services = () => {
                             </div>
                         </div>
                         <div className="col-sm-6 col-lg-3 mb-3 why_3">
-                            <div className="service_text secondry_bg pb-5 px-4  h-100">
+                            <div className="service_text secondry_bg pb-4 pb-sm-5 px-3 px-sm-4  h-100">
                                 <div className="choose_icon mb-5 d-inline-block">
                                     <i className="fas fa-hourglass-start"></i>
                                 </div>
@@ -85,7 +84,7 @@ const Services = () => {
                             </div>
                         </div>
                         <div className="col-sm-6 col-lg-3 mb-3 why_4">
-                            <div className="service_text secondry_bg pb-5 px-4 h-100">
+                            <div className="service_text secondry_bg pb-4 pb-sm-5 px-3 px-sm-4 h-100">
                                 <div className="choose_icon mb-5 d-inline-block">
                                     <i className="fas fa-sack-dollar"></i>
                                 </div>

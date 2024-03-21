@@ -3,7 +3,9 @@ import OTPInput from 'react-otp-input'
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../assets/img/logo-nanny.png';
 import { useDispatch, useSelector } from 'react-redux';
-import { verifyOtp } from '../../store/apiSlice/Otpslice';
+import { clearOtpData, verifyOtp } from '../../store/apiSlice/Otpslice';
+import { clearSignupData } from '../../store/apiSlice/Signupnannyslice';
+import { clearFamilyData } from '../../store/apiSlice/SignupfamilySilce';
 
 const Otp = () => {
 
@@ -15,37 +17,38 @@ const Otp = () => {
 
     //const [otp, setotp] = useState('');
 
-  
+
     const handleOtpVerification = async () => {
+        const emailVerify = signUpData.data.otp == otp ? 1 : signUpData.data.otpPhone == otp ? 2 : 3
+        if (emailVerify != 3) {
+            const payload = {
+                _id: signUpData.data._id,
+                otp: otp,
+                emailVerify: emailVerify,
+            }
 
-        const emailVerify = signUpData.data.otp==otp?1:signUpData.data.otpPhone==otp?2:3
-
-        if(emailVerify!=3){
-        const payload ={
-            _id : signUpData.data._id,
-            otp: otp,
-            emailVerify: emailVerify,
+            try {
+                dispatch(verifyOtp(payload));
+            } catch (error) {
+                console.error('otp failed:', error);
+            }
         }
-      
-        try {
-          dispatch(verifyOtp(payload));
-        } catch (error) {
-            console.error('otp failed:', error);
+        else {
+            console.log("Invalid OTP");
         }
-    }
-    else{
-        console.log("Invalid OTP");
-    }
-      };
-  
+    };
 
-      const navigate = useNavigate();
 
-      const navigateToAnotherScreen = () => {
-        
-          navigate('/nannycategories');
-      }
-      useEffect(() => {
+    const navigate = useNavigate();
+
+    const navigateToAnotherScreen = () => {
+        dispatch(clearOtpData);
+        dispatch(clearSignupData);
+        navigate('/login');
+    }
+
+    useEffect(() => {
+        console.log("data login ===>", data)
         if (data.otpData != null && data.otpData.status === 1) {
             navigateToAnotherScreen();
         }
@@ -73,7 +76,7 @@ const Otp = () => {
                                             renderSeparator={<span className='space'></span>}
                                             renderInput={(props) => <input {...props} />}
                                         />
-                                         {/*<OTPInput
+                                        {/*<OTPInput
                                             
                                            
                                             numInputs={6}
@@ -82,12 +85,12 @@ const Otp = () => {
                                         />*/}
                                     </form>
                                     <div className="d-flex flex-column align-items-center justify-content-center">
-                                        <button type='button' color="primary" className="login_button px-4 btn all_btn" onClick={()=>handleOtpVerification()} >
+                                        <button type='button' color="primary" className="login_button px-4 btn all_btn" onClick={() => handleOtpVerification()} >
                                             Verify
                                         </button>
                                         {/*{otpVerificationError && <p style={{ color: 'red' }}>Found Error</p>}*/}
                                         <p className="mt-3"><Link to="/signup" >Resend</Link> One Time Password</p>
-                                        <p><Link to="/forotpassword"> Entered a wrong number ?</Link></p>
+                                        <p onClick={() => navigate('/forotpassword')}>Entered a wrong number ?</p>
                                     </div>
                                 </div>
                             </div>

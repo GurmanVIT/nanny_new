@@ -230,7 +230,7 @@ const HeaderNanny = () => {
                         <div className="main-sec">
                             <div className="inner-sec">
                                 <ul className="menu-list2">
-                                    <Link to="/" onClick={onCloseModal2}>Home</Link>
+                                    <Link to="/" className="head_sec_top" onClick={onCloseModal2}>Home</Link>
                                     <Link to="/about" onClick={onCloseModal2}>About</Link>
                                     <Link to="/services" onClick={onCloseModal2}>Services</Link>
                                     <Link to="/events" onClick={onCloseModal2}>Events</Link>
@@ -241,7 +241,7 @@ const HeaderNanny = () => {
 
                             <div className="btn">
                                 <span><Link to="/login" className="main-button" onClick={onCloseModal2}>Login</Link></span>
-                                <span><Link to="/register" className="second-button" onClick={onCloseModal2}>Sign up</Link></span>
+                                <span><Link to="/signupnanny" className="second-button" onClick={onCloseModal2}>Sign up</Link></span>
                             </div>
                         </div>) : (
                         <div className="main-sec">

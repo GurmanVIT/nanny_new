@@ -31,6 +31,10 @@
     //height: calc(100vh - 146px);
     height: 100vh;
 
+    @media($breckpoint_LG) {
+        height: 86vh;
+    }
+
     h2 {
         font-size: 25px;
         color: $light-color;
@@ -86,6 +90,14 @@
             margin-left: 0;
         }
 
+        @media($breckpoint_MD) {
+            padding: 25px;
+        }
+
+        @media($breckpoint_SM) {
+            padding: 15px;
+        }
+
         svg {
             padding: 3px;
             width: 30px;
@@ -129,6 +141,10 @@
 
 .testimonials_box {
     background-color: $testimonial_bg;
+
+    @media($breckpoint_MD) {
+        margin-top: 15px;
+    }
 
     .stars {
         gap: 5px;

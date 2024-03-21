@@ -1,27 +1,139 @@
-@import '../../assets/sass/color.scss'; 
+@import '../../assets/sass/color.scss';
 @import '../../assets/sass/mixin.scss';
 @import '../../assets/sass/fonts.scss';
 
 
-.services_banner{
+.services_banner {
     background-image: url(../../assets/img/service_main.jpg);
 }
-.service_text {
 
-.choose_icon {
-    margin-top: -50px;
-    i {
-        font-size: 60px;
-        color: $secondry-color;
+.banner_service {
+    h1 {
+        font-size: 57px;
+        font-weight: 600 !important;
+        letter-spacing: 1.5px;
+        font-family: monospace;
+        margin-top: 35px;
+
+        @media($breckpoint_LG) {
+            margin-top: 0px;
+            font-size: 46px;
+        }
+
+        @media($breckpoint_SM) {
+            font-size: 35px;
+        }
     }
 }
+
+.content_offer {
+    font-size: 44px;
+
+    @media($breckpoint_LG) {
+        font-size: 42px;
+    }
+
+    @media($breckpoint_MD) {
+        font-size: 37px;
+    }
+
+    @media($breckpoint_SM) {
+        font-size: 31px;
+    }
+
+    @media($breckpoint_ESM) {
+        font-size: 25px;
+    }
 }
+
+.row_padding {
+    @media($breckpoint_SM) {
+        padding: 0 10px;
+    }
+}
+
+.service_holiday_img {
+    @media($breckpoint_MD) {
+        margin-bottom: 0 !important;
+    }
+}
+
+.offset-md-1 {
+    @media($breckpoint_MD) {
+        margin-left: 0;
+    }
+}
+
+.service_text {
+
+    .choose_icon {
+        margin-top: -50px;
+
+        i {
+            font-size: 60px;
+            color: $secondry-color;
+        }
+    }
+
+    .hotel_book {
+        padding: 20px;
+
+        @media($breckpoint_LG) {
+            padding: 35px 10px;
+        }
+
+        @media($breckpoint_MD) {
+            padding-top: 20px;
+        }
+
+        @media($breckpoint_MD) {
+            padding: 20px 0;
+        }
+
+        h2 {
+            @media($breckpoint_LG) {
+                font-size: 30px;
+            }
+        }
+    }
+}
+
 .why_2 {
     margin-top: 60px;
+
+    @media($breckpoint_SM) {
+        margin-top: 20px;
+    }
 }
+
 .why_3 {
     margin-top: 120px;
+
+    @media($breckpoint_LG) {
+        margin-top: 60px;
+    }
+
+    @media($breckpoint_MD) {
+        margin-top: 40px;
+    }
+
+    @media($breckpoint_SM) {
+        margin-top: 20px;
+    }
 }
+
 .why_4 {
     margin-top: 180px;
+
+    @media($breckpoint_LG) {
+        margin-top: 125px;
+    }
+
+    @media($breckpoint_MD) {
+        margin-top: 85px;
+    }
+
+    @media($breckpoint_SM) {
+        margin-top: 20px;
+    }
 }
