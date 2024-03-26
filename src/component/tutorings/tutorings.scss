@@ -2,12 +2,63 @@
 @import '../../assets//sass/fonts.scss';
 @import '../../assets//sass/mixin.scss';
 
+.about_nanny_text {
+    .line_text {
+        @media($breckpoint_LG) {
+            font-size: 55px;
+        }
+
+        @media($breckpoint_MD) {
+            font-size: 47px;
+        }
+
+        @media($breckpoint_SM) {
+            font-size: 39px;
+        }
+
+        @media($breckpoint_ESM) {
+            font-size: 32px;
+        }
+    }
+}
 
 .tutor_info {
     flex: 0 0 40%;
 
     @include media-md {
         flex: 0 0 100%;
+    }
+
+    @media($breckpoint_MD) {
+        padding-top: 25px !important;
+        padding-bottom: 0 !important;
+    }
+}
+
+.tutor_solution {
+    @media($breckpoint_MD) {
+        padding-top: 0 !important;
+    }
+}
+
+.tutoring_inner_sec {
+    margin-top: 0 !important;
+}
+
+.babysitter {
+    font-size: 44px;
+    font-weight: 600;
+
+    @media($breckpoint_LG) {
+        font-size: 33px;
+    }
+
+    @media($breckpoint_MD) {
+        font-size: 29px;
+    }
+
+    @media($breckpoint_SM) {
+        font-size: 24px;
     }
 }
 
@@ -39,6 +90,10 @@
 }
 
 .tutor_form {
+    @media($breckpoint_MD) {
+        padding-top: 0 !important;
+    }
+
     .tutor_info {
         flex: 0 0 40%;
 
@@ -58,6 +113,10 @@
         background-repeat: no-repeat;
         background-size: cover;
         z-index: 2;
+
+        @media($breckpoint_MD) {
+            display: none !important;
+        }
 
         &::after {
             position: absolute;

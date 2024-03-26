@@ -2,26 +2,84 @@
 @import '../../assets/sass/fonts.scss';
 @import '../../assets/sass/mixin.scss';
 
-.inner_pages_banner{
+.inner_pages_banner {
     background-image: url(../../assets/img/about_main.jpeg);
 }
-.founder_image {
-    max-width: 250px;
-    border-radius: 5px;
-    padding: 5px;
-    box-shadow: 0 0 15px rgba(0,0,0,.15);
-    height: max-content;
-    object-fit: cover;
+
+.sections_padding {
+    margin-top: 10px !important;
+
+    .babysitter {
+        font-size: 44px;
+
+        @media($breckpoint_LG) {
+            font-size: 33px;
+        }
+
+        @media($breckpoint_MD) {
+            font-size: 29px;
+        }
+
+        @media($breckpoint_SM) {
+            font-size: 24px;
+        }
+    }
+
+    .img_contents {
+        display: flex;
+
+        @media($breckpoint_LG) {
+            display: block;
+        }
+
+        .founder_image {
+            max-width: 250px;
+            border-radius: 5px;
+            padding: 5px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, .15);
+            height: max-content;
+            object-fit: cover;
+
+            @media($breckpoint_LG) {
+                max-width: 100%;
+            }
+        }
+    }
+
+    .nanny_font {
+        font-size: 14px;
+    }
+
+    .best_box {
+        @media($breckpoint_SM) {
+            flex-direction: column !important;
+        }
+    }
 }
+
 .owner_info {
+    @media($breckpoint_LG) {
+        padding-left: 0 !important;
+        margin-top: 10px;
+    }
+
     ul {
         li {
             flex: 0 0 33.33%;
+
+            @media($breckpoint_SM) {
+                font-size: 14px;
+            }
+
+            @media($breckpoint_ESM) {
+                padding-left: 10px !important;
+            }
+
             &::after {
                 position: absolute;
                 content: '';
                 top: 7px;
-                left: 0;    
+                left: 0;
                 width: 6px;
                 height: 6px;
                 background-color: transparent;
@@ -31,50 +89,63 @@
         }
     }
 }
+
 .team_section {
-    box-shadow: 0 0 15px rgba(0,0,0,.15);
+    box-shadow: 0 0 15px rgba(0, 0, 0, .15);
     border: 1px solid #f1f1f1;
     border-radius: 10px;
     overflow: hidden;
-.team_image {
-    width: 80px;
-    height: 80px;
-    border-radius: 50px;
-    box-shadow: 0 0 15px rgba(0,0,0,.15);
-    overflow: hidden;
-    img {
-        object-fit: cover;
+
+    .team_image {
+        width: 80px;
+        height: 80px;
+        border-radius: 50px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, .15);
+        overflow: hidden;
+
+        img {
+            object-fit: cover;
             border-radius: 50px;
-    }
-}
-.team_social_links{
-    @include transition;
-    background-color: rgba( $dark-color, .73);
-    width: 100%;
-    height: 0;
-    bottom: 0;
-    left: 0;
-    a {
-        color: $light-color;
-        opacity: 0;
-        @include transition;
-        svg{
-            font-size: 45px;
-        }
-    }
-}
-&:hover {
-    .team_social_links {
-        height: 100%;
-        @include transition;
-        a {
-            opacity: 1;
-            @include transition;
         }
     }
 
+    .team_social_links {
+        @include transition;
+        background-color: rgba($dark-color, .73);
+        width: 100%;
+        height: 0;
+        bottom: 0;
+        left: 0;
+
+        a {
+            color: $light-color;
+            opacity: 0;
+            @include transition;
+
+            svg {
+                font-size: 45px;
+            }
+        }
+    }
+
+    &:hover {
+        .team_social_links {
+            height: 100%;
+            @include transition;
+
+            a {
+                opacity: 1;
+                @include transition;
+            }
+        }
+
+    }
 }
-}
+
 .custom_positon {
     top: -50px;
+
+    @media($breckpoint_LG) {
+        top: 0;
+    }
 }

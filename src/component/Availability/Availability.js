@@ -343,7 +343,7 @@ const Availability = () => {
                             onClick={() => handleButtonClick(number)}
                             style={{
                               backgroundColor: isTimeIncluded(number)
-                                ? "#6EC1E4"
+                                ? "#89d6ce"
                                 : "rgb(235 234 234)",
                             }}
                           >

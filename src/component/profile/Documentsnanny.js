@@ -134,7 +134,7 @@ const Documentsnanny = () => {
                         <div className="d-flex align-items-center mb-3 heading_back_btn justify-content-between">
                             <h5 className="m-0">Upload Documents</h5>
                             <div>
-                                <Link className='me-1' onClick={addDiv}><AddIcon className='addicon' /></Link>
+                                <Link className='me-1' onClick={addDiv}><AddIcon className='addicon icon_add' style={{ fill: "#89d6ce " }} /></Link>
                             </div>
                         </div>
                     </div>

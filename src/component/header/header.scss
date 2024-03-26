@@ -10,7 +10,6 @@ $breckpoint_ESM: "max-width: 385px";
 $breckpoint_340: "max-width: 355px";
 
 .main-head {
-
   // background-color: rgba(255, 255, 255, 0);
   background-color: #fff;
   padding: 10px 0px;
@@ -21,14 +20,11 @@ $breckpoint_340: "max-width: 355px";
   color: #000 !important;
 
   .inner {
-
     display: flex;
     justify-content: space-between;
     align-items: center;
-    align-items: center;
 
     .logo {
-
       p {
 
         color: #000;
@@ -63,6 +59,10 @@ $breckpoint_340: "max-width: 355px";
 
             @media($breckpoint_XL) {
               padding: 10px;
+            }
+
+            &:hover {
+              color: #89d6ce;
             }
           }
         }
@@ -289,6 +289,10 @@ $breckpoint_340: "max-width: 355px";
     align-items: center;
     padding: 18px 15px;
 
+    @media($breckpoint_LG) {
+      padding: 10px 15px;
+    }
+
     svg {
       color: #333;
       font-size: 28px;
@@ -296,8 +300,12 @@ $breckpoint_340: "max-width: 355px";
 
     .logo {
       img {
-        width: 30px;
         height: 30px;
+
+        @media($breckpoint_LG) {
+          width: 120px !important;
+          height: auto;
+        }
       }
 
       a {

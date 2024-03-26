@@ -22,23 +22,23 @@ const Events = () => {
                 </div>
             </div>
 
-            <div className="sections_padding mt-5">
-                <div className="d-flex mt-4 flex-wrap">
+            <div className="sections_padding event_padding mt-5">
+                <div className="d-flex mt-4 flex-wrap image_content_wrap">
                     <div className="events_image p-5 d-flex align-items-center justify-content-center text-start position-relative">
                         <h1 className="display-1 fw-700">A BEAUTIFUL NEW CONCEPT OF BABYSITTING</h1>
                     </div>
                     <div className="events_info px-3 py-5 px-lg-5">
-                        <h3 className="fw-700 mb-5">What is Playdate?</h3>
+                        <h3 className="fw-700 mb-5 playdate">What is Playdate?</h3>
                         <p className="fw-700 mb-4">In collaboration with the best kindergartens in Barcelona: A wonderful new playdate with qualified, experienced, multilingual nannies provided by The Nanny Line. We have created a wonderful new event where you can feel safe leaving your children with professional, experienced and multilingual nannies to offer your child the chance to learn and play whilst you take a well-deserved break.</p>
                         <p className=" mb-4">A wonderful new playdate with qualified, experienced, multilingual nannies provided by The Nanny Line. We have created a wonderful new playdate with the help of The Nanny Line where you can feel safe leaving your children with professional, experienced and multilingual nannies to offer your child the chance to learn and play whilst you take a well-deserved break.</p>
-                        <p className="mb-4">This is your opportunity to give your children a chance to speak and hear both English and Spanish with our fantastic nannies. You don’t need to worry about a thing! You can take the time to relax and have a rest and we will entertain them with games and activities to engage their attention.</p>
+                        <p className="mb-4 opportunity">This is your opportunity to give your children a chance to speak and hear both English and Spanish with our fantastic nannies. You don’t need to worry about a thing! You can take the time to relax and have a rest and we will entertain them with games and activities to engage their attention.</p>
                     </div>
                 </div>
             </div>
 
             <div className="sections_padding secondry_bg">
                 <div className="container">
-                    <h1 className="mb-4 pb-3 text-center"><span className="position-relative">What do we offer with Playdate?
+                    <h1 className="mb-4 pb-3 text-center offer_content"><span className="position-relative babysitter">What do we offer with Playdate?
                     </span></h1>
                     <p className="text-center">Get to know more about our brand new concept</p>
                     <div className="row mt-5">

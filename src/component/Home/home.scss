@@ -2,6 +2,12 @@
 @import '../../assets/sass/mixin.scss';
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Merriweather:wght@700&family=Roboto&display=swap');
 
+@mixin display($justify-content, $align-items) {
+    display: flex;
+    justify-content: $justify-content;
+    align-items: $align-items;
+}
+
 .banner_bg_home {
     width: 100%;
     height: 100vh;
@@ -14,6 +20,10 @@
 
     @include media-md {
         background-size: cover !important;
+    }
+
+    @media($breckpoint_MD) {
+        height: 66vh;
     }
 
     &::after {
@@ -32,7 +42,11 @@
     height: 100vh;
 
     @media($breckpoint_LG) {
-        height: 86vh;
+        height: 95vh;
+    }
+
+    @media($breckpoint_MD) {
+        height: 60vh;
     }
 
     h2 {
@@ -61,6 +75,10 @@
         background-color: $secondry-color !important;
         padding: 10px 50px;
         border-radius: 10px;
+
+        @media($breckpoint_MD) {
+            margin-top: 0 !important;
+        }
     }
 }
 
@@ -72,11 +90,33 @@
     h1 {
         font-size: 37px;
     }
+
+    .babysitter {
+        @media($breckpoint_SM) {
+            font-size: 23px;
+        }
+    }
+
+    // .secound_section {
+    //     padding: 25px 15px;
+
+    //     @media($breckpoint_SM) {
+    //         padding: 15px 10px;
+    //     }
+    // }
 }
 
 .services_box {
     .offer_nanny {
         font-size: 37px;
+
+        @media($breckpoint_SM) {
+            font-size: 33px;
+        }
+
+        @media($breckpoint_ESM) {
+            font-size: 30px;
+        }
     }
 
     .service_arrow {

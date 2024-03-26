@@ -23,17 +23,17 @@ const Home = () => {
                 </div>
             </div>
             <div className="who_we_section sections_padding">
-                <div className="container text-center py-5">
+                <div className="container text-center py-1 py-sm-4 secound_section">
                     <h3>Who We Are?</h3>
-                    <h2 className="my-3 pb-3">
-                        <span className="position-relative">"More than a babysitter"</span>
+                    <h2 className="my-2 my-sm-3 pb-0 pb-sm-3">
+                        <span className="position-relative babysitter">"More than a babysitter"</span>
                     </h2>
                     <div className="row">
                         <div className="col-md-8 offset-md-2">
                             <p className="mb-3">The Nanny Line is a multilingual agency with international, educated, experienced and enthusiastic nannies and babysitters</p>
                             <p>We provide the best service and support to families in Barcelona, Madrid and Ibiza. Our experienced nannies report directly to your home, hotel or event, day or night, <span className="d-block fw-700">ANYTIME!</span></p>
-                            <Link to="/services" className="btn btn-primary d-inline-block mt-4 all_btns px-4 py-2 position-relative">Services</Link><br />
-                            {token === null && <Link to="/signupnanny" className="btn btn-primary d-inline-block mt-4 all_btns px-4 py-2 position-relative">Apply to be Nanny</Link>}
+                            <Link to="/services" className="btn btn-primary d-inline-block mt-3 mt-sm-4 all_btns px-4 py-2 position-relative">Services</Link><br />
+                            {token === null && <Link to="/signupnanny" className="btn btn-primary d-inline-block mt-3 mt-sm-4 all_btns px-4 py-2 position-relative">Apply to be Nanny</Link>}
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@ const Home = () => {
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-md-4">
-                            <h2 className="mb-4 pb-3 offer_nanny">
+                            <h2 className="mb-0 mb-md-4 pb-3 offer_nanny">
                                 <span className="position-relative">What do we offer</span>
                             </h2>
                             <p className='mb-2'>Our nannies are available for locals, tourists or special occasions.</p>

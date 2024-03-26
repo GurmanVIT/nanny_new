@@ -8,6 +8,23 @@
     @include media-md {
         flex: 0 0 100%;
     }
+
+    @media(max-width:797px) {
+        padding-bottom: 0 !important;
+        padding-top: 20px !important;
+    }
+
+    .playdate {
+        @media(max-width:797px) {
+            margin-bottom: 15px !important;
+        }
+    }
+
+    .opportunity {
+        @media(max-width:797px) {
+            margin-bottom: 0 !important;
+        }
+    }
 }
 
 .events_image {
@@ -36,6 +53,20 @@
     @include media-md {
         flex: 0 0 100%;
     }
+
+    .display-1 {
+        @media($breckpoint_SM) {
+            font-size: 35px;
+        }
+
+        @media($breckpoint_ESM) {
+            font-size: 30px;
+        }
+
+        @media($breckpoint_340) {
+            font-size: 27px;
+        }
+    }
 }
 
 .event_circle {
@@ -49,7 +80,49 @@
     }
 }
 
+.event_padding {
+    @media(max-width:797px) {
+        margin-top: 0 !important;
+    }
+
+    @media($breckpoint_SM) {
+        padding-top: 0 !important;
+    }
+}
+
 .sections_padding {
+    .image_content_wrap {
+        @media(max-width:797px) {
+            display: block !important;
+        }
+    }
+
+    .offer_content {
+        span {
+            &::after {
+                @media(max-width:366px) {
+                    left: calc(50% - 65px) !important;
+                }
+            }
+        }
+    }
+
+    .babysitter {
+        font-size: 44px;
+
+        @media($breckpoint_LG) {
+            font-size: 33px;
+        }
+
+        @media($breckpoint_MD) {
+            font-size: 29px;
+        }
+
+        @media($breckpoint_SM) {
+            font-size: 24px;
+        }
+    }
+
     .my_swiper {
         .swiper {
 

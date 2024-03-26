@@ -19,7 +19,7 @@ const Manageservices = () => {
         dispatch(getAllCategorieslist(0))
     }, [])
     //useEffect(() => {
-      
+
     //}, [])
 
 
@@ -97,12 +97,12 @@ const Manageservices = () => {
 
         const addedCategoryDataArray = dataList.map(item => item.addedCategoryData);
 
-        console.log("Added Category Data ===> ",addedCategoryDataArray)
+        console.log("Added Category Data ===> ", addedCategoryDataArray)
 
         const convertedData = addedCategoryDataArray.map(item => {
             const { isActive, ...rest } = item;
             return { status: isActive, ...rest };
-          });
+        });
 
         const payload = {
             "categories": convertedData
@@ -126,7 +126,7 @@ const Manageservices = () => {
                                     <Form.Check
                                         type="switch"
                                         id="custom-switch"
-                                        checked={item.addedCategoryData.isActive===1?true:false}
+                                        checked={item.addedCategoryData.isActive === 1 ? true : false}
                                         onChange={(val) => handleToggleActive(index, val.target.checked)}
                                     />
                                 </Form>
@@ -146,11 +146,12 @@ const Manageservices = () => {
                                 <div className='btn_yes '>
                                     <button
                                         style={{
-                                            backgroundColor: item.addedCategoryData.isLastMinuteNanny === 1 ? '#6EC1E4' : 'transparent',
-                                            border: '1px solid #6EC1E4',
+                                            backgroundColor: item.addedCategoryData.isLastMinuteNanny === 1 ? '#89d6ce' : 'transparent',
+                                            border: '1px solid #89d6ce',
                                             color: '#000',
                                             padding: '10px',
                                             cursor: 'pointer',
+                                            borderRadius: '4px',
                                         }}
                                         onClick={() => handleTogglebtn(index, 1)}
                                     >
@@ -158,11 +159,12 @@ const Manageservices = () => {
                                     </button>
                                     <button
                                         style={{
-                                            backgroundColor: item.addedCategoryData.isLastMinuteNanny === 0 ? '#6EC1E4' : 'transparent',
-                                            border: '1px solid #6EC1E4',
+                                            backgroundColor: item.addedCategoryData.isLastMinuteNanny === 0 ? '#89d6ce' : 'transparent',
+                                            border: '1px solid #89d6ce',
                                             color: '#000',
                                             padding: '10px',
                                             cursor: 'pointer',
+                                            borderRadius: '4px',
                                         }}
                                         onClick={() => handleTogglebtn(index, 0)}
                                     >

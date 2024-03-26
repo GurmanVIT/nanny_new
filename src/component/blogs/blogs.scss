@@ -1,31 +1,52 @@
 @import '../../assets/sass/color.scss';
 @import '../../assets/sass/fonts.scss';
 @import '../../assets/sass/mixin.scss';
+
 .blogs_box {
     background-color: $light-color;
     @include border-radius(8px);
     overflow: hidden;
-    box-shadow: 0 0 10px rgba(0,0,0,.15);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+
     h6 {
         border-top: 1px solid #f1f1f1;
         border-bottom: 1px solid #f1f1f1;
     }
+
     .comment_admin_box {
         i {
             color: $primary-color
-        };
+        }
+
+        ;
+    }
+}
+
+.top_inner_sec {
+    margin-top: 0 !important;
+}
+
+.about_nanny_texts {
+    .line_texts {
+        @media($breckpoint_SM) {
+            font-size: 60px;
+        }
+
+        @media($breckpoint_ESM) {
+            font-size: 50px;
+        }
     }
 }
 
 .input-box i {
     position: absolute;
     right: 13px;
-    top:11px;
-    color:#ced4da;
-  }
+    top: 11px;
+    color: #ced4da;
+}
+
 .sidebar_posts_box {
     a {
         color: $primary-color;
     }
 }
-  
