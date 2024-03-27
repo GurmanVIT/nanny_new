@@ -265,7 +265,6 @@ $breckpoint_340: "max-width: 355px";
 }
 
 .mob-header {
-
   display: none;
   position: relative;
   z-index: 1;
@@ -275,6 +274,9 @@ $breckpoint_340: "max-width: 355px";
 
   @media($breckpoint_LG) {
     display: block;
+    position: fixed;
+    width: 100%;
+    z-index: 9;
   }
 
   .react-responsive-modal-closeButton {

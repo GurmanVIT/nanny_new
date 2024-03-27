@@ -58,7 +58,7 @@ const Tutorings = () => {
                             </div>
                             <div className="mb-3">
                                 <label for="service_type" className="form-label">Select Service Type<span>*</span></label>
-                                <select className="form-select mb-3" id="service_select" aria-label=".form-select-lg example">
+                                <select className="form-select mb-3 py-2" id="service_select" aria-label=".form-select-lg example">
                                     <option selected>Select Service Type</option>
                                     <option value="1">One</option>
                                     <option value="2">Two</option>
@@ -67,7 +67,7 @@ const Tutorings = () => {
                             </div>
                             <div className="mb-3">
                                 <label for="language_type" className="form-label">Select Language<span>*</span></label>
-                                <select className="form-select mb-3" id="language_type" aria-label=".form-select-lg example">
+                                <select className="form-select mb-3 py-2" id="language_type" aria-label=".form-select-lg example">
                                     <option selected>Select Service Type</option>
                                     <option value="1">One</option>
                                     <option value="2">Two</option>

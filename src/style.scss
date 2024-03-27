@@ -247,6 +247,17 @@ a:hover {
 
 .contact_bg {
   background-color: $secondry-color;
+
+  @media($breckpoint_SM) {
+    background-color: transparent;
+  }
+}
+
+.contact_bg_color {
+  @media($breckpoint_SM) {
+    background-color: $secondry-color;
+    border-radius: 4px;
+  }
 }
 
 html,

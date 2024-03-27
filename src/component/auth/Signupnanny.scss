@@ -1,5 +1,3 @@
-
-
 $color_1: #475F7B;
 $background-color_1: #fff;
 $background-color_2: #FFF;
@@ -13,35 +11,39 @@ $border-color_1: #5A8DEE;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+
 	.form-inner {
 		width: 100%;
 	}
 }
+
 .form-control {
 	display: block;
 	width: 100%;
 	height: auto;
-	padding: 15px 19px;
+	padding: 10px 15px;
 	font-size: 1rem;
 	line-height: 1.4;
 	color: $color_1;
 	background-color: $background-color_2;
 	border: 1px solid #DFE3E7;
 	border-radius: .267rem;
-	-webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-	transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-	margin: 15px 0px;
+	-webkit-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
 	&:focus {
 		color: $color_1;
 		background-color: $background-color_2;
-		border-color: $border-color_1;
+		border-color: #89d6ce;
 		outline: 0;
 		box-shadow: 0 3px 8px 0 rgb(0 0 0 / 10%);
 	}
 }
+
 .intl-tel-input {
 	width: 100%;
 }
+
 .iti {
 	width: 100%;
 }
